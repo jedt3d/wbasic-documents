@@ -1,0 +1,68 @@
+[
+  {
+    "width": 1440,
+    "theme": "light",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-light.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  },
+  {
+    "width": 1440,
+    "theme": "dark",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-dark.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  },
+  {
+    "width": 390,
+    "theme": "light",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-light.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  },
+  {
+    "width": 390,
+    "theme": "dark",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-dark.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  },
+  {
+    "width": 320,
+    "theme": "light",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-light.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  },
+  {
+    "width": 320,
+    "theme": "dark",
+    "overflow": false,
+    "visibleMascots": 1,
+    "loaded": true,
+    "asset": "/images/brand/wbasic-mascot-dark.svg",
+    "wordmark": "Wbasic.",
+    "overlap": false,
+    "dot": "rgb(35, 127, 131)"
+  }
+]

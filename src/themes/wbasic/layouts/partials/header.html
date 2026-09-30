@@ -1,5 +1,9 @@
 <header class="site-header">
   <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+    <span class="brand-mascot" aria-hidden="true">
+      <img class="brand-mascot-light" src="{{ "images/brand/wbasic-mascot-light.svg" | relURL }}" alt="" width="44" height="44" fetchpriority="high">
+      <img class="brand-mascot-dark" src="{{ "images/brand/wbasic-mascot-dark.svg" | relURL }}" alt="" width="44" height="44" fetchpriority="high">
+    </span>
     <span>Wbasic<span class="brand-signature" aria-hidden="true">.</span></span>
   </a>
 

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "colors": {
+    "teal": "#237F83",
+    "charcoal": "#26343D",
+    "mist": "#F3F6F4",
+    "sage": "#B9CEC4"
+  },
+  "assets": [
+    "wbasic-element-light",
+    "wbasic-wordmark-light",
+    "wbasic-mascot-light",
+    "wbasic-mascot-boxed-light",
+    "wbasic-header-light",
+    "wbasic-element-dark",
+    "wbasic-wordmark-dark",
+    "wbasic-mascot-dark",
+    "wbasic-mascot-boxed-dark",
+    "wbasic-header-dark"
+  ],
+  "format": "SVG uses editable vector paths; PNG exports have transparent backgrounds.",
+  "typography": "IBM Plex Sans 600; element W uses 700. Outlined glyphs; no installed font required.",
+  "baseline": "Element: W baseline=390, circle cy=365+r25=390. Wordmark: baseline=143, cy=134+r9=143.",
+  "provenance": "Vector recreation of user-selected AI concept. User plans personal hand-drawn refinement. No legal clearance or human-only authorship claim.",
+  "header": "Unboxed mascot first, existing live Wbasic. text second. Light/dark assets follow site theme."
+}

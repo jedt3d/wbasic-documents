@@ -82,9 +82,13 @@ a:hover { text-decoration-thickness: 3px; }
   top: 0;
   z-index: 100;
 }
-.brand { font-size: 1.75rem; font-weight: 600; letter-spacing: -.035em; line-height: 1.2; text-decoration: none; width: fit-content; }
+.brand { align-items: center; display: inline-flex; gap: .5rem; flex-shrink: 0; white-space: nowrap; font-size: 1.75rem; font-weight: 600; letter-spacing: -.035em; line-height: 1.2; text-decoration: none; width: fit-content; }
+.brand-mascot { display: block; flex: 0 0 2.75rem; height: 2.75rem; width: 2.75rem; }
+.brand-mascot img { display: block; height: 100%; width: 100%; }
+.brand-mascot .brand-mascot-dark { display: none; }
+[data-theme="dark"] .brand-mascot .brand-mascot-light { display: none; }
+[data-theme="dark"] .brand-mascot .brand-mascot-dark { display: block; }
 .brand-signature { color: var(--wb-teal); }
-[data-theme="dark"] .brand-signature { color: var(--wb-sage); }
 .top-links { align-items: center; display: flex; gap: 2rem; }
 .top-links a { font-size: .9375rem; font-weight: 500; line-height: 1.5; text-decoration: none; }
 .top-links a:hover { text-decoration: underline; text-decoration-color: var(--wb-link-line); }
@@ -103,6 +107,7 @@ a:hover { text-decoration-thickness: 3px; }
 .search-button, .text-button { cursor: pointer; padding: .55rem 1rem; }
 .search-button { gap: 1rem; justify-content: space-between; min-width: 10.5rem; }
 .search-button:hover, .language-control:hover, .text-button:hover { background: var(--wb-panel); color: var(--wb-charcoal); }
+[data-theme="dark"] .header-actions :is(.search-button, .language-control, .text-button):hover { background: var(--wb-sage); color: var(--wb-charcoal); }
 .language-control { padding: 0 .75rem; position: relative; }
 .language-control select { background: transparent; border: 0; cursor: pointer; font-size: .9375rem; font-weight: 500; outline: 0; padding: .45rem 0; }
 kbd { background: var(--wb-sage); border: 1px solid var(--wb-charcoal); border-radius: .2rem; color: var(--wb-charcoal); font: 400 .75rem/1.4 var(--wb-font-mono); padding: .1rem .3rem; }
@@ -281,8 +286,9 @@ html[lang^="th"] .prose .identity-type-mono > p { font-family: var(--wb-font-mon
   .identity-color:last-child { grid-column: 1 / -1; }
 }
 @media (max-width: 31rem) {
-  .site-header { padding: 0 .625rem; }
-  .header-actions { gap: .25rem; }
+  :root { --header-height: 7rem; }
+  .site-header { grid-template-columns: 1fr; grid-template-rows: 3.5rem 3.5rem; padding: 0 .625rem; }
+  .header-actions { gap: .25rem; justify-content: space-between; }
   .search-button, .text-button { padding-left: .65rem; padding-right: .65rem; }
   .language-control { padding-left: .5rem; padding-right: .5rem; }
   .language-control select { max-width: 4.75rem; }
