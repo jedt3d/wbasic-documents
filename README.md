@@ -64,3 +64,32 @@ accepted.
 Every push to `main` runs `.github/workflows/pages.yml`: it verifies Markdown,
 builds the pinned Hugo source, verifies the generated site, and deploys `html/`
 through GitHub Pages.
+
+## Versioned publication
+
+Each publication uses a new `docs-vYYYY.MM.DD.N` version (daily sequence starting
+at 1), independent of the language/compiler version. Update `src/static/version.json`,
+run the pinned build, and commit the source and generated HTML. Then run:
+
+```console
+node publish-docs.mjs
+```
+
+The publisher requires a clean checkout, verifies the documentation remote and
+site, creates an annotated version tag, and pushes main and that tag atomically.
+It never pushes the compiler repository, unrelated branches, or other tags.
+Published tags must not be moved or reused. An ordinary untagged push cannot
+publish: CI requires the declared tag to identify its exact commit. A manual
+workflow run is also limited to a tagged main commit.
+
+The footer displays the version in both languages. `version.json` provides the
+same identifier; CI adds `deployment.json` with the deployed commit and workflow
+run. After a successful workflow, check those live files and both footers before
+reporting success. Local preview builds are not evidence of deployment.
+
+## Ownership
+
+Copyright © 2026 Worajedt Sitthidumrong. All rights reserved.
+WBasic, its language specification, compiler, and documentation are proprietary
+and are not open-source software. Third-party materials retain their respective
+licenses, including the bundled font licenses and credited source materials.

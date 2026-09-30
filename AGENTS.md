@@ -29,6 +29,16 @@
 
 ## Publishing
 
+- Every publishing push must have a new `docs-vYYYY.MM.DD.N` version in
+  `src/static/version.json`. Build and commit source plus generated HTML, then
+  use `node publish-docs.mjs`. It creates an annotated tag and atomically pushes
+  only this repository's main and that tag. Never reuse or force-move a published
+  version. The Pages workflow rejects a missing tag or a tag for a different SHA.
+- Verify the completed Pages run and live `version.json`, `deployment.json`,
+  and both language footers before reporting publication success.
+- WBasic is proprietary, not open-source. Keep the copyright notice naming
+  Worajedt Sitthidumrong and preserve all third-party license notices.
+
 - `.github/workflows/pages.yml` builds and verifies the site on every push to
   `main`, then publishes the generated `html/` artifact to GitHub Pages.
 - The production base URL is

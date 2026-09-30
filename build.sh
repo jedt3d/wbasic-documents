@@ -17,3 +17,4 @@ esac
 node "$documents_root/verify-site.mjs"
 node "$documents_root/verify-small-projects-site.mjs"
 node "$documents_root/verify-english-edition.mjs"
+node "$documents_root/verify-release.mjs"

@@ -48,3 +48,9 @@ other = "Breadcrumb"
 other = "Download"
 [projectEdition]
 other = "English edition · Examples and project plans"
+[documentVersion]
+other = "Documentation version"
+[rightsReserved]
+other = "All rights reserved."
+[proprietaryNotice]
+other = "WBasic, its language specification, compiler, and documentation are proprietary and are not open-source software. Third-party materials retain their respective licenses."

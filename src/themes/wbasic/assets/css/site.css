@@ -311,3 +311,7 @@ html[lang^="th"] .prose .identity-type-mono > p { font-family: var(--wb-font-mon
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+.site-footer { border-top: 1px solid var(--wb-sage); padding: 2rem clamp(1rem, 5vw, 4rem); font-size: .875rem; line-height: 1.65; }
+.site-footer p { max-width: 80ch; margin: .4rem auto; }
+.site-footer a { color: inherit; text-decoration: underline; text-underline-offset: .2em; }

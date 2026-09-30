@@ -1,0 +1,6 @@
+{{ $release := readFile "static/version.json" | transform.Unmarshal }}
+<footer class="site-footer" data-document-version="{{ $release.version }}">
+  <p>{{ i18n "documentVersion" }} <a href="https://github.com/jedt3d/wbasic-documents/tree/{{ $release.version }}">{{ $release.version }}</a></p>
+  <p>Copyright © {{ $release.copyrightYear }} {{ $release.copyrightOwner }}. {{ i18n "rightsReserved" }}</p>
+  <p>{{ i18n "proprietaryNotice" }}</p>
+</footer>
