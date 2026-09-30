@@ -27,7 +27,7 @@ other = "API"
 [readBook]
 other = "เปิดหนังสือ"
 [draftNotice]
-other = "โครงคู่มือสำหรับพฤติกรรม WBasic v0.3 ที่ตรวจสอบแล้ว"
+other = "คู่มือสำหรับพฤติกรรม WBasic v0.3 ที่ตรวจสอบแล้ว"
 [skipToContent]
 other = "ข้ามไปยังเนื้อหา"
 [primaryNavigation]
@@ -44,3 +44,7 @@ other = "บทก่อนหน้า"
 other = "บทถัดไป"
 [breadcrumb]
 other = "เส้นทางของหน้า"
+[download]
+other = "ดาวน์โหลด"
+[projectEdition]
+other = "ฉบับภาษาไทย · ตัวอย่างและแผนโครงการ"

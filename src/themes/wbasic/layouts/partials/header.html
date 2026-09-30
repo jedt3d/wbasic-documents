@@ -22,7 +22,12 @@
     <label class="language-control" aria-label="{{ i18n "language" }}">
       <select data-language-switcher>
         {{ range .Site.Home.AllTranslations }}
-          <option value="{{ .RelPermalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ .Language.Label }}</option>
+          {{ $language := .Language }}
+          {{ $destination := .RelPermalink }}
+          {{ range $.AllTranslations }}
+            {{ if eq .Language.Lang $language.Lang }}{{ $destination = .RelPermalink }}{{ end }}
+          {{ end }}
+          <option value="{{ $destination }}" {{ if eq $language.Lang $.Language.Lang }}selected{{ end }}>{{ $language.Label }}</option>
         {{ end }}
       </select>
     </label>

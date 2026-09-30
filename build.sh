@@ -15,3 +15,5 @@ esac
 
 "$hugo_binary" --source "$source_root" --destination "$output_root" --cleanDestinationDir --gc --minify
 node "$documents_root/verify-site.mjs"
+node "$documents_root/verify-small-projects-site.mjs"
+node "$documents_root/verify-english-edition.mjs"

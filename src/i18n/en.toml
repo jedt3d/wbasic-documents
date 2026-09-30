@@ -27,7 +27,7 @@ other = "API"
 [readBook]
 other = "Open book"
 [draftNotice]
-other = "Reference shell for verified WBasic v0.3 behavior"
+other = "Reference for verified WBasic v0.3 behavior"
 [skipToContent]
 other = "Skip to content"
 [primaryNavigation]
@@ -44,3 +44,7 @@ other = "Previous chapter"
 other = "Next chapter"
 [breadcrumb]
 other = "Breadcrumb"
+[download]
+other = "Download"
+[projectEdition]
+other = "English edition · Examples and project plans"

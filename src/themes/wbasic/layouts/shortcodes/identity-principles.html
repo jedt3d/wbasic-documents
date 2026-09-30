@@ -2,8 +2,15 @@
   <span>Wbasic</span><b aria-hidden="true">.</b>
 </div>
 <div class="identity-principles" data-identity-principles>
+  {{ if eq .Page.Language.Lang "en" }}
+  <section><strong>Calm</strong><span>Quiet surfaces let the content lead</span></section>
+  <section><strong>Dependable</strong><span>Clear hierarchy, strong contrast, reusable rules</span></section>
+  <section><strong>Approachable</strong><span>Welcoming to beginners without sacrificing precision</span></section>
+  <section><strong>Ready to grow</strong><span>Consistent foundations that leave room for new work</span></section>
+  {{ else }}
   <section><strong>สงบ</strong><span>พื้นผิวเงียบ ให้เนื้อหาเป็นพระเอก</span></section>
   <section><strong>พึ่งพาได้</strong><span>ลำดับชัด contrast สูง และใช้ซ้ำได้</span></section>
   <section><strong>เข้าถึงง่าย</strong><span>เป็นมิตรกับมือใหม่โดยไม่ลดความแม่นยำ</span></section>
   <section><strong>พร้อมเติบโต</strong><span>กติกาแข็งแรงพอให้หน้าตาใหม่อยู่ร่วมกันได้</span></section>
+  {{ end }}
 </div>

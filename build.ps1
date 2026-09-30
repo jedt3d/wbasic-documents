@@ -21,3 +21,8 @@ if ($LASTEXITCODE -ne 0) { throw 'Hugo build failed.' }
 
 & node (Join-Path $documentsRoot 'verify-site.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'Generated-site verification failed.' }
+
+& node (Join-Path $documentsRoot 'verify-small-projects-site.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Project-book verification failed.' }
+& node (Join-Path $documentsRoot 'verify-english-edition.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'English-edition verification failed.' }

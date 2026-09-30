@@ -1,20 +1,21 @@
+{{ $english := eq .Page.Language.Lang "en" }}
 <div class="identity-brand-gallery">
   {{ range $theme := slice "light" "dark" }}
-  <section class="identity-brand-preview identity-brand-preview--{{ $theme }}" aria-label="{{ if eq $theme "light" }}ตัวอย่างบนพื้นสว่าง{{ else }}ตัวอย่างบนพื้นมืด{{ end }}">
-    <p class="identity-brand-label">{{ if eq $theme "light" }}พื้นสว่าง · Light{{ else }}พื้นมืด · Dark{{ end }}</p>
+  <section class="identity-brand-preview identity-brand-preview--{{ $theme }}" aria-label="{{ if $english }}{{ if eq $theme "light" }}Light background preview{{ else }}Dark background preview{{ end }}{{ else }}{{ if eq $theme "light" }}ตัวอย่างบนพื้นสว่าง{{ else }}ตัวอย่างบนพื้นมืด{{ end }}{{ end }}">
+    <p class="identity-brand-label">{{ if $english }}{{ if eq $theme "light" }}Light background{{ else }}Dark background{{ end }}{{ else }}{{ if eq $theme "light" }}พื้นสว่าง · Light{{ else }}พื้นมืด · Dark{{ end }}{{ end }}</p>
     <div class="identity-brand-assets">
-      {{ range $asset := slice (dict "name" "element" "label" "ตราธาตุ 74 / W.") (dict "name" "wordmark" "label" "ชื่อภาษา Wbasic.") (dict "name" "mascot" "label" "มาสค็อตไม่มีกรอบ") (dict "name" "mascot-boxed" "label" "มาสค็อตมีกรอบ") }}
+      {{ range $asset := slice (dict "name" "element" "label" (cond $english "74 / W. element emblem" "ตราธาตุ 74 / W.")) (dict "name" "wordmark" "label" (cond $english "Wbasic. wordmark" "ชื่อภาษา Wbasic.")) (dict "name" "mascot" "label" (cond $english "Unframed mascot" "มาสค็อตไม่มีกรอบ")) (dict "name" "mascot-boxed" "label" (cond $english "Framed mascot" "มาสค็อตมีกรอบ")) }}
       {{ $base := printf "images/brand/wbasic-%s-%s" $asset.name $theme }}
       <figure>
         <img src="{{ printf "%s.svg" $base | relURL }}" alt="{{ $asset.label }}" loading="lazy" width="512" height="512">
-        <figcaption>{{ $asset.label }}<span class="identity-brand-downloads"><a href="{{ printf "%s.svg" $base | relURL }}" download aria-label="ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น SVG">SVG</a> · <a href="{{ printf "%s.png" $base | relURL }}" download aria-label="ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น PNG">PNG</a></span></figcaption>
+        <figcaption>{{ $asset.label }}<span class="identity-brand-downloads"><a href="{{ printf "%s.svg" $base | relURL }}" download aria-label="{{ if $english }}Download {{ $asset.label }}, {{ $theme }}, SVG{{ else }}ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น SVG{{ end }}">SVG</a> · <a href="{{ printf "%s.png" $base | relURL }}" download aria-label="{{ if $english }}Download {{ $asset.label }}, {{ $theme }}, PNG{{ else }}ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น PNG{{ end }}">PNG</a></span></figcaption>
       </figure>
       {{ end }}
     </div>
     <figure class="identity-brand-lockup">
       {{ $header := printf "images/brand/wbasic-header-%s" $theme }}
-      <img src="{{ printf "%s.svg" $header | relURL }}" alt="มาสค็อตไม่มีกรอบ ตามด้วย Wbasic." loading="lazy" width="745" height="174">
-      <figcaption>การจัดวางในส่วนหัวเว็บไซต์ · <a href="{{ printf "%s.svg" $header | relURL }}" download>SVG</a> · <a href="{{ printf "%s.png" $header | relURL }}" download>PNG</a></figcaption>
+      <img src="{{ printf "%s.svg" $header | relURL }}" alt="{{ if $english }}Unframed mascot followed by Wbasic.{{ else }}มาสค็อตไม่มีกรอบ ตามด้วย Wbasic.{{ end }}" loading="lazy" width="745" height="174">
+      <figcaption>{{ if $english }}Website header arrangement{{ else }}การจัดวางในส่วนหัวเว็บไซต์{{ end }} · <a href="{{ printf "%s.svg" $header | relURL }}" download>SVG</a> · <a href="{{ printf "%s.png" $header | relURL }}" download>PNG</a></figcaption>
     </figure>
   </section>
   {{ end }}

@@ -14,10 +14,16 @@ and publication. The earlier draft books remain read-only historical material in
 
 The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
-API surface through the current R7 implementation. English has a navigable
-placeholder and will be translated only after the Thai source is approved.
-When translation begins, corresponding pages use the same path and file name
-in `src/content/th` and `src/content/en`.
+API surface through the current R7 implementation. The English edition translates
+the reviewed Thai reference, design guide, and Small Wbasic Projects, alongside
+the existing bilingual Getting Started. Corresponding pages use the same path
+and file name in `src/content/th` and `src/content/en`. Planned and Deferred
+capabilities retain their status in both languages.
+
+The [English editorial review](evidence/english-editorial-review.md) records the
+120 translated/replaced pages and 52 English project plans. Both build scripts
+check complete Thai/English page and search parity, shared example hashes,
+localized downloads, and same-chapter language switching.
 
 `src/themes/wbasic/` is the default theme. Its palette, typography, spacing,
 component rules, local IBM Plex fonts, and syntax colors are derived from the

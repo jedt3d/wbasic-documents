@@ -1,0 +1,249 @@
+<!doctype html><html lang=en-US data-theme=light><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><title>Small Wbasic Projects · WBasic Reference</title><meta name=description content="Practice designing, writing, and checking small WBasic programs — English edition"><link rel=stylesheet href=/wbasic-documents/css/site.min.3610d2ff382973dd8e58b59753bf0b18ed8f5504e9fd30ca398b50f74390091c.css integrity="sha256-NhDS/zgpc92OWLWXU78LGO2PVQTp/TDKOYtQ90OQCRw="><script>(()=>{const e=localStorage.getItem("wbasic-theme"),t=e||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script></head><body class=wb data-search-index=/wbasic-documents/en/index.json><a class=skip-link href=#main-content>Skip to content</a><header class=site-header><a class=brand href=/wbasic-documents/en/ aria-label="WBasic Reference"><span class=brand-mascot aria-hidden=true><img class=brand-mascot-light src=/wbasic-documents/images/brand/wbasic-mascot-light.svg alt width=44 height=44 fetchpriority=high>
+<img class=brand-mascot-dark src=/wbasic-documents/images/brand/wbasic-mascot-dark.svg alt width=44 height=44 fetchpriority=high>
+</span><span>Wbasic<span class=brand-signature aria-hidden=true>.</span></span></a><nav class=top-links aria-label="Primary navigation"><a href=/wbasic-documents/en/books/language-reference/>Reference</a>
+<a href=/wbasic-documents/en/books/standard-library/>Library</a>
+<a href=/wbasic-documents/en/books/api-reference/>API</a></nav><div class=header-actions><button class="mobile-menu-button text-button" type=button data-nav-open aria-label="Open book navigation" aria-expanded=false>Menu</button>
+<button class=search-button type=button data-search-open>
+<span>Search</span>
+<kbd>Ctrl K</kbd>
+</button>
+<label class=language-control aria-label=Language><select data-language-switcher><option value=/wbasic-documents/th/books/small-wbasic-projects/>ไทย</option><option value=/wbasic-documents/en/books/small-wbasic-projects/ selected>English</option></select>
+</label><button class="theme-button text-button" type=button data-theme-toggle aria-label="Switch color theme">Theme</button></div></header><div class=reference-layout><aside class=book-navigation data-book-navigation aria-label="Books & chapters"><div class=book-navigation-header><span>Books & chapters</span>
+<button type=button class="nav-close text-button" data-nav-close>Close</button></div><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/en/books/getting-started/><span>Getting Started</span></a></section><section class="book-group is-expanded" data-book-group><a class="book-title is-current" href=/wbasic-documents/en/books/small-wbasic-projects/><span>Small Wbasic Projects</span></a><ol data-book-chapters><li><a href=/wbasic-documents/en/books/small-wbasic-projects/project-roadmap/>Small WBasic Projects Roadmap</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/01-bagels/>01 · Guess a Three-Digit Code from Positional Clues</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/02-birthday-paradox/>02 · Simulate Shared Birthdays in a Group</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/03-bitmap-message/>03 · Bitmap Message</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/04-blackjack/>04 · Play Blackjack Against a Dealer</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/05-bouncing-dvd-logo/>05 · Bounce a Logo and Count Corner Hits</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/06-caesar-cipher/>06 · Caesar Cipher</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/07-caesar-hacker/>07 · Try Every Caesar Cipher Key</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/08-calendar-maker/>08 · Print a Monthly Calendar</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/09-carrot-in-a-box/>09 · Play Carrot in a Box</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/10-cho-han/>10 · Bet on Odd or Even with Two Dice</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/11-clickbait-headline-generator/>11 · Generate Headlines from Templates</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/12-collatz/>12 · The Collatz Sequence</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/13-conway-s-game-of-life/>13 · Evolve Conway's Game of Life</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/14-countdown/>14 · Display a Timed Countdown</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/15-deep-cave/>15 · Generate a Shifting Deep-Cave View</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/16-diamonds/>16 · Diamonds Made of Spaces and Stars</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/17-dice-math/>17 · Practice Addition with Dice</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/18-dice-roller/>18 · Parse Dice Notation and Add Rolls</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/19-digital-clock/>19 · Show the Current Time as a Digital Clock</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/20-digital-stream/>20 · Animate Streams of Characters</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/21-dna-visualization/>21 · Draw a Text-Based DNA Helix</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/22-ducklings/>22 · Move Ducklings Across the Screen</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/23-etching-drawer/>23 · Draw on a Grid with Direction Keys</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/24-factors/>24 · Find the Factors of 36</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/25-fast-draw/>25 · Race to Press a Key After the Signal</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/26-fibonacci/>26 · Fibonacci from Two Previous Values</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/27-fish-tank/>27 · Animate Fish in a Text Tank</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/28-flooder/>28 · Recolor a Connected Grid Region</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/29-forest-fire-sim/>29 · Simulate Fire Spreading on a Grid</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/30-four-in-a-row/>30 · Four in a Row: Drop Pieces and Count Lines</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/31-guess-the-number/>31 · Guess a Number with Higher-or-Lower Clues</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/32-gullible/>32 · The Question That Asks Again</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/33-hacking-minigame/>33 · Find a Password from Positional Matches</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/34-hangman-guillotine/>34 · Guess Letters Before the Drawing Is Complete</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/35-hex-grid/>35 · A Hex Grid from Repeated Pieces</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/36-hourglass/>36 · An Hourglass in Time Steps</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/37-hungry-robots/>37 · Escape Robots Pursuing the Player</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/38-j-accuse/>38 · Identify a Suspect from Clues</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/39-langton-s-ant/>39 · Turn an Ant and Flip Grid Cells</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/40-leetspeak/>40 · Convert Text to Leetspeak</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/41-lucky-stars/>41 · Bet on a Selected Star</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/42-magic-fortune-ball/>42 · Answer Questions with Fortune Responses</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/43-mancala/>43 · Mancala: Sow Seeds and Capture</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/44-maze-runner-2d/>44 · Navigate a Two-Dimensional Maze</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/45-maze-runner-3d/>45 · Render a Text-Based First-Person Maze</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/46-million-dice-statistics/>46 · Count Frequencies in a Million Dice Rolls</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/47-mondrian-art-generator/>47 · Generate Mondrian-Style Rectangles</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/48-monty-hall/>48 · Compare Staying and Switching in Monty Hall</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/49-multiplication/>49 · Multiplication Table with Nested Loops</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/50-ninety-nine-bottles/>50 · A Countdown Verse for Jars on a Shelf</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/51-ninety-nniine-boottels/>51 · Count Down Bottles with Altered Letter Cases</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/52-numeral-systems/>52 · One Number, Several Bases</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/53-periodic-table-of-the-elements/>53 · Look Up Elements in the Periodic Table</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/54-pig-latin/>54 · Pig Latin for Short Words</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/55-powerball-lottery/>55 · Simulate Lottery Tickets and Draws</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/56-primes/>56 · Find Primes in a Bounded Range</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/57-progress-bar/>57 · Show Task Progress as a Bar</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/58-rainbow/>58 · Animate a Text Rainbow</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/59-rock-paper-scissors/>59 · Play Rock, Paper, Scissors Against the Computer</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/60-rock-paper-scissors-always-win/>60 · Rock Paper Scissors: The Player Always Wins</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/61-rot13/>61 · ROT13 and a Message That Comes Back</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/62-rotating-cube/>62 · Draw a Rotating Cube in Text</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/63-royal-game-of-ur/>63 · Play the Royal Game of Ur</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/64-seven-segment-display-module/>64 · Seven-Segment Digits from Bits</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/65-shining-carpet/>65 · A Six-Line Repeating Carpet</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/66-simple-substitution-cipher/>66 · Simple Substitution Cipher</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/67-sine-message/>67 · Move a Message Along a Sine Wave</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/68-sliding-tile-puzzle/>68 · Slide Numbered Tiles into the Empty Space</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/69-snail-race/>69 · Race Slowly Moving Snails</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/70-soroban-japanese-abacus/>70 · Display and Adjust a Japanese Abacus</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/71-sound-mimic/>71 · Listen to and Repeat a Sound Sequence</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/72-spongecase/>72 · Alternating Letter Case</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/73-sudoku-puzzle/>73 · Validate or Solve a Sudoku Grid</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/74-text-to-speech-talker/>74 · Speak Entered Text Aloud</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/75-three-card-monte/>75 · Track a Target Card Through Swaps</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/76-tic-tac-toe/>76 · Tic-Tac-Toe Rules and Win Detection</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/77-tower-of-hanoi-puzzle/>77 · Tower of Hanoi and Recursion</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/78-trick-questions/>78 · Trick Questions and an Answer Checker</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/79-twenty-forty-eight/>79 · Slide and Merge 2048 Tiles</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/80-vigenere-cipher/>80 · Vigenère Cipher: Shift by a Keyword</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/81-water-bucket-puzzle/>81 · Water Buckets and Step-by-Step State Changes</a></li><li><a href=/wbasic-documents/en/books/small-wbasic-projects/verification/>Evidence and Edition Boundaries</a></li></ol></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/en/books/language-reference/><span>Language Reference</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/en/books/standard-library/><span>Standard Library</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/en/books/api-reference/><span>API Reference</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/en/books/design-identity/><span>WBasic Design and Identity</span></a></section></aside><main class=reference-main id=main-content><article class=reference-article><nav class=breadcrumbs aria-label=Breadcrumb><a href=/wbasic-documents/en/>WBasic</a>
+<span aria-hidden=true>/</span><a href=/wbasic-documents/en/books/>Reference Books</a>
+<span aria-hidden=true>/</span><span aria-current=page>Small Wbasic Projects</span></nav><p class=eyebrow>English edition · Examples and project plans</p><h1>Small Wbasic Projects</h1><p class=lead>Practice designing, writing, and checking small WBasic programs — English edition</p><div class=prose><p><strong>This book adapts project ideas from The Big Book of Small Python Projects by Al Sweigart</strong>, with newly written explanations and WBasic examples in our own voice. We thank the author for a collection that helps readers learn by doing. Read the original directly at <a href=https://inventwithpython.com/bigbookpython/>Invent with Python — The Big Book of Small Python Projects</a> and use the links there to support its author.</p><p>This is an independently produced WBasic learning companion, not an official translation of that book or a claim that its author endorses WBasic. We retain the original project numbers to make the sources easy to find; your reading need not begin at number 1.</p><h2 id=from-getting-started-to-small-projects>From Getting Started to small projects</h2><p>This is the second book to read after Getting Started. Once you know what a source file is and how to use <code>wb</code>, these smaller problems let you follow the whole journey from input to output within one chapter. Short code still needs careful boundaries; it simply leaves us fewer excuses not to read it.</p><p>Thai is the source edition. This English edition follows the completed Thai content and editorial review, as requested in a subsequent translation round.</p><h2 id=choose-a-reading-route>Choose a reading route</h2><p>Begin with the <a href=/wbasic-documents/en/books/small-wbasic-projects/49-multiplication/>multiplication table</a> to practice nested loops, then <a href=/wbasic-documents/en/books/small-wbasic-projects/16-diamonds/>diamonds</a> to build lines of text. Continue with <a href=/wbasic-documents/en/books/small-wbasic-projects/24-factors/>factors</a> and <a href=/wbasic-documents/en/books/small-wbasic-projects/56-primes/>prime numbers</a> to separate rules into procedures.</p><p>Once state feels familiar, try <a href=/wbasic-documents/en/books/small-wbasic-projects/26-fibonacci/>Fibonacci</a>, <a href=/wbasic-documents/en/books/small-wbasic-projects/12-collatz/>Collatz</a>, <a href=/wbasic-documents/en/books/small-wbasic-projects/61-rot13/>ROT13</a>, and the <a href=/wbasic-documents/en/books/small-wbasic-projects/76-tic-tac-toe/>tic-tac-toe core</a>. Each chapter explains its changes in scope: a replay is not presented as an interactive game, and a bounded experiment is not presented as a general proof.</p><p>The <a href=/wbasic-documents/en/books/small-wbasic-projects/project-roadmap/>81-project roadmap</a> lists every project, its status, and the preparation it needs.</p><p>This edition contains 29 projects with lesson code and 52 project plans. Some implemented lessons deliberately cover one calculation or a replay to teach the underlying rules first. They do not claim every feature of the original programs.</p><p>Text projects cover character pictures, Caesar ciphers, trying keys, Leetspeak, Pig Latin, alternating case, and substitution ciphers. Number projects include numeral systems and seven-segment digits. Game projects include the cores of Connect Four, Mancala, tic-tac-toe, Hanoi, and the water-bucket puzzle. You can therefore practice data structures before adding command input or a screen interface.</p><h2 id=download-the-files-and-read-the-status-before-running>Download the files and read the status before running</h2><p>Implemented chapters begin with a <code>main.wbas</code> download and display code from that same file. Save it in a writable directory, then use <code>wb check main.wbas --json</code> and <code>wb run main.wbas</code> after preparing the developer toolchain described in Getting Started. These examples do not establish that a distribution for machines without an SDK is ready.</p><p>Placeholder chapters show their status before the lesson and provide a downloadable plan in place of source that does not yet exist. They distinguish unwritten work, work awaiting verification, and genuinely missing APIs. The absence of a convenient built-in command does not make a problem impossible: when the same steps can be written with the core language, the chapter says so.</p><h2 id=how-lessons-are-checked>How lessons are checked</h2><p>Every chapter with code includes expected results, input boundaries, and changes to try. Checking source and executing it are separate steps. The compiler and results are recorded in the <a href=/wbasic-documents/en/books/small-wbasic-projects/verification/>verification record</a>. Platform claims follow that evidence; success on one machine does not establish success everywhere.</p><p>Project numbers and source links identify the inspiration. The WBasic code and explanations are newly written. The downloads do not reproduce the original book&rsquo;s prose, images, or Python source collection.</p></div><div class=chapter-list><a href=/wbasic-documents/en/books/small-wbasic-projects/project-roadmap/ class=chapter-row><span class=chapter-number aria-hidden=true>—</span>
+<span><strong>Small WBasic Projects Roadmap</strong>
+<small>81 project ideas and the boundaries to verify before completing each lesson</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/01-bagels/ class=chapter-row><span class=chapter-number aria-hidden=true>01</span>
+<span><strong>Guess a Three-Digit Code from Positional Clues</strong>
+<small>Project plan: Guess a Three-Digit Code from Positional Clues</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/02-birthday-paradox/ class=chapter-row><span class=chapter-number aria-hidden=true>02</span>
+<span><strong>Simulate Shared Birthdays in a Group</strong>
+<small>Project plan: Simulate Shared Birthdays in a Group</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/03-bitmap-message/ class=chapter-row><span class=chapter-number aria-hidden=true>03</span>
+<span><strong>Bitmap Message</strong>
+<small>Read a map of blank and filled cells, then fill the shape with letters from a message</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/04-blackjack/ class=chapter-row><span class=chapter-number aria-hidden=true>04</span>
+<span><strong>Play Blackjack Against a Dealer</strong>
+<small>Project plan: Play Blackjack Against a Dealer</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/05-bouncing-dvd-logo/ class=chapter-row><span class=chapter-number aria-hidden=true>05</span>
+<span><strong>Bounce a Logo and Count Corner Hits</strong>
+<small>Project plan: Bounce a Logo and Count Corner Hits</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/06-caesar-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>06</span>
+<span><strong>Caesar Cipher</strong>
+<small>Encrypt by shifting within A–Z, then decode with the complementary key</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/07-caesar-hacker/ class=chapter-row><span class=chapter-number aria-hidden=true>07</span>
+<span><strong>Try Every Caesar Cipher Key</strong>
+<small>Decode with all 26 keys and let the reader identify meaningful text</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/08-calendar-maker/ class=chapter-row><span class=chapter-number aria-hidden=true>08</span>
+<span><strong>Print a Monthly Calendar</strong>
+<small>Project plan: Print a Monthly Calendar</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/09-carrot-in-a-box/ class=chapter-row><span class=chapter-number aria-hidden=true>09</span>
+<span><strong>Play Carrot in a Box</strong>
+<small>Project plan: Play Carrot in a Box</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/10-cho-han/ class=chapter-row><span class=chapter-number aria-hidden=true>10</span>
+<span><strong>Bet on Odd or Even with Two Dice</strong>
+<small>Project plan: Bet on Odd or Even with Two Dice</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/11-clickbait-headline-generator/ class=chapter-row><span class=chapter-number aria-hidden=true>11</span>
+<span><strong>Generate Headlines from Templates</strong>
+<small>Project plan: Generate Headlines from Templates</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/12-collatz/ class=chapter-row><span class=chapter-number aria-hidden=true>12</span>
+<span><strong>The Collatz Sequence</strong>
+<small>Practice loops and remainder-based decisions, starting at 13</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/13-conway-s-game-of-life/ class=chapter-row><span class=chapter-number aria-hidden=true>13</span>
+<span><strong>Evolve Conway's Game of Life</strong>
+<small>Project plan: Evolve Conway's Game of Life</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/14-countdown/ class=chapter-row><span class=chapter-number aria-hidden=true>14</span>
+<span><strong>Display a Timed Countdown</strong>
+<small>Project plan: Display a Timed Countdown</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/15-deep-cave/ class=chapter-row><span class=chapter-number aria-hidden=true>15</span>
+<span><strong>Generate a Shifting Deep-Cave View</strong>
+<small>Project plan: Generate a Shifting Deep-Cave View</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/16-diamonds/ class=chapter-row><span class=chapter-number aria-hidden=true>16</span>
+<span><strong>Diamonds Made of Spaces and Stars</strong>
+<small>Divide a shape into upper and lower halves and calculate each row's width</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/17-dice-math/ class=chapter-row><span class=chapter-number aria-hidden=true>17</span>
+<span><strong>Practice Addition with Dice</strong>
+<small>Project plan: Practice Addition with Dice</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/18-dice-roller/ class=chapter-row><span class=chapter-number aria-hidden=true>18</span>
+<span><strong>Parse Dice Notation and Add Rolls</strong>
+<small>Project plan: Parse Dice Notation and Add Rolls</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/19-digital-clock/ class=chapter-row><span class=chapter-number aria-hidden=true>19</span>
+<span><strong>Show the Current Time as a Digital Clock</strong>
+<small>Project plan: Show the Current Time as a Digital Clock</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/20-digital-stream/ class=chapter-row><span class=chapter-number aria-hidden=true>20</span>
+<span><strong>Animate Streams of Characters</strong>
+<small>Project plan: Animate Streams of Characters</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/21-dna-visualization/ class=chapter-row><span class=chapter-number aria-hidden=true>21</span>
+<span><strong>Draw a Text-Based DNA Helix</strong>
+<small>Project plan: Draw a Text-Based DNA Helix</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/22-ducklings/ class=chapter-row><span class=chapter-number aria-hidden=true>22</span>
+<span><strong>Move Ducklings Across the Screen</strong>
+<small>Project plan: Move Ducklings Across the Screen</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/23-etching-drawer/ class=chapter-row><span class=chapter-number aria-hidden=true>23</span>
+<span><strong>Draw on a Grid with Direction Keys</strong>
+<small>Project plan: Draw on a Grid with Direction Keys</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/24-factors/ class=chapter-row><span class=chapter-number aria-hidden=true>24</span>
+<span><strong>Find the Factors of 36</strong>
+<small>Use remainders to test whether one number divides another exactly</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/25-fast-draw/ class=chapter-row><span class=chapter-number aria-hidden=true>25</span>
+<span><strong>Race to Press a Key After the Signal</strong>
+<small>Project plan: Race to Press a Key After the Signal</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/26-fibonacci/ class=chapter-row><span class=chapter-number aria-hidden=true>26</span>
+<span><strong>Fibonacci from Two Previous Values</strong>
+<small>Generate the first ten terms by advancing two state variables in order</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/27-fish-tank/ class=chapter-row><span class=chapter-number aria-hidden=true>27</span>
+<span><strong>Animate Fish in a Text Tank</strong>
+<small>Project plan: Animate Fish in a Text Tank</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/28-flooder/ class=chapter-row><span class=chapter-number aria-hidden=true>28</span>
+<span><strong>Recolor a Connected Grid Region</strong>
+<small>Project plan: Recolor a Connected Grid Region</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/29-forest-fire-sim/ class=chapter-row><span class=chapter-number aria-hidden=true>29</span>
+<span><strong>Simulate Fire Spreading on a Grid</strong>
+<small>Project plan: Simulate Fire Spreading on a Grid</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/30-four-in-a-row/ class=chapter-row><span class=chapter-number aria-hidden=true>30</span>
+<span><strong>Four in a Row: Drop Pieces and Count Lines</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/31-guess-the-number/ class=chapter-row><span class=chapter-number aria-hidden=true>31</span>
+<span><strong>Guess a Number with Higher-or-Lower Clues</strong>
+<small>Project plan: Guess a Number with Higher-or-Lower Clues</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/32-gullible/ class=chapter-row><span class=chapter-number aria-hidden=true>32</span>
+<span><strong>The Question That Asks Again</strong>
+<small>Handle yes, no, and unrecognized answers in a scripted conversation</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/33-hacking-minigame/ class=chapter-row><span class=chapter-number aria-hidden=true>33</span>
+<span><strong>Find a Password from Positional Matches</strong>
+<small>Project plan: Find a Password from Positional Matches</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/34-hangman-guillotine/ class=chapter-row><span class=chapter-number aria-hidden=true>34</span>
+<span><strong>Guess Letters Before the Drawing Is Complete</strong>
+<small>Project plan: Guess Letters Before the Drawing Is Complete</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/35-hex-grid/ class=chapter-row><span class=chapter-number aria-hidden=true>35</span>
+<span><strong>A Hex Grid from Repeated Pieces</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/36-hourglass/ class=chapter-row><span class=chapter-number aria-hidden=true>36</span>
+<span><strong>An Hourglass in Time Steps</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/37-hungry-robots/ class=chapter-row><span class=chapter-number aria-hidden=true>37</span>
+<span><strong>Escape Robots Pursuing the Player</strong>
+<small>Project plan: Escape Robots Pursuing the Player</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/38-j-accuse/ class=chapter-row><span class=chapter-number aria-hidden=true>38</span>
+<span><strong>Identify a Suspect from Clues</strong>
+<small>Project plan: Identify a Suspect from Clues</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/39-langton-s-ant/ class=chapter-row><span class=chapter-number aria-hidden=true>39</span>
+<span><strong>Turn an Ant and Flip Grid Cells</strong>
+<small>Project plan: Turn an Ant and Flip Grid Cells</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/40-leetspeak/ class=chapter-row><span class=chapter-number aria-hidden=true>40</span>
+<span><strong>Convert Text to Leetspeak</strong>
+<small>Make a readable, deterministic letter-substitution table</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/41-lucky-stars/ class=chapter-row><span class=chapter-number aria-hidden=true>41</span>
+<span><strong>Bet on a Selected Star</strong>
+<small>Project plan: Bet on a Selected Star</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/42-magic-fortune-ball/ class=chapter-row><span class=chapter-number aria-hidden=true>42</span>
+<span><strong>Answer Questions with Fortune Responses</strong>
+<small>Project plan: Answer Questions with Fortune Responses</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/43-mancala/ class=chapter-row><span class=chapter-number aria-hidden=true>43</span>
+<span><strong>Mancala: Sow Seeds and Capture</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/44-maze-runner-2d/ class=chapter-row><span class=chapter-number aria-hidden=true>44</span>
+<span><strong>Navigate a Two-Dimensional Maze</strong>
+<small>Project plan: Navigate a Two-Dimensional Maze</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/45-maze-runner-3d/ class=chapter-row><span class=chapter-number aria-hidden=true>45</span>
+<span><strong>Render a Text-Based First-Person Maze</strong>
+<small>Project plan: Render a Text-Based First-Person Maze</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/46-million-dice-statistics/ class=chapter-row><span class=chapter-number aria-hidden=true>46</span>
+<span><strong>Count Frequencies in a Million Dice Rolls</strong>
+<small>Project plan: Count Frequencies in a Million Dice Rolls</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/47-mondrian-art-generator/ class=chapter-row><span class=chapter-number aria-hidden=true>47</span>
+<span><strong>Generate Mondrian-Style Rectangles</strong>
+<small>Project plan: Generate Mondrian-Style Rectangles</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/48-monty-hall/ class=chapter-row><span class=chapter-number aria-hidden=true>48</span>
+<span><strong>Compare Staying and Switching in Monty Hall</strong>
+<small>Project plan: Compare Staying and Switching in Monty Hall</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/49-multiplication/ class=chapter-row><span class=chapter-number aria-hidden=true>49</span>
+<span><strong>Multiplication Table with Nested Loops</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/50-ninety-nine-bottles/ class=chapter-row><span class=chapter-number aria-hidden=true>50</span>
+<span><strong>A Countdown Verse for Jars on a Shelf</strong>
+<small>Use a descending loop for repeated verses, including the transition to zero</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/51-ninety-nniine-boottels/ class=chapter-row><span class=chapter-number aria-hidden=true>51</span>
+<span><strong>Count Down Bottles with Altered Letter Cases</strong>
+<small>Project plan: Count Down Bottles with Altered Letter Cases</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/52-numeral-systems/ class=chapter-row><span class=chapter-number aria-hidden=true>52</span>
+<span><strong>One Number, Several Bases</strong>
+<small>Convert decimal values to binary and hexadecimal using division and remainders</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/53-periodic-table-of-the-elements/ class=chapter-row><span class=chapter-number aria-hidden=true>53</span>
+<span><strong>Look Up Elements in the Periodic Table</strong>
+<small>Project plan: Look Up Elements in the Periodic Table</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/54-pig-latin/ class=chapter-row><span class=chapter-number aria-hidden=true>54</span>
+<span><strong>Pig Latin for Short Words</strong>
+<small>Split words, transform by their first letter, then rebuild the sentence</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/55-powerball-lottery/ class=chapter-row><span class=chapter-number aria-hidden=true>55</span>
+<span><strong>Simulate Lottery Tickets and Draws</strong>
+<small>Project plan: Simulate Lottery Tickets and Draws</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/56-primes/ class=chapter-row><span class=chapter-number aria-hidden=true>56</span>
+<span><strong>Find Primes in a Bounded Range</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/57-progress-bar/ class=chapter-row><span class=chapter-number aria-hidden=true>57</span>
+<span><strong>Show Task Progress as a Bar</strong>
+<small>Project plan: Show Task Progress as a Bar</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/58-rainbow/ class=chapter-row><span class=chapter-number aria-hidden=true>58</span>
+<span><strong>Animate a Text Rainbow</strong>
+<small>Project plan: Animate a Text Rainbow</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/59-rock-paper-scissors/ class=chapter-row><span class=chapter-number aria-hidden=true>59</span>
+<span><strong>Play Rock, Paper, Scissors Against the Computer</strong>
+<small>Project plan: Play Rock, Paper, Scissors Against the Computer</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/60-rock-paper-scissors-always-win/ class=chapter-row><span class=chapter-number aria-hidden=true>60</span>
+<span><strong>Rock Paper Scissors: The Player Always Wins</strong>
+<small>Choose the move that loses to the player, then test all three cases</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/61-rot13/ class=chapter-row><span class=chapter-number aria-hidden=true>61</span>
+<span><strong>ROT13 and a Message That Comes Back</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/62-rotating-cube/ class=chapter-row><span class=chapter-number aria-hidden=true>62</span>
+<span><strong>Draw a Rotating Cube in Text</strong>
+<small>Project plan: Draw a Rotating Cube in Text</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/63-royal-game-of-ur/ class=chapter-row><span class=chapter-number aria-hidden=true>63</span>
+<span><strong>Play the Royal Game of Ur</strong>
+<small>Project plan: Play the Royal Game of Ur</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/64-seven-segment-display-module/ class=chapter-row><span class=chapter-number aria-hidden=true>64</span>
+<span><strong>Seven-Segment Digits from Bits</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/65-shining-carpet/ class=chapter-row><span class=chapter-number aria-hidden=true>65</span>
+<span><strong>A Six-Line Repeating Carpet</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/66-simple-substitution-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>66</span>
+<span><strong>Simple Substitution Cipher</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/67-sine-message/ class=chapter-row><span class=chapter-number aria-hidden=true>67</span>
+<span><strong>Move a Message Along a Sine Wave</strong>
+<small>Project plan: Move a Message Along a Sine Wave</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/68-sliding-tile-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>68</span>
+<span><strong>Slide Numbered Tiles into the Empty Space</strong>
+<small>Project plan: Slide Numbered Tiles into the Empty Space</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/69-snail-race/ class=chapter-row><span class=chapter-number aria-hidden=true>69</span>
+<span><strong>Race Slowly Moving Snails</strong>
+<small>Project plan: Race Slowly Moving Snails</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/70-soroban-japanese-abacus/ class=chapter-row><span class=chapter-number aria-hidden=true>70</span>
+<span><strong>Display and Adjust a Japanese Abacus</strong>
+<small>Project plan: Display and Adjust a Japanese Abacus</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/71-sound-mimic/ class=chapter-row><span class=chapter-number aria-hidden=true>71</span>
+<span><strong>Listen to and Repeat a Sound Sequence</strong>
+<small>Project plan: Listen to and Repeat a Sound Sequence</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/72-spongecase/ class=chapter-row><span class=chapter-number aria-hidden=true>72</span>
+<span><strong>Alternating Letter Case</strong>
+<small>Change case for English letters only, preserving punctuation</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/73-sudoku-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>73</span>
+<span><strong>Validate or Solve a Sudoku Grid</strong>
+<small>Project plan: Validate or Solve a Sudoku Grid</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/74-text-to-speech-talker/ class=chapter-row><span class=chapter-number aria-hidden=true>74</span>
+<span><strong>Speak Entered Text Aloud</strong>
+<small>Project plan: Speak Entered Text Aloud</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/75-three-card-monte/ class=chapter-row><span class=chapter-number aria-hidden=true>75</span>
+<span><strong>Track a Target Card Through Swaps</strong>
+<small>Project plan: Track a Target Card Through Swaps</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/76-tic-tac-toe/ class=chapter-row><span class=chapter-number aria-hidden=true>76</span>
+<span><strong>Tic-Tac-Toe Rules and Win Detection</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/77-tower-of-hanoi-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>77</span>
+<span><strong>Tower of Hanoi and Recursion</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/78-trick-questions/ class=chapter-row><span class=chapter-number aria-hidden=true>78</span>
+<span><strong>Trick Questions and an Answer Checker</strong>
+<small>Keep questions, answers, and scripted responses aligned by index</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/79-twenty-forty-eight/ class=chapter-row><span class=chapter-number aria-hidden=true>79</span>
+<span><strong>Slide and Merge 2048 Tiles</strong>
+<small>Project plan: Slide and Merge 2048 Tiles</small>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/80-vigenere-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>80</span>
+<span><strong>Vigenère Cipher: Shift by a Keyword</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/81-water-bucket-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>81</span>
+<span><strong>Water Buckets and Step-by-Step State Changes</strong>
+</span></a><a href=/wbasic-documents/en/books/small-wbasic-projects/verification/ class=chapter-row><span class=chapter-number aria-hidden=true>—</span>
+<span><strong>Evidence and Edition Boundaries</strong></span></a></div></article></main><aside class=page-navigation aria-label="On this page"><h2>On this page</h2><nav id=TableOfContents><ul><li><a href=#from-getting-started-to-small-projects>From Getting Started to small projects</a></li><li><a href=#choose-a-reading-route>Choose a reading route</a></li><li><a href=#download-the-files-and-read-the-status-before-running>Download the files and read the status before running</a></li><li><a href=#how-lessons-are-checked>How lessons are checked</a></li></ul></nav></aside></div><div class=sidebar-scrim data-nav-close></div><dialog class=search-dialog data-search-dialog aria-labelledby=search-title><div class=search-panel><form method=dialog class=search-heading><div><strong id=search-title>Search</strong>
+<small>Search titles and reference text</small></div><button class="search-close text-button" value=close>Close</button></form><label class=search-field><input type=search data-search-input autocomplete=off placeholder="Search the WBasic reference">
+<kbd>Esc</kbd></label><div class=search-results data-search-results aria-live=polite></div><template data-search-empty><p class=search-empty>No matching reference pages.</p></template></div></dialog><script src=/wbasic-documents/js/site.min.fad30443d06fc2b1ad9d181743075c77e80977c343f3681699a19aa49683ef80.js integrity="sha256-+tMEQ9BvwrGtnRgXQwdcd+gJd8ND82gWmaGapJaD74A=" defer></script></body></html>
