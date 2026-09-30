@@ -1,0 +1,21 @@
+Procedure DrawRow(size As Integer, row As Integer)
+  Let line As String = ""
+  For space As Integer = 1 To size - row Step 1
+    line = line + " "
+  Next
+  For mark As Integer = 1 To 2 * row - 1 Step 1
+    line = line + "*"
+  Next
+  PrintLn(line)
+EndProcedure
+
+Procedure Main()
+  Let size As Integer = 3
+  PrintLn("Diamond, size 3")
+  For row As Integer = 1 To size Step 1
+    DrawRow(size, row)
+  Next
+  For row As Integer = size - 1 To 1 Step -1
+    DrawRow(size, row)
+  Next
+EndProcedure

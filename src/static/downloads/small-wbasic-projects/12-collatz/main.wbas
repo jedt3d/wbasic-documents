@@ -1,0 +1,15 @@
+Procedure Main()
+  Let number As Integer = 13
+  PrintLn("Collatz from 13")
+  For step As Integer = 0 To 19 Step 1
+    PrintLn(number.ToString())
+    If number = 1 Then
+      Break
+    EndIf
+    If number Mod 2 = 0 Then
+      number = number Div 2
+    Else
+      number = 3 * number + 1
+    EndIf
+  Next
+EndProcedure

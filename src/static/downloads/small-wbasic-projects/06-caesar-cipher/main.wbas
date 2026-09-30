@@ -1,0 +1,23 @@
+Procedure Shift(message As String, key As Integer) As String
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  Let result As String = ""
+  For Each letter As String In message
+    Let changed As String = letter
+    For position As Integer = 0 To alphabet.Length - 1
+      If letter = alphabet[position] Then
+        changed = alphabet[(position + key) Mod alphabet.Length]
+        Break
+      EndIf
+    Next
+    result += changed
+  Next
+  Return result
+EndProcedure
+
+Procedure Main()
+  Let message As String = "MEET AT NOON!"
+  Let encoded As String = Shift(message, 3)
+  PrintLn("Plain: " + message)
+  PrintLn("Shift 3: " + encoded)
+  PrintLn("Decoded: " + Shift(encoded, 23))
+EndProcedure

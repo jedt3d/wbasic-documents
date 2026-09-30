@@ -1,0 +1,20 @@
+Procedure Main()
+  Let questions As Array Of String = [
+    "A box holds five pens. Remove its label: how many pens remain?",
+    "Two tests reset their fixtures. How many runs share state?"
+  ]
+  Let answers As Array Of String = ["5", "0"]
+  Let guesses As Array Of String = ["3", "0"]
+  Let score As Integer = 0
+  For index As Integer = 0 To questions.Length - 1
+    PrintLn("Q" + (index + 1).ToString() + ": " + questions[index])
+    PrintLn("scripted guess: " + guesses[index])
+    If guesses[index].ToLower() = answers[index].ToLower() Then
+      score += 1
+      PrintLn("Correct")
+    Else
+      PrintLn("Answer: " + answers[index])
+    EndIf
+  Next
+  PrintLn("Score: " + score.ToString() + "/" + questions.Length.ToString())
+EndProcedure

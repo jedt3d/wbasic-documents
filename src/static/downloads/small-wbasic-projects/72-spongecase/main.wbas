@@ -1,0 +1,24 @@
+Procedure Sponge(message As String) As String
+  Let letters As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  Let upperNext As Boolean = False
+  Let result As String = ""
+  For Each character As String In message
+    If letters.Contains(character) Then
+      If upperNext Then
+        result += character.ToUpper()
+      Else
+        result += character.ToLower()
+      EndIf
+      upperNext = Not upperNext
+    Else
+      result += character
+    EndIf
+  Next
+  Return result
+EndProcedure
+
+Procedure Main()
+  Let message As String = "WBasic is fun!"
+  PrintLn(message)
+  PrintLn(Sponge(message))
+EndProcedure

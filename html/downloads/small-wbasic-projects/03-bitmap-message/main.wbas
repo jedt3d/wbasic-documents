@@ -1,0 +1,16 @@
+Procedure Main()
+  Let message As String = "HI"
+  Let mask As Array Of String = ["  #  ", " ### ", "#####", " ### ", "  #  "]
+  PrintLn("Bitmap message: HI")
+  For Each row As String In mask
+    Let line As String = ""
+    For column As Integer = 0 To row.Length - 1
+      If row[column] = " " Then
+        line += " "
+      Else
+        line += message[column Mod message.Length]
+      EndIf
+    Next
+    PrintLn(line)
+  Next
+EndProcedure

@@ -1,0 +1,65 @@
+' Original WBasic teaching example inspired by Al Sweigart project 64.
+' Bit order: top, upper-left, upper-right, middle, lower-left, lower-right, bottom.
+Procedure Lit(mask As Integer, bit As Integer) As Boolean
+  Return (mask Div bit) Mod 2 = 1
+EndProcedure
+
+Procedure DigitRow(mask As Integer, row As Integer) As String
+  If row = 0 Then
+    If Lit(mask, 1) Then
+      Return " _ "
+    EndIf
+    Return "   "
+  EndIf
+  If row = 1 Then
+    Let line As String = " "
+    If Lit(mask, 2) Then
+      line = "|"
+    EndIf
+    If Lit(mask, 8) Then
+      line += "_"
+    Else
+      line += " "
+    EndIf
+    If Lit(mask, 4) Then
+      line += "|"
+    Else
+      line += " "
+    EndIf
+    Return line
+  EndIf
+  Let line As String = " "
+  If Lit(mask, 16) Then
+    line = "|"
+  EndIf
+  If Lit(mask, 64) Then
+    line += "_"
+  Else
+    line += " "
+  EndIf
+  If Lit(mask, 32) Then
+    line += "|"
+  Else
+    line += " "
+  EndIf
+  Return line
+EndProcedure
+
+Procedure Main()
+  Let masks As Array Of Integer = [119, 36, 93, 109, 46, 107, 123, 37, 127, 111]
+  Let digits As Array Of Integer = [2, 0, 2, 6]
+  For row As Integer = 0 To 2
+    Let line As String = ""
+    For Each digit As Integer In digits
+      If digit < 0 Or digit > 9 Then
+        PrintLn("invalid digit")
+        Return
+      EndIf
+      If line <> "" Then
+        line += " "
+      EndIf
+      line += DigitRow(masks[digit], row)
+    Next
+    PrintLn(line)
+  Next
+EndProcedure

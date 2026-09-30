@@ -1,0 +1,15 @@
+Procedure JarLabel(count As Integer) As String
+  If count = 1 Then
+    Return "jar"
+  EndIf
+  Return "jars"
+EndProcedure
+
+Procedure Main()
+  PrintLn("Three jars: a short counting verse")
+  For jars As Integer = 3 To 1 Step -1
+    PrintLn(jars.ToString() + " " + JarLabel(jars) + " on the shelf")
+    PrintLn("Move one away; " + (jars - 1).ToString() + " remain")
+  Next
+  PrintLn("The shelf is empty.")
+EndProcedure

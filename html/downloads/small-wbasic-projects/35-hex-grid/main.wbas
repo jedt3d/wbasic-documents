@@ -1,0 +1,17 @@
+' Original WBasic teaching example inspired by Al Sweigart project 35.
+Procedure Repeat(piece As String, count As Integer) As String
+  Let line As String = ""
+  For index As Integer = 1 To count
+    line += piece
+  Next
+  Return line
+EndProcedure
+
+Procedure Main()
+  Let width As Integer = 4
+  Let height As Integer = 3
+  For row As Integer = 1 To height
+    PrintLn(Repeat("/ \\_", width))
+    PrintLn(Repeat("\\_/", width))
+  Next
+EndProcedure

@@ -1,0 +1,24 @@
+' Original WBasic teaching example; inspired by Al Sweigart project 61.
+Procedure Rotate(text As String) As String
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+  Let shifted As String = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm"
+  Let result As String = ""
+  For Each letter As String In text
+    Let replacement As String = letter
+    For index As Integer = 0 To alphabet.Length - 1
+      If letter = alphabet[index] Then
+        replacement = shifted[index]
+        Break
+      EndIf
+    Next
+    result += replacement
+  Next
+  Return result
+EndProcedure
+
+Procedure Main()
+  Let message As String = "Hello WBasic! ไทย 123"
+  Let encoded As String = Rotate(message)
+  PrintLn(encoded)
+  PrintLn(Rotate(encoded))
+EndProcedure

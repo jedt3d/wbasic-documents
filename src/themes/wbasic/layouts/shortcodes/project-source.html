@@ -1,0 +1,2 @@
+{{ $path := printf "static/downloads/small-wbasic-projects/%s/main.wbas" (.Get 0) }}
+{{ highlight (readFile $path) "basic" "" }}

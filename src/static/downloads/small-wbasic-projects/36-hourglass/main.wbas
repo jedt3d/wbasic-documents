@@ -1,0 +1,44 @@
+' Original WBasic teaching example inspired by Al Sweigart project 36.
+Procedure Show(sand As Array Of Integer)
+  For row As Integer = 0 To 4
+    Let line As String = ""
+    For col As Integer = 0 To 4
+      If col = 0 Or col = 4 Then
+        line += "|"
+      ElseIf sand[row * 5 + col] = 1 Then
+        line += "o"
+      Else
+        line += " "
+      EndIf
+    Next
+    PrintLn(line)
+  Next
+EndProcedure
+
+Procedure Main()
+  Let sand As Array Of Integer = []
+  For index As Integer = 0 To 24
+    sand.Append(0)
+  Next
+  sand[1] = 0
+  sand[2] = 1
+  sand[3] = 0
+  sand[7] = 1
+  sand[12] = 1
+  PrintLn("start")
+  Show(sand)
+  For tick As Integer = 1 To 2
+    For row As Integer = 3 To 0 Step -1
+      For col As Integer = 1 To 3
+        Let here As Integer = row * 5 + col
+        Let below As Integer = (row + 1) * 5 + col
+        If sand[here] = 1 And sand[below] = 0 Then
+          sand[here] = 0
+          sand[below] = 1
+        EndIf
+      Next
+    Next
+    PrintLn("tick " + tick.ToString())
+    Show(sand)
+  Next
+EndProcedure

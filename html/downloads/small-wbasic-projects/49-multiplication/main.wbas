@@ -1,0 +1,13 @@
+' Original WBasic teaching example; inspired by Al Sweigart project 49.
+Procedure Main()
+  For row As Integer = 1 To 4
+    Let line As String = ""
+    For column As Integer = 1 To 4
+      If column > 1 Then
+        line += " "
+      EndIf
+      line += (row * column).ToString()
+    Next
+    PrintLn(line)
+  Next
+EndProcedure

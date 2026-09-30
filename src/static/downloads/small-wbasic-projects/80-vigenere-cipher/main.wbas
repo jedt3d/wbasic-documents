@@ -1,0 +1,49 @@
+' Original WBasic teaching example inspired by Al Sweigart project 80.
+Procedure Position(alphabet As String, letter As String) As Integer
+  For index As Integer = 0 To alphabet.Length - 1
+    If alphabet[index] = letter Then
+      Return index
+    EndIf
+  Next
+  Return -1
+EndProcedure
+
+Procedure Transform(message As String, keyword As String, decode As Boolean) As String
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  Let answer As String = ""
+  Let used As Integer = 0
+  For Each letter As String In message
+    Let index As Integer = Position(alphabet, letter)
+    If index < 0 Then
+      answer += letter
+    Else
+      Let shift As Integer = Position(alphabet, keyword[used Mod keyword.Length])
+      If decode Then
+        answer += alphabet[(index - shift + 26) Mod 26]
+      Else
+        answer += alphabet[(index + shift) Mod 26]
+      EndIf
+      used += 1
+    EndIf
+  Next
+  Return answer
+EndProcedure
+
+Procedure Main()
+  Let keyword As String = "LEMON"
+  If keyword.Length = 0 Then
+    PrintLn("empty keyword")
+    Return
+  EndIf
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  For Each letter As String In keyword
+    If Position(alphabet, letter) < 0 Then
+      PrintLn("keyword must be A-Z")
+      Return
+    EndIf
+  Next
+  Let message As String = "ATTACK AT DAWN!"
+  Let secret As String = Transform(message, keyword, False)
+  PrintLn(secret)
+  PrintLn(Transform(secret, keyword, True))
+EndProcedure

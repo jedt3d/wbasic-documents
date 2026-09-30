@@ -1,0 +1,26 @@
+Procedure PigWord(word As String) As String
+  If word.Length = 0 Then
+    Return word
+  EndIf
+  If "aeiou".Contains(word[0].ToLower()) Then
+    Return word + "yay"
+  EndIf
+  Let rest As String = ""
+  For index As Integer = 1 To word.Length - 1
+    rest += word[index]
+  Next
+  Return rest + word[0] + "ay"
+EndProcedure
+
+Procedure Main()
+  Let message As String = "pig apple map"
+  Let result As String = ""
+  For Each word As String In message.Split(" ")
+    If result.Length > 0 Then
+      result += " "
+    EndIf
+    result += PigWord(word)
+  Next
+  PrintLn(message)
+  PrintLn(result)
+EndProcedure

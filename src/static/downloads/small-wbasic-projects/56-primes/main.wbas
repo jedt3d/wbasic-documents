@@ -1,0 +1,22 @@
+' Original WBasic teaching example; inspired by Al Sweigart project 56.
+Procedure IsPrime(value As Integer) As Boolean
+  If value < 2 Then
+    Return False
+  EndIf
+  Let divisor As Integer = 2
+  While divisor <= value Div divisor
+    If value Mod divisor = 0 Then
+      Return False
+    EndIf
+    divisor += 1
+  EndWhile
+  Return True
+EndProcedure
+
+Procedure Main()
+  For value As Integer = 0 To 30
+    If IsPrime(value) Then
+      PrintLn(value.ToString())
+    EndIf
+  Next
+EndProcedure

@@ -1,0 +1,20 @@
+{{ define "main" }}
+  <article class="reference-article">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="eyebrow">ฉบับภาษาไทย · ตัวอย่างและแผนโครงการ</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="prose">{{ .Content }}</div>
+    <div class="chapter-list">
+      {{ range .Pages.ByWeight }}
+        <a href="{{ .RelPermalink }}" class="chapter-row">
+          <span class="chapter-number" aria-hidden="true">{{ if and (gt .Weight 0) (lt .Weight 100) }}{{ printf "%02d" .Weight }}{{ else }}—{{ end }}</span>
+          <span>
+            <strong>{{ replaceRE "^[0-9]+ · " "" .Title }}</strong>
+            {{ with .Description }}<small>{{ . }}</small>{{ end }}
+          </span>
+        </a>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

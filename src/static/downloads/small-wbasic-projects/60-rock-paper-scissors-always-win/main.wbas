@@ -1,0 +1,18 @@
+Procedure LosingMove(player As String) As String
+  If player = "rock" Then
+    Return "scissors"
+  ElseIf player = "paper" Then
+    Return "rock"
+  EndIf
+  Return "paper"
+EndProcedure
+
+Procedure Main()
+  Let moves As Array Of String = ["rock", "paper", "scissors"]
+  Let wins As Integer = 0
+  For Each player As String In moves
+    PrintLn(player + " beats " + LosingMove(player))
+    wins += 1
+  Next
+  PrintLn("Wins: " + wins.ToString())
+EndProcedure

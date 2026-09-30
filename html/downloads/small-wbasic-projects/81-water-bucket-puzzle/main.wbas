@@ -1,0 +1,47 @@
+' Original WBasic teaching example inspired by Al Sweigart project 81.
+Procedure Show(water As Array Of Integer)
+  PrintLn("8L=" + water[0].ToString() + " 5L=" + water[1].ToString() + " 3L=" + water[2].ToString())
+EndProcedure
+
+Procedure Main()
+  Let capacity As Array Of Integer = [8, 5, 3]
+  Let water As Array Of Integer = [0, 0, 0]
+  ' 0 = fill; 1 = empty; 2 = pour source into target.
+  Let actions As Array Of (Array Of Integer) = [[0, 1, 0], [2, 1, 2], [1, 2, 0], [2, 1, 2], [0, 1, 0], [2, 1, 2], [1, 2, 0], [2, 1, 2]]
+  Show(water)
+  For Each action As Array Of Integer In actions
+    Let kind As Integer = action[0]
+    Let source As Integer = action[1]
+    Let target As Integer = action[2]
+    If source < 0 Or source >= 3 Or target < 0 Or target >= 3 Then
+      PrintLn("invalid bucket")
+      Return
+    EndIf
+    If kind = 0 Then
+      water[source] = capacity[source]
+    ElseIf kind = 1 Then
+      water[source] = 0
+    ElseIf kind = 2 Then
+      If source = target Then
+        PrintLn("same bucket")
+        Return
+      EndIf
+      Let amount As Integer = water[source]
+      Let space As Integer = capacity[target] - water[target]
+      If amount > space Then
+        amount = space
+      EndIf
+      water[source] = water[source] - amount
+      water[target] = water[target] + amount
+    Else
+      PrintLn("invalid action")
+      Return
+    EndIf
+    Show(water)
+    If water[0] = 4 Or water[1] = 4 Or water[2] = 4 Then
+      PrintLn("goal: 4L")
+      Return
+    EndIf
+  Next
+  PrintLn("goal not reached")
+EndProcedure

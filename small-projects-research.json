@@ -1,0 +1,747 @@
+{
+  "title": "Small WBasic Projects — source and capability research",
+  "source_index": "https://inventwithpython.com/bigbookpython/",
+  "source_author": "Al Sweigart",
+  "source_use": "แนวคิดและลำดับหัวข้อเท่านั้น; สำนวน คำอธิบายและโค้ด WBasic ต้องเขียนใหม่",
+  "capability_evidence": [
+    "dev-docs/wbasic-language-spec-draft-0.3.md §§4,10,Core API",
+    "dev-docs/wbasic-tui-spec-draft-0.3.md §11",
+    "dev-docs/wbasic-development-execution-plan-draft-0.3.md — DateTime/Locale excluded from v0.3"
+  ],
+  "classification_legend": {
+    "core": "มี source บทเรียนที่ลดขอบเขตอย่างชัดเจน ผ่าน check/native Windows ARM64/exact stdout; ไม่อ้างว่าเทียบเท่าต้นทางทุกส่วน",
+    "verify": "ดัดแปลงได้ แต่ต้องพิสูจน์ PRNG ที่เขียนเอง, ข้อมูล, หรือ TUI/เทอร์มินัลตามรายการ",
+    "missing": "รูปแบบต้นทางพึ่งความสามารถที่ไม่มี API สาธารณะใน v0.3; เสนอทางเลือกจำกัดได้แต่ห้ามอ้างว่าเทียบเท่า"
+  },
+  "projects": [
+    {
+      "number": 1,
+      "source_title": "Bagels",
+      "thai_concept": "เกมเดารหัสสามหลักจากคำใบ้ตำแหน่งตัวเลข",
+      "classification": "verify",
+      "requirement": "ต้องเขียนตัวสุ่มแบบ seed คงที่ในบทและตรวจช่วงจำนวนเต็ม; Random จริงยังไม่มี",
+      "source_url": "https://inventwithpython.com/bigbookpython/project1.html",
+      "chapter_slug": "01-bagels"
+    },
+    {
+      "number": 2,
+      "source_title": "Birthday Paradox",
+      "thai_concept": "จำลองโอกาสคนเกิดวันเดียวกันในกลุ่ม",
+      "classification": "verify",
+      "requirement": "ต้องกำหนดวันเกิดจำลองด้วย PRNG ที่ตรวจแล้ว; ยังไม่มี Random",
+      "source_url": "https://inventwithpython.com/bigbookpython/project2.html",
+      "chapter_slug": "02-birthday-paradox"
+    },
+    {
+      "number": 3,
+      "source_title": "Bitmap Message",
+      "thai_concept": "เติมลวดลายตัวอักษรลงในข้อความภาพพิกเซล",
+      "classification": "core",
+      "requirement": "ใช้สตริงหลายบรรทัดและการแทนช่องว่าง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project3.html",
+      "chapter_slug": "03-bitmap-message"
+    },
+    {
+      "number": 4,
+      "source_title": "Blackjack",
+      "thai_concept": "เล่นไพ่แต้มยี่สิบเอ็ดกับเจ้ามือ",
+      "classification": "verify",
+      "requirement": "ต้องสร้างชุดไพ่และการสับด้วย PRNG ที่พิสูจน์แล้ว; ยังไม่มี Random",
+      "source_url": "https://inventwithpython.com/bigbookpython/project4.html",
+      "chapter_slug": "04-blackjack"
+    },
+    {
+      "number": 5,
+      "source_title": "Bouncing DVD Logo",
+      "thai_concept": "ขยับโลโก้ชนขอบจอและนับการชนมุม",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI timer, ขนาด viewport และการเรนเดอร์ซ้ำบนเครื่องจริง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project5.html",
+      "chapter_slug": "05-bouncing-dvd-logo"
+    },
+    {
+      "number": 6,
+      "source_title": "Caesar Cipher",
+      "thai_concept": "เลื่อนอักษรเพื่อเข้ารหัสและถอดรหัส",
+      "classification": "core",
+      "requirement": "กำหนดขอบเขตอักษรละตินและคงอักขระอื่นไว้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project6.html",
+      "chapter_slug": "06-caesar-cipher"
+    },
+    {
+      "number": 7,
+      "source_title": "Caesar Hacker",
+      "thai_concept": "ลองทุกระยะเลื่อนเพื่ออ่านข้อความเข้ารหัส",
+      "classification": "core",
+      "requirement": "ใช้การวนครบ 26 กุญแจและแสดงผลให้เลือก",
+      "source_url": "https://inventwithpython.com/bigbookpython/project7.html",
+      "chapter_slug": "07-caesar-hacker"
+    },
+    {
+      "number": 8,
+      "source_title": "Calendar Maker",
+      "thai_concept": "พิมพ์ปฏิทินรายเดือนจากปีและเดือน",
+      "classification": "verify",
+      "requirement": "ต้องเขียนและทดสอบเลขวันในสัปดาห์/ปีอธิกสุรทินเอง; ไม่มี DateTime/Calendar",
+      "source_url": "https://inventwithpython.com/bigbookpython/project8.html",
+      "chapter_slug": "08-calendar-maker"
+    },
+    {
+      "number": 9,
+      "source_title": "Carrot in a Box",
+      "thai_concept": "เกมสองคนเลือกกล่องจากคำบอกและการหลอกล่อ",
+      "classification": "verify",
+      "requirement": "ต้องกำหนดการเลือกกล่องด้วย PRNG; การซ่อนข้อมูลผู้เล่นบนคอนโซลต้องทดสอบ UX",
+      "source_url": "https://inventwithpython.com/bigbookpython/project9.html",
+      "chapter_slug": "09-carrot-in-a-box"
+    },
+    {
+      "number": 10,
+      "source_title": "Cho-Han",
+      "thai_concept": "พนันผลคี่หรือคู่จากลูกเต๋าสองลูก",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG ลูกเต๋าที่กำหนด seed ได้; ไม่มี Random",
+      "source_url": "https://inventwithpython.com/bigbookpython/project10.html",
+      "chapter_slug": "10-cho-han"
+    },
+    {
+      "number": 11,
+      "source_title": "Clickbait Headline Generator",
+      "thai_concept": "ประกอบพาดหัวจากแม่แบบและชุดคำ",
+      "classification": "verify",
+      "requirement": "ต้องสุ่มแม่แบบ/คำด้วย PRNG ที่ทดสอบแล้ว",
+      "source_url": "https://inventwithpython.com/bigbookpython/project11.html",
+      "chapter_slug": "11-clickbait-headline-generator"
+    },
+    {
+      "number": 12,
+      "source_title": "Collatz Sequence",
+      "thai_concept": "ไล่ลำดับหารสองหรือคูณสามบวกหนึ่ง",
+      "classification": "core",
+      "requirement": "ระวัง Integer overflow และหยุดเมื่อถึงหนึ่ง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project12.html",
+      "chapter_slug": "12-collatz"
+    },
+    {
+      "number": 13,
+      "source_title": "Conway's Game of Life",
+      "thai_concept": "คำนวณชีวิตบนตารางรุ่นต่อรุ่น",
+      "classification": "verify",
+      "requirement": "กฎเซลล์ทำได้ด้วย Array; การเล่นสดต้องตรวจ TUI timer และคีย์",
+      "source_url": "https://inventwithpython.com/bigbookpython/project13.html",
+      "chapter_slug": "13-conway-s-game-of-life"
+    },
+    {
+      "number": 14,
+      "source_title": "Countdown",
+      "thai_concept": "แสดงตัวเลขลดลงตามเวลา",
+      "classification": "verify",
+      "requirement": "ใช้ TUI timer ใน session ได้ ต้องตรวจจังหวะ event และหยุดที่ศูนย์; ไม่ต้องมี wall clock สำหรับการนับช่วงเวลา",
+      "source_url": "https://inventwithpython.com/bigbookpython/project14.html",
+      "chapter_slug": "14-countdown"
+    },
+    {
+      "number": 15,
+      "source_title": "Deep Cave",
+      "thai_concept": "สร้างภาพถ้ำลึกที่ขอบเปลี่ยนไป",
+      "classification": "verify",
+      "requirement": "ต้องกำหนด PRNG และพิสูจน์การอัปเดตภาพด้วย TUI timer",
+      "source_url": "https://inventwithpython.com/bigbookpython/project15.html",
+      "chapter_slug": "15-deep-cave"
+    },
+    {
+      "number": 16,
+      "source_title": "Diamonds",
+      "thai_concept": "พิมพ์รูปเพชรจากความกว้างแต่ละชั้น",
+      "classification": "core",
+      "requirement": "ตรวจความกว้างคู่/คี่และช่องว่าง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project16.html",
+      "chapter_slug": "16-diamonds"
+    },
+    {
+      "number": 17,
+      "source_title": "Dice Math",
+      "thai_concept": "ฝึกบวกเลขจากแต้มลูกเต๋า",
+      "classification": "verify",
+      "requirement": "โจทย์สุ่มต้องใช้ PRNG ที่ทดสอบแล้ว",
+      "source_url": "https://inventwithpython.com/bigbookpython/project17.html",
+      "chapter_slug": "17-dice-math"
+    },
+    {
+      "number": 18,
+      "source_title": "Dice Roller",
+      "thai_concept": "อ่านนิพจน์ทอยลูกเต๋าและรวมแต้ม",
+      "classification": "verify",
+      "requirement": "ต้องเขียน parser รูป NdM และ PRNG โดยตรวจช่วงค่า",
+      "source_url": "https://inventwithpython.com/bigbookpython/project18.html",
+      "chapter_slug": "18-dice-roller"
+    },
+    {
+      "number": 19,
+      "source_title": "Digital Clock",
+      "thai_concept": "แสดงเวลาปัจจุบันแบบนาฬิกาดิจิทัล",
+      "classification": "missing",
+      "requirement": "ไม่มี wall clock/DateTime API; TUI timer อย่างเดียวบอกเวลา ณ ปัจจุบันไม่ได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project19.html",
+      "chapter_slug": "19-digital-clock"
+    },
+    {
+      "number": 20,
+      "source_title": "Digital Stream",
+      "thai_concept": "แสดงสายอักขระไหลบนหน้าจอ",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI timer, พื้นที่แสดงผลและ PRNG ที่เลือกอักขระ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project20.html",
+      "chapter_slug": "20-digital-stream"
+    },
+    {
+      "number": 21,
+      "source_title": "DNA Visualization",
+      "thai_concept": "วาดเกลียว DNA แบบอักษรตามตำแหน่ง",
+      "classification": "verify",
+      "requirement": "ภาพคงที่ทำได้; ภาพไหลต้องพิสูจน์ TUI timer",
+      "source_url": "https://inventwithpython.com/bigbookpython/project21.html",
+      "chapter_slug": "21-dna-visualization"
+    },
+    {
+      "number": 22,
+      "source_title": "Ducklings",
+      "thai_concept": "แสดงลูกเป็ดหลายตัวเคลื่อนผ่านจอ",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI timer, viewport และ PRNG ระยะห่าง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project22.html",
+      "chapter_slug": "22-ducklings"
+    },
+    {
+      "number": 23,
+      "source_title": "Etching Drawer",
+      "thai_concept": "ใช้ปุ่มทิศทางวาดเส้นในตาราง",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์เหตุการณ์คีย์ TUI และการเก็บตารางระหว่าง resize",
+      "source_url": "https://inventwithpython.com/bigbookpython/project23.html",
+      "chapter_slug": "23-etching-drawer"
+    },
+    {
+      "number": 24,
+      "source_title": "Factor Finder",
+      "thai_concept": "หาตัวหารทั้งหมดของจำนวนเต็ม",
+      "classification": "core",
+      "requirement": "กำหนดพฤติกรรมของศูนย์และจำนวนลบ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project24.html",
+      "chapter_slug": "24-factors"
+    },
+    {
+      "number": 25,
+      "source_title": "Fast Draw",
+      "thai_concept": "แข่งกดปุ่มเมื่อสัญญาณปรากฏ",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI timer, timestamp/elapsed ของ event และอินพุตจริง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project25.html",
+      "chapter_slug": "25-fast-draw"
+    },
+    {
+      "number": 26,
+      "source_title": "Fibonacci",
+      "thai_concept": "สร้างลำดับที่สมาชิกใหม่เป็นผลบวกสองตัวก่อน",
+      "classification": "core",
+      "requirement": "ระบุขีดจำกัดก่อน Integer overflow",
+      "source_url": "https://inventwithpython.com/bigbookpython/project26.html",
+      "chapter_slug": "26-fibonacci"
+    },
+    {
+      "number": 27,
+      "source_title": "Fish Tank",
+      "thai_concept": "แสดงปลาว่ายผ่านฉากอักษร",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI timer, viewport และ PRNG การเคลื่อน",
+      "source_url": "https://inventwithpython.com/bigbookpython/project27.html",
+      "chapter_slug": "27-fish-tank"
+    },
+    {
+      "number": 28,
+      "source_title": "Flooder",
+      "thai_concept": "เปลี่ยนสีช่องติดกันจนตารางเป็นสีเดียว",
+      "classification": "verify",
+      "requirement": "อัลกอริทึม flood fill ทำได้; ต้องพิสูจน์การรับคีย์และสี TUI",
+      "source_url": "https://inventwithpython.com/bigbookpython/project28.html",
+      "chapter_slug": "28-flooder"
+    },
+    {
+      "number": 29,
+      "source_title": "Forest Fire Sim",
+      "thai_concept": "จำลองไฟลามระหว่างต้นไม้บนตาราง",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG, TUI timer และเงื่อนไขขอบตาราง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project29.html",
+      "chapter_slug": "29-forest-fire-sim"
+    },
+    {
+      "number": 30,
+      "source_title": "Four in a Row",
+      "thai_concept": "หย่อนหมากลงคอลัมน์และตรวจสี่ตัวติดกัน",
+      "classification": "core",
+      "requirement": "ใช้ Array และรับรอบผู้เล่นจาก ReadLine",
+      "source_url": "https://inventwithpython.com/bigbookpython/project30.html",
+      "chapter_slug": "30-four-in-a-row"
+    },
+    {
+      "number": 31,
+      "source_title": "Guess the Number",
+      "thai_concept": "เดาตัวเลขพร้อมคำใบ้สูงหรือต่ำ",
+      "classification": "verify",
+      "requirement": "ต้องเลือกเลขลับด้วย PRNG ที่ตรวจแล้ว; โหมดกำหนดเลขล่วงหน้าทำได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project31.html",
+      "chapter_slug": "31-guess-the-number"
+    },
+    {
+      "number": 32,
+      "source_title": "Gullible",
+      "thai_concept": "ถามซ้ำจนผู้ใช้ป้อนคำตอบที่กำหนด",
+      "classification": "core",
+      "requirement": "กำหนดเงื่อนไขจบและ EOF ชัดเจน",
+      "source_url": "https://inventwithpython.com/bigbookpython/project32.html",
+      "chapter_slug": "32-gullible"
+    },
+    {
+      "number": 33,
+      "source_title": "Hacking Minigame",
+      "thai_concept": "เลือกคำรหัสจากคำใบ้จำนวนตัวอักษรที่ตรงตำแหน่ง",
+      "classification": "verify",
+      "requirement": "ต้องสุ่มคำตอบด้วย PRNG; กติกาเปรียบเทียบทำได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project33.html",
+      "chapter_slug": "33-hacking-minigame"
+    },
+    {
+      "number": 34,
+      "source_title": "Hangman & Guillotine",
+      "thai_concept": "ทายตัวอักษรจำกัดครั้งพร้อมภาพความผิดพลาด",
+      "classification": "verify",
+      "requirement": "ต้องสุ่มคำจากคลังคำ; ตรวจ Unicode scalar กับภาพหลายบรรทัด",
+      "source_url": "https://inventwithpython.com/bigbookpython/project34.html",
+      "chapter_slug": "34-hangman-guillotine"
+    },
+    {
+      "number": 35,
+      "source_title": "Hex Grid",
+      "thai_concept": "พิมพ์ช่องหกเหลี่ยมต่อกันเป็นตาราง",
+      "classification": "core",
+      "requirement": "ใช้การจัดช่องว่างและความกว้างอักษร ASCII",
+      "source_url": "https://inventwithpython.com/bigbookpython/project35.html",
+      "chapter_slug": "35-hex-grid"
+    },
+    {
+      "number": 36,
+      "source_title": "Hourglass",
+      "thai_concept": "พิมพ์นาฬิกาทรายจากชั้นอักษร",
+      "classification": "core",
+      "requirement": "ตรวจรูปสมมาตรและความกว้าง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project36.html",
+      "chapter_slug": "36-hourglass"
+    },
+    {
+      "number": 37,
+      "source_title": "Hungry Robots",
+      "thai_concept": "หนีหุ่นยนต์ที่เดินเข้าหาผู้เล่น",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI event/timer และกฎการชนบนตาราง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project37.html",
+      "chapter_slug": "37-hungry-robots"
+    },
+    {
+      "number": 38,
+      "source_title": "J'Accuse!",
+      "thai_concept": "สืบหาผู้ต้องสงสัยจากชุดเบาะแส",
+      "classification": "verify",
+      "requirement": "ต้องตรวจโครงสร้างข้อมูลเบาะแสและการสุ่มคดีแบบ seed",
+      "source_url": "https://inventwithpython.com/bigbookpython/project38.html",
+      "chapter_slug": "38-j-accuse"
+    },
+    {
+      "number": 39,
+      "source_title": "Langton's Ant",
+      "thai_concept": "ให้มดหันและพลิกสีช่องบนตาราง",
+      "classification": "verify",
+      "requirement": "ตรรกะ Array ทำได้; การเล่นต่อเนื่องต้องพิสูจน์ TUI timer",
+      "source_url": "https://inventwithpython.com/bigbookpython/project39.html",
+      "chapter_slug": "39-langton-s-ant"
+    },
+    {
+      "number": 40,
+      "source_title": "Leetspeak",
+      "thai_concept": "แทนอักษรด้วยตัวเลขและสัญลักษณ์",
+      "classification": "core",
+      "requirement": "กำหนดตารางแทนที่และความไวต่อตัวพิมพ์",
+      "source_url": "https://inventwithpython.com/bigbookpython/project40.html",
+      "chapter_slug": "40-leetspeak"
+    },
+    {
+      "number": 41,
+      "source_title": "Lucky Stars",
+      "thai_concept": "เกมเสี่ยงโชคเลือกดาวจากผลสุ่ม",
+      "classification": "verify",
+      "requirement": "ต้องระบุกติกาคะแนนและพิสูจน์ PRNG",
+      "source_url": "https://inventwithpython.com/bigbookpython/project41.html",
+      "chapter_slug": "41-lucky-stars"
+    },
+    {
+      "number": 42,
+      "source_title": "Magic Fortune Ball",
+      "thai_concept": "ตอบคำถามด้วยชุดคำทำนาย",
+      "classification": "verify",
+      "requirement": "ต้องเลือกคำตอบด้วย PRNG หรือให้ seed เพื่อทำซ้ำ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project42.html",
+      "chapter_slug": "42-magic-fortune-ball"
+    },
+    {
+      "number": 43,
+      "source_title": "Mancala",
+      "thai_concept": "เดินเมล็ดรอบกระดานและเก็บคะแนน",
+      "classification": "core",
+      "requirement": "ใช้ Array ตรวจรอบและกติกาหลุมพิเศษ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project43.html",
+      "chapter_slug": "43-mancala"
+    },
+    {
+      "number": 44,
+      "source_title": "Maze Runner 2D",
+      "thai_concept": "เดินในเขาวงกตสองมิติ",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI คีย์/viewport; เขาวงกตคงที่ทำได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project44.html",
+      "chapter_slug": "44-maze-runner-2d"
+    },
+    {
+      "number": 45,
+      "source_title": "Maze Runner 3D",
+      "thai_concept": "แสดงมุมมองทางเดินเขาวงกตแบบสามมิติอักษร",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์การเรนเดอร์มุมมองและคีย์ TUI บนเครื่องจริง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project45.html",
+      "chapter_slug": "45-maze-runner-3d"
+    },
+    {
+      "number": 46,
+      "source_title": "Million Dice Statistics",
+      "thai_concept": "นับความถี่ผลทอยจำนวนมาก",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG, ช่วง Integer และเวลารันหนึ่งล้านรอบ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project46.html",
+      "chapter_slug": "46-million-dice-statistics"
+    },
+    {
+      "number": 47,
+      "source_title": "Mondrian Art Generator",
+      "thai_concept": "สร้างภาพสี่เหลี่ยมสีแบบมอนเดรียน",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ TUI สี/ขนาด viewport และ PRNG ตำแหน่ง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project47.html",
+      "chapter_slug": "47-mondrian-art-generator"
+    },
+    {
+      "number": 48,
+      "source_title": "Monty Hall",
+      "thai_concept": "จำลองการเลือกประตูและสลับเพื่อเทียบโอกาส",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG และกติกาพิธีกรที่เปิดประตูแพ้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project48.html",
+      "chapter_slug": "48-monty-hall"
+    },
+    {
+      "number": 49,
+      "source_title": "Multiplication Table",
+      "thai_concept": "พิมพ์ตารางสูตรคูณโดยจัดคอลัมน์",
+      "classification": "core",
+      "requirement": "กำหนดขนาดและความกว้างคอลัมน์",
+      "source_url": "https://inventwithpython.com/bigbookpython/project49.html",
+      "chapter_slug": "49-multiplication"
+    },
+    {
+      "number": 50,
+      "source_title": "Ninety Nine Bottles",
+      "thai_concept": "สร้างบทนับถอยหลังของขวด",
+      "classification": "core",
+      "requirement": "ใช้ลูปและรูปเอกพจน์/พหูพจน์",
+      "source_url": "https://inventwithpython.com/bigbookpython/project50.html",
+      "chapter_slug": "50-ninety-nine-bottles"
+    },
+    {
+      "number": 51,
+      "source_title": "niNety nniinE BoOttels",
+      "thai_concept": "แปลงบทนับขวดให้ตัวพิมพ์สลับและเพี้ยน",
+      "classification": "verify",
+      "requirement": "ต้องกำหนด PRNG การสลับรูปแบบ และตรวจ Unicode casing",
+      "source_url": "https://inventwithpython.com/bigbookpython/project51.html",
+      "chapter_slug": "51-ninety-nniine-boottels"
+    },
+    {
+      "number": 52,
+      "source_title": "Numeral Systems",
+      "thai_concept": "แปลงจำนวนระหว่างฐานตัวเลข",
+      "classification": "core",
+      "requirement": "กำหนดฐาน 2–36 และตรวจ overflow",
+      "source_url": "https://inventwithpython.com/bigbookpython/project52.html",
+      "chapter_slug": "52-numeral-systems"
+    },
+    {
+      "number": 53,
+      "source_title": "Periodic Table of the Elements",
+      "thai_concept": "ค้นข้อมูลธาตุจากตาราง",
+      "classification": "verify",
+      "requirement": "ต้องเตรียมชุดข้อมูลธาตุที่มีสิทธิ์ใช้และตรวจการอ่านไฟล์/ฝังข้อมูล",
+      "source_url": "https://inventwithpython.com/bigbookpython/project53.html",
+      "chapter_slug": "53-periodic-table-of-the-elements"
+    },
+    {
+      "number": 54,
+      "source_title": "Pig Latin",
+      "thai_concept": "ย้ายกลุ่มพยัญชนะภาษาอังกฤษและเติมท้ายคำ",
+      "classification": "core",
+      "requirement": "จำกัดกติกากับคำละตินและรักษาเครื่องหมายวรรคตอน",
+      "source_url": "https://inventwithpython.com/bigbookpython/project54.html",
+      "chapter_slug": "54-pig-latin"
+    },
+    {
+      "number": 55,
+      "source_title": "Powerball Lottery",
+      "thai_concept": "เปรียบเทียบสลากกับเลขที่ออกรางวัลหลายครั้ง",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG, เลขไม่ซ้ำและข้อจำกัดจำลองจำนวนมาก",
+      "source_url": "https://inventwithpython.com/bigbookpython/project55.html",
+      "chapter_slug": "55-powerball-lottery"
+    },
+    {
+      "number": 56,
+      "source_title": "Prime Numbers",
+      "thai_concept": "ตรวจหรือแสดงจำนวนเฉพาะ",
+      "classification": "core",
+      "requirement": "ตรวจ 0/1/จำนวนลบและขอบเขตการวน",
+      "source_url": "https://inventwithpython.com/bigbookpython/project56.html",
+      "chapter_slug": "56-primes"
+    },
+    {
+      "number": 57,
+      "source_title": "Progress Bar",
+      "thai_concept": "รายงานความคืบหน้าของงานเป็นแถบ",
+      "classification": "verify",
+      "requirement": "แถบจากค่าเปอร์เซ็นต์ทำได้; การอัปเดตสดต้องพิสูจน์ TUI timer",
+      "source_url": "https://inventwithpython.com/bigbookpython/project57.html",
+      "chapter_slug": "57-progress-bar"
+    },
+    {
+      "number": 58,
+      "source_title": "Rainbow",
+      "thai_concept": "แสดงสายรุ้งอักษรสีเคลื่อนบนจอ",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ความสามารถสีและ TUI timer ของ terminal",
+      "source_url": "https://inventwithpython.com/bigbookpython/project58.html",
+      "chapter_slug": "58-rainbow"
+    },
+    {
+      "number": 59,
+      "source_title": "Rock Paper Scissors",
+      "thai_concept": "เล่นเป่ายิงฉุบกับคอมพิวเตอร์",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG สำหรับการเลือกของคอมพิวเตอร์",
+      "source_url": "https://inventwithpython.com/bigbookpython/project59.html",
+      "chapter_slug": "59-rock-paper-scissors"
+    },
+    {
+      "number": 60,
+      "source_title": "Rock Paper Scissors Always-Win",
+      "thai_concept": "สาธิตคู่แข่งที่เลือกชนะเสมอหลังเห็นคำตอบ",
+      "classification": "core",
+      "requirement": "ออกแบบการเปิดเผยกติกาอย่างตรงไปตรงมา",
+      "source_url": "https://inventwithpython.com/bigbookpython/project60.html",
+      "chapter_slug": "60-rock-paper-scissors-always-win"
+    },
+    {
+      "number": 61,
+      "source_title": "ROT 13 Cipher",
+      "thai_concept": "หมุนอักษรละติน 13 ตำแหน่ง",
+      "classification": "core",
+      "requirement": "คงอักขระนอก A–Z/a–z",
+      "source_url": "https://inventwithpython.com/bigbookpython/project61.html",
+      "chapter_slug": "61-rot13"
+    },
+    {
+      "number": 62,
+      "source_title": "Rotating Cube",
+      "thai_concept": "วาดลูกบาศก์หมุนในภาพตัวอักษร",
+      "classification": "missing",
+      "requirement": "ต้องมี sin/cos หรือเขียนตารางค่ามุมพร้อมพิสูจน์เลข Float และ TUI frame",
+      "source_url": "https://inventwithpython.com/bigbookpython/project62.html",
+      "chapter_slug": "62-rotating-cube"
+    },
+    {
+      "number": 63,
+      "source_title": "Royal Game of Ur",
+      "thai_concept": "เล่นเกมกระดานโบราณตามเส้นทางช่อง",
+      "classification": "verify",
+      "requirement": "ต้องกำหนดกติกาลูกเต๋าและพิสูจน์ PRNG/การรับคำสั่ง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project63.html",
+      "chapter_slug": "63-royal-game-of-ur"
+    },
+    {
+      "number": 64,
+      "source_title": "Seven-Segment Display Module",
+      "thai_concept": "วาดตัวเลขด้วยจอเจ็ดขีดแบบอักษร",
+      "classification": "core",
+      "requirement": "กำหนดแม่แบบแต่ละหลักและรองรับตัวเลขหลายหลัก",
+      "source_url": "https://inventwithpython.com/bigbookpython/project64.html",
+      "chapter_slug": "64-seven-segment-display-module"
+    },
+    {
+      "number": 65,
+      "source_title": "Shining Carpet",
+      "thai_concept": "วาดลายพรมซ้ำเป็นช่องสี่เหลี่ยม",
+      "classification": "core",
+      "requirement": "กำหนดแพตเทิร์นและขนาดไม่ให้เกินหน้าจอ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project65.html",
+      "chapter_slug": "65-shining-carpet"
+    },
+    {
+      "number": 66,
+      "source_title": "Simple Substitution Cipher",
+      "thai_concept": "สลับอักษรตามกุญแจแทนที่",
+      "classification": "core",
+      "requirement": "ตรวจว่ากุญแจมี A–Z ครบและไม่ซ้ำ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project66.html",
+      "chapter_slug": "66-simple-substitution-cipher"
+    },
+    {
+      "number": 67,
+      "source_title": "Sine Message",
+      "thai_concept": "เลื่อนข้อความตามเส้นไซน์",
+      "classification": "missing",
+      "requirement": "ไม่มี Math.Sin; ต้องเขียนตารางคลื่นคงที่หรือเพิ่ม API และพิสูจน์ TUI หากเคลื่อน",
+      "source_url": "https://inventwithpython.com/bigbookpython/project67.html",
+      "chapter_slug": "67-sine-message"
+    },
+    {
+      "number": 68,
+      "source_title": "Sliding Tile Puzzle",
+      "thai_concept": "เลื่อนแผ่นเลขเข้าช่องว่าง",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์การสร้างกระดานแก้ได้และ PRNG การสับ; รับคำสั่งข้อความทำได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project68.html",
+      "chapter_slug": "68-sliding-tile-puzzle"
+    },
+    {
+      "number": 69,
+      "source_title": "Snail Race",
+      "thai_concept": "แข่งหอยทากที่ค่อย ๆ เคลื่อน",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG ความเร็ว, TUI timer และการวาดหลายช่อง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project69.html",
+      "chapter_slug": "69-snail-race"
+    },
+    {
+      "number": 70,
+      "source_title": "Soroban Japanese Abacus",
+      "thai_concept": "แสดงและปรับลูกคิดญี่ปุ่น",
+      "classification": "verify",
+      "requirement": "ภาพนิ่งทำได้; การควบคุมคีย์และสถานะต้องพิสูจน์ TUI",
+      "source_url": "https://inventwithpython.com/bigbookpython/project70.html",
+      "chapter_slug": "70-soroban-japanese-abacus"
+    },
+    {
+      "number": 71,
+      "source_title": "Sound Mimic",
+      "thai_concept": "ฟังลำดับเสียงแล้วป้อนเลียนแบบ",
+      "classification": "missing",
+      "requirement": "ไม่มี API สร้าง/เล่นเสียง; ต้องมีเสียงและเวลารับคำตอบที่ทดสอบได้",
+      "source_url": "https://inventwithpython.com/bigbookpython/project71.html",
+      "chapter_slug": "71-sound-mimic"
+    },
+    {
+      "number": 72,
+      "source_title": "sPoNgEcAsE",
+      "thai_concept": "แปลงข้อความเป็นตัวใหญ่เล็กสลับกัน",
+      "classification": "core",
+      "requirement": "ระบุผลของอักษร Unicode ที่ case mapping เพิ่มจำนวน scalar",
+      "source_url": "https://inventwithpython.com/bigbookpython/project72.html",
+      "chapter_slug": "72-spongecase"
+    },
+    {
+      "number": 73,
+      "source_title": "Sudoku Puzzle",
+      "thai_concept": "ตรวจหรือแก้ตารางซูโดกุ",
+      "classification": "verify",
+      "requirement": "ตัวตรวจทำได้; ตัวสร้างปริศนาต้องพิสูจน์การมีคำตอบเดียวและ PRNG",
+      "source_url": "https://inventwithpython.com/bigbookpython/project73.html",
+      "chapter_slug": "73-sudoku-puzzle"
+    },
+    {
+      "number": 74,
+      "source_title": "Text To Speech Talker",
+      "thai_concept": "แปลงข้อความที่ป้อนเป็นเสียงพูด",
+      "classification": "missing",
+      "requirement": "ไม่มี TTS/เสียงหรือ OS speech API ใน v0.3",
+      "source_url": "https://inventwithpython.com/bigbookpython/project74.html",
+      "chapter_slug": "74-text-to-speech-talker"
+    },
+    {
+      "number": 75,
+      "source_title": "Three-Card Monte",
+      "thai_concept": "ติดตามไพ่เป้าหมายหลังสลับตำแหน่ง",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์ PRNG การสับและ TUI timer หากแสดงภาพเคลื่อนไหว",
+      "source_url": "https://inventwithpython.com/bigbookpython/project75.html",
+      "chapter_slug": "75-three-card-monte"
+    },
+    {
+      "number": 76,
+      "source_title": "Tic-Tac-Toe",
+      "thai_concept": "สลับตาวาง X/O และตรวจชนะหรือเสมอ",
+      "classification": "core",
+      "requirement": "ใช้กระดาน 3×3 และตรวจแปดแนวชนะ",
+      "source_url": "https://inventwithpython.com/bigbookpython/project76.html",
+      "chapter_slug": "76-tic-tac-toe"
+    },
+    {
+      "number": 77,
+      "source_title": "Tower of Hanoi Puzzle",
+      "thai_concept": "ย้ายแผ่นระหว่างเสาโดยไม่วางใหญ่ทับเล็ก",
+      "classification": "core",
+      "requirement": "ใช้ Array ตรวจการย้ายและนับจำนวนครั้ง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project77.html",
+      "chapter_slug": "77-tower-of-hanoi-puzzle"
+    },
+    {
+      "number": 78,
+      "source_title": "Trick Questions",
+      "thai_concept": "ถามปริศนาคำตอบชวนหลงและเฉลย",
+      "classification": "core",
+      "requirement": "เก็บชุดคำถาม/คำตอบและตรวจ EOF",
+      "source_url": "https://inventwithpython.com/bigbookpython/project78.html",
+      "chapter_slug": "78-trick-questions"
+    },
+    {
+      "number": 79,
+      "source_title": "Twenty Forty Eight",
+      "thai_concept": "เลื่อนรวมแผ่น 2048 บนกระดาน",
+      "classification": "verify",
+      "requirement": "ต้องพิสูจน์การเกิดแผ่นใหม่ด้วย PRNG และการรับคีย์ TUI",
+      "source_url": "https://inventwithpython.com/bigbookpython/project79.html",
+      "chapter_slug": "79-twenty-forty-eight"
+    },
+    {
+      "number": 80,
+      "source_title": "Vigenère Cipher",
+      "thai_concept": "เข้ารหัสอักษรละตินด้วยกุญแจวนซ้ำ",
+      "classification": "core",
+      "requirement": "กำหนดการข้ามอักขระอื่นและตรวจคีย์ว่าง",
+      "source_url": "https://inventwithpython.com/bigbookpython/project80.html",
+      "chapter_slug": "80-vigenere-cipher"
+    },
+    {
+      "number": 81,
+      "source_title": "Water Bucket Puzzle",
+      "thai_concept": "ตวงน้ำด้วยถังจำกัดปริมาตร",
+      "classification": "core",
+      "requirement": "ใช้สถานะจำนวนเต็มและตรวจ pour/fill/empty",
+      "source_url": "https://inventwithpython.com/bigbookpython/project81.html",
+      "chapter_slug": "81-water-bucket-puzzle"
+    }
+  ]
+}

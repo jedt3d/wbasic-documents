@@ -1,0 +1,47 @@
+' Original WBasic teaching example inspired by Al Sweigart project 66.
+Procedure Translate(message As String, fromAlphabet As String, toAlphabet As String) As String
+  Let answer As String = ""
+  For Each letter As String In message
+    Let replacement As String = letter
+    For position As Integer = 0 To fromAlphabet.Length - 1
+      If letter = fromAlphabet[position] Then
+        replacement = toAlphabet[position]
+        Break
+      EndIf
+    Next
+    answer += replacement
+  Next
+  Return answer
+EndProcedure
+
+Procedure Main()
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  Let key As String = "QWERTYUIOPASDFGHJKLZXCVBNM"
+  If alphabet.Length <> key.Length Then
+    PrintLn("invalid key")
+    Return
+  EndIf
+  For index As Integer = 0 To key.Length - 1
+    Let found As Boolean = False
+    For letterIndex As Integer = 0 To alphabet.Length - 1
+      If key[index] = alphabet[letterIndex] Then
+        found = True
+        Break
+      EndIf
+    Next
+    If Not found Then
+      PrintLn("key must be A-Z")
+      Return
+    EndIf
+    For earlier As Integer = 0 To index - 1
+      If key[index] = key[earlier] Then
+        PrintLn("duplicate key letter")
+        Return
+      EndIf
+    Next
+  Next
+  Let message As String = "MEET AT NOON!"
+  Let secret As String = Translate(message, alphabet, key)
+  PrintLn(secret)
+  PrintLn(Translate(secret, key, alphabet))
+EndProcedure

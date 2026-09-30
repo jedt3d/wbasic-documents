@@ -1,0 +1,11 @@
+Procedure Main()
+  Let previous As Integer = 0
+  Let current As Integer = 1
+  PrintLn("First 10 Fibonacci numbers")
+  For index As Integer = 0 To 9 Step 1
+    PrintLn("F(" + index.ToString() + ") = " + previous.ToString())
+    Let following As Integer = previous + current
+    previous = current
+    current = following
+  Next
+EndProcedure

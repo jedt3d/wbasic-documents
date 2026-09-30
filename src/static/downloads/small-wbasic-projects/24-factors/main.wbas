@@ -1,0 +1,9 @@
+Procedure Main()
+  Let number As Integer = 36
+  PrintLn("Factors of 36")
+  For candidate As Integer = 1 To number Step 1
+    If number Mod candidate = 0 Then
+      PrintLn(candidate.ToString())
+    EndIf
+  Next
+EndProcedure

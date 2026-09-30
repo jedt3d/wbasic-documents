@@ -1,0 +1,7 @@
+# These exact-output teaching fixtures intentionally retain right-edge spaces.
+src/content/th/books/small-wbasic-projects/03-bitmap-message.md whitespace=-blank-at-eol
+src/content/th/books/small-wbasic-projects/64-seven-segment-display-module.md whitespace=-blank-at-eol
+src/static/downloads/small-wbasic-projects/64-seven-segment-display-module/expected-output.txt whitespace=-blank-at-eol
+html/th/books/small-wbasic-projects/03-bitmap-message/index.html whitespace=-blank-at-eol
+html/th/books/small-wbasic-projects/64-seven-segment-display-module/index.html whitespace=-blank-at-eol
+html/downloads/small-wbasic-projects/64-seven-segment-display-module/expected-output.txt whitespace=-blank-at-eol

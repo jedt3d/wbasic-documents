@@ -1,0 +1,16 @@
+Procedure Main()
+  Let responses As Array Of String = ["yes", "Y", "perhaps", "no"]
+  PrintLn("Want the secret? (scripted answers)")
+  For Each answer As String In responses
+    PrintLn("> " + answer)
+    Let normalized As String = answer.ToLower()
+    If normalized = "no" Or normalized = "n" Then
+      PrintLn("The secret is to ask again.")
+      Break
+    ElseIf normalized = "yes" Or normalized = "y" Then
+      PrintLn("Then ask again...")
+    Else
+      PrintLn("Please answer yes or no.")
+    EndIf
+  Next
+EndProcedure

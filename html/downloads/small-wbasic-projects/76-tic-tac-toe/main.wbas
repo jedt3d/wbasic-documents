@@ -1,0 +1,39 @@
+' Original WBasic teaching example; inspired by Al Sweigart project 76.
+Procedure Won(board As Array Of String, mark As String) As Boolean
+  Let lines As Array Of (Array Of Integer) = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]]
+  For Each line As Array Of Integer In lines
+    If board[line[0]] = mark And board[line[1]] = mark And board[line[2]] = mark Then
+      Return True
+    EndIf
+  Next
+  Return False
+EndProcedure
+
+Procedure Main()
+  Let board As Array Of String = [".", ".", ".", ".", ".", ".", ".", ".", "."]
+  Let moves As Array Of Integer = [0, 3, 1, 4, 2]
+  Let mark As String = "X"
+  For Each move As Integer In moves
+    If move < 0 Or move >= board.Length Then
+      PrintLn("invalid position")
+      Return
+    EndIf
+    If board[move] <> "." Then
+      PrintLn("occupied position")
+      Return
+    EndIf
+    board[move] = mark
+    If Won(board, mark) Then
+      PrintLn(mark + " wins")
+      Break
+    EndIf
+    If mark = "X" Then
+      mark = "O"
+    Else
+      mark = "X"
+    EndIf
+  Next
+  For row As Integer = 0 To 2
+    PrintLn(board[row * 3] + board[row * 3 + 1] + board[row * 3 + 2])
+  Next
+EndProcedure

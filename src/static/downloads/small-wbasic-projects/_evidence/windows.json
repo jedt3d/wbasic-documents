@@ -1,0 +1,278 @@
+{
+  "compiler_sha": "2614b37d681631542de25ffac1d6e6b08d41fcb8",
+  "compiler_sha256": "b20a395f5964f505b6046a9a56967707105089a96f17f731da05725cdce69113",
+  "runtime_sha256": "fc21217f1bcac0f913e396c8cc30fdb8fffafe3c369c8a223585b1483f8199ed",
+  "host": "Windows ARM64",
+  "node": "v24.19.0",
+  "examples": [
+    {
+      "slug": "03-bitmap-message",
+      "source_sha256": "8122e0d9203264e0448e24aa0e3f8e2ea52c51b6b77b99b0fe9e6d982a09873f",
+      "expected_sha256": "2fe446f7a1fc9fe79dd72e734dc70741f3810f95405ee98783ff26fa1aaf777c",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "06-caesar-cipher",
+      "source_sha256": "2e76e600601c1c403087ff014b51800750290ae706ffe9e149cbb806cc234cbd",
+      "expected_sha256": "dad6c570f25886c696fa7a4f1cfc0064aaf3ee90096f117e552fee2626b3a0fd",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "07-caesar-hacker",
+      "source_sha256": "0c5f73f43ba26b8e0e4c3a8fbc9e4b21a54aa4c8d38df8973adf5f2a47031f7b",
+      "expected_sha256": "1edc1690b9b931b277545396eb5434c1b4039a37d60d7345f433239e214b2239",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "12-collatz",
+      "source_sha256": "3c90bb4c09e32aa1ace9dc81072ff875b5d01d915c7c553d2693ce7184c7d608",
+      "expected_sha256": "cb7331f04dd2b507925dbdd9b69c32d776bbbe9c09335c35b63d798b7a689e36",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "16-diamonds",
+      "source_sha256": "3bc0006c9dda0daa3b7474a7280dc0dd4e5e18a3c9314ddbd1b1fdebef1eabb6",
+      "expected_sha256": "8a5cbe2197e41ae7c29f6d66ad0544f4e6585235aaec720be2697c3afff7cad4",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "24-factors",
+      "source_sha256": "96af5f18f001c0c958a692edf7b4ba2727b78fa85425ef0697a5fbfa66c78bb5",
+      "expected_sha256": "9b7d16dc739268ef490c483ce1cd5bca618a798787cab1a4e2571a3e0ca3b268",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "26-fibonacci",
+      "source_sha256": "de798e65e5bc4f555d1956b4276f32877a144d76889891c6fd3ab94dce3d2d3b",
+      "expected_sha256": "1fa7300b418ac68e072dd12f2867fb7a9069c20eb3409e58759bbc39390511ef",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "30-four-in-a-row",
+      "source_sha256": "4a8778ceb26e81b82b68246805abd483ddaef92f4d2f535e71056bc2c83794c4",
+      "expected_sha256": "3d60eb9585d917a1c79092369e91e6637f73a9c62c6f54eb2d4fbd79b1d4074c",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "32-gullible",
+      "source_sha256": "67bd7d4229c5fffce5ddd7d05200962b18967bbf9967d864d344325cc310b586",
+      "expected_sha256": "1b6c7c42ac7af85bdd3547ac3afbffdedbd9000b503252def77cb372355f0c56",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "35-hex-grid",
+      "source_sha256": "a956f1d6b8a12ba4e453b2f45bec1581bc0f2406478a7af926eb9c4921a95b5f",
+      "expected_sha256": "66909edaf16ddd6d7925e5cca87b745de463d9efd2ed7e2fade914e7220e5108",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "36-hourglass",
+      "source_sha256": "beb90469a5ee89e662413e3b423caee76d6d66f06ee693699137e6612c79799d",
+      "expected_sha256": "45def5919aa0efb99cefba643b4db89b175214bbac2b9ccf8be90cfd32a247cc",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "40-leetspeak",
+      "source_sha256": "5aa6ad7c9f86890643b1d06fe9b452786c1dd60cb1b1fe0e57ddf22bf780c521",
+      "expected_sha256": "caeddff55de0f4eb61063b9ab948076eb88425fc183be83e4acfd18f7d552d1c",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "43-mancala",
+      "source_sha256": "9cc4a885fe679084a1f255049c84553bf354a2f49e353dda78b2252b0d1e9fd3",
+      "expected_sha256": "cea9888237c2d96eaefb0cbf00b9b6990f0d6b2aab073dc7233044138a56a474",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "49-multiplication",
+      "source_sha256": "ae6360e8763fceb7489bc007f5a86b3aa1836e0c754e037a4aa6283d7f393dbe",
+      "expected_sha256": "1ef6420a957791e4595ad1bb1cc639c8f156d5f990b249eadbb841f092486899",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "50-ninety-nine-bottles",
+      "source_sha256": "060d1f6344577935f2d00219adbab62345f647c696b06de3ceb08bd5a67327ec",
+      "expected_sha256": "94619ce7aa06926cbcb56e9af3957caae50dcea2a576d2865108024eb508f2b1",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "52-numeral-systems",
+      "source_sha256": "fea2661e810efa632883a9aba8bd4594d0974c2b935d21a0e6ffd31af2dd5397",
+      "expected_sha256": "6f9d7c86d894273085056d7814be42ee1b318821d07e637f66899c4fde6bbf40",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "54-pig-latin",
+      "source_sha256": "a251059001fd3b1e7309aa7b783a3c09bf2c7337bb5a745c272c49192222f236",
+      "expected_sha256": "df6ccc61d6a82c6a9e940cd1edd568720bd1f206b9bb0a49792f72cb0a293bd2",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "56-primes",
+      "source_sha256": "36707286a9f92d9ea48703214fa9cbd6c014c069c816ed7f02d23f2ac719abc0",
+      "expected_sha256": "dc8c353498db9b9bb1161eab32f94206df30e014947ae64482851f3fafed07ff",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "60-rock-paper-scissors-always-win",
+      "source_sha256": "18201ecdcfc65b6dedec28f0011448f61506ce41b9c7b35596445cc0d1e22078",
+      "expected_sha256": "da0c05339e2782fea66545855c813619f6042a860cf989a8026d7d370d25b104",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "61-rot13",
+      "source_sha256": "74a912d6c02a6acbe915f5dbeb67f1cb97eeec2797b41ba1ecd59daaa2f05122",
+      "expected_sha256": "74fae7957de08b7927ed33c353dcc634a3aca1de860aecffa0514d74d906caf3",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "64-seven-segment-display-module",
+      "source_sha256": "c744d6c77990429972e077a4df641414784b8e4b374b250f0e97acc23fe818a3",
+      "expected_sha256": "fae808312315809ed844c889097174ecc49c30497ba9866eb3922f4ad3f2c2e5",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "65-shining-carpet",
+      "source_sha256": "4df8b3baa86884b70ba1eedce6809838f04e1472806c36d6383722d2e2ede740",
+      "expected_sha256": "803f9b7042839b271642c3d62e036df4b5743991214282bbaa187de09f599116",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "66-simple-substitution-cipher",
+      "source_sha256": "8a94832bdc4fc009db164d32d35f41f2c4504bbe18f4e0373e9fc3aa43e0c741",
+      "expected_sha256": "d908bf7e3ddaa5b541eca4c02633be38cd150306aa6796564098e2cf36dbee8b",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "72-spongecase",
+      "source_sha256": "87c9b10f4468cddb41e212dab4dde80edf2e0402db4f74c0da56c06ff9c03889",
+      "expected_sha256": "672bd13bfedd139dfbcf76085f5d863579dd55f0034cb67cd2341e6394f126a0",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "76-tic-tac-toe",
+      "source_sha256": "a1b5d4d3d9d779b0b1f6ebfa8324de3b2c70cb06519862ccb1d93557675d7fda",
+      "expected_sha256": "c12e751ef74effeda8035b13f2ff09c1ba4ba176245311be420c1d505b33e010",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "77-tower-of-hanoi-puzzle",
+      "source_sha256": "e295308b68bd49d1abff5a839a7ecc881181e515e2ce38a783b285ac958a9aaf",
+      "expected_sha256": "4849c4fe75cd750055ed091da3d321704bb917e690e000ccb7eaa906f1722580",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "78-trick-questions",
+      "source_sha256": "c2efe0f89d1d48aec9a855330e394d541084af9518a22848f49bab5bfe69d1c5",
+      "expected_sha256": "7c566b1dfd01420a2f762d6843f2e30c0e80a76cebe40d0e15432968e2f07cf3",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "80-vigenere-cipher",
+      "source_sha256": "97c50f5b2226b6b40b7eebe5779107e7667d63186ed262e56dbbfc93c16e7763",
+      "expected_sha256": "98effd6fdf83dd1a4ae5cb91e2f14539f32f29139393e83673af83a3746e8bcc",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    },
+    {
+      "slug": "81-water-bucket-puzzle",
+      "source_sha256": "62bcf858b0bf3e2d8bb0b201e622c78bce1251f5c805a48abcb40c071c8768e5",
+      "expected_sha256": "dbdd5ee8bde5febef2fcb0a33b821f3408178c60adbb5dfbbf2e0957f91067d3",
+      "check": "Passed",
+      "pe_machine": "0xAA64",
+      "execution": "Passed",
+      "exact_stdout": "Passed"
+    }
+  ],
+  "regressions": [
+    {
+      "chapter": "72-spongecase",
+      "case": "U+212A stays unchanged and does not advance ASCII alternation",
+      "status": "Passed"
+    }
+  ],
+  "macos": "Not run for this documentation batch"
+}

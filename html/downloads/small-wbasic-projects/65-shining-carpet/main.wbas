@@ -1,0 +1,19 @@
+' Original WBasic teaching example inspired by Al Sweigart project 65.
+Procedure Repeat(piece As String, count As Integer) As String
+  Let line As String = ""
+  For index As Integer = 1 To count
+    line += piece
+  Next
+  Return line
+EndProcedure
+
+Procedure Main()
+  Let tile As Array Of String = ["/\\  /\\", "\\ \\/ /", " \\__/", "/ __ \\", "/ /  \\", "\\/"]
+  Let columns As Integer = 3
+  Let rows As Integer = 2
+  For y As Integer = 1 To rows
+    For Each piece As String In tile
+      PrintLn(Repeat(piece, columns))
+    Next
+  Next
+EndProcedure

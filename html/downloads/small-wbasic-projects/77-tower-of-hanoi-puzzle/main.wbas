@@ -1,0 +1,23 @@
+' Original WBasic teaching example inspired by Al Sweigart project 77.
+Procedure Move(disks As Integer, source As String, spare As String, target As String)
+  If disks = 0 Then
+    Return
+  EndIf
+  Move(disks - 1, source, target, spare)
+  PrintLn("disk " + disks.ToString() + ": " + source + " -> " + target)
+  Move(disks - 1, spare, source, target)
+EndProcedure
+
+Procedure Main()
+  Let disks As Integer = 3
+  If disks < 1 Or disks > 8 Then
+    PrintLn("choose 1..8 disks")
+    Return
+  EndIf
+  Move(disks, "A", "B", "C")
+  Let count As Integer = 1
+  For index As Integer = 1 To disks
+    count *= 2
+  Next
+  PrintLn("moves " + (count - 1).ToString())
+EndProcedure

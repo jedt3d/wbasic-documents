@@ -1,0 +1,28 @@
+Procedure Leet(message As String) As String
+  Let result As String = ""
+  For Each letter As String In message
+    Let lower As String = letter.ToLower()
+    If lower = "a" Then
+      result += "4"
+    ElseIf lower = "e" Then
+      result += "3"
+    ElseIf lower = "i" Then
+      result += "1"
+    ElseIf lower = "o" Then
+      result += "0"
+    ElseIf lower = "s" Then
+      result += "5"
+    ElseIf lower = "t" Then
+      result += "7"
+    Else
+      result += letter
+    EndIf
+  Next
+  Return result
+EndProcedure
+
+Procedure Main()
+  Let message As String = "WBasic is neat!"
+  PrintLn(message)
+  PrintLn(Leet(message))
+EndProcedure

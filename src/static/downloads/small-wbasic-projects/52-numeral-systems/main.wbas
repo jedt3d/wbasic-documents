@@ -1,0 +1,22 @@
+Procedure InBase(value As Integer, base As Integer) As String
+  Let digits As String = "0123456789ABCDEF"
+  If value < 0 Or base < 2 Or base > 16 Then
+    Return "invalid"
+  EndIf
+  If value = 0 Then
+    Return "0"
+  EndIf
+  Let remaining As Integer = value
+  Let result As String = ""
+  While remaining > 0
+    result = digits[remaining Mod base] + result
+    remaining = remaining Div base
+  EndWhile
+  Return result
+EndProcedure
+
+Procedure Main()
+  For number As Integer = 10 To 17
+    PrintLn(number.ToString() + " | " + InBase(number, 2) + " | " + InBase(number, 16))
+  Next
+EndProcedure

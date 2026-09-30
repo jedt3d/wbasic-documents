@@ -1,0 +1,22 @@
+Procedure Decode(message As String, key As Integer) As String
+  Let alphabet As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  Let result As String = ""
+  For Each letter As String In message
+    Let changed As String = letter
+    For position As Integer = 0 To alphabet.Length - 1
+      If letter = alphabet[position] Then
+        changed = alphabet[(position + 26 - key) Mod 26]
+        Break
+      EndIf
+    Next
+    result += changed
+  Next
+  Return result
+EndProcedure
+
+Procedure Main()
+  Let cipher As String = "PHHW DW QRRQ!"
+  For key As Integer = 0 To 25
+    PrintLn("key " + key.ToString() + ": " + Decode(cipher, key))
+  Next
+EndProcedure

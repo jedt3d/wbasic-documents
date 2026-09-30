@@ -1,0 +1,6 @@
+P1 pit 2 store 1
+P1 pit 0 store 1
+P2 pit 9 store 1
+P2 pit 7 store 1
+seeds 48
+stores 1:1

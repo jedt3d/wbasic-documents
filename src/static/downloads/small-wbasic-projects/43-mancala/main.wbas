@@ -1,0 +1,54 @@
+' Original WBasic teaching example inspired by Al Sweigart project 43.
+Procedure Main()
+  Let pits As Array Of Integer = [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0]
+  Let moves As Array Of Integer = [2, 0, 9, 7]
+  Let player As Integer = 0
+  For Each chosen As Integer In moves
+    Let first As Integer = 0
+    Let last As Integer = 5
+    Let ownStore As Integer = 6
+    Let otherStore As Integer = 13
+    If player = 1 Then
+      first = 7
+      last = 12
+      ownStore = 13
+      otherStore = 6
+    EndIf
+    If chosen < first Or chosen > last Then
+      PrintLn("invalid pit")
+      Return
+    EndIf
+    If pits[chosen] = 0 Then
+      PrintLn("empty pit")
+      Return
+    EndIf
+    Let seeds As Integer = pits[chosen]
+    pits[chosen] = 0
+    Let position As Integer = chosen
+    While seeds > 0
+      position = (position + 1) Mod 14
+      If position <> otherStore Then
+        pits[position] = pits[position] + 1
+        seeds -= 1
+      EndIf
+    EndWhile
+    If position >= first And position <= last And pits[position] = 1 Then
+      Let opposite As Integer = 12 - position
+      If pits[opposite] > 0 Then
+        pits[ownStore] = pits[ownStore] + pits[position] + pits[opposite]
+        pits[position] = 0
+        pits[opposite] = 0
+      EndIf
+    EndIf
+    PrintLn("P" + (player + 1).ToString() + " pit " + chosen.ToString() + " store " + pits[ownStore].ToString())
+    If position <> ownStore Then
+      player = 1 - player
+    EndIf
+  Next
+  Let total As Integer = 0
+  For Each seeds As Integer In pits
+    total += seeds
+  Next
+  PrintLn("seeds " + total.ToString())
+  PrintLn("stores " + pits[6].ToString() + ":" + pits[13].ToString())
+EndProcedure

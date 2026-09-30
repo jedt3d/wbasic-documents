@@ -1,0 +1,77 @@
+' Original WBasic teaching example inspired by Al Sweigart project 30.
+Procedure Four(board As Array Of String, row As Integer, col As Integer, mark As String) As Boolean
+  Let directions As Array Of (Array Of Integer) = [[0, 1], [1, 0], [1, 1], [1, -1]]
+  For Each direction As Array Of Integer In directions
+    Let count As Integer = 1
+    For step As Integer = 1 To 3
+      Let r As Integer = row + step * direction[0]
+      Let c As Integer = col + step * direction[1]
+      If r >= 0 And r < 6 And c >= 0 And c < 7 Then
+        If board[r * 7 + c] = mark Then
+          count += 1
+        Else
+          Break
+        EndIf
+      Else
+        Break
+      EndIf
+    Next
+    For step As Integer = 1 To 3
+      Let r As Integer = row - step * direction[0]
+      Let c As Integer = col - step * direction[1]
+      If r >= 0 And r < 6 And c >= 0 And c < 7 Then
+        If board[r * 7 + c] = mark Then
+          count += 1
+        Else
+          Break
+        EndIf
+      Else
+        Break
+      EndIf
+    Next
+    If count >= 4 Then
+      Return True
+    EndIf
+  Next
+  Return False
+EndProcedure
+
+Procedure Main()
+  Let board As Array Of String = []
+  For index As Integer = 0 To 41
+    board.Append(".")
+  Next
+  Let moves As Array Of Integer = [0, 1, 0, 1, 0, 1, 0]
+  Let mark As String = "X"
+  For Each col As Integer In moves
+    If col < 0 Or col >= 7 Then
+      PrintLn("invalid column")
+      Return
+    EndIf
+    Let row As Integer = 5
+    While row >= 0 And board[row * 7 + col] <> "."
+      row -= 1
+    EndWhile
+    If row < 0 Then
+      PrintLn("full column")
+      Return
+    EndIf
+    board[row * 7 + col] = mark
+    If Four(board, row, col, mark) Then
+      PrintLn(mark + " wins")
+      Break
+    EndIf
+    If mark = "X" Then
+      mark = "O"
+    Else
+      mark = "X"
+    EndIf
+  Next
+  For row As Integer = 0 To 5
+    Let line As String = ""
+    For col As Integer = 0 To 6
+      line += board[row * 7 + col]
+    Next
+    PrintLn(line)
+  Next
+EndProcedure
