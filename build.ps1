@@ -28,3 +28,5 @@ if ($LASTEXITCODE -ne 0) { throw 'Project-book verification failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'English-edition verification failed.' }
 & node (Join-Path $documentsRoot 'verify-release.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'Release footer verification failed.' }
+& node (Join-Path $documentsRoot 'verify-extension-guide.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'WBasic Extension guide verification failed.' }

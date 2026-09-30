@@ -1,0 +1,72 @@
+---
+title: "12 · Workflow ประจำวันและขอบเขต"
+description: "สรุปวงจรเขียน–ตรวจ–ทดสอบ–build และแยกสิ่งที่พร้อมใช้จากสิ่งที่ยัง Planned"
+weight: 12
+---
+
+เมื่อคุ้นกับเครื่องมือแล้ว workflow ประจำวันควรสั้นและคาดเดาได้
+
+## วงจรที่แนะนำ
+
+1. เปิด workspace แล้วตรวจ active project ใน WBasic Projects
+2. เขียน code โดยใช้ completion, hover และ signature help
+3. อ่าน live diagnostics ก่อนเพิ่ม workaround
+4. ใช้ definition/references เข้าใจผลกระทบก่อน rename
+5. Save แล้ว Check Project เมื่อแตะ manifest, module หรือ Import
+6. รัน case ที่เกี่ยวข้องใน Test Explorer
+7. Run Project ใน integrated terminal
+8. Build Development Debug ระหว่างพัฒนา
+9. รันทั้ง suite และ Build Development Release ก่อนส่ง review
+10. บันทึก compiler/extension revision ในหลักฐานที่ต้องทำซ้ำภายหลัง
+
+## Shortcut ทางความคิด
+
+| ต้องการ | เครื่องมือ |
+|---|---|
+| ดูว่าคำนี้คืออะไร | Hover |
+| ดูว่ารับ argument อะไร | Signature Help |
+| ไปยังที่ประกาศ | Go to Definition |
+| ดูผลกระทบ | Find All References |
+| เปลี่ยนชื่อข้ามไฟล์ | Rename Symbol |
+| ตรวจ unsaved source เดี่ยว | Check Active Source |
+| ตรวจ project/module จริง | Check Project |
+| รันโปรแกรม interactive | Run Project |
+| ตรวจพฤติกรรมเล็ก | Test Explorer |
+| ดู compiler ที่กำลังใช้ | Show Toolchain Status |
+
+## สิ่งที่พร้อมใน guide นี้
+
+- Source/manifest coloring และ Outline
+- Compiler-backed diagnostics และ project-aware LSP
+- Completion, hover, nested signature help และ workspace symbols
+- Cross-file definition/references และ validated rename
+- New Project, active project และ Projects view
+- Direct local-module dependency management
+- Check, Run, Development Build Debug/Release และ Tasks
+- Native Test Explorer และ bundled examples
+- Offline v0.3 specification
+
+## สิ่งที่ยัง Planned หรืออยู่นอกขอบเขต
+
+- Debug Adapter Protocol, breakpoint และ stepping
+- Compiler-backed formatter
+- General import/manifest code actions นอก keyword-case quick fix
+- Production entitlement และ clean-machine no-SDK distribution
+- Signing, notarization และ Marketplace publication
+- Linux ARM64 และ native x86_64 acceptance
+- WORM, WebView และภาษา/ไลบรารีเหนือ verified v0.3
+
+การไม่มี debugger ในรุ่นนี้ไม่ได้แปลว่า Run เป็นของชั่วคราว Run, Build และ Test ใช้
+compiler pipeline ที่ทดสอบร่วมกัน เพียงแต่การหยุดโปรแกรมทีละบรรทัดต้องรอ source-level
+debug contract ที่พิสูจน์ได้ก่อน
+
+## จบเล่มด้วยการฝึกหนึ่งรอบ
+
+Copy ตัวอย่าง `local-module-project`, เปลี่ยนชื่อ project, เพิ่ม procedure ภาษาไทย,
+ใช้ Rename ข้ามไฟล์, เพิ่ม test case, รัน Test Explorer แล้ว Build Development Release
+หากทุกขั้นผ่านโดยไม่เปิด terminal ภายนอก คุณได้ใช้เส้นทางหลักของ Extension ครบแล้ว
+
+อ่านต่อได้ที่ [คู่มือภาษา]({{< relref "/books/language-reference/_index.md" >}}),
+[ไลบรารีมาตรฐาน]({{< relref "/books/standard-library/_index.md" >}}) และ
+[คู่มือ API]({{< relref "/books/api-reference/_index.md" >}})
+

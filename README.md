@@ -16,7 +16,9 @@ The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
 API surface through the current R7 implementation. The English edition translates
 the reviewed Thai reference, design guide, and Small Wbasic Projects, alongside
-the existing bilingual Getting Started. Corresponding pages use the same path
+the existing bilingual Getting Started. The Thai-first **WBasic Extension Guide**
+documents the verified R8B development preview; its English edition will be added
+only after the Thai text is approved. Other corresponding pages use the same path
 and file name in `src/content/th` and `src/content/en`. Planned and Deferred
 capabilities retain their status in both languages.
 
@@ -46,9 +48,10 @@ macOS or Linux, from this repository root:
 ```
 
 Both scripts require the pinned Hugo version on `PATH`, rebuild `html/`, and run
-the generated-site verifier. To use a portable Hugo binary on Windows, pass its
-path with `-Hugo`. Run `node verify-source.mjs` to validate Markdown sources and
-their local links.
+the generated-site verifiers, including the Thai extension guide's chapter and
+replaceable-screenshot contract. To use a portable Hugo binary on Windows, pass
+its path with `-Hugo`. Run `node verify-source.mjs` to validate Markdown sources
+and their local links.
 
 For local authoring, run:
 

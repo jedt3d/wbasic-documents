@@ -1,0 +1,17 @@
+{{- $name := .Get "name" -}}
+{{- $alt := .Get "alt" -}}
+{{- $caption := .Get "caption" -}}
+{{- $source := printf "static/images/w-basic-extension/%s" $name -}}
+{{- $url := printf "images/w-basic-extension/%s" $name -}}
+<figure class="guide-screenshot">
+  {{ if fileExists $source }}
+    <img src="{{ $url | relURL }}" alt="{{ $alt }}" loading="lazy">
+  {{ else }}
+    <div class="guide-screenshot-placeholder" role="img" aria-label="{{ $alt }}">
+      <span>ตำแหน่งภาพประกอบ</span>
+      <strong><code>{{ $name }}</code></strong>
+      <p>{{ $alt }}</p>
+    </div>
+  {{ end }}
+  {{ with $caption }}<figcaption>{{ . }}</figcaption>{{ end }}
+</figure>

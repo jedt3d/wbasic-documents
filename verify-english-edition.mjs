@@ -14,10 +14,15 @@ function markdowns(directory, prefix = '') {
 }
 const thai = markdowns('src/content/th').sort();
 const english = markdowns('src/content/en').sort();
-assert.deepEqual(english, thai, 'every current Thai page has a corresponding English page');
+const thaiOnlyPrefixes = ['books/w-basic-extension/'];
+const thaiOnly = thai.filter(relative => thaiOnlyPrefixes.some(prefix => relative.startsWith(prefix)));
+const pairedThai = thai.filter(relative => !thaiOnlyPrefixes.some(prefix => relative.startsWith(prefix)));
+assert.deepEqual(english, pairedThai,
+  'every current page outside an explicitly Thai-first book has a corresponding English page');
+assert.equal(thaiOnly.length, 13, 'the Thai-first WBasic Extension Guide has its complete 12 chapters and index');
 const fences = text => [...text.matchAll(/^```[^\n]*\n[\s\S]*?^```/gm)].map(match => match[0]);
 let translated = 0;
-for (const relative of thai) {
+for (const relative of pairedThai) {
   const th = read(`src/content/th/${relative}`);
   const en = read(`src/content/en/${relative}`);
   assert.doesNotMatch(en, /@@FENCE\d+@@/, `${relative}: no temporary authoring tokens`);
@@ -85,6 +90,8 @@ assert.equal((roadmap.match(/\| Verification needed \|/g) ?? []).length, 47);
 assert.equal((roadmap.match(/\| Missing API \|/g) ?? []).length, 5);
 const thSearch = JSON.parse(read('html/th/index.json'));
 const enSearch = JSON.parse(read('html/en/index.json'));
-assert.equal(enSearch.length, thSearch.length, 'search coverage matches the Thai edition');
-assert.deepEqual(enSearch.map(item => item.url.replace('/en/', '/th/')).sort(), thSearch.map(item => item.url).sort(), 'search indexes contain corresponding pages');
-console.log(`PASS: ${english.length} paired pages; ${translated} translation code/weight/prose checks; ${plans} English plans; 29 native-evidence source/output hashes; same-chapter language switching.`);
+const pairedThaiSearch = thSearch.filter(item => !item.url.includes('/th/books/w-basic-extension/'));
+assert.equal(enSearch.length, pairedThaiSearch.length, 'English search coverage matches the paired Thai edition');
+assert.deepEqual(enSearch.map(item => item.url.replace('/en/', '/th/')).sort(),
+  pairedThaiSearch.map(item => item.url).sort(), 'search indexes contain corresponding paired pages');
+console.log(`PASS: ${english.length} paired pages; ${thaiOnly.length} Thai-first guide pages; ${translated} translation code/weight/prose checks; ${plans} English plans; 29 native-evidence source/output hashes; same-chapter language switching.`);

@@ -267,6 +267,13 @@ html[lang^="th"] .prose .identity-type-mono > p { font-family: var(--wb-font-mon
 .identity-brand-downloads { display: block; }
 .identity-brand-lockup { border-top: 1px solid var(--wb-sage); margin-top: 1.5rem !important; padding-top: 1.5rem; }
 .identity-brand-lockup img { display: block; height: auto; margin: 0 auto; max-width: 100%; width: 22rem; }
+.guide-screenshot { margin: 2rem 0; }
+.guide-screenshot img { border: 1px solid var(--wb-line); border-radius: var(--wb-radius); display: block; height: auto; width: 100%; }
+.guide-screenshot-placeholder { align-items: center; background: linear-gradient(135deg, var(--wb-sage), var(--wb-bg)); border: 2px dashed var(--wb-teal); border-radius: var(--wb-radius); display: flex; flex-direction: column; justify-content: center; min-height: 18rem; padding: 2rem; text-align: center; }
+.guide-screenshot-placeholder span { color: var(--wb-muted); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.guide-screenshot-placeholder strong { font-size: 1rem; margin-top: .75rem; }
+.guide-screenshot-placeholder p { margin: .75rem auto 0; max-width: 42rem; }
+.guide-screenshot figcaption { color: var(--wb-muted); font-size: .875rem; line-height: 1.6; margin-top: .65rem; }
 
 @media (max-width: 74rem) {
   :root { --right-width: 0px; }
