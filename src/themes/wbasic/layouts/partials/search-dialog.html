@@ -1,0 +1,17 @@
+<dialog class="search-dialog" data-search-dialog aria-labelledby="search-title">
+  <div class="search-panel">
+    <form method="dialog" class="search-heading">
+      <div>
+        <strong id="search-title">{{ i18n "search" }}</strong>
+        <small>{{ i18n "searchHint" }}</small>
+      </div>
+      <button class="search-close text-button" value="close">{{ i18n "close" }}</button>
+    </form>
+    <label class="search-field">
+      <input type="search" data-search-input autocomplete="off" placeholder="{{ i18n "searchPlaceholder" }}">
+      <kbd>Esc</kbd>
+    </label>
+    <div class="search-results" data-search-results aria-live="polite"></div>
+    <template data-search-empty><p class="search-empty">{{ i18n "noResults" }}</p></template>
+  </div>
+</dialog>

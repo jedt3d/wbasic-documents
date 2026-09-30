@@ -1,0 +1,23 @@
+[CmdletBinding()]
+param(
+    [string]$Hugo = 'hugo'
+)
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$documentsRoot = $PSScriptRoot
+$sourceRoot = Join-Path $documentsRoot 'src'
+$outputRoot = Join-Path $documentsRoot 'html'
+$requiredVersion = (Get-Content -LiteralPath (Join-Path $sourceRoot '.hugo-version') -Raw).Trim()
+
+$versionOutput = & $Hugo version
+if ($LASTEXITCODE -ne 0) { throw 'Unable to run Hugo.' }
+if ($versionOutput -notmatch "hugo v$([regex]::Escape($requiredVersion))(?:\D|$)") {
+    throw "Hugo $requiredVersion is required; observed: $versionOutput"
+}
+
+& $Hugo --source $sourceRoot --destination $outputRoot --cleanDestinationDir --gc --minify
+if ($LASTEXITCODE -ne 0) { throw 'Hugo build failed.' }
+
+& node (Join-Path $documentsRoot 'verify-site.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Generated-site verification failed.' }

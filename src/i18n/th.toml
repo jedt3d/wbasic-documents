@@ -1,0 +1,46 @@
+[chapters]
+other = "หนังสือและบท"
+[onThisPage]
+other = "หัวข้อในหน้านี้"
+[search]
+other = "ค้นหา"
+[searchPlaceholder]
+other = "ค้นหาในคู่มือ WBasic"
+[searchHint]
+other = "ค้นหาจากชื่อและเนื้อหาอ้างอิง"
+[noResults]
+other = "ไม่พบหน้าอ้างอิงที่ตรงกัน"
+[theme]
+other = "สลับธีมสี"
+[themeShort]
+other = "ธีม"
+[menu]
+other = "เปิดเมนูหนังสือ"
+[menuShort]
+other = "เมนู"
+[reference]
+other = "คู่มือภาษา"
+[library]
+other = "ไลบรารี"
+[api]
+other = "API"
+[readBook]
+other = "เปิดหนังสือ"
+[draftNotice]
+other = "โครงคู่มือสำหรับพฤติกรรม WBasic v0.3 ที่ตรวจสอบแล้ว"
+[skipToContent]
+other = "ข้ามไปยังเนื้อหา"
+[primaryNavigation]
+other = "เมนูหลัก"
+[language]
+other = "ภาษา"
+[close]
+other = "ปิด"
+[chapterNavigation]
+other = "ไปบทก่อนหน้าหรือบทถัดไป"
+[previousChapter]
+other = "บทก่อนหน้า"
+[nextChapter]
+other = "บทถัดไป"
+[breadcrumb]
+other = "เส้นทางของหน้า"

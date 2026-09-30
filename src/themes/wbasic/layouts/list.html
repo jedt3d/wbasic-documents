@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <article class="reference-article">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="eyebrow">{{ i18n "draftNotice" }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="prose">{{ .Content }}</div>
+    {{ if .Pages }}
+      <div class="chapter-list">
+        {{ range .Pages.ByWeight }}
+          <a href="{{ .RelPermalink }}" class="chapter-row">
+            <span class="chapter-number">{{ printf "%02d" .Weight }}</span>
+            <span>
+              <strong>{{ .Title }}</strong>
+              {{ with .Description }}<small>{{ . }}</small>{{ end }}
+            </span>
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </article>
+{{ end }}

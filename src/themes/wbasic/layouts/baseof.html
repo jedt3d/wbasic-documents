@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Locale }}" data-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{- $styles := resources.Get "css/site.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+    <script>
+      (() => {
+        const saved = localStorage.getItem('wbasic-theme');
+        const theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body class="wb" data-search-index="{{ "index.json" | relLangURL }}">
+    <a class="skip-link" href="#main-content">{{ i18n "skipToContent" }}</a>
+    {{ partial "header.html" . }}
+    <div class="reference-layout">
+      {{ partial "book-navigation.html" . }}
+      <main class="reference-main" id="main-content">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "page-navigation.html" . }}
+    </div>
+    <div class="sidebar-scrim" data-nav-close></div>
+    {{ partial "search-dialog.html" . }}
+    {{- $script := resources.Get "js/site.js" | minify | fingerprint }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+  </body>
+</html>

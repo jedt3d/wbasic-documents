@@ -1,0 +1,21 @@
+{{ define "main" }}
+  <article class="reference-article reference-home">
+    <p class="eyebrow">{{ i18n "draftNotice" }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="prose">{{ .Content }}</div>
+    {{ $books := .Site.GetPage "/books" }}
+    {{ with $books }}
+      <div class="book-grid">
+        {{ range .Sections.ByWeight }}
+          <a class="book-card" href="{{ .RelPermalink }}">
+            <span class="book-card-number">{{ printf "%02d" .Weight }}</span>
+            <span class="book-card-title">{{ .Title }}</span>
+            <span class="book-card-summary">{{ .Description }}</span>
+            <span class="book-card-link">{{ i18n "readBook" }}</span>
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+  </article>
+{{ end }}

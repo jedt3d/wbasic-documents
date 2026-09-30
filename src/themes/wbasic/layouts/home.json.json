@@ -1,0 +1,12 @@
+[
+{{- $pages := .Site.RegularPages.ByTitle -}}
+{{- range $index, $page := $pages -}}
+  {{- if $index }},{{ end }}
+  {
+    "title": {{ $page.Title | jsonify }},
+    "summary": {{ $page.Plain | htmlUnescape | strings.Truncate 240 | jsonify }},
+    "url": {{ $page.RelPermalink | jsonify }},
+    "book": {{ $page.CurrentSection.Title | jsonify }}
+  }
+{{- end }}
+]

@@ -1,0 +1,4 @@
+name = 'Wbasic'
+license = 'Proprietary'
+description = 'Default bilingual reference theme built from the Wbasic design system'
+min_version = '0.167.0'

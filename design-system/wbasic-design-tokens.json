@@ -1,0 +1,218 @@
+{
+  "name": "Wbasic",
+  "version": "1.0.0",
+  "schemaDescription": "Custom design-token reference. Semantic color values reference keys in color; type families reference keys in font. Sizes are CSS strings; lineHeight is a unitless multiplier. Not a theme-specific import format.",
+  "color": {
+    "charcoal": "#26343D",
+    "teal": "#237F83",
+    "mist": "#F3F6F4",
+    "sage": "#B9CEC4",
+    "sand": "#D9C5A4"
+  },
+  "semantic": {
+    "light": {
+      "canvas": "mist",
+      "text": "charcoal",
+      "panel": "sage",
+      "linkText": "charcoal",
+      "linkUnderline": "teal",
+      "focusOnCanvas": "teal",
+      "noteBackground": "sand",
+      "noteText": "charcoal",
+      "codeBackground": "charcoal",
+      "codeText": "mist"
+    },
+    "dark": {
+      "canvas": "charcoal",
+      "text": "mist",
+      "panel": "charcoal",
+      "linkText": "mist",
+      "linkUnderline": "sage",
+      "focusOnCanvas": "sage",
+      "noteBackground": "sand",
+      "noteText": "charcoal",
+      "codeBackground": "charcoal",
+      "codeText": "mist"
+    }
+  },
+  "font": {
+    "sans": {
+      "family": "IBM Plex Sans",
+      "fallback": [
+        "system-ui",
+        "sans-serif"
+      ],
+      "normalWeights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "italicWeights": [
+        400
+      ]
+    },
+    "thaiReading": {
+      "family": "IBM Plex Sans Thai Looped",
+      "fallback": [
+        "IBM Plex Sans",
+        "IBM Plex Sans Thai",
+        "Noto Sans Thai",
+        "system-ui",
+        "sans-serif"
+      ],
+      "normalWeights": [
+        400,
+        600,
+        700
+      ],
+      "unicodeRange": "U+0E00-0E7F",
+      "scope": "Thai glyphs in lead and paragraph text on Thai pages"
+    },
+    "mono": {
+      "family": "IBM Plex Mono",
+      "fallback": [
+        "Consolas",
+        "monospace"
+      ],
+      "normalWeights": [
+        400,
+        500
+      ],
+      "italicWeights": [
+        400
+      ]
+    }
+  },
+  "type": {
+    "wordmark": {
+      "family": "sans",
+      "weight": 600,
+      "size": "1.75rem",
+      "lineHeight": 1.2,
+      "letterSpacing": "-0.035em"
+    },
+    "display": {
+      "family": "sans",
+      "weight": 600,
+      "size": "clamp(3rem, 8vw, 6rem)",
+      "lineHeight": 1.02,
+      "letterSpacing": "-0.045em"
+    },
+    "h1": {
+      "family": "sans",
+      "weight": 600,
+      "size": "clamp(2.25rem, 5vw, 3.25rem)",
+      "lineHeight": 1.2,
+      "letterSpacing": "-0.02em"
+    },
+    "h2": {
+      "family": "sans",
+      "weight": 600,
+      "size": "1.75rem",
+      "lineHeight": 1.2,
+      "letterSpacing": "-0.02em"
+    },
+    "h3": {
+      "family": "sans",
+      "weight": 600,
+      "size": "1.25rem",
+      "lineHeight": 1.2,
+      "letterSpacing": "-0.02em"
+    },
+    "lead": {
+      "family": "sans",
+      "weight": 400,
+      "size": "1.375rem",
+      "lineHeight": 1.5,
+      "letterSpacing": "normal"
+    },
+    "body": {
+      "family": "sans",
+      "weight": 400,
+      "size": "1.125rem",
+      "lineHeight": 1.65,
+      "letterSpacing": "normal"
+    },
+    "thaiReadingParagraph": {
+      "family": "thaiReading",
+      "weight": 400,
+      "size": "1.125rem",
+      "lineHeight": 1.65,
+      "letterSpacing": "normal",
+      "appliesWhen": "document language starts with th; lead and paragraph elements only"
+    },
+    "navigation": {
+      "family": "sans",
+      "weight": 500,
+      "size": ".9375rem",
+      "lineHeight": 1.5,
+      "letterSpacing": "normal"
+    },
+    "button": {
+      "family": "sans",
+      "weight": 500,
+      "size": "1rem",
+      "lineHeight": 1.4,
+      "letterSpacing": "normal"
+    },
+    "table": {
+      "family": "sans",
+      "weight": 400,
+      "size": "1rem",
+      "lineHeight": 1.65,
+      "letterSpacing": "normal"
+    },
+    "metadata": {
+      "family": "sans",
+      "weight": 400,
+      "size": ".875rem",
+      "lineHeight": 1.5,
+      "letterSpacing": "normal"
+    },
+    "label": {
+      "family": "sans",
+      "weight": 500,
+      "size": ".75rem",
+      "lineHeight": 1.5,
+      "letterSpacing": ".12em"
+    },
+    "code": {
+      "family": "mono",
+      "weight": 400,
+      "size": ".9375rem",
+      "lineHeight": 1.65,
+      "letterSpacing": "normal"
+    }
+  },
+  "layout": {
+    "readingMeasure": "68ch",
+    "leadMeasure": "55ch",
+    "spacing": [
+      ".25rem",
+      ".5rem",
+      "1rem",
+      "1.5rem",
+      "2rem",
+      "3rem"
+    ],
+    "radius": ".375rem",
+    "stackNavigationBelow": "760px"
+  },
+  "syntax": {
+    "background": "charcoal",
+    "default": "mist",
+    "keyword": "sage",
+    "operator": "sage",
+    "comment": "sage",
+    "string": "sand",
+    "number": "sand"
+  },
+  "accessibility": {
+    "focusWidth": "3px",
+    "focusOffset": "4px",
+    "focusOnSageOrSand": "charcoal",
+    "focusOnCharcoal": "sage",
+    "tealSmallTextOnMist": false
+  }
+}

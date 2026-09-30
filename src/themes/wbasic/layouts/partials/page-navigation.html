@@ -1,0 +1,8 @@
+<aside class="page-navigation" aria-label="{{ i18n "onThisPage" }}">
+  <h2>{{ i18n "onThisPage" }}</h2>
+  {{ if .Fragments.Headings }}
+    {{ .Fragments.ToHTML 2 3 false }}
+  {{ else }}
+    <p class="toc-empty">{{ .Title }}</p>
+  {{ end }}
+</aside>

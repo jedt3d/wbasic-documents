@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <article class="reference-article">
+    {{ partial "breadcrumbs.html" . }}
+    <p class="eyebrow">{{ with .CurrentSection }}{{ .Title }}{{ end }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="lead">{{ . }}</p>{{ end }}
+    <div class="prose">{{ .Content }}</div>
+    {{ partial "chapter-pager.html" . }}
+  </article>
+{{ end }}

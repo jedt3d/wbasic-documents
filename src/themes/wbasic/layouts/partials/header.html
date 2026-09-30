@@ -1,0 +1,27 @@
+<header class="site-header">
+  <a class="brand" href="{{ .Site.Home.RelPermalink }}" aria-label="{{ .Site.Title }}">
+    <span>Wbasic<span class="brand-signature" aria-hidden="true">.</span></span>
+  </a>
+
+  <nav class="top-links" aria-label="{{ i18n "primaryNavigation" }}">
+    {{ with .Site.GetPage "/books/language-reference" }}<a href="{{ .RelPermalink }}">{{ i18n "reference" }}</a>{{ end }}
+    {{ with .Site.GetPage "/books/standard-library" }}<a href="{{ .RelPermalink }}">{{ i18n "library" }}</a>{{ end }}
+    {{ with .Site.GetPage "/books/api-reference" }}<a href="{{ .RelPermalink }}">{{ i18n "api" }}</a>{{ end }}
+  </nav>
+
+  <div class="header-actions">
+    <button class="mobile-menu-button text-button" type="button" data-nav-open aria-label="{{ i18n "menu" }}" aria-expanded="false">{{ i18n "menuShort" }}</button>
+    <button class="search-button" type="button" data-search-open>
+      <span>{{ i18n "search" }}</span>
+      <kbd>Ctrl K</kbd>
+    </button>
+    <label class="language-control" aria-label="{{ i18n "language" }}">
+      <select data-language-switcher>
+        {{ range .Site.Home.AllTranslations }}
+          <option value="{{ .RelPermalink }}" {{ if eq .Language.Lang $.Language.Lang }}selected{{ end }}>{{ .Language.Label }}</option>
+        {{ end }}
+      </select>
+    </label>
+    <button class="theme-button text-button" type="button" data-theme-toggle aria-label="{{ i18n "theme" }}">{{ i18n "themeShort" }}</button>
+  </div>
+</header>

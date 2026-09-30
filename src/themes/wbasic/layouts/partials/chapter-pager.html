@@ -1,0 +1,16 @@
+{{ $pages := .CurrentSection.RegularPages.ByWeight }}
+{{ $current := . }}
+{{ $previous := false }}
+{{ $next := false }}
+{{ range $index, $page := $pages }}
+  {{ if eq $page.RelPermalink $current.RelPermalink }}
+    {{ if gt $index 0 }}{{ $previous = index $pages (sub $index 1) }}{{ end }}
+    {{ if lt (add $index 1) (len $pages) }}{{ $next = index $pages (add $index 1) }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ if or $previous $next }}
+  <nav class="chapter-pager" aria-label="{{ i18n "chapterNavigation" }}">
+    {{ with $previous }}<a class="previous" href="{{ .RelPermalink }}"><small>{{ i18n "previousChapter" }}</small><strong>{{ .Title }}</strong></a>{{ else }}<span></span>{{ end }}
+    {{ with $next }}<a class="next" href="{{ .RelPermalink }}"><small>{{ i18n "nextChapter" }}</small><strong>{{ .Title }}</strong></a>{{ end }}
+  </nav>
+{{ end }}

@@ -1,0 +1,46 @@
+[chapters]
+other = "Books & chapters"
+[onThisPage]
+other = "On this page"
+[search]
+other = "Search"
+[searchPlaceholder]
+other = "Search the WBasic reference"
+[searchHint]
+other = "Search titles and reference text"
+[noResults]
+other = "No matching reference pages."
+[theme]
+other = "Switch color theme"
+[themeShort]
+other = "Theme"
+[menu]
+other = "Open book navigation"
+[menuShort]
+other = "Menu"
+[reference]
+other = "Reference"
+[library]
+other = "Library"
+[api]
+other = "API"
+[readBook]
+other = "Open book"
+[draftNotice]
+other = "Reference shell for verified WBasic v0.3 behavior"
+[skipToContent]
+other = "Skip to content"
+[primaryNavigation]
+other = "Primary navigation"
+[language]
+other = "Language"
+[close]
+other = "Close"
+[chapterNavigation]
+other = "Previous or next chapter"
+[previousChapter]
+other = "Previous chapter"
+[nextChapter]
+other = "Next chapter"
+[breadcrumb]
+other = "Breadcrumb"

@@ -1,0 +1,22 @@
+{{ $current := . }}
+<aside class="book-navigation" data-book-navigation aria-label="{{ i18n "chapters" }}">
+  <div class="book-navigation-header">
+    <span>{{ i18n "chapters" }}</span>
+    <button type="button" class="nav-close text-button" data-nav-close>{{ i18n "close" }}</button>
+  </div>
+  {{ with .Site.GetPage "/books" }}
+    {{ range .Sections.ByWeight }}
+      {{ $book := . }}
+      <section class="book-group">
+        <a class="book-title{{ if or (eq $current.RelPermalink .RelPermalink) (hasPrefix $current.RelPermalink .RelPermalink) }} is-current{{ end }}" href="{{ .RelPermalink }}">
+          <span>{{ .Title }}</span>
+        </a>
+        <ol>
+          {{ range .RegularPages.ByWeight }}
+            <li><a {{ if eq $current.RelPermalink .RelPermalink }}class="is-active" aria-current="page"{{ end }} href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+          {{ end }}
+        </ol>
+      </section>
+    {{ end }}
+  {{ end }}
+</aside>
