@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`check` ตรวจ source; `run` คอมไพล์ ลิงก์ และรัน ถ้าสร้าง `wb` จาก checkout ผลิตภัณฑ์ ให้รัน `cargo build --workspace --locked` ที่รากคลังนั้นก่อน ปัจจุบันคำสั่ง `wb build` สำหรับสร้างไฟล์แจกจ่ายยังไม่เปิดให้ใช้
+`check` ตรวจ source; `run` คอมไพล์ ลิงก์ และรัน ถ้าสร้าง `wb` จาก checkout ผลิตภัณฑ์ ให้รัน `cargo build --workspace --locked` ที่รากคลังนั้นก่อน หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK
 
 ผลลัพธ์ระบุทั้งดัชนีและค่า จึงใช้ตรวจการเลื่อนค่าทีละรอบได้:
 

@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`run` compiles and links before executing. If you built the WBasic tools from the product repository, first run `cargo build --workspace --locked` at its root. This example does not use `wb build`, which is not yet a user command. Some rows have leading and trailing spaces; preserve them when checking the shape:
+`run` compiles and links before executing. If you built the WBasic tools from the product repository, first run `cargo build --workspace --locked` at its root. The recorded examples use compiler `2614b37`. The newer R8A/R8B line supports `wb build` for development with a native SDK; this is not production/no-SDK distribution acceptance. Some rows have leading and trailing spaces; preserve them when checking the shape:
 
 ```text
 Bitmap message: HI

@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-01",
+  "compilerSource": "2614b37d681631542de25ffac1d6e6b08d41fcb8",
+  "compilerSha256": "b20a395f5964f505b6046a9a56967707105089a96f17f731da05725cdce69113",
+  "command": "wb check <draft-copy.wbas> --json",
+  "scope": "Source acceptance only; native execution and lesson acceptance not run",
+  "cases": [
+    {
+      "slug": "08-calendar-maker",
+      "sourceSha256": "f4b548425612b93cc8a66f3a04328abf43b045720bd5fa9f5738bd38dfe83e4c",
+      "exitCode": 0,
+      "accepted": true,
+      "diagnostics": []
+    },
+    {
+      "slug": "13-conway-s-game-of-life",
+      "sourceSha256": "7ca71dfbb625e5bbc826590a9f4712a897d65280c3e58b42ae5c916b7c501e51",
+      "exitCode": 0,
+      "accepted": true,
+      "diagnostics": []
+    },
+    {
+      "slug": "73-sudoku-puzzle",
+      "sourceSha256": "e384a5e75a0531eaac423d07128ec56e51bcb8e72a71a05c8c681103b0f494fe",
+      "exitCode": 0,
+      "accepted": true,
+      "diagnostics": []
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+' Draft for discussion; not verified or accepted as a runnable example.
+' A false border outside the array is permanently dead.
+Procedure AliveAt(grid As Array Of (Array Of Boolean), row As Integer, col As Integer) As Integer
+  If row < 0 Or row >= grid.Length Then
+    Return 0
+  EndIf
+  If col < 0 Or col >= grid[row].Length Then
+    Return 0
+  EndIf
+  If grid[row][col] Then
+    Return 1
+  EndIf
+  Return 0
+EndProcedure
+
+Procedure NeighborCount(grid As Array Of (Array Of Boolean), row As Integer, col As Integer) As Integer
+  Let count As Integer = 0
+  For dr As Integer = -1 To 1
+    For dc As Integer = -1 To 1
+      If dr <> 0 Or dc <> 0 Then
+        count += AliveAt(grid, row + dr, col + dc)
+      EndIf
+    Next
+  Next
+  Return count
+EndProcedure
+
+Procedure NextGeneration(grid As Array Of (Array Of Boolean)) As Array Of (Array Of Boolean)
+  Let next As Array Of (Array Of Boolean) = []
+  For row As Integer = 0 To grid.Length - 1
+    Let nextRow As Array Of Boolean = []
+    For col As Integer = 0 To grid[row].Length - 1
+      Let neighbors As Integer = NeighborCount(grid, row, col)
+      Let lives As Boolean = neighbors = 3 Or (grid[row][col] And neighbors = 2)
+      nextRow.Append(lives)
+    Next
+    next.Append(nextRow)
+  Next
+  Return next
+EndProcedure
+
+Procedure PrintGrid(grid As Array Of (Array Of Boolean))
+  For row As Integer = 0 To grid.Length - 1
+    Let line As String = ""
+    For col As Integer = 0 To grid[row].Length - 1
+      If grid[row][col] Then
+        line += "#"
+      Else
+        line += "."
+      EndIf
+    Next
+    PrintLn(line)
+  Next
+EndProcedure
+
+Procedure Main()
+  Let current As Array Of (Array Of Boolean) = [
+    [False, False, False, False, False],
+    [False, False, False, False, False],
+    [False, True, True, True, False],
+    [False, False, False, False, False],
+    [False, False, False, False, False]
+  ]
+  PrintLn("generation 0")
+  PrintGrid(current)
+  Let next As Array Of (Array Of Boolean) = NextGeneration(current)
+  PrintLn("generation 1")
+  PrintGrid(next)
+EndProcedure

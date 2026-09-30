@@ -26,6 +26,14 @@
   `build.sh` on macOS/Linux; both rebuild `html/` and run `verify-site.mjs`.
 - Run `node verify-source.mjs` before committing to validate UTF-8, Markdown
   fences and local links.
+- Small Projects may contain `draft.wbas.txt` sketches inside Planned lessons.
+  Keep source-check evidence separate from native execution and lesson acceptance;
+  do not rename a draft to `main.wbas` or increase verified counts on source
+  acceptance alone. Preserve Thai/English code and download parity.
+- Library requests use stable `SWP-FR-*` IDs in the language repository's
+  `docs/proposals/small-projects-library-feature-requests.md`. Consult the relevant
+  entry before expanding an affected lesson; Proposed API sketches are not
+  supported WBasic or implementation approval.
 
 ## Publishing
 

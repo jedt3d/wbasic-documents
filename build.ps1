@@ -30,3 +30,5 @@ if ($LASTEXITCODE -ne 0) { throw 'English-edition verification failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'Release footer verification failed.' }
 & node (Join-Path $documentsRoot 'verify-extension-guide.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'WBasic Extension guide verification failed.' }
+& node (Join-Path $documentsRoot 'verify-project-drafts.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Draft-project verification failed.' }

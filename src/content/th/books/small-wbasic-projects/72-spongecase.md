@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`run` คอมไพล์ ลิงก์ แล้วรัน หากสร้าง `wb` จาก checkout ของ WBasic เอง ให้ใช้ `cargo build --workspace --locked` ที่รากคลังก่อน `wb build` ยังไม่ใช่คำสั่งผู้ใช้ ผลที่ควรได้คือ:
+`run` คอมไพล์ ลิงก์ แล้วรัน หากสร้าง `wb` จาก checkout ของ WBasic เอง ให้ใช้ `cargo build --workspace --locked` ที่รากคลังก่อน หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK ผลที่ควรได้คือ:
 
 ```text
 WBasic is fun!

@@ -68,6 +68,16 @@ Every push to `main` runs `.github/workflows/pages.yml`: it verifies Markdown,
 builds the pinned Hugo source, verifies the generated site, and deploys `html/`
 through GitHub Pages.
 
+## Draft lessons and library requests
+
+Small Projects chapters 8, 13 and 73 include source-checked draft programs in
+`draft.wbas.txt`; they remain outside the 29 native-verified examples. The
+[draft source-check record](evidence/small-projects-drafts-source-check.json)
+and [editorial review](evidence/small-projects-drafts-editorial-review.md)
+state the limits. The companion library proposal and AGENTS discovery rules are
+recorded in the language repository at commit `2188ca6`; all five `SWP-FR-*`
+requests remain Proposed. No language implementation is included in this work.
+
 ## Versioned publication
 
 Each publication uses a new `docs-vYYYY.MM.DD.N` version (daily sequence starting

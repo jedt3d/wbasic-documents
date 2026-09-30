@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`check` checks source; `run` compiles, links, and runs. If building `wb` from a product checkout, first run `cargo build --workspace --locked` at its root. The distributable-file command `wb build` is not yet available to users.
+`check` checks source; `run` compiles, links, and runs. If building `wb` from a product checkout, first run `cargo build --workspace --locked` at its root. The recorded examples use compiler `2614b37`. The newer R8A/R8B line supports `wb build` for development with a native SDK; this is not production/no-SDK distribution acceptance.
 
 Indices and values appear together so each step can be checked:
 

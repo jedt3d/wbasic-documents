@@ -1,0 +1,74 @@
+' Draft for discussion; not verified or accepted as a runnable example.
+' Zero represents an empty cell. This checks legality, not solvability.
+Procedure ValidGroup(values As Array Of Integer) As Boolean
+  Let seen As Array Of Boolean = [False, False, False, False, False, False, False, False, False, False]
+  For i As Integer = 0 To values.Length - 1
+    Let value As Integer = values[i]
+    If value < 0 Or value > 9 Then
+      Return False
+    EndIf
+    If value > 0 Then
+      If seen[value] Then
+        Return False
+      EndIf
+      seen[value] = True
+    EndIf
+  Next
+  Return True
+EndProcedure
+
+Procedure ValidBoard(board As Array Of (Array Of Integer)) As Boolean
+  If board.Length <> 9 Then
+    Return False
+  EndIf
+  For row As Integer = 0 To 8
+    If board[row].Length <> 9 Then
+      Return False
+    EndIf
+  Next
+  For row As Integer = 0 To 8
+    If Not ValidGroup(board[row]) Then
+      Return False
+    EndIf
+    Let column As Array Of Integer = []
+    For col As Integer = 0 To 8
+      column.Append(board[col][row])
+    Next
+    If Not ValidGroup(column) Then
+      Return False
+    EndIf
+  Next
+  For boxRow As Integer = 0 To 2
+    For boxCol As Integer = 0 To 2
+      Let box As Array Of Integer = []
+      For dr As Integer = 0 To 2
+        For dc As Integer = 0 To 2
+          box.Append(board[boxRow * 3 + dr][boxCol * 3 + dc])
+        Next
+      Next
+      If Not ValidGroup(box) Then
+        Return False
+      EndIf
+    Next
+  Next
+  Return True
+EndProcedure
+
+Procedure Main()
+  Let board As Array Of (Array Of Integer) = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+  ]
+  If ValidBoard(board) Then
+    PrintLn("legal so far")
+  Else
+    PrintLn("invalid board")
+  EndIf
+EndProcedure

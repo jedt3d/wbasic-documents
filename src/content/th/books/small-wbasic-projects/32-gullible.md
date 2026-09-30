@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`run` คอมไพล์ ลิงก์ และรัน หากสร้างชุดเครื่องมือจาก checkout WBasic เอง ใช้ `cargo build --workspace --locked` ที่รากคลังผลิตภัณฑ์ก่อน คำสั่ง `wb build` ยังไม่เปิดใช้สำหรับผู้ใช้ ผลของบทสนทนาจำลองคือ:
+`run` คอมไพล์ ลิงก์ และรัน หากสร้างชุดเครื่องมือจาก checkout WBasic เอง ใช้ `cargo build --workspace --locked` ที่รากคลังผลิตภัณฑ์ก่อน หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK ผลของบทสนทนาจำลองคือ:
 
 ```text
 Want the secret? (scripted answers)

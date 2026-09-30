@@ -35,6 +35,10 @@ Placeholder chapters show their status before the lesson and provide a downloada
 
 ## How lessons are checked
 
+The October 1, 2026 expansion adds detailed lessons and draft code to chapter 8 (a calendar from a supplied year/month), 13 (one Game of Life generation), and 73 (a Sudoku validator). Each `draft.wbas.txt` is for reading and further checking, not a program with verified execution. All three remain among the 52 planned chapters; the verified-example count stays at 29. Sudoku solving, random puzzle generation, and interactive TUI work remain unfinished.
+
+Library requests live separately in the `wbasic-language` repository at `docs/proposals/small-projects-library-feature-requests.md`. Stable `SWP-FR-*` IDs connect a lesson's needs to a proposal. An ID does not mean the API exists or its implementation has been approved.
+
 Every chapter with code includes expected results, input boundaries, and changes to try. Checking source and executing it are separate steps. The compiler and results are recorded in the [verification record]({{< relref "verification.md" >}}). Platform claims follow that evidence; success on one machine does not establish success everywhere.
 
 Project numbers and source links identify the inspiration. The WBasic code and explanations are newly written. The downloads do not reproduce the original book's prose, images, or Python source collection.

@@ -5,7 +5,17 @@ weight: 100
 
 This page separates the book's status from the product's acceptance status. Adding a lesson does not turn a Planned or Deferred compiler/runtime capability into Passed.
 
+## October 1, 2026 draft expansion
+
+Chapters 8, 13, and 73 add `draft.wbas.txt` sketches with data, algorithms, and expected acceptance cases. They are not native execution evidence or Passed lessons. Documentation checks compare displayed drafts with their downloads and keep English code identical to Thai. The 29 native results below remain the original run using compiler `2614b37`; they do not apply to these three drafts.
+
+The R8A/R8B line adds `wb build` for Development Build with a native SDK. The book now states its compiler baseline rather than claiming that no version has this command. Updating the prose is not a new run of every example against that compiler line and does not establish production/no-SDK distribution acceptance.
+
 ## How examples are checked
+
+All three drafts passed `wb check --json` using compiler `2614b37`, whose hash matches the compiler in the earlier evidence: accepted true, no diagnostics, and exit code 0 for each file. This establishes source acceptance only, not linking, native execution, or the chapter's acceptance cases.
+
+{{< project-download "_evidence" "drafts-source-check.json" >}}
 
 The documentation repository's `verify-small-projects.mjs` checks downloadable source with `wb check --json`, emits an object, and links it with the matching static runtime. It reads the PE machine field to confirm ARM64, then executes the program and compares standard output with the author's expected result. Spaces and line order must match exactly; only system newline conventions may differ.
 
@@ -25,7 +35,7 @@ These examples were tested on Windows ARM64 with a developer toolchain. This was
 
 ## Chapters that remain planned
 
-Chapters with only a plan (`PLAN.md` in Thai and `PLAN.en.md` in English) have no executable to test and are not counted among executed examples. Missing API lists refer to the public surface at the recorded revision. Alternatives such as a handwritten PRNG or sine lookup table need their own evidence before a chapter can become runnable.
+Of the 52 planned chapters, 49 have only plans and three also have a `draft.wbas.txt` sketch. None has passed lesson execution gates, so all remain outside the verified-example count. Missing API lists refer to the public surface at the recorded revision. Alternatives such as a handwritten PRNG or sine lookup table need their own evidence before a chapter can become runnable.
 
 TUI work additionally needs tests of events, terminal-mode restoration, and behavior on real hosts. A static picture printed to stdout does not verify animation, and a safe timeout does not establish a capability that remains Deferred.
 

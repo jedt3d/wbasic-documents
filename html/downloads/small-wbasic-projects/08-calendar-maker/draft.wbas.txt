@@ -1,0 +1,67 @@
+' Draft for discussion; not verified or accepted as a runnable example.
+' Change these two values to supply a year and month.
+Procedure IsLeap(year As Integer) As Boolean
+  Return year Mod 400 = 0 Or (year Mod 4 = 0 And year Mod 100 <> 0)
+EndProcedure
+
+Procedure DaysInMonth(year As Integer, month As Integer) As Integer
+  If month = 2 Then
+    If IsLeap(year) Then
+      Return 29
+    EndIf
+    Return 28
+  EndIf
+  If month = 4 Or month = 6 Or month = 9 Or month = 11 Then
+    Return 30
+  EndIf
+  Return 31
+EndProcedure
+
+' Monday is column 0. Gregorian 0001-01-01 is Monday.
+Procedure FirstWeekday(year As Integer, month As Integer) As Integer
+  Let previous As Integer = year - 1
+  Let days As Integer = previous * 365 + previous Div 4 - previous Div 100 + previous Div 400
+  For m As Integer = 1 To month - 1
+    days += DaysInMonth(year, m)
+  Next
+  Return days Mod 7
+EndProcedure
+
+Procedure Cell(day As Integer) As String
+  If day < 10 Then
+    Return " " + day.ToString() + " "
+  EndIf
+  Return day.ToString() + " "
+EndProcedure
+
+Procedure PrintCalendar(year As Integer, month As Integer)
+  If year < 1 Or year > 9999 Or month < 1 Or month > 12 Then
+    PrintLn("year must be 1..9999; month must be 1..12")
+    Return
+  EndIf
+  PrintLn(year.ToString() + "-" + month.ToString())
+  PrintLn("Mo Tu We Th Fr Sa Su")
+  Let column As Integer = FirstWeekday(year, month)
+  Let line As String = ""
+  For blank As Integer = 1 To column
+    line += "   "
+  Next
+  For day As Integer = 1 To DaysInMonth(year, month)
+    line += Cell(day)
+    column += 1
+    If column = 7 Then
+      PrintLn(line)
+      line = ""
+      column = 0
+    EndIf
+  Next
+  If column > 0 Then
+    PrintLn(line)
+  EndIf
+EndProcedure
+
+Procedure Main()
+  Let year As Integer = 2000
+  Let month As Integer = 2
+  PrintCalendar(year, month)
+EndProcedure

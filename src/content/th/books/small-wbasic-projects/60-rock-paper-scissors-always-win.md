@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`run` คอมไพล์ ลิงก์ แล้วรัน ผู้สร้าง `wb` จาก checkout ผลิตภัณฑ์ใช้ `cargo build --workspace --locked` ที่รากคลังนั้นก่อน คำสั่ง `wb build` ยังไม่เปิดให้ผู้ใช้ ผลครบสามตาคือ:
+`run` คอมไพล์ ลิงก์ แล้วรัน ผู้สร้าง `wb` จาก checkout ผลิตภัณฑ์ใช้ `cargo build --workspace --locked` ที่รากคลังนั้นก่อน หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK ผลครบสามตาคือ:
 
 ```text
 rock beats scissors

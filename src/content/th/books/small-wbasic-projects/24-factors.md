@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`check` ตรวจ source; `run` คอมไพล์ ลิงก์ แล้วรัน หากกำลังสร้างชุดเครื่องมือ WBasic จาก checkout ของผลิตภัณฑ์ ให้สั่ง `cargo build --workspace --locked` จากรากคลังนั้นก่อน ปัจจุบัน `wb build` สำหรับผู้ใช้ยังไม่เปิดให้ใช้
+`check` ตรวจ source; `run` คอมไพล์ ลิงก์ แล้วรัน หากกำลังสร้างชุดเครื่องมือ WBasic จาก checkout ของผลิตภัณฑ์ ให้สั่ง `cargo build --workspace --locked` จากรากคลังนั้นก่อน หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK
 
 โปรแกรมพิมพ์ตัวประกอบตามลำดับจากน้อยไปมาก โดยไม่ใช้เครื่องหมายจุลภาค:
 
