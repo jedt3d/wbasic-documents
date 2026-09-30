@@ -7,9 +7,9 @@
     <div class="prose">{{ .Content }}</div>
     {{ if .Pages }}
       <div class="chapter-list">
-        {{ range .Pages.ByWeight }}
+        {{ range $index, $page := .Pages.ByWeight }}
           <a href="{{ .RelPermalink }}" class="chapter-row">
-            <span class="chapter-number">{{ printf "%02d" .Weight }}</span>
+            <span class="chapter-number">{{ printf "%02d" (add $index 1) }}</span>
             <span>
               <strong>{{ .Title }}</strong>
               {{ with .Description }}<small>{{ . }}</small>{{ end }}
