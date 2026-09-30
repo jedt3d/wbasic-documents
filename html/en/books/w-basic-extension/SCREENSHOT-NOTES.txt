@@ -1,0 +1,20 @@
+WBasic Extension Guide screenshot slots
+
+The current guide is complete without screenshots. If native screen capture is added later,
+keep the images beside this book under src/static/images/w-basic-extension/ and use these
+stable names so prose does not need to change:
+
+01-toolchain-status.png        Show Toolchain Status with machine paths cropped/redacted.
+02-new-project.png             Command Palette on WBasic: New Project.
+03-projects-view.png           WBasic Projects view and generated project tree.
+04-source-intelligence.png     Completion + signature help on Greeting.
+05-diagnostics.png             Problems panel with typed Boolean diagnostic.
+06-navigation-rename.png       Rename preview across two source files.
+07-module-dependency.png       App.wproj plus local module preview.
+08-run-build-tasks.png         WBasic tasks and integrated terminal.
+09-test-explorer.png           Passed/failed/data-row cases in Testing view.
+10-examples.png                WBasic: Open Example picker.
+
+Capture from an isolated VS Code profile with the verified R8B VSIX. Do not show personal
+paths, usernames, unrelated extensions, recent projects, tokens, terminal history, or secrets.
+

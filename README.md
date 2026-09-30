@@ -16,11 +16,11 @@ The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
 API surface through the current R7 implementation. The English edition translates
 the reviewed Thai reference, design guide, and Small Wbasic Projects, alongside
-the existing bilingual Getting Started. The Thai-first **WBasic Extension Guide**
-documents the verified R8B development preview; its English edition will be added
-only after the Thai text is approved. Other corresponding pages use the same path
-and file name in `src/content/th` and `src/content/en`. Planned and Deferred
-capabilities retain their status in both languages.
+the existing bilingual Getting Started. The bilingual **WBasic Extension Guide**
+documents the verified R8B development preview after approval of its authoritative
+Thai text. Corresponding pages use the same path and file name in `src/content/th`
+and `src/content/en`. Planned and Deferred capabilities retain their status in
+both languages.
 
 The [English editorial review](evidence/english-editorial-review.md) records the
 120 translated/replaced pages and 52 English project plans. Both build scripts

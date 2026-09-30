@@ -18,8 +18,8 @@ publication, or unverified platform acceptance.
 
 ## Editorial decisions
 
-- Thai is the authoritative edition. An English translation is intentionally
-  deferred until the user approves the Thai guide.
+- Thai remains the authoritative edition. The English translation was prepared
+  only after the user's explicit request and preserves this approved structure.
 - `Given`, `When`, and `Then` are presented as organizing comments; assertions
   use the real `Test` API.
 - There is no textual `Include` or global include path. The guide teaches direct

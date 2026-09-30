@@ -3,8 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const sourceRoot = path.join(root, 'src', 'content', 'th', 'books', 'w-basic-extension');
-const outputRoot = path.join(root, 'html', 'th', 'books', 'w-basic-extension');
+const languages = ['th', 'en'];
 const expectedPages = [
   '_index.md',
   '01-install-extension-and-compiler.md',
@@ -33,57 +32,61 @@ const expectedScreenshots = [
   '10-examples.png',
 ];
 const failures = [];
-
-const sourceEntries = await readdir(sourceRoot);
-const markdown = sourceEntries.filter((entry) => entry.endsWith('.md')).sort();
 const wanted = [...expectedPages].sort();
-if (JSON.stringify(markdown) !== JSON.stringify(wanted)) {
-  failures.push(`expected ${wanted.length} guide Markdown pages; found ${markdown.length}: ${markdown.join(', ')}`);
-}
 
-const sourceText = (await Promise.all(expectedPages.map(async (page) => {
-  const file = path.join(sourceRoot, page);
-  try {
-    return await readFile(file, 'utf8');
-  } catch (error) {
-    failures.push(`missing source page ${page}: ${error.message}`);
-    return '';
+for (const language of languages) {
+  const sourceRoot = path.join(root, 'src', 'content', language, 'books', 'w-basic-extension');
+  const outputRoot = path.join(root, 'html', language, 'books', 'w-basic-extension');
+  const sourceEntries = await readdir(sourceRoot);
+  const markdown = sourceEntries.filter((entry) => entry.endsWith('.md')).sort();
+  if (JSON.stringify(markdown) !== JSON.stringify(wanted)) {
+    failures.push(`${language}: expected ${wanted.length} guide Markdown pages; found ${markdown.length}: ${markdown.join(', ')}`);
   }
-}))).join('\n');
 
-for (const screenshot of expectedScreenshots) {
-  const marker = `name="${screenshot}"`;
-  if (!sourceText.includes(marker)) failures.push(`missing screenshot slot ${screenshot}`);
-}
+  const sourceText = (await Promise.all(expectedPages.map(async (page) => {
+    const file = path.join(sourceRoot, page);
+    try {
+      return await readFile(file, 'utf8');
+    } catch (error) {
+      failures.push(`${language}: missing source page ${page}: ${error.message}`);
+      return '';
+    }
+  }))).join('\n');
 
-for (const page of expectedPages) {
-  const slug = page === '_index.md' ? '' : page.replace(/\.md$/, '');
-  const output = path.join(outputRoot, slug, 'index.html');
-  try {
-    await access(output);
-  } catch {
-    failures.push(`missing generated page ${path.relative(root, output)}`);
+  for (const screenshot of expectedScreenshots) {
+    const marker = `name="${screenshot}"`;
+    if (!sourceText.includes(marker)) failures.push(`${language}: missing screenshot slot ${screenshot}`);
   }
-}
 
-const generatedText = (await Promise.all(expectedPages.map(async (page) => {
-  const slug = page === '_index.md' ? '' : page.replace(/\.md$/, '');
-  const output = path.join(outputRoot, slug, 'index.html');
-  try {
-    return await readFile(output, 'utf8');
-  } catch {
-    return '';
+  for (const page of expectedPages) {
+    const slug = page === '_index.md' ? '' : page.replace(/\.md$/, '');
+    const output = path.join(outputRoot, slug, 'index.html');
+    try {
+      await access(output);
+    } catch {
+      failures.push(`${language}: missing generated page ${path.relative(root, output)}`);
+    }
   }
-}))).join('\n');
 
-for (const screenshot of expectedScreenshots) {
-  if (!generatedText.includes(screenshot)) {
-    failures.push(`generated guide does not expose image or placeholder ${screenshot}`);
+  const generatedText = (await Promise.all(expectedPages.map(async (page) => {
+    const slug = page === '_index.md' ? '' : page.replace(/\.md$/, '');
+    const output = path.join(outputRoot, slug, 'index.html');
+    try {
+      return await readFile(output, 'utf8');
+    } catch {
+      return '';
+    }
+  }))).join('\n');
+
+  for (const screenshot of expectedScreenshots) {
+    if (!generatedText.includes(screenshot)) {
+      failures.push(`${language}: generated guide does not expose image or placeholder ${screenshot}`);
+    }
   }
-}
 
-if (!generatedText.includes('guide-screenshot-placeholder') && !generatedText.includes('/images/w-basic-extension/')) {
-  failures.push('generated guide contains neither screenshot placeholders nor real guide images');
+  if (!generatedText.includes('guide-screenshot-placeholder') && !generatedText.includes('/images/w-basic-extension/')) {
+    failures.push(`${language}: generated guide contains neither screenshot placeholders nor real guide images`);
+  }
 }
 
 if (failures.length) {
@@ -91,4 +94,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`PASS: ${expectedPages.length} Thai guide pages and ${expectedScreenshots.length} replaceable screenshot slots are present in source and generated HTML.`);
+console.log(`PASS: ${expectedPages.length} paired guide pages and ${expectedScreenshots.length} replaceable screenshot slots per language are present in source and generated HTML.`);
