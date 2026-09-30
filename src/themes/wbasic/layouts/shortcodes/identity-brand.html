@@ -1,0 +1,21 @@
+<div class="identity-brand-gallery">
+  {{ range $theme := slice "light" "dark" }}
+  <section class="identity-brand-preview identity-brand-preview--{{ $theme }}" aria-label="{{ if eq $theme "light" }}ตัวอย่างบนพื้นสว่าง{{ else }}ตัวอย่างบนพื้นมืด{{ end }}">
+    <p class="identity-brand-label">{{ if eq $theme "light" }}พื้นสว่าง · Light{{ else }}พื้นมืด · Dark{{ end }}</p>
+    <div class="identity-brand-assets">
+      {{ range $asset := slice (dict "name" "element" "label" "ตราธาตุ 74 / W.") (dict "name" "wordmark" "label" "ชื่อภาษา Wbasic.") (dict "name" "mascot" "label" "มาสค็อตไม่มีกรอบ") (dict "name" "mascot-boxed" "label" "มาสค็อตมีกรอบ") }}
+      {{ $base := printf "images/brand/wbasic-%s-%s" $asset.name $theme }}
+      <figure>
+        <img src="{{ printf "%s.svg" $base | relURL }}" alt="{{ $asset.label }}" loading="lazy" width="512" height="512">
+        <figcaption>{{ $asset.label }}<span class="identity-brand-downloads"><a href="{{ printf "%s.svg" $base | relURL }}" download aria-label="ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น SVG">SVG</a> · <a href="{{ printf "%s.png" $base | relURL }}" download aria-label="ดาวน์โหลด {{ $asset.label }} แบบ {{ $theme }} เป็น PNG">PNG</a></span></figcaption>
+      </figure>
+      {{ end }}
+    </div>
+    <figure class="identity-brand-lockup">
+      {{ $header := printf "images/brand/wbasic-header-%s" $theme }}
+      <img src="{{ printf "%s.svg" $header | relURL }}" alt="มาสค็อตไม่มีกรอบ ตามด้วย Wbasic." loading="lazy" width="745" height="174">
+      <figcaption>การจัดวางในส่วนหัวเว็บไซต์ · <a href="{{ printf "%s.svg" $header | relURL }}" download>SVG</a> · <a href="{{ printf "%s.png" $header | relURL }}" download>PNG</a></figcaption>
+    </figure>
+  </section>
+  {{ end }}
+</div>

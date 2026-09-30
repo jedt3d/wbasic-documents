@@ -254,6 +254,20 @@ html[lang^="th"] .prose .identity-type-mono > p { font-family: var(--wb-font-mon
 .search-empty { margin: 0; padding: 1.5rem; text-align: center; }
 .sidebar-scrim { display: none; }
 
+.identity-brand-gallery { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+.identity-brand-preview { border: 1px solid var(--wb-sage); border-radius: .75rem; padding: 1.5rem; }
+.identity-brand-preview--light { background: var(--wb-mist); color: var(--wb-charcoal); }
+.identity-brand-preview--dark { background: var(--wb-charcoal); color: var(--wb-mist); }
+.identity-brand-preview a { color: inherit; text-decoration-color: var(--wb-sage); }
+.identity-brand-label { font-weight: 600; }
+.identity-brand-assets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.identity-brand-preview figure { margin: 0; min-width: 0; text-align: center; }
+.identity-brand-assets img { display: block; height: 9rem; object-fit: contain; width: 100%; }
+.identity-brand-preview figcaption { font-size: .875rem; line-height: 1.6; margin-top: .75rem; }
+.identity-brand-downloads { display: block; }
+.identity-brand-lockup { border-top: 1px solid var(--wb-sage); margin-top: 1.5rem !important; padding-top: 1.5rem; }
+.identity-brand-lockup img { display: block; height: auto; margin: 0 auto; max-width: 100%; width: 22rem; }
+
 @media (max-width: 74rem) {
   :root { --right-width: 0px; }
   .reference-layout { grid-template-columns: var(--left-width) minmax(0, 1fr); }
