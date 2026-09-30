@@ -6,7 +6,7 @@ defaultContentLanguage = 'th'
 defaultContentLanguageInSubdir = true
 enableGitInfo = false
 enableRobotsTXT = true
-relativeURLs = true
+relativeURLs = false
 summaryLength = 28
 
 [outputs]

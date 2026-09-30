@@ -115,7 +115,9 @@ kbd { background: var(--wb-sage); border: 1px solid var(--wb-charcoal); border-r
 .nav-close { display: none; }
 .book-group { border-bottom: 1px solid var(--wb-line); padding-bottom: 1rem; }
 .book-group + .book-group { padding-top: 1rem; }
-.book-title { align-items: center; display: flex; font-size: .9375rem; font-weight: 500; justify-content: space-between; line-height: 1.5; padding: .6rem .75rem; text-decoration: none; }
+.book-title { align-items: center; display: flex; font-size: .9375rem; font-weight: 500; gap: .75rem; justify-content: space-between; line-height: 1.5; padding: .6rem .75rem; text-decoration: none; }
+.book-title::after { color: var(--wb-muted); content: "›"; flex: 0 0 auto; font-size: 1.15em; line-height: 1; }
+.book-title.is-current::after { content: "⌄"; }
 .book-title.is-current { font-weight: 600; }
 .book-group ol { list-style: none; margin: .125rem 0 0; padding: 0; }
 .book-group li { margin: 0; }

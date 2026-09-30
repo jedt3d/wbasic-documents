@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const roots = ['README.md', 'AGENTS.md', 'src', 'archived', 'design-system'];
+const roots = ['README.md', 'AGENTS.md', 'src', 'archived', 'design-system', 'examples'];
 const failures = [];
 let markdownCount = 0;
 let localLinkCount = 0;

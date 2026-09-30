@@ -58,14 +58,16 @@ const thaiEditorialPages = [
   ...['01-introduction', '02-language-colors', '03-language-type']
     .map((slug) => `th/books/design-identity/${slug}/index.html`),
   ...[
-    '01-billing-time-project-structure',
-    '02-billing-time-key-concepts',
-    '03-billing-time-models',
-    '04-billing-time-schema-and-seed',
-    '05-billing-time-log-time',
-    '06-billing-time-invoice-transaction',
-    '07-billing-time-tests-and-next-steps'
-  ].map((slug) => `th/books/tutorials/${slug}/index.html`)
+    '01-tools-and-compiler',
+    '02-create-billing-time-project',
+    '03-billing-time-language-tour',
+    '04-command-line-workflow',
+    '05-billing-time-models',
+    '06-billing-time-schema-and-seed',
+    '07-billing-time-log-time',
+    '08-billing-time-invoice-transaction',
+    '09-billing-time-tests-and-next-steps'
+  ].map((slug) => `th/books/getting-started/${slug}/index.html`)
 ];
 for (const required of thaiEditorialPages) {
   if (!files.includes(path.join(outputRoot, ...required.split('/')))) failures.push(`missing Thai editorial page ${required}`);
@@ -103,6 +105,7 @@ for (const file of htmlFiles) {
       if (!html.includes(marker)) failures.push(`${relative} lacks ${marker}`);
     }
     if (!html.includes('class=wb')) failures.push(`${relative} does not use the default Wbasic theme body class`);
+    if (html.includes('../wbasic-documents/')) failures.push(`${relative} contains a duplicated relative GitHub Pages base path`);
   }
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const target = localTarget(file, match[1]);
@@ -121,8 +124,25 @@ const firstChapter = await readFile(path.join(outputRoot, 'th', 'books', 'langua
 if (!firstChapter.includes('language-basic')) failures.push('first language chapter lacks a WBasic-highlightable code block');
 const identityColors = await readFile(path.join(outputRoot, 'th', 'books', 'design-identity', '02-language-colors', 'index.html'), 'utf8');
 if (!identityColors.includes('data-identity-palette')) failures.push('identity color chapter lacks its palette specimen');
-const tutorialTransaction = await readFile(path.join(outputRoot, 'th', 'books', 'tutorials', '06-billing-time-invoice-transaction', 'index.html'), 'utf8');
+const tutorialTransaction = await readFile(path.join(outputRoot, 'th', 'books', 'getting-started', '08-billing-time-invoice-transaction', 'index.html'), 'utf8');
 if (!tutorialTransaction.includes('language-basic')) failures.push('billing-time walkthrough lacks WBasic-highlightable code');
+
+const thaiBooksIndex = await readFile(path.join(outputRoot, 'th', 'books', 'index.html'), 'utf8');
+if (thaiBooksIndex.includes('data-book-chapters')) failures.push('books index expands a book when none is being browsed');
+const gettingStartedChapter = await readFile(path.join(outputRoot, 'th', 'books', 'getting-started', '01-tools-and-compiler', 'index.html'), 'utf8');
+if ((gettingStartedChapter.match(/data-book-chapters/g) ?? []).length !== 1) failures.push('Getting Started does not expand exactly one book');
+if (!gettingStartedChapter.includes('class=\"book-group is-expanded\"')) failures.push('current Getting Started group is not marked expanded');
+const gettingStartedIndex = await readFile(path.join(outputRoot, 'th', 'books', 'getting-started', 'index.html'), 'utf8');
+const gettingStartedPosition = gettingStartedIndex.indexOf('<span>Getting Started</span>');
+const languageReferencePosition = gettingStartedIndex.indexOf('<span>คู่มือภาษา</span>');
+if (gettingStartedPosition < 0 || languageReferencePosition < 0 || gettingStartedPosition > languageReferencePosition) failures.push('Getting Started is not the first ebook');
+
+for (const language of ['th', 'en']) {
+  for (const slug of ['01-tools-and-compiler', '02-create-billing-time-project', '03-billing-time-language-tour', '04-command-line-workflow']) {
+    const required = `${language}/books/getting-started/${slug}/index.html`;
+    if (!files.includes(path.join(outputRoot, ...required.split('/')))) failures.push(`missing bilingual Getting Started page ${required}`);
+  }
+}
 
 for (const language of ['en', 'th']) {
   const index = JSON.parse(await readFile(path.join(outputRoot, language, 'index.json'), 'utf8'));

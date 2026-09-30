@@ -7,15 +7,18 @@
   {{ with .Site.GetPage "/books" }}
     {{ range .Sections.ByWeight }}
       {{ $book := . }}
-      <section class="book-group">
-        <a class="book-title{{ if or (eq $current.RelPermalink .RelPermalink) (hasPrefix $current.RelPermalink .RelPermalink) }} is-current{{ end }}" href="{{ .RelPermalink }}">
+      {{ $isCurrent := or (eq $current.RelPermalink .RelPermalink) (hasPrefix $current.RelPermalink .RelPermalink) }}
+      <section class="book-group{{ if $isCurrent }} is-expanded{{ end }}" data-book-group>
+        <a class="book-title{{ if $isCurrent }} is-current{{ end }}" href="{{ .RelPermalink }}">
           <span>{{ .Title }}</span>
         </a>
-        <ol>
-          {{ range .RegularPages.ByWeight }}
-            <li><a {{ if eq $current.RelPermalink .RelPermalink }}class="is-active" aria-current="page"{{ end }} href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-          {{ end }}
-        </ol>
+        {{ if $isCurrent }}
+          <ol data-book-chapters>
+            {{ range .RegularPages.ByWeight }}
+              <li><a {{ if eq $current.RelPermalink .RelPermalink }}class="is-active" aria-current="page"{{ end }} href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ol>
+        {{ end }}
       </section>
     {{ end }}
   {{ end }}

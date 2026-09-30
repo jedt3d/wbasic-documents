@@ -36,7 +36,7 @@ jobs:
         run: node verify-source.mjs
 
       - name: Build and verify site
-        run: ./build.sh
+        run: bash ./build.sh
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
