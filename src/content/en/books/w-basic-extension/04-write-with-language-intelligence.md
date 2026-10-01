@@ -4,7 +4,7 @@ description: "Practice completion, hover, signature help, and Outline with a fir
 weight: 4
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 Open `src/Main.wbas` and replace its contents with:
 
@@ -53,10 +53,12 @@ Use one numeral script consistently within an expression, as required by the lan
 
 ## Current completion boundary
 
-Typed member completion covers directly declared receivers, Structure fields,
-and public APIs exposed through compiler capability metadata. It does not yet
-guarantee every complex expression chain, every intrinsic String or Array member,
-or local-variable navigation.
+For a simple declared binding of a Structure or imported nominal type, type a
+period after the binding to see compiler-approved visible fields and methods.
+Public APIs also require the corresponding compiler capability metadata. Methods
+that are private, internal to another module, or unimported are omitted.
+Completion does not promise arbitrary expression chains, complete import-alias
+type mapping, every intrinsic String or Array member, or local-variable navigation.
 
 For the grammar, see [A WBasic program]({{< relref "/books/language-reference/01-a-wbasic-program.md" >}}).
 

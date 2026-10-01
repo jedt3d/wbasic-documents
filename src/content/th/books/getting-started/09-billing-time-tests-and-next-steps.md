@@ -4,7 +4,7 @@ description: "รันตัวอย่างจริงและแยกห
 weight: 9
 ---
 
-จาก root ของ source repository ใช้ `wb` 0.0.2 ที่เข้าคู่กับ static runtime:
+จาก root ของ source repository ใช้ `wb` 0.1.0 ที่เข้าคู่กับ static runtime:
 
 ```console
 wb check examples/billing-time-worm/App.wproj --json
@@ -22,8 +22,8 @@ invoice total: 18000 cents
 billed entries: 2
 ```
 
-[README ตัวอย่าง](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/README.md) ให้คำสั่งและขอบเขตครบ [fixture อิสระ](https://github.com/jedt3d/wbasic-language/tree/143be58/fixtures/projects/worm-billing-tests) เรียก public `Billing` procedures เพื่อตรวจ migration drift, generated values, rate snapshot, rollback, conflict, duplicate link, empty draft และ competing writer กับ SQLite จริง หลักฐาน M3/M5 ผ่าน native debug/release บน Windows ARM64 และ macOS ARM64; ไม่ใช่ข้ออ้างว่าผู้ใช้ทุกเครื่องหรือ production ผ่านแล้ว
+[README ตัวอย่าง](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/README.md) ให้คำสั่งและขอบเขตครบ [fixture อิสระ](https://github.com/jedt3d/wbasic-language/tree/v0.1.0/fixtures/projects/worm-billing-tests) เรียก public `Billing` procedures เพื่อตรวจ migration drift, generated values, rate snapshot, rollback, conflict, duplicate link, empty draft และ competing writer กับ SQLite จริง หลักฐาน M3/M5 ผ่าน native debug/release บน Windows ARM64 และ macOS ARM64; ไม่ใช่ข้ออ้างว่าผู้ใช้ทุกเครื่องหรือ production ผ่านแล้ว
 
-ถ้าต้องการ executable แยก `wb build` รับ project manifest เท่านั้นและใช้ `--profile debug|release` ได้; `wb run` เหมาะกับวงจรทดลอง รุ่น 0.0.2 มี private experimental portable ZIP สำหรับ ARM64 ที่รวม compiler, runtime และ linker ตรงชุด Node ไม่จำเป็นต่อ core CLI; ใช้กับ protocol tooling เท่านั้น การ build จาก source บน developer host ยังใช้ toolchain/SDK ส่วนการยอมรับบนเครื่องสะอาดแบบ no-SDK ยังเป็น gate คนละเรื่อง
+ถ้าต้องการ executable แยก `wb build` รับ project manifest เท่านั้นและใช้ `--profile debug|release` ได้; `wb run` เหมาะกับวงจรทดลอง รุ่น 0.1.0 มี private experimental portable ZIP สำหรับ ARM64 ที่รวม compiler, runtime และ linker ตรงชุด Node ไม่จำเป็นต่อ core CLI; ใช้กับ protocol tooling เท่านั้น การ build จาก source บน developer host ยังใช้ toolchain/SDK ส่วนการยอมรับบนเครื่องสะอาดแบบ no-SDK ยังเป็น gate คนละเรื่อง
 
 อ่าน source แล้วเปลี่ยน rate หรือลองฐานข้อมูลใหม่ได้ แต่อย่าเพิ่มนโยบายวันที่ ภาษี หรือการปัดเศษให้โปรแกรมในใจโดยไม่มีโค้ดและการทดสอบรองรับ

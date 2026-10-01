@@ -4,7 +4,7 @@ description: "Run source or projects, create Debug and Release development artif
 weight: 8
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The extension separates commands by intent. Pressing Run should not quietly
 become a distributable build, and Check should not open the program's network
@@ -34,9 +34,11 @@ Three commands are available:
 - **Build Project — Debug (Development)** selects Debug directly.
 - **Build Project — Release (Development)** selects Release directly.
 
-The compiler creates a native executable and a `.wb-build.json` record. This
-build still needs MSVC or Apple Clang and is not a production-entitled, no-SDK
-package. “Development” is in the title to prevent confusion, not for decoration.
+The compiler creates a native executable and a `.wb-build.json` record. With the
+published ZIP's bundled compiler, runtime assets, and linker, debug and release
+Run/Build passed without using a host SDK. Building the compiler from source
+still needs native development tools. This remains a Development Build, without
+production entitlement or fresh no-SDK host acceptance.
 
 ## VS Code Tasks
 

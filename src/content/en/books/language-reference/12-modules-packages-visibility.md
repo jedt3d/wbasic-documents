@@ -15,14 +15,15 @@ modules/Acme.wmod/module.toml
 modules/Acme.wmod/src/Math/Total.wbas
 ```
 
-An implementation-supported manifest:
+This manifest targets compiler/runtime 0.1.0. Project and module `toolchain`
+pins must match the compiler selected by the CLI and editor:
 
 ```toml
 [project]
 name = "Example"
 module = "App"
 entry = "src/Main.wbas"
-toolchain = "0.0.2"
+toolchain = "0.1.0"
 
 [dependencies]
 Acme = { path = "modules/Acme.wmod" }

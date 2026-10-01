@@ -4,10 +4,10 @@ description: "Open or copy verified examples and begin TUI or Jobs work from det
 weight: 10
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The extension includes the structurally verified example catalog whose hashes
-match the repository. It currently contains 27 examples in 10 categories,
+match the repository. It currently contains 31 examples in 10 categories, with 61 teaching files,
 covering the language core, modules, tests, streams, JSON, Jobs, TUI, and a
 complete SQLite showcase.
 
@@ -32,6 +32,8 @@ runtime error, or failed assertion is not broken; it teaches that boundary delib
 5. `memory-streams` and `json-values` — typed API help
 6. `tui-counter` — deterministic model, update, and view
 7. `sqlite-customer-showcase` — a larger project composed from several modules
+
+`worm-m2-sqlite` and `worm-m3-billing` can be copied as complete projects, including modules and SQLite schema where needed. Their automated actions Check and Build. To run a database example, pass an explicit SQLite path as a program argument after `--`; the generic Run Project command does not ask for that path. `worm-m4-ui-reference` opens a repository reference only. It is excluded from Copy Example because its Billing module must first be staged at the local dependency path.
 
 ## New TUI/Jobs Example
 

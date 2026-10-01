@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "status": "Published",
+  "compilerVersion": "0.1.0",
+  "runtimeVersion": "0.1.0",
+  "extensionVersion": "0.2.1",
+  "protocolVersion": "0.0.2",
+  "tag": "v0.1.0",
+  "channel": "private-experimental",
+  "sourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
+  "releaseUrl": "https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0",
+  "productionRelease": false,
+  "noSdkDistribution": false,
+  "assets": [
+    {
+      "target": "aarch64-pc-windows-msvc",
+      "name": "wbasic-0.1.0-windows-arm64.zip",
+      "bytes": 43661814,
+      "sha256": "85c135ce9ad6ccf2edadd3c892ea677110f1ca0f15d012ec348a924213d93a74"
+    },
+    {
+      "target": "aarch64-apple-darwin",
+      "name": "wbasic-0.1.0-macos-arm64.zip",
+      "bytes": 52963215,
+      "sha256": "50abba3266fd1209666865e1351a68a899aabed95f5a486522d996bc1a93bad6"
+    }
+  ]
+}

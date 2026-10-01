@@ -11,4 +11,9 @@ weight: -10
 บทที่ 5–9 อ่านตัวอย่าง SQLite/WORM ที่รันได้แล้ว พร้อมหลักฐาน native แยกต่างหาก
 ส่วนสี่บทแรกยังเป็นโครงการเล็กที่ผู้อ่านสร้างเอง
 
+คำสั่งและ manifest ในเล่มใช้ **compiler/runtime 0.1.0** ซึ่งเข้าคู่กันทั้ง
+CLI, portable ZIP และ compiler ที่ Extension 0.2.1 เลือกใช้ ค่า `toolchain`
+ใน project และ module ต้องตรงรุ่นนี้ New Project pin รุ่นที่เลือกให้อัตโนมัติ
+ดู [ขอบเขตเวอร์ชัน]({{< relref "/implementation-status.md" >}})
+
 เริ่มที่ [รู้จักเครื่องมือและ compiler]({{< relref "/books/getting-started/01-tools-and-compiler.md" >}})

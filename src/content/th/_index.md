@@ -11,10 +11,11 @@ description: "รวมกฎภาษา ไลบรารีมาตรฐ�
 
 ## ขอบเขตรุ่นปัจจุบัน
 
-คู่มือรอบนี้ปรับตาม compiler/runtime **0.0.2 private experimental preview** ที่รวมใน
-`main` แล้ว รวม `wb build` และ WORM SQLite ขอบเขตนี้ต่างจากแบบออกแบบภาษา draft v0.3
-และสาขา editor R8B อ่าน [รุ่น compiler และเครื่องมือ]({{< relref "/implementation-status.md" >}})
-ก่อนเลือกวิธีติดตั้งและตัวอย่าง
+คู่มือปัจจุบันใช้ **compiler/runtime 0.1.0 private experimental release** คู่กับ
+**Extension 0.2.1** ทั้ง CLI, portable ZIP และ compiler ที่เลือกใน VS Code
+ใช้รุ่นเดียวกัน เลขนี้แยกจากแบบออกแบบภาษา draft v0.3 อ่าน
+[รุ่น compiler และเครื่องมือ]({{< relref "/implementation-status.md" >}})
+ก่อนติดตั้งหรือปรับ manifest ของโครงการเก่า
 
 ฉบับภาษาไทยครอบคลุมตัวภาษา ไลบรารีมาตรฐาน และ API สาธารณะที่ตรวจสอบแล้วถึง
 implementation ปัจจุบัน แต่ละบทมีกฎที่ชัดเจน ตัวอย่างขนาดเล็ก กรณีขอบ และ

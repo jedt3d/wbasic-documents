@@ -16,14 +16,15 @@ modules/Acme.wmod/module.toml
 modules/Acme.wmod/src/Math/Total.wbas
 ```
 
-ตัวอย่าง manifest ที่ implementation รองรับ:
+ตัวอย่าง manifest สำหรับ compiler/runtime 0.1.0 ค่า `toolchain` ของ project และ module
+ต้องตรงกับ compiler ที่ CLI และ editor เลือกใช้:
 
 ```toml
 [project]
 name = "Example"
 module = "App"
 entry = "src/Main.wbas"
-toolchain = "0.0.2"
+toolchain = "0.1.0"
 
 [dependencies]
 Acme = { path = "modules/Acme.wmod" }

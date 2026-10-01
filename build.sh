@@ -20,3 +20,5 @@ node "$documents_root/verify-english-edition.mjs"
 node "$documents_root/verify-release.mjs"
 node "$documents_root/verify-extension-guide.mjs"
 node "$documents_root/verify-project-drafts.mjs"
+
+node "$documents_root/verify-compiler-release.mjs"

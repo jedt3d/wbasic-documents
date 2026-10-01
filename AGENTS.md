@@ -6,8 +6,8 @@
   Programming with WBasic / TDD with WBasic manuscripts.
 - Product source, specifications, behavior evidence, examples and development
   plans live in [jedt3d/wbasic-language](https://github.com/jedt3d/wbasic-language).
-  Public documentation must describe merged, verified behavior from that
-  repository. Planned or Deferred behavior must remain labelled as such.
+  Public documentation must describe verified, published release behavior
+  or merged behavior with its explicit development scope from that repository. Planned or Deferred behavior must remain labelled as such.
 - Thai is the authoritative edition until the user explicitly requests an
   English translation. A Thai technical editor reviews correctness, logical
   flow, readable professor-like prose and restrained humor before translation.
@@ -55,20 +55,27 @@
 
 ## Current evidence boundary
 
-- Current public reference follows merged language revision `143be58` and the
-  private experimental compiler/runtime 0.0.2 preview. The v0.3 behavior catalog
-  records 72 Passed / 23 Planned / 0 Deferred; it is not complete v0.3 acceptance
-  and does not count the separate experimental WORM milestones.
-- R6 D1–D5 passed within their recorded endpoint scope. Positive Windows OSC52
-  replies passed on a pinned private Microsoft ConPTY endpoint; the inbox host
-  limitation and clipboard-manager policy remain distinct from that result.
-- Selected WORM SQLite M2–M5 contracts and developer-host portable-package tests
-  are verified. Fresh-machine/no-SDK acceptance, production entitlement,
-  signing/notarization, Linux ARM64 and native x86_64 remain unaccepted.
-- The R8B productivity extension guide describes separate development branch
-  `1bba6f9`, not the 0.1.0 VSIX bundled with compiler 0.0.2. Mark that boundary
-  at entry points and in each branch-specific exercise; do not imply that the
-  preview package includes New Project, Projects view or Test Explorer.
+- Current public reference follows the verified private experimental compiler/runtime
+  **0.1.0** release, sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46`.
+  Extension **0.2.1** and protocol **0.0.2** retain independent versions. CLI,
+  portable ZIP and the compiler selected by VS Code share the current compiler
+  version. Old releases are immutable historical downloads.
+- The v0.3 catalog is 72 Passed / 23 Planned / 0 Deferred; this is not full v0.3
+  acceptance and excludes separate experimental WORM milestones. R6 D1–D5
+  passed within the recorded scope; inbox OSC52 limitations remain distinct.
+- Both native ARM64 release ZIPs passed package/extraction/run/build checks on
+  developer hosts. Fresh no-SDK, production entitlement, notice/redistribution,
+  signing/notarization, Linux/native x86_64 remain unaccepted.
+- Extension 0.2.1's prior verified integration records 11 real VS Code host,
+  120 editor and 71 protocol checks per ARM64 host. Preserve simple-receiver
+  completion limits and four manual example actions; do not relabel old tests.
+- Every current compiler release update must synchronize
+  `src/static/compiler-release.json`, compiler/runtime/source metadata in
+  `src/static/version.json`, installation instructions and current project/module
+  example pins. Run `verify-compiler-release.mjs` through both build scripts and
+  the publishing script. Publish only after compiler asset audit/publication;
+  website tags stay separate from compiler release tags. Never claim an internal
+  development compiler is the current external release.
 - A documentation change does not promote product acceptance by itself.
 
 ## Git workflow

@@ -4,7 +4,7 @@ description: "Summarize the edit-check-test-build loop and separate ready featur
 weight: 12
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 Once the tools are familiar, the daily workflow should be short and predictable.
 
@@ -48,15 +48,17 @@ Once the tools are familiar, the daily workflow should be short and predictable.
 - Native Test Explorer and bundled examples
 - Offline v0.3 specification
 
+This ready list is limited to the locally verified development pairing. The project editor service is gated by the compiler capability record; an older compiler may omit `editorProject` and therefore does not gain these project features merely by loading the new extension.
+
 ## Planned or outside this guide
 
 - Debug Adapter Protocol, breakpoints, and stepping
 - Compiler-backed formatter
 - General import and manifest code actions beyond keyword-case quick fix
-- Production entitlement and clean-machine, no-SDK distribution
+- Production entitlement and fresh no-SDK host acceptance
 - Signing, notarization, and Marketplace publication
 - Linux ARM64 and native x86_64 acceptance
-- WORM, WebView, and language or library work beyond verified v0.3
+- WebView and language or library work beyond the verified scope; WORM M2/M3 examples in this catalog are covered
 
 The absence of a debugger does not make Run temporary. Run, Build, and Test use
 the compiler pipeline tested together; source-level stepping waits for a debug

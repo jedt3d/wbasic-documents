@@ -1,64 +1,41 @@
 ---
-title: "รุ่น compiler และเครื่องมือที่คู่มืออ้างอิง"
-description: "แยก compiler 0.0.2, VSIX ที่แจกจ่าย และสาขา R8B พร้อมขอบเขตผลทดสอบ"
+title: "รุ่น compiler และเครื่องมือที่คู่มือนี้อ้างอิง"
+description: "Compiler/runtime 0.1.0 และ Extension 0.2.1 ใช้ compiler รุ่นเดียวกันทั้ง CLI และ editor"
 ---
 
-ปรับข้อมูลเมื่อ **2 ตุลาคม 2026** โดยอ่าน source ที่รวมเข้า `main` แล้ว ณ
-[`143be58`](https://github.com/jedt3d/wbasic-language/tree/143be583ce875629b430436ed4a4ffc9dac952bf)
-และหลักฐานการเผยแพร่ **0.0.2 private experimental preview** รุ่น compiler นี้
-ต่างจากเลข **draft v0.3** ของแบบออกแบบภาษา และต่างจากเลขเวอร์ชันของเว็บไซต์
-ก่อนลองตัวอย่าง ควรรู้ว่าเรากำลังใช้เครื่องมือชุดไหน—compiler ไม่อ่านใจ แต่บอกรุ่นได้
+อัปเดต **2 ตุลาคม 2026** สำหรับ [private experimental release v0.1.0](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) รุ่น compiler/runtime ปัจจุบันเป็น **0.1.0** บน Windows ARM64 และ macOS ARM64 ส่วน VS Code Extension เป็น **0.2.1** ทั้ง CLI, portable ZIP และ compiler ที่เลือกใน VS Code ใช้เลขรุ่น compiler เดียวกัน รุ่น v0.0.1/v0.0.2 ยังคงดาวน์โหลดย้อนหลังได้โดยไม่แก้ tag หรือแพ็กเดิม
 
-## เลือกเส้นทางให้ตรงกับเครื่องมือ
+เลข compiler release แยกจากแบบออกแบบภาษา **draft v0.3** และเลขเผยแพร่เว็บไซต์ [manifest ของ compiler release](https://jedt3d.github.io/wbasic-documents/compiler-release.json) ระบุ source ที่ตรึงไว้และ SHA-256 ของ ZIP ทั้งสองแพลตฟอร์ม Compiler ยังอ่านใจไม่ได้ แต่ `wb --version` ช่วยไขปริศนาได้มากกว่าที่คิด
 
-| ส่วน | ขอบเขตปัจจุบัน |
+## ชุดเครื่องมือปัจจุบัน
+
+| ส่วนประกอบ | ขอบเขตปัจจุบัน |
 |---|---|
-| Compiler/runtime | 0.0.2 คู่กัน; Windows ARM64 และ macOS ARM64 |
-| CLI | `check`, `run`, `build`, `emit-object`, `test`, `project-info`, `symbols`, `references`, `tui doctor` |
-| Build | รับ project `.wproj`; profile `debug` และ `release`; production entitlement ยังเป็น `false` |
-| WORM | SQLite แบบ experimental; typed mapping, changes, query, transaction และ optimistic version guard |
-| VSIX ในแพ็ก | 0.1.0; VS Code `^1.139.0`; คำสั่งตรวจ/รัน/build/test และ help ตาม capability |
-| LSP/MCP | compiler-backed diagnostics/help และ saved-project check; ไม่รัน application ผ่าน protocol |
-| คู่มือ R8B | สาขา `1bba6f9` แยกต่างหาก; New Project, Projects view และ Test Explorer ไม่ได้อยู่ใน VSIX ข้างบน |
+| Compiler/runtime | รุ่น 0.1.0 เข้าคู่กันบน native Windows ARM64 / macOS ARM64 |
+| CLI | `check`, `run`, `build`, `emit-object`, `test`, `project-info`, `symbols`, `references`, `tui doctor`, `editor-project`, `editor-manifest` |
+| Build | รับ project manifest; profile debug/release; production entitlement ยังเป็น false |
+| WORM | SQLite ทดลอง: typed mapping, changes, query, transaction และ optimistic version guard |
+| VS Code Extension | `wbasic-dev.wbasic@0.2.1`; ZIP มี `editors/vscode/wbasic-0.2.1.vsix` |
+| LSP/MCP | protocol package 0.0.2; ใช้ project snapshots และ metadata จาก compiler |
+| Pin ของ project/module | `toolchain = "0.1.0"`; New Project pin รุ่น compiler ที่เลือกให้อัตโนมัติ |
+| คู่มือ | Getting Started, reference และ Extension Guide อ้างชุด release นี้ร่วมกัน |
 
-อ่าน [Getting Started]({{< relref "/books/getting-started/_index.md" >}}) สำหรับ CLI,
-[WORM SQLite]({{< relref "/books/standard-library/worm-sqlite.md" >}}) สำหรับฐานข้อมูล
-และ [คู่มือ Extension]({{< relref "/books/w-basic-extension/_index.md" >}})
-สำหรับเส้นทาง editor ที่ตรงกับรุ่นของคุณ
+Extension กับ protocol ยังใช้เลขรุ่นของตัวเอง หลังติดตั้งให้ Reload Window แล้วเปิด **WBasic: Show Toolchain Status** ตรวจว่า compiler ที่เลือกเป็น 0.1.0 ตั้ง `wbasic.compilerPath` เป็น absolute path ของ compiler ใน portable ZIP ได้ โดยเก็บ runtime และ linker ที่เข้าคู่กันไว้ในแพ็กนั้น การสร้าง compiler จาก Rust source หรือใช้ชุดนักพัฒนายังต้องมี native toolchain/SDK ตามแพลตฟอร์ม
 
-## ZIP ทดลองและข้อจำกัดการแจกจ่าย
+## ความสามารถของ editor และขอบเขตที่ยังมีอยู่
 
-ผู้ที่มีสิทธิ์เข้าถึง repository รับแพ็กได้จาก
-[private prerelease v0.0.2](https://github.com/jedt3d/wbasic-language/releases/tag/v0.0.2)
-ตรวจ ZIP SHA-256 กับ sidecar ก่อนแตกไฟล์ แล้วใช้ `Install-And-Test` และ helper
-ตั้ง PATH ของแพ็ก แพ็กมี runtime และเครื่องมือ link ที่เตรียมไว้; Node ใช้เฉพาะ protocol
-และ VS Code ใช้เฉพาะ editor การทดลอง compile จาก ZIP กับการสร้าง compiler จาก Rust
-source จึงมีขั้นตอนเตรียมเครื่องต่างกัน
+Live diagnostics และ navigation ใช้ project snapshot รวม source ที่ยังไม่บันทึก Completion ตรวจ visibility และจับ fields/methods ของ receiver ที่ประกาศชนิดแบบง่ายด้วย binding identities จาก compiler ส่วน rename ข้ามไฟล์ให้ compiler ตรวจ snapshot หลังแก้ก่อนนำไปใช้ Catalog มี **31 รายการ / 10 หมวด / 61 ไฟล์สอน** ตัวอย่าง WORM M2/M3 คัดลอกพร้อม module และใช้ Check/Build ได้ การรันฐานข้อมูลต้องส่ง path เอง M4 UI เป็นตัวอย่างอ้างอิงใน repository ที่ต้อง stage module จึงไม่อยู่ใน Copy Example
 
-แพ็กถูกทดสอบหลังแตกไฟล์บน developer hosts: Windows 11 Pro 25H2 ARM64
-(PowerShell 5.1 และ 7) และ macOS 26.6.2 ARM64 ผลตรวจ core, Unicode, native Hello,
-test discovery และ billing ผ่าน แต่ **ยังไม่ใช่หลักฐานเครื่องใหม่ที่ไม่มี SDK**
-ผล operator ที่รายงาน compiler ผ่านไม่แทน inventory ของเครื่องสะอาด
-signing/notarization, เงื่อนไขการแจกจ่ายและ production acceptance ยังเปิดอยู่
-รายละเอียดอยู่ใน [release notes](https://github.com/jedt3d/wbasic-language/blob/143be583ce875629b430436ed4a4ffc9dac952bf/docs/releases/v0.0.2.md)
-และ [หลักฐานเผยแพร่](https://github.com/jedt3d/wbasic-language/blob/143be583ce875629b430436ed4a4ffc9dac952bf/docs/evidence/v0.0.2-release-2026-10-02.json)
+Expression chains, type aliases บางรูปแบบ และ intrinsic String/Array member completion ยังไม่ครบ ยังไม่โฆษณา debugger หรือ formatter ชุด integration บันทึกผล **71 protocol**, **120 editor** และ **11 real VS Code Extension Host checks** ต่อแพลตฟอร์ม ARM64 รวมถึง Rust 519 Windows / 507 macOS ที่ผ่าน โดยแยก opt-in ignored tests ตามเดิม งาน release เพิ่ม native release build ที่เข้าคู่กันและการทดสอบ ZIP หลังแตกไฟล์ ไม่ได้อ้างว่ารันทุกตัวอย่างเก่าใหม่ทั้งหมด
 
-## ผลทดสอบหมายถึงอะไร
+## ติดตั้งและตรวจแพ็ก
 
-catalog ของ normative v0.3 ปัจจุบันเป็น **72 Passed / 23 Planned / 0 Deferred**
-ยังไม่ใช่ compiler v0.3 ที่ครบทุกข้อ และตัวเลขนี้ไม่ได้รวม milestone WORM แยกต่างหาก
-R6 D1–D5 มี native acceptance ครบใน scope ที่บันทึกแล้ว Windows OSC52 read
-เชิงบวกผ่านบน private Microsoft ConPTY ที่ pin ไว้; host ที่มากับ Windows บางรุ่น
-ยัง timeout ได้ การอ่านผ่าน NativeLocal กับ OSC52 ต้องแยก route กัน
+ตรวจ ZIP SHA-256 กับ sidecar และ release record ก่อนแตกไฟล์ แล้วรัน `Install-And-Test.ps1` หรือ `Install-And-Test.sh` และใช้ helper ตั้ง PATH เฉพาะ session Core compilation ไม่ต้องมี Node; Node ใช้กับ protocol adapters ที่เลือกเพิ่ม ส่วน VS Code ใช้กับ editor อ่าน [Getting Started]({{< relref "/books/getting-started/_index.md" >}}), [WORM SQLite]({{< relref "/books/standard-library/worm-sqlite.md" >}}) และ [Extension Guide]({{< relref "/books/w-basic-extension/_index.md" >}}) ต่อได้
 
-ทดสอบ Linux ARM64 และ native x86_64 ยังไม่ผ่าน acceptance ส่วนการเปรียบเทียบเวลา
-เรียนรู้/รีวิวของมนุษย์และต้นทุน AI ยังไม่มีผลที่ใช้สรุปความได้เปรียบของภาษาได้
-ดู [R6 integrated report](https://github.com/jedt3d/wbasic-language/blob/143be583ce875629b430436ed4a4ffc9dac952bf/docs/rounds/R6-main-integration-verification.md)
-สำหรับ profile และ endpoint จริง
+ผล native developer-host package verification ครอบคลุม Windows 11 Pro 25H2 ARM64 (PowerShell 5.1 และ 7) กับ macOS 26.6.2 ARM64: Unicode, compile/run/build, test discovery ที่พบ case จริง และ billing ผ่าน ผลนี้ **ไม่ใช่หลักฐานเครื่องใหม่แบบ no-SDK** การตรวจเงื่อนไขแจกจ่าย, signing/notarization และ production entitlement ยังเปิดอยู่ `noSdkDistribution` ยังคง false
 
-## หลักฐานตัวอย่างเก่าคงอยู่
+## Acceptance และตัวอย่างย้อนหลัง
 
-Small WBasic Projects ยังมี 29 ตัวอย่าง native-verified และ 52 บท Planned ตาม
-revision ที่แต่ละชุดบันทึกไว้ การอัปเดตคู่มือครั้งนี้ไม่ได้รันทุกรายการด้วย 0.0.2
-และไม่ได้ย้ายป้าย Planned ให้ผ่านโดยอัตโนมัติ ตัวอย่าง R8B ก็ยังอ้างหลักฐานของ
-สาขานั้น ไม่ใช้แทนผลทดสอบ VSIX 0.1.0
+Normative draft v0.3 ยังเป็น **72 Passed / 23 Planned / 0 Deferred** โดยไม่รวม milestone WORM แยกต่างหาก R6 D1–D5 ผ่านใน scope ที่บันทึกไว้ Windows OSC52 เชิงบวกใช้ private Microsoft ConPTY ที่ pin ไว้ ส่วน inbox host บางรุ่นยัง timeout ได้ NativeLocal กับ OSC52 เป็นคนละ route Linux ARM64 และ native x86_64 ยังไม่มีผล execution ที่ผ่าน acceptance
+
+Small WBasic Projects คง **29 ตัวอย่าง native-verified / 52 บท Planned** ตาม revision ที่แต่ละชุดบันทึกไว้ Release นี้ไม่ย้ายป้าย Planned ให้ผ่านเอง และไม่สร้างข้อสรุปต้นทุนมนุษย์/AI หลักฐานย้อนหลังรักษารุ่นและ hash เดิม ส่วน release record กับ manifest ของเว็บไซต์ระบุชุดปัจจุบัน

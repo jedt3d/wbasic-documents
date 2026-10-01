@@ -32,3 +32,6 @@ if ($LASTEXITCODE -ne 0) { throw 'Release footer verification failed.' }
 if ($LASTEXITCODE -ne 0) { throw 'WBasic Extension guide verification failed.' }
 & node (Join-Path $documentsRoot 'verify-project-drafts.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'Draft-project verification failed.' }
+
+& node (Join-Path $documentsRoot 'verify-compiler-release.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Compiler release alignment verification failed.' }

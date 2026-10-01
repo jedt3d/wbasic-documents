@@ -4,7 +4,7 @@ description: "สรุปวงจรเขียน–ตรวจ–ทดส
 weight: 12
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 เมื่อคุ้นกับเครื่องมือแล้ว workflow ประจำวันควรสั้นและคาดเดาได้
 
@@ -48,15 +48,17 @@ weight: 12
 - Native Test Explorer และ bundled examples
 - Offline v0.3 specification
 
+รายการพร้อมใช้ข้างต้นจำกัดอยู่ที่คู่ development ที่ตรวจในเครื่อง Project editor service เปิดตาม capability record ของ compiler เท่านั้น compiler รุ่นเก่าอาจไม่มี `editorProject` และจะไม่ได้ project feature เหล่านี้เพียงเพราะติดตั้ง extension ใหม่
+
 ## สิ่งที่ยัง Planned หรืออยู่นอกขอบเขต
 
 - Debug Adapter Protocol, breakpoint และ stepping
 - Compiler-backed formatter
 - General import/manifest code actions นอก keyword-case quick fix
-- Production entitlement และ clean-machine no-SDK distribution
+- Production entitlement และ fresh no-SDK host acceptance
 - Signing, notarization และ Marketplace publication
 - Linux ARM64 และ native x86_64 acceptance
-- WORM, WebView และภาษา/ไลบรารีเหนือ verified v0.3
+- WebView และภาษา/ไลบรารีนอกขอบเขตที่ตรวจแล้ว; ตัวอย่าง WORM M2/M3 ใน catalog นี้ใช้ได้ตามขอบเขตที่ระบุ
 
 การไม่มี debugger ในรุ่นนี้ไม่ได้แปลว่า Run เป็นของชั่วคราว Run, Build และ Test ใช้
 compiler pipeline ที่ทดสอบร่วมกัน เพียงแต่การหยุดโปรแกรมทีละบรรทัดต้องรอ source-level

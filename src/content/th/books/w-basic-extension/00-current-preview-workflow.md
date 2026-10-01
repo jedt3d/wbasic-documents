@@ -1,62 +1,25 @@
 ---
-title: "0 · ใช้ extension รุ่นที่รวมแล้ว"
-description: "วิธีใช้ VS Code ตาม source ของ compiler 0.0.2 และ extension 0.1.0"
+title: "0 · เลือกแพ็ก 0.1.0 ที่เข้าคู่กัน"
+description: "ติดตั้ง private experimental ARM64 prerelease กับ VS Code extension 0.2.1 ที่ตรงกัน"
 weight: 0
 ---
 
-บทนี้ใช้กับ source editor/tool ที่รวมแล้ว ณ `143be583` (ยังเหมือนกันที่ `e7edb1e`) และแพ็ก private experimental `v0.0.2` ที่ตรึง source ณ `b9c8ef99` VSIX ซึ่งเป็นทางเลือกใน ZIP เป็น extension รุ่น `0.1.0` ต้องใช้ VS Code `^1.139.0` และระบุว่าเป็น R6 Draft ยังไม่ใช่ extension ใน Marketplace ใช้ compiler/runtime ที่เข้าคู่กัน ZIP มี compiler, linker และ runtime มาให้ ส่วนการ build ไฟล์เหล่านี้จาก source checkout ต้องใช้ native SDK การรับรองเครื่องสะอาดที่ไม่มี SDK และการแจกจ่ายระดับ production ยังไม่เสร็จ
+**Private experimental v0.1.0 prerelease** [หน้า private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) มี compiler/runtime `0.1.0`, VS Code extension ทางเลือก `wbasic-dev.wbasic@0.2.1` และ protocol package `0.0.2` จาก sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46` Asset ทั้งแปดถูกดาวน์โหลดและตรวจ hash ซ้ำก่อนเผยแพร่ ต้องมีสิทธิ์เข้า private repository จึงเปิดลิงก์ได้ นี่ไม่ใช่ Marketplace หรือ production release
 
-## ติดตั้งจาก private ZIP
+## เลือกและตรวจ ZIP
 
-เลือก `wbasic-0.0.2-windows-arm64.zip` หรือ `wbasic-0.0.2-macos-arm64.zip` ให้ตรงกับเครื่อง ARM64 ตรวจ SHA-256 กับไฟล์ `.sha256` ที่ให้มา แล้วแตก ZIP โดยรักษา top-level folder ไว้ แพ็กมี `wb.exe`/`wb`, `wb-native-probe.exe`/`wb-native-probe`, `wb-linker.json`, linker และ runtime ที่รวมมา, draft specification แบบ offline ใน `docs/` และ VSIX ทางเลือก `editors/vscode/wbasic-r5-0.1.0.vsix` ตรวจ source, target และรายการไฟล์ของแพ็กใน `wb-package.json`
+ดาวน์โหลด `wbasic-0.1.0-windows-arm64.zip` หรือ `wbasic-0.1.0-macos-arm64.zip` จาก private release ให้ตรงกับเครื่อง ตรวจ SHA-256 ของ ZIP เทียบกับไฟล์ `.sha256` และ release record ก่อนแตกไฟล์ Windows ZIP มี hash `85c135ce9ad6ccf2edadd3c892ea677110f1ca0f15d012ec348a924213d93a74` ส่วน macOS ZIP มี hash `50abba3266fd1209666865e1351a68a899aabed95f5a486522d996bc1a93bad6` ดู `wb-package.json` ใน top-level folder เพื่อยืนยัน compiler version, source revision, target, inventory และ `vscodeVsix.path`/`sha256` VSIX ที่ระบุคือ `editors/vscode/wbasic-0.2.1.vsix` มี SHA-256 `d2aa385b5ec035b278aadfcfea500093e23e98797d91b307902cf14413f6158f` ตรวจทั้ง path และ hash เก็บ compiler, runtime assets ที่เข้าคู่กัน, linker และ probe จาก ZIP เดียวกันไว้ด้วยกัน Runtime ในแพ็กใช้ platform libraries ไม่ใช่ไฟล์ static runtime แยก
 
-ในมุมมอง Extensions ของ VS Code เลือก **Install from VSIX…** แล้วเลือก `wbasic-r5-0.1.0.vsix` จากแพ็ก ใน workspace ที่เชื่อถือแล้ว ตั้ง `wbasic.compilerPath` เป็น **path เต็ม** ของ `wb.exe` ที่อยู่บนสุดของแพ็กบน Windows หรือ `wb` บน macOS หากใช้ **WBasic: Inspect R1 Native Probe** ให้ตั้ง `wbasic.probePath` เป็น path เต็มของ probe executable ที่อยู่บนสุดของแพ็ก ไฟล์ `docs/wbasic-language-spec-draft-0.3.md` ในแพ็กอ่านได้โดยไม่ต่อเน็ต ให้เปิดไฟล์นี้โดยตรง คำสั่ง **Open Draft v0.3 Specification** คำนวณ path จากที่ติดตั้ง extension และยังไม่ได้ยืนยันว่าใช้ได้กับ VSIX ที่ติดตั้งแยก
+`Install-And-Test.ps1` บน Windows หรือ `Install-And-Test.sh` บน macOS ตรวจ native examples และเขียน report คำสั่งหลัก `wb check`, `wb run`, `wb test` และ `wb build` ไม่ต้องใช้ VS Code แพ็กที่แตกแล้วผ่าน Run/Build ทั้ง debug และ release โดยใช้ compiler, runtime assets และ linker ในแพ็กโดยไม่ใช้ SDK ของ host ส่วนการ build จาก source ยังต้องมี native development tools แพ็ก private experimental นี้ยังแยกจาก production distribution ส่วน fresh no-SDK acceptance, redistribution notices, signing/notarization และ production entitlement ยังเปิดอยู่
 
-`Install-And-Test.ps1` บน Windows หรือ `Install-And-Test.sh` บน macOS ตรวจตัวอย่าง native ในแพ็กและเขียนรายงาน VSIX เป็นทางเลือกสำหรับ core `wb check`, `wb run`, `wb test` และ `wb build` แพ็ก private ยังเป็น development preview; gate ของเครื่องสะอาด, editor host และการแจกจ่ายต้องตรวจแยก
+## เชื่อม VS Code
 
-## เชื่อมจาก source checkout
+ใน Extensions เลือก **Install from VSIX…** แล้วเลือก VSIX ที่ `wb-package.json` ระบุ Reload Window จากนั้นตรวจว่า Extensions แสดง `WBasic` รุ่น `0.2.1` ใน trusted workspace ตั้ง `wbasic.compilerPath` เป็น absolute path ของ `wb.exe` หรือ `wb` ใน top-level folder ของแพ็ก ตั้ง `wbasic.probePath` เฉพาะเมื่อใช้ native probe แยกต่างหาก เรียก **WBasic: Show Toolchain Status** แล้วตรวจว่า compiler เป็น `0.1.0` และ target เป็น ARM64 ที่ตรงกับเครื่อง Extension ยังค้นหา managed development toolchain, debug build ใน repository และ `PATH` ด้วย การระบุ compiler path ชัดเจนช่วยไม่ให้เลือกตัวเก่า
 
-สั่ง `cargo build --workspace --locked` ใน repository วิธีนี้ต้องมี native build tools/SDK เปิด `editors/vscode` เป็น project สำหรับพัฒนา extension หรือ package และติดตั้ง source นี้ด้วยเครื่องมือพัฒนา VS Code ใน workspace ที่เชื่อถือแล้ว ตั้ง `wbasic.compilerPath` เป็น **path เต็มของ executable** `target/debug/wb.exe` บน Windows หรือ `target/debug/wb` บน macOS ถ้าเว้นว่าง extension จะใช้ debug build ที่อ้างอิงจาก source ของ extension เอง ส่วน `wbasic.probePath` ใช้เฉพาะคำสั่ง **Inspect R1 Native Probe**
+สเปกแบบ offline อยู่ใน `docs/` ของแพ็ก ต้อง trust workspace เพื่อเรียก compiler, build, run และ test ส่วน coloring, Outline และเอกสารในเครื่องใช้ได้ใน Restricted Mode
 
-extension ที่รวมแล้วไม่มีคำสั่ง **Show Toolchain Status** และไม่ค้นหา toolchain ที่จัดการไว้หรือ `PATH` ให้เรียก compiler ผ่าน path เต็มใน terminal พร้อม `--capabilities` และ `--version` ข้อมูล capability ของ compiler เป็นตัวกำหนดความช่วยเหลือและคำสั่ง profile ที่ใช้ได้ สีใน editor ไม่ใช่หลักฐานว่า compile ผ่าน คำสั่งที่เรียก compiler/probe ต้องใช้ Workspace Trust; การลงสี source ใช้ได้ใน Restricted Mode
+## เริ่ม project
 
-## สร้าง project เล็กด้วยตนเอง
+ใช้ **WBasic: New Project** ในโฟลเดอร์ว่าง `App.wproj` จะ pin เวอร์ชันที่ compiler ตัวที่เลือกประกาศ จึงต้องตรวจว่า `toolchain = "0.1.0"` ก่อน Check Project ถ้ามี module ไฟล์ `module.toml` ต้องใช้ toolchain รุ่นเดียวกัน อย่านำ manifest หรือ compiler/runtime binary ของ v0.0.2 มาปนกับแพ็กนี้โดยไม่ปรับและตรวจอย่างชัดเจน ใช้ **WBasic: Check Project** ตรวจ import และ direct dependency ที่บันทึกแล้ว ส่วน **Check Active Source** ตรวจ unsaved standalone file และใช้แทน project check ไม่ได้
 
-สร้าง `App.wproj` และ `src/Main.wbas` ใน workspace รุ่นนี้ไม่มีคำสั่ง **New Project**
-
-```toml
-# App.wproj
-[project]
-name = "MyFirstWBasic"
-module = "App"
-entry = "src/Main.wbas"
-toolchain = "0.0.2"
-
-[dependencies]
-```
-
-```wbasic
-Module App
-
-Procedure Main()
-  PrintLn("Hello from WBasic")
-EndProcedure
-```
-
-ค่า toolchain ใน manifest ต้องตรงกับรุ่น compiler ที่เลือก package ใช้ไดเรกทอรี `src` และไฟล์ entry ประกาศ `Module App` ถ้าจะเพิ่ม dependency ในเครื่อง ให้เพิ่ม path `.wmod` แบบ relative โดยตรงใน `[dependencies]` และให้ module นั้นมี `module.toml` กับ `src` ของตนเอง ไม่มี Include แบบข้อความ Extension รุ่นนี้ไม่มี completion ของ key ใน manifest หรือมุมมอง Projects
-
-## ตรวจ รัน build และ test
-
-ใช้ **WBasic: Check Project** กับ manifest, module และ import ที่บันทึกแล้ว **WBasic: Show Project Modules** แสดงข้อมูล project จาก compiler ถ้ามี manifest เดียวจะเลือกให้อัตโนมัติ ถ้ามีหลายไฟล์จะเลือกจากตำแหน่งไฟล์ที่เปิดหรือถามให้เลือก **WBasic: Check Active Source** ส่งข้อความใน editor รวมทั้งที่ยังไม่บันทึกไปยัง `wb check - --json` แบบไฟล์เดี่ยว จึง resolve import ของ project ไม่ได้ สำหรับไฟล์ `_spec.wbas` จะใช้ test mode
-
-**WBasic: Run Project** เปิด terminal แบบโต้ตอบ **WBasic: Test Project** รันทั้ง suite และแสดงตัวตนของ case, status และยอดรวม ยังไม่มี Test Explorer หรือ UI เลือกรันทีละ case **WBasic: Emit Project Object** สร้าง native object ไม่ใช่ application สำหรับแจกจ่าย **WBasic: Run Active Source in Terminal** รันไฟล์ `.wbas` ที่บันทึกแล้ว **WBasic: New R6 TUI/Jobs Template** เปิดตัวอย่างพื้นฐานเป็นเอกสารที่ยังไม่บันทึก เฉพาะเมื่อ compiler รายงาน `r6-tui-jobs-foundation`; บันทึกก่อนรัน
-
-ตั้ง `wbasic.buildProfile` เป็น `debug` (ค่าเริ่มต้น) หรือ `release` สำหรับ Check, Run, Build, Emit Object และ Test ของ project คำสั่ง **WBasic: Build Project** และ release ต้องมี capability `r8-shared-build-profile` จาก compiler ผลลัพธ์เป็น development build ภายใน หาก task `wbasic` ระบุ `profile` ชัดเจน ค่านั้นจะทับ setting Task provider ค้นหา `.wproj` ที่บันทึกแล้วและเสนอ check, run, test รวมถึง build เมื่อมี capability Run task รับ `arguments` แบบส่งค่าโดยตรง ส่วน emit-object task ต้องใช้ `outputPath` แบบ absolute ไม่มี setting `wbasic.defaultProfile`
-
-## ความช่วยเหลือและขอบเขตของ editor
-
-สี source เป็นการแยกคำตามรูปแบบ Diagnostics ที่ยืนยันด้วย compiler มาจาก Check Active Source หรือ Check Project Completion, hover และ signature ของ library แบบมีชื่อกำกับจะปรากฏตาม feature ID ที่ compiler รายงานเท่านั้น ความช่วยเหลือ `Csv.Create` แบบสี่ argument ต้องมี `csv-exclusive-create`; ความช่วยเหลือ WORM ต้องมีทั้ง `worm-sqlite-feasibility` และ metadata version 1 ที่ตรงกัน capability เหล่านี้อธิบาย API ที่จำกัด ไม่ได้อนุมาน field หรือ instance member ทั่วไป
-
-Go to Definition, Find References และ Rename รองรับเฉพาะ **procedure ที่มีชื่อในไฟล์เดียวกัน** ซึ่ง compiler resolve ได้ Rename ตรวจ source ที่แก้แล้วอีกครั้ง Quick fix แก้ตัวพิมพ์ keyword ต้องมี capability `quickFix` และ span WB200/WB201 ที่ตรงพอดี package นี้ยังไม่มีการนำทาง symbol ข้ามไฟล์ การ rename ทั้ง project ดัชนี local variable การเชื่อม LSP แบบ live ใน extension, Outline ของ manifest, Projects view, Test Explorer หรือ browser ตัวอย่างที่ bundle มา Adapter LSP/MCP แยกใน `tools/protocol` ให้ query source และ saved project ตามขอบเขตของ compiler แต่ไม่รันโปรแกรมผ่าน LSP/MCP
-
-บทที่ 1–12 และภาพประกอบอธิบาย branch R8B `0.2.0` ที่ยังไม่ได้รวม ใช้ขั้นตอนเหล่านั้นเมื่อมี extension branch นั้นและ compiler ที่ตรงกัน หากใช้ source ที่รวมแล้ว ให้ยึดบทนี้กับผล `wb --capabilities` เป็นขอบเขตการใช้งาน
+อ่านต่อที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}}) แล้วทำบทที่ 2–12 สำหรับ Projects, diagnostics, completion, navigation, Test Explorer, examples และ Development Build แพ็ก private v0.0.2 เดิมมี extension 0.1.0 ซึ่งไม่มี editor workflow เหล่านี้ หากใช้เวอร์ชันนั้นให้ดู release notes และเอกสารที่มากับแพ็กของมัน

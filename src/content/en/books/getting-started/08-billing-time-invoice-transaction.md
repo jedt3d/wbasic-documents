@@ -4,7 +4,7 @@ description: "Read writer admission, row selection, and duplicate billing guards
 weight: 8
 ---
 
-`Billing.CreateDraftInvoice` in [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) begins a transaction, reads the stored project owner within that transaction, and then inserts the invoice header as its first write **before** selecting unbilled entries. That write obtains SQLite writer admission. A competing writer or stale snapshot produces an error without automatic retry.
+`Billing.CreateDraftInvoice` in [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) begins a transaction, reads the stored project owner within that transaction, and then inserts the invoice header as its first write **before** selecting unbilled entries. That write obtains SQLite writer admission. A competing writer or stale snapshot produces an error without automatic retry.
 
 ```basic
 Let query As Worm.Query Of TimeEntry = Worm.Select(Of TimeEntry)()

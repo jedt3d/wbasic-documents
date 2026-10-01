@@ -10,11 +10,15 @@ weight: 1
 
 ## สิ่งที่ใช้
 
+บทนี้ใช้ release **compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.1 เลือกใช้
+ใช้ manifest และ runtime ให้ตรงกับ compiler ที่เลือก อ่าน [รุ่นของเครื่องมือ]({{< relref "/implementation-status.md" >}})
+ก่อนใช้ขั้นตอนข้ามชุด
+
 | เครื่องมือ | หน้าที่ |
 |---|---|
 | `wb` | อ่านโครงการ ตรวจ source, compile, link และรันโปรแกรม |
 | terminal | ป้อนคำสั่งและดูผลลัพธ์ |
-| native toolchain | link object กับ WBasic runtime; ปัจจุบันใช้ MSVC บน Windows และ Apple Clang บน macOS |
+| native toolchain | การ build จาก source ใช้ MSVC บน Windows และ Apple Clang บน macOS; portable ZIP เตรียม linker มาให้ |
 
 ตรวจว่าเรียก compiler ได้ด้วย:
 
@@ -25,7 +29,7 @@ wb --capabilities
 
 `--version` บอก compiler/target ที่กำลังใช้ ส่วน `--capabilities` ส่งข้อมูลความสามารถ
 แบบ JSON สำหรับเครื่องมืออื่น การ build จาก source บนเครื่องนักพัฒนายังใช้ native
- toolchain/SDK และ static runtime ที่ตรงกับ `wb` รุ่น 0.0.2 มี private experimental
+toolchain/SDK และ static runtime ที่ตรงกับ `wb` รุ่น 0.1.0 มี private experimental
 portable ZIP สำหรับ ARM64 ซึ่งรวม compiler, runtime และ linker ตรงชุด ผล smoke test
 ของ ZIP ยังไม่ใช่การยอมรับเครื่องสะอาดแบบ no-SDK Core CLI ไม่ต้องมี Node; Node ใช้กับ
 protocol tooling ที่เลือกติดตั้งเพิ่ม

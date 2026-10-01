@@ -52,10 +52,11 @@ wb run hello.wbas
 wb run App.wproj -- first "ภาษาไทย"
 ```
 
-`wb run` compile/link native executable ไม่ใช่ interpreter รุ่น compiler/runtime ปัจจุบันคือ
-`0.0.2` หากใช้ compiler รุ่นนี้ project และ module ต้อง pin `toolchain` เป็น `0.0.2`
-และใช้ runtime ที่เข้าคู่กัน ZIP ทดลองแบบส่วนตัวบน ARM64 ผ่านการทดสอบหลังแตกไฟล์
-บนเครื่องนักพัฒนาแล้ว แต่ยังไม่ผ่านการรับรองเครื่องสะอาดที่ไม่มี SDK
+`wb run` compile/link native executable ไม่ใช่ interpreter รุ่นที่เผยแพร่ล่าสุดคือ
+**compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.1 เลือกใช้
+project และ module ต้อง pin `toolchain` ให้ตรงกัน ZIP ทั้งสองแพลตฟอร์มผ่าน
+การทดสอบหลังแตกไฟล์บนเครื่องนักพัฒนาแล้ว ส่วน fresh-host no-SDK acceptance
+ยังเป็น gate แยกที่ไม่ผ่าน
 
 `wb build` รับ **project manifest** ไม่รับไฟล์ `.wbas` เดี่ยว:
 
@@ -87,6 +88,13 @@ typed data rows, reports แบบกลุ่ม, structural collection/JSON ma
 ให้ editor/protocol ส่วน `wb project-info MANIFEST --json` อ่าน project metadata และ
 `wb --capabilities` รายงานความสามารถที่ binary นี้โฆษณา คำสั่งเหล่านี้ใช้ compiler
 ชุดเดียวกับ check ไม่สร้าง parser เงาอีกชุด
+
+ใน compiler 0.1.0 มี `wb editor-project --json` และ
+`wb editor-manifest --json` รับ versioned JSON request ทาง stdin เพื่อวิเคราะห์
+project/manifest โดยไม่ execute โปรแกรม ใช้กับ source overlays ที่ยังไม่บันทึก
+LSP/Extension ใช้รายงานนี้กับ diagnostics, completion และ navigation ข้ามไฟล์
+เมื่อ compiler รายงาน `editorProject: true` รุ่นเก่าจะได้เฉพาะบริการที่ capability
+รองรับ ดู [ขอบเขตเวอร์ชัน]({{< relref "/implementation-status.md" >}})
 
 สำหรับ terminal ใช้:
 

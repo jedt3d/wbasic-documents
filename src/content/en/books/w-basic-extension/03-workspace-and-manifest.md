@@ -4,7 +4,7 @@ description: "Understand App.wproj, Outline, and the Projects view before writin
 weight: 3
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 Open `App.wproj`. Its basic shape looks like this:
 
@@ -13,7 +13,7 @@ Open `App.wproj`. Its basic shape looks like this:
 name = "MyFirstWBasic"
 module = "MyFirstWBasic"
 entry = "src/Main.wbas"
-toolchain = "0.0.1"
+toolchain = "0.1.0"
 
 [dependencies]
 ```
@@ -32,6 +32,8 @@ a supported tooling contract.
 
 Editor colors are lexical hints. A misspelled path may still look handsome, and
 the compiler may still reject it. Good looks are not a type system.
+
+Completion also offers valid manifest keys and local dependency paths. These are editing aids; **Check Project** validates the saved project and compiler contract.
 
 ## Check the project for the first time
 

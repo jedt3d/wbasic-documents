@@ -11,7 +11,7 @@ assert.ok(allowed.has(git(['remote', 'get-url', '--push', 'origin'])), 'only the
 assert.equal(git(['status', '--porcelain']), '', 'build and commit all documentation changes before publishing');
 const { version } = JSON.parse(fs.readFileSync(path.join(root, 'src/static/version.json'), 'utf8'));
 assert.match(version, /^docs-v\d{4}\.\d{2}\.\d{2}\.[1-9]\d*$/);
-for (const script of ['verify-source.mjs', 'verify-site.mjs', 'verify-small-projects-site.mjs', 'verify-english-edition.mjs', 'verify-release.mjs', 'verify-extension-guide.mjs', 'verify-project-drafts.mjs']) {
+for (const script of ['verify-compiler-release.mjs', 'verify-source.mjs', 'verify-site.mjs', 'verify-small-projects-site.mjs', 'verify-english-edition.mjs', 'verify-release.mjs', 'verify-extension-guide.mjs', 'verify-project-drafts.mjs']) {
   execFileSync(process.execPath, [script], { cwd: root, stdio: 'inherit' });
 }
 git(['fetch', 'origin', 'main', '--tags']);

@@ -4,7 +4,7 @@ description: "Separate syntax, type, and infrastructure errors, then apply keywo
 weight: 5
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 A useful diagnostic says more than “wrong.” It identifies the file, location,
 stage, and code so you can fix the cause instead of adding semicolons at random.
@@ -41,6 +41,8 @@ Late results for older text are discarded instead of replacing newer diagnostics
 
 Manifest and dependency workflows still use the saved project. For an import or
 module-path error, save the files and run **Check Project**.
+
+The project service analyzes open unsaved files together as a bounded project snapshot. When a manifest or dependency changes, or a snapshot is rejected, stale results for every affected open overlay are cleared. Save and run Check Project to confirm the full disk state.
 
 ## Keyword-case quick fix
 

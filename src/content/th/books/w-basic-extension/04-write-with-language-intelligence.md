@@ -4,7 +4,7 @@ description: "ฝึก completion, hover, signature help และ Outline ด�
 weight: 4
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 เปิด `src/Main.wbas` แล้วแทนเนื้อหาด้วย:
 
@@ -47,14 +47,17 @@ Procedure คำทักทาย(name As String) As String
 EndProcedure
 ```
 
-ห้ามผสมเลขไทยกับเลขสากลใน numeric literal เดียวกัน เช่น `๑๐ + 25` ใช้ numeral script
+ห้ามผสมเลขไทยกับเลขสากลใน numeric expression เดียวกัน เช่น `๑๐ + 25` ใช้ numeral script
 ให้สม่ำเสมอภายใน expression ตามกฎภาษา
 
 ## ขอบเขตของ completion ปัจจุบัน
 
-Typed member completion รองรับ receiver ที่ประกาศชนิดตรง ๆ, field ของ Structure และ
-public API ที่ compiler เปิดผ่าน capability metadata ยังไม่รับประกัน expression chain
-ซับซ้อนทุกแบบ, member ของ intrinsic String/Array ทุกตัว หรือ local-variable navigation
+สำหรับ binding ที่ประกาศชนิด Structure หรือ nominal type ที่ import ไว้อย่างตรงไปตรงมา
+ให้พิมพ์จุดหลังชื่อ binding เพื่อดู field และ method ที่ compiler อนุญาตให้เห็น
+ส่วน public API ต้องมี capability metadata จาก compiler ที่ตรงกัน Method ที่เป็น
+private, internal ของ module อื่น หรือไม่ได้ import จะไม่อยู่ในรายการ Completion
+ยังไม่รับประกัน expression chain ทุกแบบ, การจับคู่ type ผ่าน import alias ครบทุกกรณี,
+member ของ intrinsic String/Array ทุกตัว หรือ local-variable navigation
 
 รายละเอียดไวยากรณ์อ่านต่อได้ที่
 [โปรแกรม WBasic หนึ่งโปรแกรม]({{< relref "/books/language-reference/01-a-wbasic-program.md" >}})

@@ -4,7 +4,7 @@ description: "อ่านลำดับการเขียน เลือ�
 weight: 8
 ---
 
-`Billing.CreateDraftInvoice` ใน [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) เริ่ม transaction แล้วตรวจเจ้าของ project จากฐานข้อมูลภายใน transaction เดียวกัน จากนั้น insert หัว invoice เป็นการเขียนครั้งแรก **ก่อน** เลือกรายการเวลาที่ยังไม่วางบิล การเขียนนี้ขอสิทธิ์ writer ของ SQLite; หากชน writer หรือ snapshot จะคืน error โดยไม่ retry อัตโนมัติ
+`Billing.CreateDraftInvoice` ใน [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) เริ่ม transaction แล้วตรวจเจ้าของ project จากฐานข้อมูลภายใน transaction เดียวกัน จากนั้น insert หัว invoice เป็นการเขียนครั้งแรก **ก่อน** เลือกรายการเวลาที่ยังไม่วางบิล การเขียนนี้ขอสิทธิ์ writer ของ SQLite; หากชน writer หรือ snapshot จะคืน error โดยไม่ retry อัตโนมัติ
 
 ```basic
 Let query As Worm.Query Of TimeEntry = Worm.Select(Of TimeEntry)()

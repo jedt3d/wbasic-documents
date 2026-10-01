@@ -20,7 +20,7 @@ billing-time/
 name = "BillingTime"
 module = "BillingTime"
 entry = "src/Main.wbas"
-toolchain = "0.0.2"
+toolchain = "0.1.0"
 
 [dependencies]
 ```
@@ -56,7 +56,7 @@ EndProcedure
 ```
 
 This small project is reader-created; there is no `examples/billing-time-cli`
-path in the current source tree. The separate, complete database example begins
+path in the language repository source tree. The separate, complete database example begins
 in chapter 5.
 
 Next: [Tour the language in this program]({{< relref "/books/getting-started/03-billing-time-language-tour.md" >}}).

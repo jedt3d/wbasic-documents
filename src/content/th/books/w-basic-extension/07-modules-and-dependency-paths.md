@@ -4,7 +4,7 @@ description: "เพิ่ม local module ผ่าน manifest โดยไม
 weight: 7
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 WBasic แบ่ง code ด้วย Module, Import และ direct dependency ใน manifest ภาษาไม่มี textual
 `Include` และ Extension ไม่มี global include path ให้ตั้ง การรู้ว่า source มาจากไหนจึง
@@ -31,7 +31,7 @@ MyFirstWBasic/
 ```toml
 [module]
 name = "Acme"
-toolchain = "0.0.1"
+toolchain = "0.1.0"
 ```
 
 ## เพิ่มผ่าน Extension

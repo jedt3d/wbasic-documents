@@ -26,7 +26,7 @@ billing-time/
 name = "BillingTime"
 module = "BillingTime"
 entry = "src/Main.wbas"
-toolchain = "0.0.2"
+toolchain = "0.1.0"
 
 [dependencies]
 ```
@@ -66,7 +66,7 @@ Procedure Main(args As Array Of String) As Integer
 EndProcedure
 ```
 
-โครงการเล็กนี้ผู้อ่านสร้างเอง; source tree ปัจจุบันไม่มี path `examples/billing-time-cli`
+โครงการเล็กนี้ผู้อ่านสร้างเอง; source tree ของ language repository ไม่มี path `examples/billing-time-cli`
 ตัวอย่างฐานข้อมูลฉบับเต็มซึ่งรันได้อยู่ในบทที่ 5 เป็นต้นไป
 
 อ่านต่อ: [เดินชมภาษาในโปรแกรมนี้]({{< relref "/books/getting-started/03-billing-time-language-tour.md" >}})

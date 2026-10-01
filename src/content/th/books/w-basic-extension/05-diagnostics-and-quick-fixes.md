@@ -4,7 +4,7 @@ description: "แยก syntax, type และ infrastructure error พร้อ
 weight: 5
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 Diagnostics ที่ดีไม่ควรเพียงบอกว่า “ผิด” แต่ควรบอกไฟล์ ตำแหน่ง stage และรหัสที่ช่วยให้
 แก้สาเหตุแทนการสุ่มเติม semicolon ซึ่งใน WBasic ก็ไม่ได้ช่วยอะไรอยู่ดี
@@ -39,6 +39,8 @@ Language server ส่ง unsaved source เป็น bounded overlay ให้ 
 
 อย่างไรก็ตาม manifest และ dependency workflow อาศัย project ที่บันทึกแล้ว หาก error
 เกี่ยวกับ Import หรือ module path ให้ save แล้วใช้ **Check Project**
+
+Project service วิเคราะห์ไฟล์ที่เปิดและยังไม่บันทึกร่วมกันเป็น snapshot ของ project แบบมีขอบเขต เมื่อ manifest หรือ dependency เปลี่ยน หรือ snapshot ถูกปฏิเสธ ผลเก่าของ open overlay ที่เกี่ยวข้องจะถูกล้าง Save แล้วใช้ Check Project เพื่อยืนยันสถานะไฟล์บนดิสก์ทั้งหมด
 
 ## Keyword case quick fix
 

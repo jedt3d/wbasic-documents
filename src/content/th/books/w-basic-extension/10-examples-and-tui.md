@@ -4,10 +4,10 @@ description: "เปิดหรือ copy ตัวอย่างที่ต
 weight: 10
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 Extension บรรจุ example catalog ที่ผ่านการตรวจโครงสร้างและ hash เดียวกับ repository
-ปัจจุบันมี 27 examples ใน 10 หมวด ครอบคลุม language core, modules, tests, streams,
+ปัจจุบันมี 31 examples ใน 10 หมวด รวม teaching files 61 ไฟล์ ครอบคลุม language core, modules, tests, streams,
 JSON, Jobs, TUI และ complete SQLite showcase
 
 ## Open กับ Copy ต่างกันอย่างไร
@@ -31,6 +31,8 @@ repository specimen
 5. `memory-streams` และ `json-values` — typed API help
 6. `tui-counter` — deterministic model/update/view
 7. `sqlite-customer-showcase` — project ขนาดใหญ่ที่ประกอบหลาย module
+
+`worm-m2-sqlite` กับ `worm-m3-billing` copy เป็น project ครบชุดได้ รวม module และ SQLite schema เมื่อจำเป็น Automated action ของสองตัวนี้คือ Check และ Build ถ้าจะรันตัวอย่างฐานข้อมูล ต้องส่ง path ของ SQLite เป็น program argument หลัง `--` อย่างชัดเจน คำสั่ง Run Project ทั่วไปไม่ถาม path นี้ `worm-m4-ui-reference` เปิดได้เฉพาะ reference ใน repository และไม่อยู่ใน Copy Example เพราะต้อง stage Billing module ไปยัง local dependency path ก่อน
 
 ## New TUI/Jobs Example
 

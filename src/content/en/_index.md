@@ -9,11 +9,11 @@ This reference separates language rules from the standard library and module API
 
 ## Current coverage
 
-This update follows the merged **0.0.2 private experimental compiler/runtime
-preview**, including `wb build` and WORM SQLite. This scope differs from the
-draft v0.3 language design and the R8B editor branch. Read
+This reference follows the **compiler/runtime 0.1.0 private experimental release**
+with **Extension 0.2.1**. CLI, portable ZIP and the compiler selected in VS Code
+use the same compiler version, separate from the draft v0.3 language design. Read
 [compiler and tooling versions]({{< relref "/implementation-status.md" >}})
-before choosing installation steps and examples.
+before installation or updating older project manifests.
 
 The reference covers the language, standard library, and public APIs verified in the current implementation. Each chapter presents clear rules, small examples, boundary cases, and relevant diagnostics. Features that remain Planned or Deferred are identified explicitly. A reference book should not write fiction on the compiler's behalf.
 

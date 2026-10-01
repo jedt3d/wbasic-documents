@@ -4,9 +4,9 @@ description: "คู่มือจับมือใช้ WBasic บน VS Cod
 weight: -4
 ---
 
-**เลือกเวอร์ชันก่อนอ่าน** [วิธีใช้ extension ที่รวมแล้วรุ่น 0.1.0]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) ใช้กับ compiler `0.0.2` ที่ source `143be583` และ extension ใน source เดียวกัน ส่วนบทที่ 1–12 ด้านล่างอธิบาย branch พัฒนา R8B รุ่น `0.2.0` ซึ่งยังไม่ได้รวม คำสั่ง New Project, มุมมอง Projects, Test Explorer, ตัวอย่างที่มากับ extension และการแก้ชื่อข้ามไฟล์ในบทเหล่านั้นยังใช้ไม่ได้ใน extension รุ่น `0.1.0` ที่รวมแล้ว
+**เลือกเวอร์ชันที่เข้าคู่กัน** บทที่ 1–12 อธิบาย private experimental prerelease ของ compiler/runtime `0.1.0` คู่กับ extension `wbasic-dev.wbasic@0.2.1` และ protocol package `0.0.2` ZIP สำหรับ Windows/macOS ARM64 และ VSIX ในแพ็กเผยแพร่แล้ว และมีการดาวน์โหลดตรวจ hash ซ้ำกับ sealed source เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private `0.0.2` เดิมมี extension `0.1.0` ซึ่งใช้ project editor workflow ในบทที่ 1–12 ไม่ได้
 
-คู่มือ branch R8B สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
+คู่มือ development ปัจจุบัน สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
 workspace ว่าง สร้าง project แรก เขียน source ด้วย autocomplete และ diagnostics
 ไปจนถึงจัดการ module, build โปรแกรม และรัน test ผ่าน Test Explorer
 
@@ -14,10 +14,9 @@ workspace ว่าง สร้าง project แรก เขียน source 
 **ภารกิจฝึกมือ** และ **จุดตรวจ** เพื่อให้รู้ว่าทำสำเร็จจริง ไม่ใช่เพียงกดตามรูปแล้ว
 หวังว่า compiler จะเห็นใจ
 
-Extension รุ่นที่หนังสืออ้างอิงคือ development preview `wbasic-dev.wbasic@0.2.0`
-จาก R8B ซึ่งทดสอบกับ VS Code 1.137 ขึ้นไปบน Windows 11 ARM64 และ macOS ARM64
-การ build ในเล่มเป็น **Development Build** ที่ยังต้องใช้ native SDK ของระบบ
-ไม่ใช่ package สำหรับแจกจ่ายบนเครื่องสะอาด
+Extension รุ่นที่หนังสืออ้างอิงคือ development payload ที่ตรวจแล้ว `wbasic-dev.wbasic@0.2.1`
+ทดสอบกับ VS Code 1.139.1 บน Windows 11 ARM64 และ 1.140.0 บน macOS ARM64
+เมื่อใช้ compiler, runtime assets และ linker ที่เข้าคู่กันในแพ็ก การ Run และ Development Build ไม่ต้องใช้ SDK ของ host แต่การ build จาก source ยังต้องใช้ native SDK ส่วน fresh no-SDK host acceptance และ production distribution ยังเปิดอยู่
 
-ถ้าใช้ source ปัจจุบัน ให้เริ่มที่ [วิธีใช้ extension ที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) ถ้าใช้ branch R8B ให้เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})
+เมื่อใช้ prerelease ที่เข้าคู่กัน ให้เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})
 

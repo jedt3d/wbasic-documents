@@ -4,7 +4,7 @@ description: "รัน source/project สร้าง Debug/Release development
 weight: 8
 ---
 
-> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 Extension แยกคำสั่งตามความตั้งใจ เพื่อไม่ให้การกด Run โดยบังเอิญกลายเป็น build สำหรับ
 แจกจ่าย หรือการ Check ไปเปิด network/database ของโปรแกรม
@@ -32,9 +32,10 @@ profile จาก `wbasic.defaultProfile` และส่ง manifest path เ�
 - **Build Project — Debug (Development)** เลือก Debug โดยตรง
 - **Build Project — Release (Development)** เลือก Release โดยตรง
 
-Compiler สร้าง native executable และ `.wb-build.json` record การ build นี้ยังต้องใช้
-MSVC หรือ Apple Clang และไม่ใช่ production entitlement/no-SDK package คำว่า
-“Development” อยู่ในชื่อเพื่อกันความเข้าใจผิด ไม่ใช่เครื่องประดับ
+Compiler สร้าง native executable และ `.wb-build.json` record เมื่อใช้ compiler,
+runtime assets และ linker ที่มากับ ZIP ที่เผยแพร่ Run/Build ทั้ง debug และ release
+ผ่านโดยไม่ใช้ SDK ของ host ส่วนการ build compiler จาก source ยังต้องใช้ native tools
+ผลลัพธ์ยังเป็น Development Build โดยไม่มี production entitlement หรือ fresh no-SDK host acceptance
 
 ## VS Code Tasks
 

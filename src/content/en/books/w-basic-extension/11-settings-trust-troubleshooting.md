@@ -4,7 +4,7 @@ description: "Configure only what is needed, read logs, and diagnose layers with
 weight: 11
 ---
 
-> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The WBasic Extension deliberately has few settings. Project behavior belongs in
 the manifest and compiler metadata rather than hidden machine configuration.
@@ -20,6 +20,8 @@ the manifest and compiler metadata rather than hidden machine configuration.
 
 `verbose` may record source text in the local Output channel. Enable it only
 while diagnosing a problem and turn it off afterward.
+
+This 0.2.1 guide uses `wbasic.defaultProfile`. The published 0.1.0 extension uses `wbasic.buildProfile`; keep settings aligned with the extension version you actually loaded. After changing the installed VSIX, reload the VS Code window and confirm Show Toolchain Status reports compiler `0.1.0`.
 
 ## Diagnostic order when the extension is not working
 

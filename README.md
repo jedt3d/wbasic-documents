@@ -14,12 +14,16 @@ and publication. The earlier draft books remain read-only historical material in
 
 The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
-API surface in merged compiler revision `143be58`, including selected experimental
-WORM SQLite contracts and the private ARM64 compiler/runtime 0.0.2 preview. The English edition translates
-the reviewed Thai reference, design guide, and Small Wbasic Projects, alongside
-the existing bilingual Getting Started. The bilingual **WBasic Extension Guide**
-distinguishes the current 0.1.0 preview VSIX from the separately verified,
-unmerged R8B productivity branch. Its branch-specific exercises are labelled.
+API surface in the verified compiler/runtime **0.1.0** private experimental release
+at sealed source `3901cf17`, including selected WORM SQLite contracts. CLI,
+portable ZIP and the compiler selected in VS Code share this version; optional
+Extension **0.2.1** and protocol **0.0.2** retain their own versions. The bilingual
+Getting Started, reference and Extension Guide follow this release cohort.
+Historical evidence and Small Projects fixtures keep their original revisions.
+`src/static/compiler-release.json` binds release source and ZIP hashes;
+`verify-compiler-release.mjs` checks current bilingual pins and the site version
+metadata before publishing. Native package tests are developer-host evidence,
+separate from fresh no-SDK/production acceptance.
 Thai and English editions retain the same scope. Corresponding pages use the same path and file name in `src/content/th`
 and `src/content/en`. Planned and Deferred capabilities retain their status in
 both languages.

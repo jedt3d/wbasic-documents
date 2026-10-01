@@ -47,7 +47,11 @@ wb run hello.wbas
 wb run App.wproj -- first "ภาษาไทย"
 ```
 
-`wb run` compiles and links a native executable; it is not an interpreter. The current compiler/runtime version is `0.0.2`. Keep project and module `toolchain` pins at `0.0.2` when using that compiler, and use its matching runtime. The private ARM64 preview packages passed extracted developer-host tests; fresh-host no-SDK distribution has not passed acceptance.
+`wb run` compiles and links a native executable; it is not an interpreter. The
+latest published compiler/runtime is **0.1.0**, matching the compiler selected
+by Extension 0.2.1. Project and module `toolchain` pins must match. Both ARM64
+portable ZIPs passed extracted developer-host checks; fresh-host no-SDK
+acceptance remains open.
 
 `wb build` accepts a **project manifest**, not a standalone `.wbas` file:
 
@@ -71,6 +75,14 @@ The runner distinguishes assertion failure, unexpected Error, process crash, and
 ## Available analysis tools
 
 `wb symbols FILE --json` and `wb references FILE --json` expose compiler-checked metadata to editors and protocols. `wb project-info MANIFEST --json` reads project metadata; `wb --capabilities` reports what this binary advertises. These commands share the compiler with check rather than creating a shadow parser.
+
+Compiler 0.1.0 also provides `wb editor-project --json` and
+`wb editor-manifest --json`. They accept versioned JSON requests on stdin and
+analyze project/manifest snapshots without executing the application, including
+unsaved source overlays. LSP/Extension use these reports for diagnostics,
+completion and cross-file navigation when `editorProject: true` is advertised.
+Older compilers retain only their capability-supported services. See
+[version boundaries]({{< relref "/implementation-status.md" >}}).
 
 For a terminal, use:
 
