@@ -1,48 +1,23 @@
 ---
 title: "7 · บันทึกเวลาและราคา"
-description: "เก็บ rate snapshot และคำนวณยอดด้วย integer arithmetic ที่ตรวจสอบเหตุผลได้"
+description: "ดู insert intent และราคา snapshot จาก source ที่รันได้"
 weight: 7
 ---
 
-> **สถานะ: Planned / ยัง compile ไม่ได้** — การคำนวณจำนวนเต็มใช้ได้จริง แต่
-> `Worm.Insert` และ mapper ที่ล้อมตัวอย่างยังเป็น acceptance design
-
-เมื่อบันทึกงาน ตัวอย่างคัดลอก rate จาก `ServiceType` ลง `TimeEntry` ด้วย หากเดือนหน้า
-เราเปลี่ยนราคา Design จาก 60 เป็น 75 ดอลลาร์ต่อชั่วโมง งานของเดือนนี้ยังคงราคาเดิม
+`Billing.LogTime` บันทึก project, service, วันที่, นาทีและ note พร้อมคัดลอก rate ของ service ลง `TimeEntry` จึงไม่เปลี่ยนยอดย้อนหลังเมื่อแก้ราคาบริการในอนาคต ตัวอย่างใน [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) สร้างเจตนาการ insert อย่างชัดเจน:
 
 ```basic
-Let sketch As TimeEntry = Worm.Insert(Of TimeEntry)(db,
-  Worm.New(Of TimeEntry)()
-    .SetProjectId(project.Id)
-    .SetServiceTypeId(design.Id)
-    .SetWorkDate("2026-09-28")
-    .SetMinutes(120)
-    .SetNote("Homepage sketches")
-    .SetRateCentsPerHour(design.RateCentsPerHour))
+changes = Worm.Set(Of TimeEntry)(changes, "Note", note)
+changes = Worm.Set(Of TimeEntry)(changes, "RateCentsPerHour", service.RateCentsPerHour)
+Using tx As Worm.Transaction = db.BeginTransaction()
+  Let saved As TimeEntry = Worm.InsertReturning(Of TimeEntry)(tx, TimeMap(), changes)
+  tx.Commit()
+  Return saved
+EndUsing
 ```
 
-ตัวอย่างมีงานสองรายการ:
+ข้อความนี้เป็น **ส่วนตัดจาก procedure**; source เต็มกำหนด field ที่ต้องใช้ทั้งหมดก่อน insert `Id` และ `Version` ถูกละไว้ให้ SQLite สร้างและคืนค่าผ่าน `InsertReturning` การละ field กับการกำหนด `Null` เป็นคนละเจตนา
 
-| บริการ | นาที | rate (cents/hour) | ยอด (cents) |
-|---|---:|---:|---:|
-| Design | 120 | 6,000 | 12,000 |
-| Development | 90 | 4,000 | 6,000 |
-| **รวม** | **210** | | **18,000** |
+[Main.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/src/Main.wbas) บันทึก Design 120 นาทีที่ 6,000 cents/hour และ Development 90 นาทีที่ 4,000 cents/hour สูตร `(minutes * rateCentsPerHour) Div 60` ให้ 12,000 + 6,000 = **18,000 cents** `ExactAmountCents` ปฏิเสธค่าติดลบและการคูณ `Integer` มี overflow check ตัวเลขตัวอย่างหารลงตัว; ไม่มีนโยบายภาษี สกุลเงิน การตรวจวันที่ หรือการปัดเศษทางธุรกิจครบถ้วน
 
-## คำนวณแบบตรงไปตรงมา
-
-```basic
-Procedure ExactAmountCents(minutes As Integer, rateCentsPerHour As Integer) As Integer
-  Return (minutes * rateCentsPerHour) Div 60
-EndProcedure
-```
-
-ตัวเลขของ tutorial หาร 60 ลงตัว จึงได้ยอดแน่นอน แต่ชื่อ `ExactAmountCents` ไม่ใช่
-ใบอนุญาตให้ใช้สูตรนี้กับทุกธุรกิจ งานจริงต้องกำหนดว่าเศษนาทีปัดอย่างไร ตรวจ overflow
-ตรงไหน ใช้สกุลเงินใด และคิดภาษีเมื่อใด
-
-`WorkDate` ยังเป็น `String` เพื่อไม่ดึงเรื่องวัน เวลา และเขตเวลาเข้ามากลางบทเรียน
-นี่เป็นการลดขอบเขตของตัวอย่าง ไม่ใช่คำแนะนำให้ระบบออก invoice จริงเก็บวันที่เป็นข้อความ
-ตลอดไป
-
-อ่านต่อ: [สร้าง draft invoice ใน transaction]({{< relref "/books/getting-started/08-billing-time-invoice-transaction.md" >}})
+อ่านต่อ: [สร้าง invoice]({{< relref "/books/getting-started/08-billing-time-invoice-transaction.md" >}})

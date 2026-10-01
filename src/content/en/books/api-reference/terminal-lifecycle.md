@@ -3,7 +3,7 @@ title: "Terminal Lifecycle and Platform Limits"
 weight: 60
 ---
 
-Status: **R6 native lifecycle closed within the approved endpoint scope; positive Windows OSC52 read remains Deferred**
+Status: **R6 native lifecycle and positive Windows OSC52 read passed within the tested endpoint scope**
 
 ## Ownership and modes
 
@@ -15,14 +15,21 @@ Fullscreen, inline, and static/noninteractive behavior are supported according t
 
 If a host stalls ordinary output indefinitely, runtime returns a bounded error after restoring input under the approved policy and **retains terminal ownership** until the exact pending packet and ordered cleanup finish. A new session must not begin in the meantime.
 
+In the exceptional Windows case where the host blocks input restoration itself,
+a bounded error may return with input and output cleanup pending. Ownership stays
+held until all cleanup finishes. During a clipboard output stall, runtime leaves
+native input in the OS FIFO to avoid an OS read that could also block; event
+delivery can be delayed. A bounded return does not mean full terminal restoration,
+and mouse replay across exceptional shutdown is not guaranteed.
+
 Ctrl+C, suspend/resume, disconnect, and terminal child-process handoff are supported on the verified platforms. While a handed-off child runs, the parent does not paint over it; on return it performs a full redraw.
 
 ## Clipboard
 
 - NativeLocal private clipboard tests passed on Windows.
 - OSC52 read passed on the tested macOS endpoint.
-- The tested Windows Terminal/conhost did not forward a positive OSC52 read reply; WBasic returns bounded `Tui.ClipboardTimeout` and correctly restores modes.
-- Windows acceptance is therefore **endpoint-conditional**, not a guarantee that OSC52 read works on this endpoint or every Windows terminal.
+- A pinned isolated Microsoft ConPTY `1.24.260710001` passed a real query with Unicode and empty replies, distinct malformed/timeout errors, and mode restoration. The older inbox/default host did not forward a positive reply; WBasic returned bounded `Tui.ClipboardTimeout` and restored modes there.
+- Windows evidence is **scoped to the tested endpoint**; these tests do not establish forwarding on every terminal or desktop clipboard-manager policy.
 - The ordinary desktop clipboard was not used in the isolated acceptance test.
 
 Applications must handle Clipboard events with nullable `Text` and `Error` separately. Do not mistake failure for an empty clipboard.
@@ -35,6 +42,6 @@ Applications must handle Clipboard events with nullable `Text` and `Error` separ
 | Native macOS ARM64 | Compiler/runtime/TUI/R7 showcase passed; iTerm2 visual inspection passed |
 | Linux ARM64 | No native endpoint verification yet |
 | Native x86_64 | Acceptance matrix has not passed |
-| Clean machine without SDK | R8 packaging gate; not ready yet |
+| Fresh host without SDK | Private `0.0.2` ZIP passed extracted developer-host checks; independent fresh-host acceptance remains open |
 
 Thus “build passed on two ARM64 hosts” is strong evidence within that scope, but not an automatic passport to every OS and terminal.

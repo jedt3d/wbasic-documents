@@ -54,7 +54,8 @@ wb emit-object billing-time/BillingTime.wproj --output BillingTime.obj
 ยังเป็นความรับผิดชอบของ caller และต้องใช้ runtime ที่ตรงรุ่น จนกว่า distribution workflow
 จะมีสัญญาที่เสถียร ให้ใช้ `wb run` เป็นทางเริ่มต้นที่สั้นและตรวจสอบได้
 
-จากจุดนี้คุณมีโครงการ WBasic ที่รันจริงแล้ว บทถัดไปจะขยาย Billing Time ไปสู่ model และ
-ฐานข้อมูล โดยระบุส่วนที่ยังเป็นแบบออกแบบให้ชัดเจน
+หากต้องการ binary แยก ใช้ `wb build billing-time/BillingTime.wproj --output BillingTime`
+(บน Windows ตั้งชื่อ output เป็น `.exe`) คำสั่งนี้รับ project manifest บทถัดไปจะอ่าน
+ตัวอย่าง WORM/SQLite อีกโครงการหนึ่งที่รันได้จริง
 
 อ่านต่อ: [ออกแบบ model สำหรับ Billing Time]({{< relref "/books/getting-started/05-billing-time-models.md" >}})

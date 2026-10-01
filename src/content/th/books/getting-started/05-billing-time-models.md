@@ -1,68 +1,35 @@
 ---
-title: "5 · ออกแบบ model"
-description: "หก Structure ความสัมพันธ์ และเหตุผลที่ database record ยังเป็น value ธรรมดา"
+title: "5 · Model ที่รันได้จริง"
+description: "อ่าน Structure และ mapping ของ Billing Time ที่ใช้กับ SQLite"
 weight: 5
 ---
 
-> **จากบทนี้เป็นส่วน Planned** — ภาษาแกนหลักที่ใช้ประกาศ Structure มี implementation
-> แล้ว แต่ Worm API ยังไม่มีใน compiler/runtime ปัจจุบัน โค้ดบทที่ 5–9 เป็น acceptance
-> design สำหรับการพัฒนาต่อ ไม่ใช่ส่วนที่ compile ได้ของ starter
+จากโครงการเล็กในบทก่อน เราจะอ่านตัวอย่าง [Billing Time WORM ฉบับเต็ม](https://github.com/jedt3d/wbasic-language/tree/143be58/examples/billing-time-worm) ซึ่งตรวจและรันกับ compiler 0.0.2 แล้ว ตัวอย่างใช้หก model: `Customer`, `Project`, `ServiceType`, `TimeEntry`, `Invoice` และ `InvoiceLine` โดยเก็บ `DraftInvoice` เป็นผลลัพธ์ของงานวางบิล
 
-ตัวอย่างมีหก model แต่ละตัวเป็น `Structure` ธรรมดา การ map ลงฐานข้อมูลไม่ควรทำให้
-ค่าหนึ่งก้อนแอบพก connection หรือยิง query เมื่อเราอ่าน field
+ใน [Models.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Models.wbas) แต่ละ model เป็น `Structure` ธรรมดา เช่น:
 
 ```basic
-[Worm.Table("customers")]
-Structure Customer
-  [Worm.PrimaryKey]
-  [Worm.Generated]
+Public Structure TimeEntry
   Id As Integer
-  Name As String
-  Email As String
-EndStructure
-
-[Worm.Table("time_entries")]
-Structure TimeEntry
-  [Worm.PrimaryKey]
-  [Worm.Generated]
-  Id As Integer
+  Version As Integer
   ProjectId As Integer
   ServiceTypeId As Integer
   WorkDate As String
   Minutes As Integer
   Note As String
   RateCentsPerHour As Integer
-  InvoiceId As Integer? = Null
+  InvoiceId As Integer?
 EndStructure
 ```
 
-Attributes ในวงเล็บเหลี่ยมเป็น **syntax ที่เสนอสำหรับ WORM** ส่วน `Structure`, field,
-ชนิด nullable และค่า `Null` เป็นส่วนของภาษาที่มีแล้ว
-
-## ความสัมพันธ์โดยใช้ ID
-
-- `Project.CustomerId` ชี้ไปยังเจ้าของโครงการ
-- `TimeEntry.ProjectId` และ `ServiceTypeId` บอกว่างานเกิดที่ไหนและคิดราคาแบบใด
-- `TimeEntry.InvoiceId` เป็น `Null` จนกว่าจะนำไปวางบิล
-- `InvoiceLine` เก็บทั้ง `TimeEntryId`, นาที, rate และยอดเงินจริง
-
-การเก็บ snapshot ใน `InvoiceLine` ทำให้เอกสารทางการเงินอ่านได้จากข้อมูลของตัวเอง
-ไม่ต้องหวังว่า record ต้นทางจะไม่มีใครแก้ตลอดกาล
-
-## Generated ID กับ insert intent
-
-`Customer.Id` เป็น `Integer` เพราะ customer ที่โหลดหรือ insert สำเร็จต้องมี ID แล้ว
-แต่ตอน insert เรายังไม่มีค่า ดังนั้น WORM proposal ใช้ builder แยกชนิด:
+`InvoiceId` เป็น nullable เพราะรายการเวลาที่ยังไม่วางบิลไม่มี invoice ส่วน `RateCentsPerHour` เก็บราคา ณ วันที่บันทึกงาน แถวฐานข้อมูลมี `Version` สำหรับตรวจการแก้ไขชนกัน การ map ระบุใน procedure แยกจากค่า:
 
 ```basic
-Let customer As Customer = Worm.Insert(Of Customer)(db,
-  Worm.New(Of Customer)()
-    .SetName("Acme Studio")
-    .SetEmail("accounts@acme.example"))
+Procedure TimeMap() As Worm.Mapping Of TimeEntry
+  Return Worm.Mapping(Of TimeEntry)("billing.time_entry", 1, "time_entries", "Id", "Version")
+EndProcedure
 ```
 
-`Worm.New` เก็บ *เจตนาการ insert* และปล่อย field generated ว่างได้ `Worm.Insert`
-จึงคืน `Customer` ที่สมบูรณ์ แนวคิดนี้ช่วยไม่ให้ model ทุกตัวต้องประกาศ ID เป็น nullable
-เพียงเพราะมีช่วงสั้น ๆ ก่อนฐานข้อมูลสร้างค่าให้
+เลข `1` ตรงนี้เป็นรุ่นนิยาม mapping ไม่ใช่ค่า `Version` ของแถว Compiler 0.0.2 ปฏิเสธนิยามต่างกันที่ใช้ `modelId` กับรุ่นเดียวกันในโปรแกรมเดียวด้วย WB301; ยังไม่ตรวจว่า schema ที่ค้างอยู่ในฐานข้อมูลตรงกับ mapping โดยอัตโนมัติ ดังนั้นการออกแบบ migration ยังเป็นหน้าที่แอป
 
-อ่านต่อ: [เตรียม schema และข้อมูลเริ่มต้น]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}})
+อ่านต่อ: [Schema และ migration]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}})

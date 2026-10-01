@@ -4,6 +4,8 @@ description: "Discover, run, select, and cancel native WBasic tests while preser
 weight: 9
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 Open **Testing** in the Activity Bar. When the project has a test catalog, the
 extension calls `wb test MANIFEST --list --json` and builds the tree from case
 identities returned by the compiler.

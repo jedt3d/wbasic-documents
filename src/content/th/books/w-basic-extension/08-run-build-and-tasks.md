@@ -4,6 +4,8 @@ description: "รัน source/project สร้าง Debug/Release development
 weight: 8
 ---
 
+> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 Extension แยกคำสั่งตามความตั้งใจ เพื่อไม่ให้การกด Run โดยบังเอิญกลายเป็น build สำหรับ
 แจกจ่าย หรือการ Check ไปเปิด network/database ของโปรแกรม
 

@@ -4,6 +4,8 @@ description: "Install the development VSIX, connect wb, and confirm that the ext
 weight: 1
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 The first chapter has one goal: introduce VS Code to `wb` before creating a
 project. If you skip this step, some completion may still look perfectly polite,
 but compile commands will stand silent like a professor who never received the class list.

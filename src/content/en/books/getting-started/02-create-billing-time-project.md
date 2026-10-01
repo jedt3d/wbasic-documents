@@ -20,7 +20,7 @@ billing-time/
 name = "BillingTime"
 module = "BillingTime"
 entry = "src/Main.wbas"
-toolchain = "0.0.1"
+toolchain = "0.0.2"
 
 [dependencies]
 ```
@@ -39,8 +39,14 @@ Procedure Main(args As Array Of String) As Integer
   If args.Length > 0 Then
     projectName = args[0]
   EndIf
-  Let totalMinutes As Integer = 120 + 90
-  Let totalCents As Integer = ExactAmountCents(120, 6000) + ExactAmountCents(90, 4000)
+
+  Let designMinutes As Integer = 120
+  Let designRate As Integer = 6000
+  Let developmentMinutes As Integer = 90
+  Let developmentRate As Integer = 4000
+  Let totalMinutes As Integer = designMinutes + developmentMinutes
+  Let totalCents As Integer = ExactAmountCents(designMinutes, designRate) + ExactAmountCents(developmentMinutes, developmentRate)
+
   PrintLn("Billing Time")
   PrintLn("project: " + projectName)
   PrintLn("time logged: " + totalMinutes.ToString() + " minutes")
@@ -49,7 +55,8 @@ Procedure Main(args As Array Of String) As Integer
 EndProcedure
 ```
 
-The book repository also includes the complete project at
-`examples/billing-time-cli`.
+This small project is reader-created; there is no `examples/billing-time-cli`
+path in the current source tree. The separate, complete database example begins
+in chapter 5.
 
 Next: [Tour the language in this program]({{< relref "/books/getting-started/03-billing-time-language-tour.md" >}}).

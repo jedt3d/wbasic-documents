@@ -9,7 +9,7 @@ This page separates the book's status from the product's acceptance status. Addi
 
 Chapters 8, 13, and 73 add `draft.wbas.txt` sketches with data, algorithms, and expected acceptance cases. They are not native execution evidence or Passed lessons. Documentation checks compare displayed drafts with their downloads and keep English code identical to Thai. The 29 native results below remain the original run using compiler `2614b37`; they do not apply to these three drafts.
 
-The R8A/R8B line adds `wb build` for Development Build with a native SDK. The book now states its compiler baseline rather than claiming that no version has this command. Updating the prose is not a new run of every example against that compiler line and does not establish production/no-SDK distribution acceptance.
+Merged compiler 0.0.2 offers `wb build` for `.wproj` projects with debug/release profiles. Its experimental package includes linking tools, while fresh-machine/no-SDK acceptance remains open. The 29 lesson results remain pinned to `2614b37`; this prose update is not a rerun. See [compiler and tooling status]({{< relref "/implementation-status.md" >}}) to distinguish the installed compiler from the version that verified each lesson.
 
 ## How examples are checked
 

@@ -14,11 +14,13 @@ and publication. The earlier draft books remain read-only historical material in
 
 The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
-API surface through the current R7 implementation. The English edition translates
+API surface in merged compiler revision `143be58`, including selected experimental
+WORM SQLite contracts and the private ARM64 compiler/runtime 0.0.2 preview. The English edition translates
 the reviewed Thai reference, design guide, and Small Wbasic Projects, alongside
 the existing bilingual Getting Started. The bilingual **WBasic Extension Guide**
-documents the verified R8B development preview after approval of its authoritative
-Thai text. Corresponding pages use the same path and file name in `src/content/th`
+distinguishes the current 0.1.0 preview VSIX from the separately verified,
+unmerged R8B productivity branch. Its branch-specific exercises are labelled.
+Thai and English editions retain the same scope. Corresponding pages use the same path and file name in `src/content/th`
 and `src/content/en`. Planned and Deferred capabilities retain their status in
 both languages.
 

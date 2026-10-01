@@ -3,8 +3,7 @@ title: "Terminal lifecycle และข้อจำกัดแพลตฟอ�
 weight: 60
 ---
 
-สถานะ: **R6 native lifecycle ปิดรอบในขอบเขต endpoint ที่อนุมัติ; Windows OSC52 read
-เชิงบวกยังเป็น Deferred**
+สถานะ: **R6 native lifecycle และ Windows OSC52 read เชิงบวกผ่านในขอบเขต endpoint ที่ทดสอบ**
 
 ## Ownership และ modes
 
@@ -23,6 +22,12 @@ ownership; callback/worker/cleanup errors เก็บ primary + `Suppressed`
 restore input ตาม policy ที่อนุมัติ และ **ยังถือ terminal ownership** จน exact
 pending packet กับ ordered cleanup จบ ห้ามเริ่ม session ใหม่ระหว่างนั้น
 
+กรณีพิเศษบน Windows ที่ host ขวางแม้แต่การ restore input เอง สามารถคืน bounded
+error ขณะที่ input/output cleanup ยัง pending ได้ โดยยังถือ ownership จน cleanup
+ทั้งหมดจบ ระหว่าง clipboard output ค้าง runtime เว้น native input ไว้ใน OS FIFO
+เพื่อไม่เข้า OS read ที่อาจค้างตาม output จึงอาจส่ง event ช้าลง อย่าตีความ bounded
+return ว่า terminal คืนสภาพครบแล้ว หรือสัญญาว่า replay mouse หลัง exceptional shutdown
+
 รองรับ Ctrl+C, suspend/resume, disconnect และ terminal child-process handoff
 ตาม platform ที่ตรวจ เมื่อ handoff child ทำงาน parent ไม่ paint แทรกและกลับมา
 full redraw
@@ -31,10 +36,11 @@ full redraw
 
 - NativeLocal private clipboard tests ผ่านบน Windows
 - OSC52 read ผ่านบน macOS endpoint ที่ใช้ทดสอบ
-- Windows Terminal/conhost ที่ตรวจไม่ forward positive OSC52 read reply;
-  WBasic คืน bounded `Tui.ClipboardTimeout` และ restore modes ถูกต้อง
-- การยอมรับ Windows จึงเป็น **endpoint-conditional** ไม่ใช่คำรับรองว่า OSC52
-  read ใช้ได้บน endpoint นี้หรือทุก Windows terminal
+- Microsoft ConPTY `1.24.260710001` ที่ pin และแยกทดสอบผ่าน query จริงพร้อมคำตอบ
+  Unicode/empty, แยก malformed/timeout error และ restore modes; inbox/default host
+  เดิมไม่ส่งต่อคำตอบเชิงบวก WBasic คืน bounded `Tui.ClipboardTimeout` และ restore modes
+- ผล Windows มี **ขอบเขตเฉพาะ endpoint ที่ทดสอบ** ผลนี้ไม่รับรองทุก terminal หรือ
+  นโยบาย desktop clipboard manager
 - ordinary desktop clipboard ไม่ถูกใช้ใน isolated acceptance test
 
 โปรแกรมต้องจัดการ Clipboard event ที่ `Text` หรือ `Error` เป็น nullable แยกกัน
@@ -48,7 +54,7 @@ full redraw
 | macOS ARM64 native | compiler/runtime/TUI/R7 showcase ผ่าน; iTerm2 visual ผ่าน |
 | Linux ARM64 | ยังไม่มี native endpoint verification |
 | native x86_64 | ยังไม่ผ่าน acceptance matrix |
-| clean machine ไม่มี SDK | เป็น R8 packaging gate ยังไม่พร้อม |
+| fresh host ไม่มี SDK | ZIP ส่วนตัว `0.0.2` ผ่านหลังแตกไฟล์บนเครื่องนักพัฒนา แต่ fresh-host acceptance ยังเปิดอยู่ |
 
 ดังนั้น “build ผ่านสอง ARM64 hosts” เป็นหลักฐานแข็งแรงในขอบเขตนั้น แต่ไม่ใช่
 หนังสือเดินทางอัตโนมัติให้ทุก OS และ terminal

@@ -6,6 +6,7 @@ const root = path.dirname(fileURLToPath(import.meta.url));
 const languages = ['th', 'en'];
 const expectedPages = [
   '_index.md',
+  '00-current-preview-workflow.md',
   '01-install-extension-and-compiler.md',
   '02-create-first-project.md',
   '03-workspace-and-manifest.md',

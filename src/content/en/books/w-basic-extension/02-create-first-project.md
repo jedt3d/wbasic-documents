@@ -4,6 +4,8 @@ description: "Use New Project to create the manifest, source, and test skeleton 
 weight: 2
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 We will create `MyFirstWBasic` with the extension so its layout matches what the
 compiler and Test Explorer expect.
 

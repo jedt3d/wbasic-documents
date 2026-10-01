@@ -4,7 +4,9 @@ description: "คู่มือจับมือใช้ WBasic บน VS Cod
 weight: -4
 ---
 
-หนังสือเล่มนี้สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
+**เลือกเวอร์ชันก่อนอ่าน** [วิธีใช้ extension ที่รวมแล้วรุ่น 0.1.0]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) ใช้กับ compiler `0.0.2` ที่ source `143be583` และ extension ใน source เดียวกัน ส่วนบทที่ 1–12 ด้านล่างอธิบาย branch พัฒนา R8B รุ่น `0.2.0` ซึ่งยังไม่ได้รวม คำสั่ง New Project, มุมมอง Projects, Test Explorer, ตัวอย่างที่มากับ extension และการแก้ชื่อข้ามไฟล์ในบทเหล่านั้นยังใช้ไม่ได้ใน extension รุ่น `0.1.0` ที่รวมแล้ว
+
+คู่มือ branch R8B สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
 workspace ว่าง สร้าง project แรก เขียน source ด้วย autocomplete และ diagnostics
 ไปจนถึงจัดการ module, build โปรแกรม และรัน test ผ่าน Test Explorer
 
@@ -17,5 +19,5 @@ Extension รุ่นที่หนังสืออ้างอิงคื�
 การ build ในเล่มเป็น **Development Build** ที่ยังต้องใช้ native SDK ของระบบ
 ไม่ใช่ package สำหรับแจกจ่ายบนเครื่องสะอาด
 
-เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})
+ถ้าใช้ source ปัจจุบัน ให้เริ่มที่ [วิธีใช้ extension ที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) ถ้าใช้ branch R8B ให้เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})
 

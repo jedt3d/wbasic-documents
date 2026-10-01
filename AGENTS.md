@@ -55,10 +55,20 @@
 
 ## Current evidence boundary
 
-- Current public reference coverage follows the verified implementation through
-  R7: 71 Passed, 23 Planned and 1 Deferred behavior in the source catalog.
-- Positive Windows OSC52 read remains Deferred and endpoint-dependent. Linux
-  ARM64, native x86_64 and R8 clean-machine/no-SDK distribution are not accepted.
+- Current public reference follows merged language revision `143be58` and the
+  private experimental compiler/runtime 0.0.2 preview. The v0.3 behavior catalog
+  records 72 Passed / 23 Planned / 0 Deferred; it is not complete v0.3 acceptance
+  and does not count the separate experimental WORM milestones.
+- R6 D1–D5 passed within their recorded endpoint scope. Positive Windows OSC52
+  replies passed on a pinned private Microsoft ConPTY endpoint; the inbox host
+  limitation and clipboard-manager policy remain distinct from that result.
+- Selected WORM SQLite M2–M5 contracts and developer-host portable-package tests
+  are verified. Fresh-machine/no-SDK acceptance, production entitlement,
+  signing/notarization, Linux ARM64 and native x86_64 remain unaccepted.
+- The R8B productivity extension guide describes separate development branch
+  `1bba6f9`, not the 0.1.0 VSIX bundled with compiler 0.0.2. Mark that boundary
+  at entry points and in each branch-specific exercise; do not imply that the
+  preview package includes New Project, Projects view or Test Explorer.
 - A documentation change does not promote product acceptance by itself.
 
 ## Git workflow

@@ -52,10 +52,20 @@ wb run hello.wbas
 wb run App.wproj -- first "ภาษาไทย"
 ```
 
-`wb run` compile/link native executable ไม่ใช่ interpreter ใน checkout สำหรับนักพัฒนา
-ปัจจุบันยังใช้ native SDK และ runtime static library ที่เข้าคู่กัน การแจกชุดที่รันได้บน
-เครื่องสะอาดโดยไม่มี SDK และคำสั่ง `wb build` เป็น acceptance ของ R8 จึงยังไม่ถือว่า
-เป็นคำสั่งพร้อมใช้
+`wb run` compile/link native executable ไม่ใช่ interpreter รุ่น compiler/runtime ปัจจุบันคือ
+`0.0.2` หากใช้ compiler รุ่นนี้ project และ module ต้อง pin `toolchain` เป็น `0.0.2`
+และใช้ runtime ที่เข้าคู่กัน ZIP ทดลองแบบส่วนตัวบน ARM64 ผ่านการทดสอบหลังแตกไฟล์
+บนเครื่องนักพัฒนาแล้ว แต่ยังไม่ผ่านการรับรองเครื่องสะอาดที่ไม่มี SDK
+
+`wb build` รับ **project manifest** ไม่รับไฟล์ `.wbas` เดี่ยว:
+
+```console
+wb build App.wproj --profile release
+```
+
+คำสั่ง `check`, `emit-object`, `run`, `build` และ `test` รับ `--profile debug|release`;
+หากไม่ระบุใช้ debug การ build นี้อยู่ในขอบเขตพัฒนาภายใน `wb --capabilities`
+รายงาน `productionBuildEntitlement: false` และ `noSdkDistribution: false`
 
 ## ทดสอบ WBasic
 
@@ -94,6 +104,5 @@ Diagnostic มี stable code, stage, source file, line/column และช่�
 Source spans ภายในเก็บ byte offsets ได้ แต่ adapter แปลงเป็น position encoding ของ editor
 อย่างถูกต้อง ชื่อไฟล์และข้อความ Unicode จึงไม่ทำให้ caret เลื่อนไปผิดตัว
 
-คำสั่ง format และ distributable build ยังอยู่ในทิศทางผลิตภัณฑ์ แต่ CLI implementation
-ปัจจุบันยังไม่โฆษณา `wb fmt` หรือ `wb build` เป็นคำสั่งผู้ใช้ หนังสือจะเพิ่มวิธีใช้เมื่อมี
-หลักฐาน native acceptance แล้ว ไม่รีบสอนปุ่มที่ยังไม่มีให้กด
+CLI ยังไม่โฆษณา `wb fmt` การที่ `wb build` สำเร็จยังไม่ใช่หลักฐานว่าแพ็กเกจพร้อม
+แจกจ่ายจริง ผ่านการลงนาม หรือผ่านการทดสอบบนเครื่องสะอาดที่ไม่มี SDK

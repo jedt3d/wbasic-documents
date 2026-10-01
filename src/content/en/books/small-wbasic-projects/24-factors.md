@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`check` checks source; `run` compiles, links, and runs. If building the tools from a product checkout, first run `cargo build --workspace --locked` at its root. The recorded examples use compiler `2614b37`. The newer R8A/R8B line supports `wb build` for development with a native SDK; this is not production/no-SDK distribution acceptance.
+`check` checks source; `run` compiles, links, and runs. If building the tools from a product checkout, first run `cargo build --workspace --locked` at its root. The recorded examples use compiler `2614b37`. Merged compiler 0.0.2 offers `wb build` for `.wproj` projects with debug/release profiles, not standalone `.wbas` files. The experimental package includes linking tools; fresh-machine/no-SDK acceptance remains open.
 
 Factors appear in ascending order, one per line:
 

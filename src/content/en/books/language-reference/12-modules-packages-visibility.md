@@ -22,7 +22,7 @@ An implementation-supported manifest:
 name = "Example"
 module = "App"
 entry = "src/Main.wbas"
-toolchain = "0.0.1"
+toolchain = "0.0.2"
 
 [dependencies]
 Acme = { path = "modules/Acme.wmod" }

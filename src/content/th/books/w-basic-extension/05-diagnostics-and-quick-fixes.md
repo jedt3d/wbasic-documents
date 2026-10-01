@@ -4,6 +4,8 @@ description: "แยก syntax, type และ infrastructure error พร้อ
 weight: 5
 ---
 
+> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 Diagnostics ที่ดีไม่ควรเพียงบอกว่า “ผิด” แต่ควรบอกไฟล์ ตำแหน่ง stage และรหัสที่ช่วยให้
 แก้สาเหตุแทนการสุ่มเติม semicolon ซึ่งใน WBasic ก็ไม่ได้ช่วยอะไรอยู่ดี
 

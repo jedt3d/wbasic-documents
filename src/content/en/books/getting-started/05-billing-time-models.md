@@ -1,35 +1,35 @@
 ---
-title: "5 · Plan the data model"
-description: "Extend Billing Time toward value records and WORM mapping."
+title: "5 · Models that run"
+description: "Read the Billing Time structures and SQLite mapping"
 weight: 5
 ---
 
-> **Planned boundary:** chapters 5–9 are an acceptance design for WORM. The core
-> language is implemented, but the `Worm.*` API is not in the current compiler
-> or runtime, so these snippets do not compile today.
+The small project now gives way to the [complete Billing Time WORM example](https://github.com/jedt3d/wbasic-language/tree/143be58/examples/billing-time-worm), checked and run with compiler 0.0.2. It has six models: `Customer`, `Project`, `ServiceType`, `TimeEntry`, `Invoice`, and `InvoiceLine`. `DraftInvoice` holds the billing result.
 
-The database design uses ordinary `Structure` values for customers, projects,
-service types, time entries, invoices, and invoice lines. Mapping should not make
-a value secretly carry a connection or execute a query when a field is read.
+In [Models.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Models.wbas), each model is an ordinary `Structure`:
 
 ```basic
-[Worm.Table("time_entries")]
-Structure TimeEntry
-  [Worm.PrimaryKey]
-  [Worm.Generated]
+Public Structure TimeEntry
   Id As Integer
+  Version As Integer
   ProjectId As Integer
   ServiceTypeId As Integer
   WorkDate As String
   Minutes As Integer
   Note As String
   RateCentsPerHour As Integer
-  InvoiceId As Integer? = Null
+  InvoiceId As Integer?
 EndStructure
 ```
 
-The bracketed attributes are proposed WORM syntax. `Structure`, fields, nullable
-types, and `Null` are implemented language features. The time entry snapshots
-its rate so a future service-price change cannot rewrite billing history.
+`InvoiceId` is nullable until billing. `RateCentsPerHour` saves the rate when work is logged. Database rows have `Version` for update conflicts. Mapping lives in a separate procedure:
 
-Next: [Schema and seed data]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}}).
+```basic
+Procedure TimeMap() As Worm.Mapping Of TimeEntry
+  Return Worm.Mapping(Of TimeEntry)("billing.time_entry", 1, "time_entries", "Id", "Version")
+EndProcedure
+```
+
+Here `1` is the mapping definition version, distinct from a row's `Version`. Compiler 0.0.2 reports WB301 if one program defines the same `modelId` and version inconsistently. It does not automatically validate an existing database schema against the mapping. The application still owns migrations.
+
+Next: [Schema and migration]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}}).

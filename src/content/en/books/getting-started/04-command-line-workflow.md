@@ -32,8 +32,8 @@ draft total: 18000 cents
 ```
 
 `wb run` creates an object, links the matching WBasic runtime through the native
-toolchain, and runs a temporary executable. Use `--runtime <path>` when the runtime
-is outside its normal location.
+toolchain, and runs a temporary executable. A source-built developer CLI can use `--runtime <path>` when its matching runtime
+is outside the normal location.
 
 To stop after object generation:
 
@@ -42,7 +42,8 @@ wb emit-object billing-time/BillingTime.wproj --output BillingTime.obj
 ```
 
 Use an `.o` name on macOS if you prefer platform conventions. Linking that object
-is the caller's responsibility. The remaining chapters extend Billing Time toward
-the planned database model and state clearly where runnable code ends.
+is the caller's responsibility. For a separate binary, `wb build billing-time/BillingTime.wproj --output BillingTime`
+accepts this project manifest; use an `.exe` output name on Windows. The next
+chapters read the separately runnable WORM/SQLite project.
 
-Next: [Model the database records]({{< relref "/books/getting-started/05-billing-time-models.md" >}}).
+Next: [Read the database models]({{< relref "/books/getting-started/05-billing-time-models.md" >}}).

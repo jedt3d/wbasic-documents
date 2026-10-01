@@ -4,9 +4,8 @@ description: "โมดูล ชนิดข้อมูล และ procedure
 weight: 2
 ---
 
-ส่วนนี้จะจัดเอกสารตามโมดูล โดยบอก signature, ผลลัพธ์, error และตัวอย่างสั้นที่
-ทดสอบกับ compiler รุ่นเดียวกับคู่มือ เนื้อหาปัจจุบันครอบคลุม API ที่ผ่านการ
-ตรวจสอบใน R5 บน Windows 11 ARM64 และ macOS ARM64 แล้ว
+ส่วนนี้จัดตามโมดูล โดยบอก signature ผลลัพธ์ error และตัวอย่างสั้น ครอบคลุม
+ไลบรารี R5 และ WORM SQLite แบบทดลองที่ตรวจถึง M5 บน Windows/macOS ARM64
 
 คำว่า “ผ่าน” ในเล่มนี้จึงหมายถึงผ่านบนสอง host และ revision ที่บันทึกไว้ ไม่ได้ขยาย
 เป็นคำรับรอง Linux ARM64 หรือ native x86_64 และไม่ได้แทน gate การแจกจ่ายแบบไม่มี SDK
@@ -24,6 +23,7 @@ weight: 2
 5. [HTTP](http.md)
 6. [SQLite](sqlite.md)
 7. [CSV](csv.md)
+8. [WORM SQLite แบบทดลอง](worm-sqlite.md)
 
 ทุก API ในเล่มนี้เป็น synchronous หากเรียกจาก TUI callback โดยตรง runtime จะ
 รายงาน `Tui.BlockingOperation`; ให้นำงาน I/O ไปทำผ่าน `Jobs` แทน

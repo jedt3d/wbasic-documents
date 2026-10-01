@@ -47,7 +47,15 @@ wb run hello.wbas
 wb run App.wproj -- first "ภาษาไทย"
 ```
 
-`wb run` compiles and links a native executable; it is not an interpreter. The current developer checkout still needs a native SDK and a matching runtime static library. Clean-machine distribution without an SDK and the `wb build` command are R8 acceptance gates, so they are not presented as ready commands.
+`wb run` compiles and links a native executable; it is not an interpreter. The current compiler/runtime version is `0.0.2`. Keep project and module `toolchain` pins at `0.0.2` when using that compiler, and use its matching runtime. The private ARM64 preview packages passed extracted developer-host tests; fresh-host no-SDK distribution has not passed acceptance.
+
+`wb build` accepts a **project manifest**, not a standalone `.wbas` file:
+
+```console
+wb build App.wproj --profile release
+```
+
+`check`, `emit-object`, `run`, `build`, and `test` accept `--profile debug|release`; debug is the default. Build support is for internal development. `wb --capabilities` reports `productionBuildEntitlement: false` and `noSdkDistribution: false`.
 
 ## Test WBasic
 
@@ -76,4 +84,4 @@ Doctor separates automated checks, user-entered font information, and visual ins
 
 A diagnostic contains a stable code, stage, source file, line/column, and offending source span, with guidance using WBasic terms. JSON output suits editors, MCP/LSP, and CI. Internal source spans may use byte offsets, but adapters correctly convert to an editor's position encoding, so Unicode names and text do not move the caret to the wrong character.
 
-Formatting and distributable builds remain product directions, but the current CLI does not advertise `wb fmt` or `wb build` as user commands. This book will add instructions when native acceptance evidence exists; there is no need to teach a button that cannot yet be pressed.
+The CLI does not advertise `wb fmt`. A successful `wb build` does not establish production distribution, signing, or fresh-host no-SDK acceptance.

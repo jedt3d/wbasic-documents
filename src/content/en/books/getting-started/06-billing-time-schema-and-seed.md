@@ -1,26 +1,18 @@
 ---
-title: "6 · Plan the schema and seed data"
-description: "Make migration explicit and create typed starting records."
+title: "6 · Schema and migration"
+description: "Open the database explicitly and record an application migration"
 weight: 6
 ---
 
-> **Planned WORM API:** this chapter describes intended behavior, not a runnable
-> addition to the command-line starter.
-
-The proposed application opens SQLite inside `Using`, then applies a named
-migration explicitly. Opening a connection by itself must never alter the schema.
+[App.wproj](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/App.wproj) pins `toolchain = "0.0.2"`, declares bundled `Worm`, and uses the local `Billing` module. [Main.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/src/Main.wbas) accepts one database path, opens SQLite, and calls migration itself:
 
 ```basic
 Using db As Worm.Database = Worm.OpenSqlite(args[0])
-  db.Migrations.Apply("001_billing_time", [
-    Worm.Entity(Of Customer)(), Worm.Entity(Of Project)(),
-    Worm.Entity(Of TimeEntry)(), Worm.Entity(Of Invoice)()
-  ])
-EndUsing
+  Billing.ApplyMigration(db)
 ```
 
-For today's implemented path, use the Standard Library `Sqlite` module, parameter
-binding, and explicit SQL migrations. The proposed typed mapper should be adopted
-only after its public API and tests exist.
+`Worm.OpenSqlite` does not create the schema. [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) records exact LF-terminated SQL under `001_billing_time` in `schema_migrations` and runs seven DDL statements in one transaction. Changed SQL under that name reports `Billing.MigrationChanged`. [schema.sql](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/schema.sql) mirrors that text. This is an application procedure, not a general migration framework.
 
-Next: [Log time and calculate amounts]({{< relref "/books/getting-started/07-billing-time-log-time.md" >}}).
+After migration, `Main` calls `Billing.CreateCustomer`, `CreateProject`, and `CreateService`. Each run intentionally adds records. Running against the same file creates another project and invoice; it is not an idempotent seed. Use a new SQLite path for your first run.
+
+Next: [Log time]({{< relref "/books/getting-started/07-billing-time-log-time.md" >}}).

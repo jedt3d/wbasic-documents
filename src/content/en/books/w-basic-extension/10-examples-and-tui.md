@@ -4,6 +4,8 @@ description: "Open or copy verified examples and begin TUI or Jobs work from det
 weight: 10
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 The extension includes the structurally verified example catalog whose hashes
 match the repository. It currently contains 27 examples in 10 categories,
 covering the language core, modules, tests, streams, JSON, Jobs, TUI, and a

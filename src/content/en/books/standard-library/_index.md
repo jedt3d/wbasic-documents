@@ -4,7 +4,7 @@ description: "Standard modules, types, and procedures available to WBasic progra
 weight: 2
 ---
 
-This part is organized by module, with signatures, results, errors, and short examples tested against the same compiler edition as the guide. Current coverage includes APIs verified in R5 on Windows 11 ARM64 and macOS ARM64.
+This part is organized by module, with signatures, results, errors, and short examples. It covers R5 libraries and the bounded experimental WORM SQLite surface verified through M5 on Windows and macOS ARM64.
 
 “Passed” here therefore means passed on those two recorded hosts and revisions. It does not certify Linux ARM64 or native x86_64, nor replace the R8 no-SDK distribution gate.
 
@@ -19,5 +19,6 @@ Planned pages will not be written as though their APIs are ready. A reference ma
 5. [HTTP](http.md)
 6. [SQLite](sqlite.md)
 7. [CSV](csv.md)
+8. [WORM SQLite experimental](worm-sqlite.md)
 
 Every API in this part is synchronous. Calling one directly from a TUI callback causes the runtime to report `Tui.BlockingOperation`; do I/O through `Jobs` instead.

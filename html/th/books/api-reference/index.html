@@ -13,12 +13,13 @@
 <span aria-hidden=true>/</span><a href=/wbasic-documents/th/books/>หนังสืออ้างอิง</a>
 <span aria-hidden=true>/</span><span aria-current=page>คู่มือ API</span></nav><p class=eyebrow>คู่มือสำหรับพฤติกรรม WBasic v0.3 ที่ตรวจสอบแล้ว</p><h1>คู่มือ API</h1><p class=lead>signature และสัญญาการทำงานของ API สาธารณะ แยกตาม module</p><div class=prose><p>ส่วนนี้เตรียมไว้สำหรับค้นหา API แบบเจาะจง แต่ละหน้าจะระบุชนิด parameter,
 ค่าคืน, error, ข้อจำกัดของ platform และสถานะการตรวจสอบ เนื้อหาจะเพิ่มจาก API
-ที่ merge และผ่านการทดสอบแล้วเท่านั้น</p><p>สถานะ behavior catalog ณ จุดตรวจนี้คือ 71 Passed, 23 Planned และ 1 Deferred
+ที่ merge และผ่านการทดสอบแล้วเท่านั้น</p><p>สถานะ behavior catalog ณ จุดรวม R6 คือ 72 Passed, 23 Planned และ 0 Deferred
 หน้าที่กล่าวว่า API “ผ่าน” หมายถึงผ่าน gate รายกลุ่มบน Windows 11 ARM64 และ macOS
 ARM64 ตาม revision ที่บันทึกไว้ ไม่ได้หมายความว่า composite acceptance ทุกข้อผ่านแล้ว</p><h2 id=สารบญ>สารบัญ</h2><ol><li><a href=/wbasic-documents/th/books/api-reference/tui-model-loop/>TUI model loop และ effects</a></li><li><a href=/wbasic-documents/th/books/api-reference/layout-navigation-forms/>Layout, navigation และ forms</a></li><li><a href=/wbasic-documents/th/books/api-reference/data-and-rich-output/>Data controls และ rich output</a></li><li><a href=/wbasic-documents/th/books/api-reference/jobs/>Jobs</a></li><li><a href=/wbasic-documents/th/books/api-reference/testing-and-doctor/>Tui.Test และ doctor</a></li><li><a href=/wbasic-documents/th/books/api-reference/terminal-lifecycle/>Terminal lifecycle และข้อจำกัดแพลตฟอร์ม</a></li></ol><p>หน้ากลุ่ม widget อธิบาย implementation ที่ผ่าน native examples และ round gates
 รายกลุ่มแล้ว แต่ไม่ใช้แทนการประกาศว่า composite clauses ทุกข้อใน behavior
-catalog ผ่านทั้งหมด—คำว่า “มี API” กับ “ผ่านทุก terminal บนโลก” เป็นคนละประโยค</p><p>Positive OSC52 read บน Windows ยังเป็น Deferred ส่วน Linux ARM64, native x86_64
-และ clean-machine no-SDK packaging ของ R8 ยังไม่ผ่าน acceptance ห้ามอนุมานสถานะ
+catalog ผ่านทั้งหมด—คำว่า “มี API” กับ “ผ่านทุก terminal บนโลก” เป็นคนละประโยค</p><p>Positive OSC52 read ผ่านบน Microsoft ConPTY รุ่นที่ pin และแยกทดสอบแล้ว แต่การส่งต่อ
+บน inbox/default host เดิมยังไม่มีหลักฐาน ส่วน Linux ARM64, native x86_64
+และ fresh-host no-SDK packaging ยังไม่ผ่าน acceptance ห้ามอนุมานสถานะ
 เหล่านี้จากผลบน Windows/macOS ARM64</p></div><div class=chapter-list><a href=/wbasic-documents/th/books/api-reference/tui-model-loop/ class=chapter-row><span class=chapter-number>01</span>
 <span><strong>TUI model loop และ effects</strong>
 </span></a><a href=/wbasic-documents/th/books/api-reference/layout-navigation-forms/ class=chapter-row><span class=chapter-number>02</span>

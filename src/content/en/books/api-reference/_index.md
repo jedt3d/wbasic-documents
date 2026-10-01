@@ -6,7 +6,7 @@ weight: 3
 
 Use this part to look up specific APIs. Each page identifies parameter types, returns, errors, platform limits, and verification status. Coverage grows only from APIs that have been merged and tested.
 
-At this checkpoint, the behavior catalog contains 71 Passed, 23 Planned, and 1 Deferred. An API marked “Passed” has passed its group gates on Windows 11 ARM64 and macOS ARM64 at the recorded revisions. It does not mean every composite acceptance clause has passed.
+At the merged R6 integration checkpoint, the behavior catalog contains 72 Passed, 23 Planned, and 0 Deferred. An API marked “Passed” has passed its group gates on Windows 11 ARM64 and macOS ARM64 at the recorded revisions. It does not mean every composite acceptance clause has passed.
 
 ## Contents
 
@@ -19,4 +19,4 @@ At this checkpoint, the behavior catalog contains 71 Passed, 23 Planned, and 1 D
 
 Widget pages describe implementations that passed native examples and round gates for their groups. They do not claim that every composite behavior-catalog clause has passed. “The API exists” and “it passed on every terminal on earth” are different statements.
 
-Positive OSC52 read on Windows remains Deferred. Linux ARM64, native x86_64, and R8 clean-machine no-SDK packaging have not passed acceptance. Do not infer their status from Windows/macOS ARM64 results.
+Positive OSC52 read passed on a pinned isolated Microsoft ConPTY endpoint; forwarding on the older inbox/default host remains unestablished. Linux ARM64, native x86_64, and fresh-host no-SDK packaging have not passed acceptance. Do not infer their status from Windows/macOS ARM64 results.

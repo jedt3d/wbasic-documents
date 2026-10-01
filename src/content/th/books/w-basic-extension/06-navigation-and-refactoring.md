@@ -4,6 +4,8 @@ description: "ใช้ definition, references, workspace symbols และ comp
 weight: 6
 ---
 
+> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 เมื่อ project โตขึ้น การเลื่อนหา declaration ด้วยสายตาเริ่มแพ้เครื่องมืออย่างสุภาพ
 Extension ใช้ identity และ span จาก compiler สำหรับ navigation ข้ามไฟล์
 

@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`check` ตรวจ source; `run` คอมไพล์ ลิงก์ แล้วรันโปรแกรม หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วนสาย R8A/R8B ที่ใหม่กว่ามี `wb build` สำหรับงานพัฒนาที่ใช้ native SDK แล้ว แต่ยังไม่ใช่การรับรองแพ็กเกจ production/no-SDK หากกำลังสร้างเครื่องมือจาก checkout ของ WBasic เอง ให้รัน `cargo build --workspace --locked` ที่รากของคลังผลิตภัณฑ์ก่อนใช้ `wb run` และต้องมีชุดเครื่องมือ native ของเครื่องนั้นด้วย
+`check` ตรวจ source; `run` คอมไพล์ ลิงก์ แล้วรันโปรแกรม หลักฐานตัวอย่างนี้ใช้ compiler `2614b37` ส่วน compiler 0.0.2 ที่รวมใน main แล้วมี `wb build` สำหรับ project `.wproj` พร้อม debug/release; ไม่รับ standalone `.wbas` แพ็กทดลองมีเครื่องมือ link เตรียมไว้ แต่ยังไม่มี acceptance บนเครื่องสะอาดที่ไม่มี SDK หากกำลังสร้างเครื่องมือจาก checkout ของ WBasic เอง ให้รัน `cargo build --workspace --locked` ที่รากของคลังผลิตภัณฑ์ก่อนใช้ `wb run` และต้องมีชุดเครื่องมือ native ของเครื่องนั้นด้วย
 
 ผลที่ควรเห็นมีหนึ่งจำนวนต่อบรรทัด เพื่อให้ไล่ตรวจการเปลี่ยนค่าได้ง่าย:
 

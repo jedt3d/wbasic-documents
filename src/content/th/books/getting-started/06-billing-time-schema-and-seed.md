@@ -1,56 +1,18 @@
 ---
-title: "6 · Schema และข้อมูลเริ่มต้น"
-description: "เปิด SQLite อย่างมีขอบเขต ใช้ migration ชัดเจน และสร้างข้อมูลตั้งต้นแบบ typed"
+title: "6 · Schema และ migration"
+description: "เปิดฐานข้อมูลอย่างชัดเจนและบันทึก migration ในแอป"
 weight: 6
 ---
 
-> **สถานะ: Planned / ยัง compile ไม่ได้** — `Worm.*` ในบทนี้เป็น acceptance design
-> ส่วน SQLite API ระดับ SQL มี implementation แล้วและลิงก์ไว้ท้ายบท
-
-`Main` รับ path ของ SQLite จาก command line แล้วเปิดฐานข้อมูลภายใน `Using` เพื่อให้
-resource ถูกปิดแม้ workflow จบด้วย error
+[App.wproj](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/App.wproj) ใช้ `toolchain = "0.0.2"`, `Worm = { bundled = true }` และ module `Billing` แบบ local path โค้ด [Main.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/src/Main.wbas) รับ path ฐานข้อมูลหนึ่งค่า เปิด SQLite แล้วเรียก migration เอง:
 
 ```basic
-Procedure Main(args As Array Of String) As Integer
-  Using db As Worm.Database = Worm.OpenSqlite(args[0])
-    db.Migrations.Apply("001_billing_time", [
-      Worm.Entity(Of Customer)(), Worm.Entity(Of Project)(),
-      Worm.Entity(Of ServiceType)(), Worm.Entity(Of TimeEntry)(),
-      Worm.Entity(Of Invoice)(), Worm.Entity(Of InvoiceLine)()
-    ])
-    PrintLn("schema: ready")
-    ' ...
-  EndUsing
-  Return 0
-EndProcedure
+Using db As Worm.Database = Worm.OpenSqlite(args[0])
+  Billing.ApplyMigration(db)
 ```
 
-ทั้ง `Worm.OpenSqlite`, `Worm.Entity` และ migration API ในตัวอย่างเป็น Planned
-สัญญาที่ต้องรักษาคือ **การเปิด connection อย่างเดียวต้องไม่แก้ schema** การเปลี่ยน schema
-ต้องผ่าน migration ที่มีชื่อ ลำดับ version/checksum และรายงาน failure ได้
+`Worm.OpenSqlite` ไม่สร้าง schema ให้เอง [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) เก็บข้อความ SQL ของ migration ชื่อ `001_billing_time` ใน `schema_migrations` และรัน DDL เจ็ดคำสั่งใน transaction หากชื่อเดิมมี SQL ต่างจากเดิม จะรายงาน `Billing.MigrationChanged` ข้อความที่ใช้มี LF ปิดท้ายและสะท้อนใน [schema.sql](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/schema.sql) นี่เป็น procedure ของแอป ไม่ใช่ migration framework ทั่วไป
 
-## Seed ที่ไม่แกล้งเป็น idempotent
+หลัง migration, `Main` เรียก `Billing.CreateCustomer`, `CreateProject` และ `CreateService` ตัวอย่างตั้งใจเพิ่มข้อมูลใหม่ทุกครั้งที่รัน ไฟล์เดิมจึงได้โครงการและ invoice เพิ่ม ไม่ใช่การ seed แบบ idempotent การทดลองครั้งแรกควรใช้ SQLite path ใหม่
 
-ตัวอย่างสร้างลูกค้า โครงการ และ service type ใหม่ทุกครั้ง เพราะต้องการเดินเรื่องให้สั้น:
-
-```basic
-Let project As Project = Worm.Insert(Of Project)(db,
-  Worm.New(Of Project)()
-    .SetCustomerId(customer.Id)
-    .SetName("Website refresh"))
-
-Let design As ServiceType = Worm.Insert(Of ServiceType)(db,
-  Worm.New(Of ServiceType)()
-    .SetName("Design")
-    .SetRateCentsPerHour(6000))
-```
-
-จึงควรใช้ไฟล์ SQLite ใหม่ในการทดลอง การรันซ้ำกับไฟล์เดิมจะได้ข้อมูลเพิ่ม ไม่ใช่การ
-update row เดิม ใน production ให้แยก migration, reference data และ sample fixture
-ออกจากกันอย่างชัดเจน
-
-หากต้องทำสิ่งเดียวกันด้วย API ที่มีอยู่วันนี้ ให้อ่าน [SQLite Standard Library]({{< relref "/books/standard-library/sqlite.md" >}}):
-ใช้ `Sqlite.Open`, parameter binding และ SQL migration ที่เขียนตรง ๆ ก่อน WORM จะมี
-หลักฐานพร้อมใช้งาน
-
-อ่านต่อ: [บันทึกเวลาและคำนวณยอด]({{< relref "/books/getting-started/07-billing-time-log-time.md" >}})
+อ่านต่อ: [บันทึกเวลา]({{< relref "/books/getting-started/07-billing-time-log-time.md" >}})

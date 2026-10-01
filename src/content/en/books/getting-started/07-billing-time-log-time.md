@@ -1,26 +1,23 @@
 ---
-title: "7 · Plan time logging and prices"
-description: "Snapshot rates and keep integer-money arithmetic visible."
+title: "7 · Log time and save rates"
+description: "Read insert intent and saved rates in runnable source"
 weight: 7
 ---
 
-When work is recorded, Billing Time copies the current service rate into the time
-entry. Raising the service price next month must not change this month's work.
-
-| Service | Minutes | Rate (cents/hour) | Amount (cents) |
-|---|---:|---:|---:|
-| Design | 120 | 6,000 | 12,000 |
-| Development | 90 | 4,000 | 6,000 |
-| **Total** | **210** | | **18,000** |
+`Billing.LogTime` saves the project, service, date, minutes, note, and current service rate in `TimeEntry`. Later service price changes therefore do not recalculate that entry. [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) expresses insert intent explicitly:
 
 ```basic
-Procedure ExactAmountCents(minutes As Integer, rateCentsPerHour As Integer) As Integer
-  Return (minutes * rateCentsPerHour) Div 60
-EndProcedure
+changes = Worm.Set(Of TimeEntry)(changes, "Note", note)
+changes = Worm.Set(Of TimeEntry)(changes, "RateCentsPerHour", service.RateCentsPerHour)
+Using tx As Worm.Transaction = db.BeginTransaction()
+  Let saved As TimeEntry = Worm.InsertReturning(Of TimeEntry)(tx, TimeMap(), changes)
+  tx.Commit()
+  Return saved
+EndUsing
 ```
 
-This procedure is already runnable in the starter. The selected numbers divide
-exactly by 60; a production system still needs explicit rounding, overflow,
-currency, date/time, and tax policies.
+This is a **fragment** of the procedure; the full source sets every required field before insertion. `Id` and `Version` are omitted so SQLite supplies them, then `InsertReturning` decodes the saved row. Omission and setting `Null` are distinct intentions.
 
-Next: [Plan the invoice transaction]({{< relref "/books/getting-started/08-billing-time-invoice-transaction.md" >}}).
+[Main.wbas](https://github.com/jedt3d/wbasic-language/blob/143be58/examples/billing-time-worm/src/Main.wbas) logs 120 design minutes at 6,000 cents/hour and 90 development minutes at 4,000 cents/hour. `(minutes * rateCentsPerHour) Div 60` yields 12,000 + 6,000 = **18,000 cents**. `ExactAmountCents` rejects negatives, and `Integer` multiplication is checked for overflow. These numbers divide exactly; the example supplies no complete tax, currency, date validation, or business rounding policy.
+
+Next: [Create an invoice]({{< relref "/books/getting-started/08-billing-time-invoice-transaction.md" >}}).

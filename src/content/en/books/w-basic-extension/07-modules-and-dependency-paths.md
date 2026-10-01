@@ -4,6 +4,8 @@ description: "Add local modules through the manifest without Include or hidden s
 weight: 7
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 WBasic organizes code with Module, Import, and direct manifest dependencies.
 The language has no textual `Include`, and the extension has no global include
 path setting. A project's source origins remain visible in the project instead

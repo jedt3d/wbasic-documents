@@ -24,21 +24,24 @@ wb --capabilities
 ```
 
 `--version` บอก compiler/target ที่กำลังใช้ ส่วน `--capabilities` ส่งข้อมูลความสามารถ
-แบบ JSON สำหรับเครื่องมืออื่น ในรุ่นพัฒนาปัจจุบัน ต้องมี `wb`, static runtime ที่เข้าคู่กัน
-และ native toolchain ของระบบ การติดตั้งสำหรับเครื่องสะอาดโดยไม่ต้องมี SDK เป็นงานของ
-distribution รอบถัดไป
+แบบ JSON สำหรับเครื่องมืออื่น การ build จาก source บนเครื่องนักพัฒนายังใช้ native
+ toolchain/SDK และ static runtime ที่ตรงกับ `wb` รุ่น 0.0.2 มี private experimental
+portable ZIP สำหรับ ARM64 ซึ่งรวม compiler, runtime และ linker ตรงชุด ผล smoke test
+ของ ZIP ยังไม่ใช่การยอมรับเครื่องสะอาดแบบ no-SDK Core CLI ไม่ต้องมี Node; Node ใช้กับ
+protocol tooling ที่เลือกติดตั้งเพิ่ม
 
 คำสั่งหลักในบทนี้คือ:
 
 ```text
 wb project-info <manifest.wproj> --json
 wb check <file-or-manifest> --json
-wb run <file-or-manifest> [--runtime <path>] [-- arguments...]
+wb run <file-or-manifest> [--profile debug|release] [-- arguments...]
+wb build <manifest.wproj> [--profile debug|release] --output <path>
 wb emit-object <file-or-manifest> --output <path> [--target <target>]
 ```
 
-`wb run` คือเส้นทาง compile-link-run ที่ใช้ได้ตอนนี้ ส่วน `emit-object` สร้างเฉพาะ
-object file ยังไม่มีคำสั่ง `wb build` สำหรับสร้างชุดแจกจ่าย จึงไม่ควรแต่งคำสั่งนั้นเพิ่ม
-เพียงเพราะชื่อฟังดูคุ้นหู
+`wb run` compile-link-run ส่วน `wb build` สร้าง binary แยกจาก project manifest เท่านั้น
+`emit-object` สร้างเฉพาะ object file ถ้าไม่ระบุ profile จะใช้ debug และ `wb check`
+ต้องระบุ `--json` หรือ `--format vscode`
 
 อ่านต่อ: [สร้างโครงการ Billing Time]({{< relref "/books/getting-started/02-create-billing-time-project.md" >}})

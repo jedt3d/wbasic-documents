@@ -19,7 +19,7 @@ wb check main.wbas --json
 wb run main.wbas
 ```
 
-`run` compiles and links before execution. If you built the tools yourself, first run `cargo build --workspace --locked` at the product repository root. The recorded examples use compiler `2614b37`. The newer R8A/R8B line supports `wb build` for development with a native SDK; this is not production/no-SDK distribution acceptance. The program prints 26 lines in key order:
+`run` compiles and links before execution. If you built the tools yourself, first run `cargo build --workspace --locked` at the product repository root. The recorded examples use compiler `2614b37`. Merged compiler 0.0.2 offers `wb build` for `.wproj` projects with debug/release profiles, not standalone `.wbas` files. The experimental package includes linking tools; fresh-machine/no-SDK acceptance remains open. The program prints 26 lines in key order:
 
 ```text
 key 0: PHHW DW QRRQ!

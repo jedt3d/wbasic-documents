@@ -4,6 +4,8 @@ description: "ติดตั้ง development VSIX เชื่อม wb แ�
 weight: 1
 ---
 
+> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 บทแรกมีเป้าหมายเดียว: ทำให้ VS Code กับ `wb` รู้จักกันก่อนสร้าง project หากข้ามขั้นนี้
 autocomplete บางส่วนอาจยังดูสุภาพเรียบร้อย แต่คำสั่ง compile จะยืนเงียบเหมือนอาจารย์
 ที่ยังไม่ได้รับรายชื่อนักศึกษา

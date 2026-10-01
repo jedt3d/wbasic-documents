@@ -4,6 +4,8 @@ description: "Separate syntax, type, and infrastructure errors, then apply keywo
 weight: 5
 ---
 
+> **Version scope — R8B branch preview.** This chapter describes the unmerged `wbasic-dev.wbasic@0.2.0` development branch. The merged extension is `0.1.0` and does not have every command or view below. For compiler `0.0.2` at `143be583`, follow [the current merged workflow]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 A useful diagnostic says more than “wrong.” It identifies the file, location,
 stage, and code so you can fix the cause instead of adding semicolons at random.
 Semicolons would not rescue WBasic anyway.

@@ -4,6 +4,8 @@ description: "เพิ่ม local module ผ่าน manifest โดยไม
 weight: 7
 ---
 
+> **ขอบเขตเวอร์ชัน — branch R8B** บทนี้อธิบาย development branch `wbasic-dev.wbasic@0.2.0` ที่ยังไม่ได้รวม Extension ที่รวมแล้วเป็น `0.1.0` และไม่มีบางคำสั่งหรือมุมมองด้านล่าง ถ้าใช้ compiler `0.0.2` ณ `143be583` ให้อ่าน [วิธีใช้รุ่นที่รวมแล้ว]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}).
+
 WBasic แบ่ง code ด้วย Module, Import และ direct dependency ใน manifest ภาษาไม่มี textual
 `Include` และ Extension ไม่มี global include path ให้ตั้ง การรู้ว่า source มาจากไหนจึง
 อ่านได้จาก project โดยไม่ต้องตามหาค่าในเครื่องของแต่ละคน
