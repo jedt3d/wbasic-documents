@@ -35,3 +35,8 @@ if ($LASTEXITCODE -ne 0) { throw 'Draft-project verification failed.' }
 
 & node (Join-Path $documentsRoot 'verify-compiler-release.mjs')
 if ($LASTEXITCODE -ne 0) { throw 'Compiler release alignment verification failed.' }
+
+& node (Join-Path $documentsRoot 'verify-japanese-edition.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Japanese-edition verification failed.' }
+& node (Join-Path $documentsRoot 'verify-billing-snapshot.mjs')
+if ($LASTEXITCODE -ne 0) { throw 'Billing snapshot verification failed.' }

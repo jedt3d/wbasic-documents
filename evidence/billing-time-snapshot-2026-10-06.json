@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-06",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "31babff51796c149f0122f2259f521cf95c083ba561593c7859c1272c0fa5d2c",
+      "bytes": 3801,
+      "originalSourceSha256": "31babff51796c149f0122f2259f521cf95c083ba561593c7859c1272c0fa5d2c"
+    },
+    {
+      "path": "docs/QuickStart.md",
+      "sha256": "166f0aebde187917139a19f1913e555b104f599fd0f465cc6b57f4de1231cd6a",
+      "bytes": 4256,
+      "originalSourceSha256": "166f0aebde187917139a19f1913e555b104f599fd0f465cc6b57f4de1231cd6a"
+    },
+    {
+      "path": "billing-time.wproj",
+      "sha256": "5fefb7214e80155acf5b0dd1608eec5b6ed0d59f4a39d7b3b24238b9794afec7",
+      "bytes": 199,
+      "originalSourceSha256": "7161b0d11b07611c39638963300d19d1534dbd1c4b259b8eedc65c58713110ee"
+    },
+    {
+      "path": "schema.sql",
+      "sha256": "13d5cfc1e44e1ed2bc4d82ab6a7cce894409777eac6ac9c949a9c2ebb3ba777e",
+      "bytes": 1924,
+      "originalSourceSha256": "13d5cfc1e44e1ed2bc4d82ab6a7cce894409777eac6ac9c949a9c2ebb3ba777e"
+    },
+    {
+      "path": "scripts/verify.py",
+      "sha256": "898175a426a7ade6f7b07fa759ce5e9053738e8812311138be91246c42bab486",
+      "bytes": 4331,
+      "originalSourceSha256": "898175a426a7ade6f7b07fa759ce5e9053738e8812311138be91246c42bab486"
+    },
+    {
+      "path": "src/Main.wbas",
+      "sha256": "dbb04bdd39686be2f75dd013d296cb14f3b133cf156273443453ac66d7552ace",
+      "bytes": 2022,
+      "originalSourceSha256": "57c38f587807380cda5b92ae180612ecea04bf900cede1a2066980ad8eb3bea9"
+    },
+    {
+      "path": "modules/Billing.wmod/module.toml",
+      "sha256": "efbf1787c9248f79a08f4ca8a279ab2857605a6ffd8ffa62fd9cf1c45faaa82c",
+      "bytes": 88,
+      "originalSourceSha256": "efbf1787c9248f79a08f4ca8a279ab2857605a6ffd8ffa62fd9cf1c45faaa82c"
+    },
+    {
+      "path": "modules/Billing.wmod/src/Models.wbas",
+      "sha256": "2cb1973eba28775b86a8f13c11d9d5bafce8525ff376680a68c82599ce09342d",
+      "bytes": 1255,
+      "originalSourceSha256": "2cb1973eba28775b86a8f13c11d9d5bafce8525ff376680a68c82599ce09342d"
+    },
+    {
+      "path": "modules/Billing.wmod/src/Domain.wbas",
+      "sha256": "188e2aea70af96de114dbbd393278de67822b37986b611080525531c7d481102",
+      "bytes": 11157,
+      "originalSourceSha256": "188e2aea70af96de114dbbd393278de67822b37986b611080525531c7d481102"
+    },
+    {
+      "path": ".vscode/tasks.json",
+      "sha256": "bf3197c86a253244939ce6b2c2243ab4154f068b7d7272ef18c264d4c81c5d59",
+      "bytes": 736,
+      "originalSourceSha256": "96b411d123984f6f6e8c995e32517806f60f873218872b6181a71fb7a6f64334"
+    }
+  ],
+  "zipSha256": "5a5afef82d75f98cd5ee6fa28876fa8beedb0c0bb1e984720e8061945c1ab18c",
+  "textNormalization": "UTF-8 source bytes with CRLF normalized to LF; original source untouched",
+  "status": "Passed",
+  "compilerVersion": "0.1.0",
+  "compilerSourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
+  "scope": "Billing Time snapshot only; no compiler changes or production/no-SDK acceptance",
+  "native": {
+    "windows": {
+      "result": {
+        "status": "Passed",
+        "compiler": "wb 0.1.0 (aarch64-pc-windows-msvc) R8B",
+        "profiles": [
+          {
+            "profile": "debug",
+            "target": "aarch64-pc-windows-msvc",
+            "imageSha256": "0a707f7be63b48cf9381cc72320ee9c6a86f150b381eb82e051927b3546e5e4b",
+            "freshInvoiceCents": 18000,
+            "repeatInvoice": 2,
+            "invalidArgumentsBeforeDatabase": true
+          },
+          {
+            "profile": "release",
+            "target": "aarch64-pc-windows-msvc",
+            "imageSha256": "4da4a3285f7e9265aebff200c906e5537fef5b7590a20a45bd05c938b660d9ac",
+            "freshInvoiceCents": 18000,
+            "repeatInvoice": 2,
+            "invalidArgumentsBeforeDatabase": true
+          }
+        ],
+        "genericRunWithoutArguments": "Passed",
+        "explicitDatabaseArgument": "Passed"
+      },
+      "logSha256": "0505f270df3cacd33ee993342cea56fe52065e85f604fb70a170ce16c9f57f2d"
+    },
+    "macos": {
+      "result": {
+        "status": "Passed",
+        "compiler": "wb 0.1.0 (aarch64-apple-darwin) R8B",
+        "profiles": [
+          {
+            "profile": "debug",
+            "target": "aarch64-apple-darwin",
+            "imageSha256": "eac6bbf0ced3a25f712b9383eb12b776a7442d8b329e367eee99da3a703adf78",
+            "freshInvoiceCents": 18000,
+            "repeatInvoice": 2,
+            "invalidArgumentsBeforeDatabase": true
+          },
+          {
+            "profile": "release",
+            "target": "aarch64-apple-darwin",
+            "imageSha256": "ff79020c3b367e1b5bf274d6ee6d34a46500b0f26d0a3bf184fa7efdd011c21d",
+            "freshInvoiceCents": 18000,
+            "repeatInvoice": 2,
+            "invalidArgumentsBeforeDatabase": true
+          }
+        ],
+        "genericRunWithoutArguments": "Passed",
+        "explicitDatabaseArgument": "Passed"
+      },
+      "logSha256": "ffe983310599fef8d09845bd668e001365b1a17f03183012f835289bf76e90f0"
+    }
+  },
+  "vscodeTaskScope": "Included original portable task declarations to satisfy the updated README link; this addition does not claim a new VS Code host execution."
+}

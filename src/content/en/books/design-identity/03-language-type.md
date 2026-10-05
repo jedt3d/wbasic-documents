@@ -18,6 +18,9 @@ The Looped rule applies only to characters in the Unicode Thai block (`U+0E00–
 
 ## Code must be accurate before it is attractive
 
+The Japanese edition uses the system's Japanese sans-serif fallback, keeping
+Latin text in IBM Plex and preserving the existing Thai font rules.
+
 Mono preserves the source's whitespace and punctuation. Do not change case, compress letter spacing, or shrink the text to squeeze in long lines; allow horizontal scrolling. Comments use a real italic font file rather than a browser-generated slant. Do not synthesize bold italic when that font file has not been supplied.
 
 Website fonts are stored in the repository with their SIL Open Font License. Terminal fonts are chosen by the user and terminal host, so Thai shaping, cell width, and fallback require separate checks. TlwgMono or a Nerd Font may suit a particular terminal, but neither automatically replaces the website's typography. Work clothes and formal clothes can share a wardrobe without being the same outfit.

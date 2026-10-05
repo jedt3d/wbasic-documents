@@ -22,3 +22,5 @@ node "$documents_root/verify-extension-guide.mjs"
 node "$documents_root/verify-project-drafts.mjs"
 
 node "$documents_root/verify-compiler-release.mjs"
+node "$documents_root/verify-japanese-edition.mjs"
+node "$documents_root/verify-billing-snapshot.mjs"

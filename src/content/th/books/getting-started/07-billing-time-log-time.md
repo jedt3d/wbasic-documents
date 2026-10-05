@@ -1,10 +1,10 @@
 ---
-title: "7 · บันทึกเวลาและราคา"
-description: "ดู insert intent และราคา snapshot จาก source ที่รันได้"
+title: "7 · บันทึกเวลาและเก็บอัตรา ณ เวลาที่บันทึก"
+description: "อ่านการ insert ที่ระบุ field ชัดเจนและการคำนวณจำนวนเต็ม"
 weight: 7
 ---
 
-`Billing.LogTime` บันทึก project, service, วันที่, นาทีและ note พร้อมคัดลอก rate ของ service ลง `TimeEntry` จึงไม่เปลี่ยนยอดย้อนหลังเมื่อแก้ราคาบริการในอนาคต ตัวอย่างใน [Domain.wbas](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/modules/Billing.wmod/src/Domain.wbas) สร้างเจตนาการ insert อย่างชัดเจน:
+`Billing.LogTime` ใน [Domain.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/modules/Billing.wmod/src/Domain.wbas) บันทึก project, service, วันที่, นาที, note และอัตราปัจจุบันของ service ลง `TimeEntry` อัตราที่เก็บไว้กับรายการเป็นหลักฐานสำหรับการวางบิลภายหลัง:
 
 ```basic
 changes = Worm.Set(Of TimeEntry)(changes, "Note", note)
@@ -16,8 +16,8 @@ Using tx As Worm.Transaction = db.BeginTransaction()
 EndUsing
 ```
 
-ข้อความนี้เป็น **ส่วนตัดจาก procedure**; source เต็มกำหนด field ที่ต้องใช้ทั้งหมดก่อน insert `Id` และ `Version` ถูกละไว้ให้ SQLite สร้างและคืนค่าผ่าน `InsertReturning` การละ field กับการกำหนด `Null` เป็นคนละเจตนา
+นี่เป็นเพียง **ส่วนหนึ่งของ procedure**; โค้ดเต็มตั้งค่าทุก field ที่จำเป็นก่อน insert โดยเว้น `Id` และ `Version` ให้ SQLite สร้าง แล้ว `InsertReturning` อ่านแถวที่บันทึกกลับมา การเว้น field กับการตั้งเป็น `Null` เป็นคนละเจตนา แต่ละรายการเวลาถูกบันทึกใน transaction ของตัวเอง
 
-[Main.wbas](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/src/Main.wbas) บันทึก Design 120 นาทีที่ 6,000 cents/hour และ Development 90 นาทีที่ 4,000 cents/hour สูตร `(minutes * rateCentsPerHour) Div 60` ให้ 12,000 + 6,000 = **18,000 cents** `ExactAmountCents` ปฏิเสธค่าติดลบและการคูณ `Integer` มี overflow check ตัวเลขตัวอย่างหารลงตัว; ไม่มีนโยบายภาษี สกุลเงิน การตรวจวันที่ หรือการปัดเศษทางธุรกิจครบถ้วน
+[Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) บันทึกงาน Design 120 นาทีที่ 6,000 cents/hour และ Development 90 นาทีที่ 4,000 cents/hour สูตร `(minutes * rateCentsPerHour) Div 60` ให้ 12,000 + 6,000 = **18,000 cents** `ExactAmountCents` ปฏิเสธนาทีและอัตราติดลบ การคูณ `Integer` ตรวจ overflow และ `Div` ตัดเศษเมื่อหารไม่ลงตัว ตัวเลขในตัวอย่างหารลงตัวพอดี โปรแกรมนี้ยังไม่มีนโยบายสกุลเงิน ภาษี การตรวจวันที่ หรือการปัดเศษทางธุรกิจ
 
 อ่านต่อ: [สร้าง invoice]({{< relref "/books/getting-started/08-billing-time-invoice-transaction.md" >}})

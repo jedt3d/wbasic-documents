@@ -1,0 +1,45 @@
+Module BillingTime
+Import Worm
+Import Billing
+
+Procedure Main(args As Array Of String) As Integer
+  If args.Length > 1 Then
+    Console.ErrorLn("usage: billing-time [sqlite-path]")
+    Return 1
+  EndIf
+  Let databasePath As String = "billing-time-demo.sqlite"
+  If  args.Length            = 1 Then
+      databasePath           = args[0]
+  EndIf
+  If databasePath.Length = 0 Then
+    Console.ErrorLn("billing-time: database path must not be empty")
+    Return 1
+  EndIf
+  Try
+    Using db As Worm.Database = Worm.OpenSqlite(databasePath)
+
+      Billing.ApplyMigration(db)
+
+      Let customer As Billing.Customer         = Billing.CreateCustomer(db, "Acme Studio", "accounts@acme.example")
+      Let project As Billing.Project           = Billing.CreateProject(db, customer.Id, "Website refresh")
+      Let design As Billing.ServiceType        = Billing.CreateService(db, "Design", 6000)
+      Let development As Billing.ServiceType   = Billing.CreateService(db, "Development", 4000)
+      Let sketch As Billing.TimeEntry          = Billing.LogTime(db, project, design, "2026-09-28", 120, "Homepage sketches")
+      Let implementation As Billing.TimeEntry  = Billing.LogTime(db, project, development, "2026-09-29", 90, "Build contact form")
+      Let draft As Billing.DraftInvoice        = Billing.CreateDraftInvoice(db, project, "2026-09-29")
+      Let billed As Array Of Billing.TimeEntry = Billing.GetTimeEntries(db, project.Id, True)
+
+      PrintLn("schema: ready")
+      PrintLn("project: " + project.Name + " for " + customer.Name)
+      PrintLn("time logged: " + (sketch.Minutes + implementation.Minutes).ToString() + " minutes")
+      PrintLn("invoice: #" + draft.Invoice.Id.ToString() + " (" + draft.Lines.Length.ToString() + " lines)")
+      PrintLn("invoice total: " + draft.TotalCents.ToString() + " cents")
+      PrintLn("billed entries: " + billed.Length.ToString())
+
+    EndUsing
+    Return 0
+  Catch problem As Error
+    Console.ErrorLn("billing-time: " + problem.Message)
+    Return 1
+  EndTry
+EndProcedure

@@ -1,0 +1,9 @@
+[project]
+name      = "BillingTime"
+module    = "BillingTime"
+entry     = "src/Main.wbas"
+toolchain = "0.1.0"
+
+[dependencies]
+Worm    = { bundled = true }
+Billing = { path = "modules/Billing.wmod" }

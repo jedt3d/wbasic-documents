@@ -1,0 +1,204 @@
+Module Billing
+Import Worm
+
+' The migration text is a reviewed application value. Opening SQLite does not apply it.
+' Each array item is one statement because Worm.Execute accepts one prepared statement.
+Public Procedure SchemaStatements() As Array Of String
+  Return [
+    "CREATE TABLE customers (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, Name TEXT NOT NULL, Email TEXT NOT NULL)",
+    "CREATE TABLE projects (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, CustomerId INTEGER NOT NULL REFERENCES customers(Id), Name TEXT NOT NULL)",
+    "CREATE TABLE service_types (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, Name TEXT NOT NULL, RateCentsPerHour INTEGER NOT NULL CHECK(RateCentsPerHour >= 0))",
+    "CREATE TABLE invoices (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, CustomerId INTEGER NOT NULL REFERENCES customers(Id), ProjectId INTEGER NOT NULL REFERENCES projects(Id), IssuedOn TEXT NOT NULL, Status TEXT NOT NULL)",
+    "CREATE TABLE time_entries (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, ProjectId INTEGER NOT NULL REFERENCES projects(Id), ServiceTypeId INTEGER NOT NULL REFERENCES service_types(Id), WorkDate TEXT NOT NULL, Minutes INTEGER NOT NULL CHECK(Minutes >= 0), Note TEXT NOT NULL, RateCentsPerHour INTEGER NOT NULL CHECK(RateCentsPerHour >= 0), InvoiceId INTEGER REFERENCES invoices(Id) DEFAULT NULL)",
+    "CREATE TABLE invoice_lines (Id INTEGER PRIMARY KEY, Version INTEGER NOT NULL DEFAULT 1, InvoiceId INTEGER NOT NULL REFERENCES invoices(Id), TimeEntryId INTEGER NOT NULL UNIQUE REFERENCES time_entries(Id), Description TEXT NOT NULL, Minutes INTEGER NOT NULL CHECK(Minutes >= 0), RateCentsPerHour INTEGER NOT NULL CHECK(RateCentsPerHour >= 0), AmountCents INTEGER NOT NULL CHECK(AmountCents >= 0))",
+    "CREATE INDEX unbilled_by_project ON time_entries(ProjectId, InvoiceId, Id)"
+  ]
+EndProcedure
+
+Public Procedure SchemaSql() As String
+  Return SchemaStatements().Join("\n") + "\n"
+EndProcedure
+
+Public Procedure ApplyMigration(db As Worm.Database)
+  Let none As Array Of Worm.Parameter = []
+  Let schema As String = SchemaSql()
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    tx.Execute("CREATE TABLE IF NOT EXISTS schema_migrations (Name TEXT PRIMARY KEY, Sql TEXT NOT NULL)", none)
+    Let rows As Array Of MigrationRow = Worm.RawAll(Of MigrationRow)(tx, "SELECT Name, Sql FROM schema_migrations WHERE Name = ?", [Worm.BindString("001_billing_time")])
+    If rows.Length = 0 Then
+      For Each statement As String In SchemaStatements()
+        tx.Execute(statement, none)
+      Next
+      tx.Execute("INSERT INTO schema_migrations (Name, Sql) VALUES (?, ?)", [Worm.BindString("001_billing_time"), Worm.BindString(schema)])
+    ElseIf rows.Length = 1 Then
+      If rows[0].Sql <> schema Then
+        Throw Error.Create(ErrorKind.Validation, "Billing.MigrationChanged", "migration SQL differs from recorded version")
+      EndIf
+    Else
+      Throw Error.Create(ErrorKind.Validation, "Billing.MigrationHistory", "migration has duplicate history rows")
+    EndIf
+    tx.Commit()
+  EndUsing
+EndProcedure
+
+Public Procedure ExactAmountCents(minutes As Integer, rateCentsPerHour As Integer) As Integer
+  If minutes < 0 Or rateCentsPerHour < 0 Then
+    Throw Error.Create(ErrorKind.Validation, "Billing.InvalidAmount", "minutes and rate must be nonnegative")
+  EndIf
+  Return (minutes * rateCentsPerHour) Div 60
+EndProcedure
+
+Procedure CustomerMap() As Worm.Mapping Of Customer
+  Return Worm.Mapping(Of Customer)("billing.customer", 1, "customers", "Id", "Version")
+EndProcedure
+
+Procedure ProjectMap() As Worm.Mapping Of Project
+  Return Worm.Mapping(Of Project)("billing.project", 1, "projects", "Id", "Version")
+EndProcedure
+
+Procedure ServiceMap() As Worm.Mapping Of ServiceType
+  Return Worm.Mapping(Of ServiceType)("billing.service_type", 1, "service_types", "Id", "Version")
+EndProcedure
+
+Procedure TimeMap() As Worm.Mapping Of TimeEntry
+  Return Worm.Mapping(Of TimeEntry)("billing.time_entry", 1, "time_entries", "Id", "Version")
+EndProcedure
+
+Procedure InvoiceMap() As Worm.Mapping Of Invoice
+  Return Worm.Mapping(Of Invoice)("billing.invoice", 1, "invoices", "Id", "Version")
+EndProcedure
+
+Procedure LineMap() As Worm.Mapping Of InvoiceLine
+  Return Worm.Mapping(Of InvoiceLine)("billing.invoice_line", 1, "invoice_lines", "Id", "Version")
+EndProcedure
+
+Public Procedure CreateCustomer(db As Worm.Database, name As String, email As String) As Customer
+  Let changes As Worm.Changes Of Customer = Worm.NewChanges(Of Customer)()
+  changes = Worm.Set(Of Customer)(changes, "Name", name)
+  changes = Worm.Set(Of Customer)(changes, "Email", email)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let saved As Customer = Worm.InsertReturning(Of Customer)(tx, CustomerMap(), changes)
+    tx.Commit()
+    Return saved
+  EndUsing
+EndProcedure
+
+Public Procedure CreateProject(db As Worm.Database, customerId As Integer, name As String) As Project
+  Let changes As Worm.Changes Of Project = Worm.NewChanges(Of Project)()
+  changes = Worm.Set(Of Project)(changes, "CustomerId", customerId)
+  changes = Worm.Set(Of Project)(changes, "Name", name)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let saved As Project = Worm.InsertReturning(Of Project)(tx, ProjectMap(), changes)
+    tx.Commit()
+    Return saved
+  EndUsing
+EndProcedure
+
+Public Procedure CreateService(db As Worm.Database, name As String, rateCentsPerHour As Integer) As ServiceType
+  If rateCentsPerHour < 0 Then
+    Throw Error.Create(ErrorKind.Validation, "Billing.InvalidRate", "rate must be nonnegative")
+  EndIf
+  Let changes As Worm.Changes Of ServiceType = Worm.NewChanges(Of ServiceType)()
+  changes = Worm.Set(Of ServiceType)(changes, "Name", name)
+  changes = Worm.Set(Of ServiceType)(changes, "RateCentsPerHour", rateCentsPerHour)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let saved As ServiceType = Worm.InsertReturning(Of ServiceType)(tx, ServiceMap(), changes)
+    tx.Commit()
+    Return saved
+  EndUsing
+EndProcedure
+
+Public Procedure LogTime(db As Worm.Database, project As Project, service As ServiceType, workDate As String, minutes As Integer, note As String) As TimeEntry
+  If minutes < 0 Then
+    Throw Error.Create(ErrorKind.Validation, "Billing.InvalidMinutes", "minutes must be nonnegative")
+  EndIf
+  Let changes As Worm.Changes Of TimeEntry = Worm.NewChanges(Of TimeEntry)()
+  changes = Worm.Set(Of TimeEntry)(changes, "ProjectId", project.Id)
+  changes = Worm.Set(Of TimeEntry)(changes, "ServiceTypeId", service.Id)
+  changes = Worm.Set(Of TimeEntry)(changes, "WorkDate", workDate)
+  changes = Worm.Set(Of TimeEntry)(changes, "Minutes", minutes)
+  changes = Worm.Set(Of TimeEntry)(changes, "Note", note)
+  changes = Worm.Set(Of TimeEntry)(changes, "RateCentsPerHour", service.RateCentsPerHour)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let saved As TimeEntry = Worm.InsertReturning(Of TimeEntry)(tx, TimeMap(), changes)
+    tx.Commit()
+    Return saved
+  EndUsing
+EndProcedure
+
+Public Procedure GetTimeEntries(db As Worm.Database, projectId As Integer, billed As Boolean) As Array Of TimeEntry
+  Let query As Worm.Query Of TimeEntry = Worm.Select(Of TimeEntry)()
+  query = Worm.Equal(Of TimeEntry)(query, "ProjectId", projectId)
+  If billed Then
+    query = Worm.IsNotNull(Of TimeEntry)(query, "InvoiceId")
+  Else
+    query = Worm.IsNull(Of TimeEntry)(query, "InvoiceId")
+  EndIf
+  query = Worm.OrderBy(Of TimeEntry)(query, "Id", False)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let rows As Array Of TimeEntry = Worm.All(Of TimeEntry)(tx, TimeMap(), query)
+    tx.Commit()
+    Return rows
+  EndUsing
+EndProcedure
+
+Public Procedure GetProject(db As Worm.Database, id As Integer) As Project
+  Let query As Worm.Query Of Project = Worm.Equal(Of Project)(Worm.Select(Of Project)(), "Id", id)
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let rows As Array Of Project = Worm.All(Of Project)(tx, ProjectMap(), query)
+    If rows.Length <> 1 Then
+      Throw Error.Create(ErrorKind.Validation, "Billing.ProjectMissing", "project was not found")
+    EndIf
+    tx.Commit()
+    Return rows[0]
+  EndUsing
+EndProcedure
+
+Public Procedure CreateDraftInvoice(db As Worm.Database, project As Project, issuedOn As String) As DraftInvoice
+  Using tx As Worm.Transaction = db.BeginTransaction()
+    Let owners As Array Of ProjectOwner = Worm.RawAll(Of ProjectOwner)(tx, "SELECT CustomerId FROM projects WHERE Id = ?", [Worm.BindInteger(project.Id)])
+    If owners.Length <> 1 Then
+      Throw Error.Create(ErrorKind.Validation, "Billing.ProjectOwner", "project customer differs from stored project")
+    EndIf
+    If owners[0].CustomerId <> project.CustomerId Then
+      Throw Error.Create(ErrorKind.Validation, "Billing.ProjectOwner", "project customer differs from stored project")
+    EndIf
+
+    ' The first write precedes candidate selection. BEGIN DEFERRED upgrades to
+    ' a writer here; a competing snapshot upgrade propagates BUSY, never retries.
+    Let header As Worm.Changes Of Invoice = Worm.NewChanges(Of Invoice)()
+    header = Worm.Set(Of Invoice)(header, "CustomerId", project.CustomerId)
+    header = Worm.Set(Of Invoice)(header, "ProjectId", project.Id)
+    header = Worm.Set(Of Invoice)(header, "IssuedOn", issuedOn)
+    header = Worm.Set(Of Invoice)(header, "Status", "Draft")
+    Let invoice As Invoice = Worm.InsertReturning(Of Invoice)(tx, InvoiceMap(), header)
+
+    Let query As Worm.Query Of TimeEntry = Worm.Select(Of TimeEntry)()
+    query = Worm.Equal(Of TimeEntry)(query, "ProjectId", project.Id)
+    query = Worm.IsNull(Of TimeEntry)(query, "InvoiceId")
+    query = Worm.OrderBy(Of TimeEntry)(query, "Id", False)
+    Let unbilled As Array Of TimeEntry = Worm.All(Of TimeEntry)(tx, TimeMap(), query)
+    Let lines As Array Of InvoiceLine = []
+    Let totalCents As Integer = 0
+    For Each entry As TimeEntry In unbilled
+      Let amountCents As Integer = ExactAmountCents(entry.Minutes, entry.RateCentsPerHour)
+      Let detail As Worm.Changes Of InvoiceLine = Worm.NewChanges(Of InvoiceLine)()
+      detail = Worm.Set(Of InvoiceLine)(detail, "InvoiceId", invoice.Id)
+      detail = Worm.Set(Of InvoiceLine)(detail, "TimeEntryId", entry.Id)
+      detail = Worm.Set(Of InvoiceLine)(detail, "Description", entry.Note)
+      detail = Worm.Set(Of InvoiceLine)(detail, "Minutes", entry.Minutes)
+      detail = Worm.Set(Of InvoiceLine)(detail, "RateCentsPerHour", entry.RateCentsPerHour)
+      detail = Worm.Set(Of InvoiceLine)(detail, "AmountCents", amountCents)
+      Let line As InvoiceLine = Worm.InsertReturning(Of InvoiceLine)(tx, LineMap(), detail)
+      totalCents += line.AmountCents
+
+      ' Omitted TimeEntry columns stay unchanged. A stale version cannot link.
+      Let link As Worm.Changes Of TimeEntry = Worm.NewChanges(Of TimeEntry)()
+      link = Worm.Set(Of TimeEntry)(link, "InvoiceId", invoice.Id)
+      Worm.Update(Of TimeEntry)(tx, TimeMap(), link, entry.Id, entry.Version)
+      lines.Append(line)
+    Next
+    tx.Commit()
+    Return DraftInvoice(Invoice := invoice, Lines := lines, TotalCents := totalCents)
+  EndUsing
+EndProcedure

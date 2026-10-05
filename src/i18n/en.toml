@@ -1,5 +1,7 @@
 [chapters]
 other = "Books & chapters"
+[screenshotPlaceholder]
+other = "Screenshot placeholder"
 [onThisPage]
 other = "On this page"
 [search]

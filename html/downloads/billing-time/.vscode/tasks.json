@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Check Billing",
+      "type": "wbasic",
+      "action": "check",
+      "manifest": "billing-time.wproj",
+      "problemMatcher": "$wbasic"
+    },
+    {
+      "label": "Run Billing",
+      "type": "wbasic",
+      "action": "run",
+      "manifest": "billing-time.wproj",
+      "profile": "debug",
+      "arguments": [
+        "billing-time-demo.sqlite"
+      ],
+      "problemMatcher": "$wbasic"
+    },
+    {
+      "label": "Build Billing",
+      "type": "wbasic",
+      "action": "build",
+      "manifest": "billing-time.wproj",
+      "profile": "debug",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$wbasic"
+    }
+  ]
+}

@@ -8,7 +8,7 @@
     <img src="{{ $url | relURL }}" alt="{{ $alt }}" loading="lazy">
   {{ else }}
     <div class="guide-screenshot-placeholder" role="img" aria-label="{{ $alt }}">
-      <span>ตำแหน่งภาพประกอบ</span>
+      <span>{{ i18n "screenshotPlaceholder" }}</span>
       <strong><code>{{ $name }}</code></strong>
       <p>{{ $alt }}</p>
     </div>

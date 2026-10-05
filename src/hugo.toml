@@ -23,6 +23,14 @@ summaryLength = 28
     ordered = false
 
 [languages]
+  [languages.ja]
+    locale = 'ja-JP'
+    label = '日本語'
+    contentDir = 'content/ja'
+    title = 'WBasic リファレンス'
+    weight = 3
+    [languages.ja.params]
+      description = 'WBasic の言語、標準ライブラリ、API のリファレンス'
   [languages.en]
     locale = 'en-US'
     label = 'English'

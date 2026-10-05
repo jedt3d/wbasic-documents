@@ -8,9 +8,13 @@
   plans live in [jedt3d/wbasic-language](https://github.com/jedt3d/wbasic-language).
   Public documentation must describe verified, published release behavior
   or merged behavior with its explicit development scope from that repository. Planned or Deferred behavior must remain labelled as such.
-- Thai is the authoritative edition until the user explicitly requests an
-  English translation. A Thai technical editor reviews correctness, logical
-  flow, readable professor-like prose and restrained humor before translation.
+- Thai is the authoritative edition. English and Japanese translations are
+  user-approved. A Thai technical editor reviews correctness, logical flow,
+  readable professor-like prose and restrained humor before translation.
+  Maintain matching page paths, code/output blocks, API identifiers, status limits
+  and chapter order across all three editions. Translate prose and UI labels;
+  keep executable examples shared. Run `verify-japanese-edition.mjs` with the
+  existing build gates. Archived manuscripts remain historical and untranslated.
 
 ## Authoring and generated output
 
@@ -43,7 +47,7 @@
   only this repository's main and that tag. Never reuse or force-move a published
   version. The Pages workflow rejects a missing tag or a tag for a different SHA.
 - Verify the completed Pages run and live `version.json`, `deployment.json`,
-  and both language footers before reporting publication success.
+  and all three language footers before reporting publication success.
 - WBasic is proprietary, not open-source. Keep the copyright notice naming
   Worajedt Sitthidumrong and preserve all third-party license notices.
 

@@ -1,0 +1,20 @@
+WBasic 拡張機能ガイドのスクリーンショット配置場所
+
+このガイドは画像がなくても読めます。後から画面を撮影する場合は
+src/static/images/w-basic-extension/ に保存し、本文を書き換えずに済むよう
+次の固定した名前を使ってください。
+
+01-toolchain-status.png        マシンのパスを切り取るか伏せた Show Toolchain Status。
+02-new-project.png             WBasic: New Project のコマンドパレット。
+03-projects-view.png           WBasic Projects と生成したプロジェクトのツリー。
+04-source-intelligence.png     Greeting の補完と引数のヒント。
+05-diagnostics.png             Boolean 型の診断を示す Problems パネル。
+06-navigation-rename.png       二つのソースファイル間の名前変更プレビュー。
+07-module-dependency.png       App.wproj とローカルモジュール追加のプレビュー。
+08-run-build-tasks.png         WBasic のタスクと統合ターミナル。
+09-test-explorer.png           成功・失敗・データ行を示す Testing 画面。
+10-examples.png                WBasic: Open Example の選択画面。
+
+検証済みのローカル 0.2.1 VSIX を使う独立した VS Code プロファイルで撮影します。
+個人のパス、ユーザー名、無関係な拡張機能、最近のプロジェクト、トークン、
+端末の履歴、秘密情報を含めないでください。

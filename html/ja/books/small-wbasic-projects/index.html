@@ -1,0 +1,249 @@
+<!doctype html><html lang=ja-JP data-theme=light><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><title>小さなWBasicプロジェクト集 · WBasic リファレンス</title><meta name=description content="小さなWBasicプログラムの設計・記述・検証を練習する日本語版"><link rel=stylesheet href=/wbasic-documents/css/site.min.19d6fcf48b524c39391216fc4b8d6c982e97ab7a4a44640db619083ed984c025.css integrity="sha256-Gdb89ItSTDk5Ehb8S41smC6Xq3pKRGQNthkIPtmEwCU="><script>(()=>{const e=localStorage.getItem("wbasic-theme"),t=e||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.dataset.theme=t})()</script></head><body class=wb data-search-index=/wbasic-documents/ja/index.json><a class=skip-link href=#main-content>本文へ移動</a><header class=site-header><a class=brand href=/wbasic-documents/ja/ aria-label="WBasic リファレンス"><span class=brand-mascot aria-hidden=true><img class=brand-mascot-light src=/wbasic-documents/images/brand/wbasic-mascot-light.svg alt width=44 height=44 fetchpriority=high>
+<img class=brand-mascot-dark src=/wbasic-documents/images/brand/wbasic-mascot-dark.svg alt width=44 height=44 fetchpriority=high>
+</span><span>Wbasic<span class=brand-signature aria-hidden=true>.</span></span></a><nav class=top-links aria-label=メインナビゲーション><a href=/wbasic-documents/ja/books/language-reference/>言語仕様</a>
+<a href=/wbasic-documents/ja/books/standard-library/>ライブラリ</a>
+<a href=/wbasic-documents/ja/books/api-reference/>API</a></nav><div class=header-actions><button class="mobile-menu-button text-button" type=button data-nav-open aria-label=本の目次を開く aria-expanded=false>目次</button>
+<button class=search-button type=button data-search-open>
+<span>検索</span>
+<kbd>Ctrl K</kbd>
+</button>
+<label class=language-control aria-label=言語><select data-language-switcher><option value=/wbasic-documents/th/books/small-wbasic-projects/>ไทย</option><option value=/wbasic-documents/en/books/small-wbasic-projects/>English</option><option value=/wbasic-documents/ja/books/small-wbasic-projects/ selected>日本語</option></select>
+</label><button class="theme-button text-button" type=button data-theme-toggle aria-label=カラーテーマを切り替える>テーマ</button></div></header><div class=reference-layout><aside class=book-navigation data-book-navigation aria-label=本と章><div class=book-navigation-header><span>本と章</span>
+<button type=button class="nav-close text-button" data-nav-close>閉じる</button></div><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/getting-started/><span>はじめに</span></a></section><section class="book-group is-expanded" data-book-group><a class="book-title is-current" href=/wbasic-documents/ja/books/small-wbasic-projects/><span>小さなWBasicプロジェクト集</span></a><ol data-book-chapters><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/project-roadmap/>小さなWBasicプロジェクトのロードマップ</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/01-bagels/>01 · 位置の手がかりから3桁の暗号を当てる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/02-birthday-paradox/>02 · グループ内で誕生日が重なる確率をシミュレートする</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/03-bitmap-message/>03 · ビットマップメッセージ</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/04-blackjack/>04 · ディーラーとブラックジャックで遊ぶ</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/05-bouncing-dvd-logo/>05 · ロゴを跳ね返らせて角への到達回数を数える</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/06-caesar-cipher/>06 · シーザー暗号</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/07-caesar-hacker/>07 · シーザー暗号の鍵をすべて試す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/08-calendar-maker/>08 · 1か月分のカレンダーを印刷する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/09-carrot-in-a-box/>09 · 箱の中のニンジンで遊ぶ</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/10-cho-han/>10 · 2個のサイコロの合計が奇数か偶数かに賭ける</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/11-clickbait-headline-generator/>11 · テンプレートから見出しを生成する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/12-collatz/>12 · コラッツ数列</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/13-conway-s-game-of-life/>13 · コンウェイのライフゲームを進める</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/14-countdown/>14 · 時間を刻むカウントダウンを表示する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/15-deep-cave/>15 · 形が変わる深い洞窟の眺めを生成する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/16-diamonds/>16 · 空白と星印で作るひし形</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/17-dice-math/>17 · サイコロで足し算を練習する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/18-dice-roller/>18 · サイコロ表記を解析して出目を合計する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/19-digital-clock/>19 · 現在時刻をデジタル時計で表示する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/20-digital-stream/>20 · 文字の流れをアニメーション表示する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/21-dna-visualization/>21 · 文字でDNAのらせんを描く</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/22-ducklings/>22 · アヒルの子を画面上で動かす</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/23-etching-drawer/>23 · 方向キーで格子に絵を描く</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/24-factors/>24 · 36の約数を見つける</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/25-fast-draw/>25 · 合図の後に素早くキーを押す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/26-fibonacci/>26 · 前の2つの値からフィボナッチ数を作る</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/27-fish-tank/>27 · 文字の水槽で魚を泳がせる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/28-flooder/>28 · つながった格子領域の色を変える</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/29-forest-fire-sim/>29 · 格子上で広がる森林火災をシミュレートする</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/30-four-in-a-row/>30 · 四目並べ：駒を落として列を数える</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/31-guess-the-number/>31 · 高い・低いの手がかりで数字を当てる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/32-gullible/>32 · 何度も尋ねる質問</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/33-hacking-minigame/>33 · 位置が一致する文字からパスワードを見つける</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/34-hangman-guillotine/>34 · 絵が完成する前に文字を当てる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/35-hex-grid/>35 · 小片を繰り返して作る六角形の格子</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/36-hourglass/>36 · 時間を刻む砂時計</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/37-hungry-robots/>37 · 追いかけてくるロボットから逃げる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/38-j-accuse/>38 · 手がかりから容疑者を特定する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/39-langton-s-ant/>39 · アリを回転させて格子の色を反転する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/40-leetspeak/>40 · 文字をリート表記に変換する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/41-lucky-stars/>41 · 選んだ星に賭ける</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/42-magic-fortune-ball/>42 · 占いの返答で質問に答える</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/43-mancala/>43 · マンカラ：種をまいて取り込む</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/44-maze-runner-2d/>44 · 2次元迷路を進む</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/45-maze-runner-3d/>45 · 文字で一人称視点の迷路を描く</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/46-million-dice-statistics/>46 · 100万回のサイコロの出目を集計する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/47-mondrian-art-generator/>47 · モンドリアン風の長方形を生成する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/48-monty-hall/>48 · モンティ・ホール問題で選択維持と変更を比べる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/49-multiplication/>49 · 入れ子のループで作る掛け算表</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/50-ninety-nine-bottles/>50 · 棚の瓶を数え下げる詩</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/51-ninety-nniine-boottels/>51 · 文字の大文字・小文字を変えながら瓶を数え下げる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/52-numeral-systems/>52 · 同じ数を異なる基数で表す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/53-periodic-table-of-the-elements/>53 · 周期表から元素を検索する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/54-pig-latin/>54 · 短い単語のピッグ・ラテン</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/55-powerball-lottery/>55 · 宝くじの券と抽選をシミュレートする</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/56-primes/>56 · 範囲を限って素数を探す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/57-progress-bar/>57 · 作業の進み具合をバーで示す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/58-rainbow/>58 · 文字の虹を動かす</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/59-rock-paper-scissors/>59 · コンピューターとじゃんけんをする</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/60-rock-paper-scissors-always-win/>60 · 必ずプレイヤーが勝つじゃんけん</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/61-rot13/>61 · もう一度変換すると戻るROT13</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/62-rotating-cube/>62 · 文字で回転する立方体を描く</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/63-royal-game-of-ur/>63 · ウル王朝のゲームを遊ぶ</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/64-seven-segment-display-module/>64 · ビットで表す7セグメントの数字</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/65-shining-carpet/>65 · 6行を繰り返すじゅうたん模様</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/66-simple-substitution-cipher/>66 · 単純換字式暗号</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/67-sine-message/>67 · 文字列を正弦波に沿って動かす</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/68-sliding-tile-puzzle/>68 · 数字のタイルを空白へ滑らせる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/69-snail-race/>69 · ゆっくり進むカタツムリを競走させる</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/70-soroban-japanese-abacus/>70 · そろばんを表示して珠を動かす</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/71-sound-mimic/>71 · 音の並びを聞いて繰り返す</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/72-spongecase/>72 · 大文字と小文字を交互にする</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/73-sudoku-puzzle/>73 · 数独の盤面を検査し、解くための計画</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/74-text-to-speech-talker/>74 · 入力された文章を声に出して読む</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/75-three-card-monte/>75 · 入れ替わるカードの当たりを追う</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/76-tic-tac-toe/>76 · 三目並べの規則と勝敗判定</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/77-tower-of-hanoi-puzzle/>77 · ハノイの塔と再帰</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/78-trick-questions/>78 · ひっかけ問題と解答の確認</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/79-twenty-forty-eight/>79 · 2048のタイルを滑らせて結合する</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/80-vigenere-cipher/>80 · キーワードでずらすヴィジュネル暗号</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/81-water-bucket-puzzle/>81 · 水桶と段階ごとの状態変化</a></li><li><a href=/wbasic-documents/ja/books/small-wbasic-projects/verification/>検証結果と版ごとの範囲</a></li></ol></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/w-basic-extension/><span>WBasic 拡張機能ガイド</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/language-reference/><span>言語リファレンス</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/standard-library/><span>標準ライブラリ</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/api-reference/><span>API リファレンス</span></a></section><section class=book-group data-book-group><a class=book-title href=/wbasic-documents/ja/books/design-identity/><span>WBasic のデザインとアイデンティティ</span></a></section></aside><main class=reference-main id=main-content><article class=reference-article><nav class=breadcrumbs aria-label=パンくずリスト><a href=/wbasic-documents/ja/>WBasic</a>
+<span aria-hidden=true>/</span><a href=/wbasic-documents/ja/books/>リファレンスの書籍</a>
+<span aria-hidden=true>/</span><span aria-current=page>小さなWBasicプロジェクト集</span></nav><p class=eyebrow>日本語版 · サンプルとプロジェクト計画</p><h1>小さなWBasicプロジェクト集</h1><p class=lead>小さなWBasicプログラムの設計・記述・検証を練習する日本語版</p><div class=prose><p><strong>本書はAl Sweigartの『The Big Book of Small Python Projects』にある課題の着想を翻案し、WBasicの説明と例を新たに執筆したものです。</strong> 実際に作りながら学べる題材を集めてくださった著者に感謝します。<a href=https://inventwithpython.com/bigbookpython/>Invent with Python — The Big Book of Small Python Projects</a>で原著を直接読み、そこにあるリンクから著者を支援してください。</p><p>本書は独立して制作したWBasicの学習書であり、原著の公式翻訳でも、著者がWBasicを推奨しているという主張でもありません。出典を探しやすいように課題番号を保っていますが、1番から読む必要はありません。</p><h2 id=はじめにから小さな課題へ>『はじめに』から小さな課題へ</h2><p>本書は『はじめに』の次に読む2冊目です。ソースファイルとは何か、<code>wb</code>をどう使うかを知ったら、これらの小さな課題で入力から出力までの流れを1章で追えます。短いコードにも境界条件への注意は必要です。短いぶん、読まない言い訳が減るだけです。</p><p>タイ語版が原版です。この日本語版は完成したタイ語版と編集レビューを踏まえ、英語版を参照して制作しました。</p><h2 id=読み進める道筋を選ぶ>読み進める道筋を選ぶ</h2><p>入れ子のループを練習するなら<a href=/wbasic-documents/ja/books/small-wbasic-projects/49-multiplication/>掛け算表</a>から始め、次に<a href=/wbasic-documents/ja/books/small-wbasic-projects/16-diamonds/>ひし形</a>で文字の行を組み立てます。<a href=/wbasic-documents/ja/books/small-wbasic-projects/24-factors/>約数</a>と<a href=/wbasic-documents/ja/books/small-wbasic-projects/56-primes/>素数</a>に進むと、規則を手続きに分ける練習になります。</p><p>状態の扱いに慣れたら、<a href=/wbasic-documents/ja/books/small-wbasic-projects/26-fibonacci/>フィボナッチ数列</a>、<a href=/wbasic-documents/ja/books/small-wbasic-projects/12-collatz/>コラッツ数列</a>、<a href=/wbasic-documents/ja/books/small-wbasic-projects/61-rot13/>ROT13</a>、<a href=/wbasic-documents/ja/books/small-wbasic-projects/76-tic-tac-toe/>三目並べの中心的な規則</a>を試します。各章は対象範囲の違いを説明します。用意した手順の再生を対話式ゲームとして、範囲を限った実験を一般的な証明として提示しません。</p><p><a href=/wbasic-documents/ja/books/small-wbasic-projects/project-roadmap/>81課題のロードマップ</a>には、すべての課題、状態、必要な準備を示します。</p><p>この版には教材のコードがある29課題と、計画段階の52課題があります。実装済みの教材でも、元の規則を先に教えるために計算1つや手順の再生に範囲を絞ったものがあります。原著のプログラムの全機能を備えるとは主張しません。</p><p>文章の課題には、文字の絵、シーザー暗号、鍵の総当たり、リート表記、ピッグ・ラテン、大小文字の交替、換字式暗号があります。数の課題には基数変換と7セグメント数字があります。ゲームの課題には、四目並べ、マンカラ、三目並べ、ハノイの塔、水桶問題の中心的な規則があります。コマンド入力や画面操作を足す前に、データ構造を練習できます。</p><h2 id=ファイルをダウンロードし実行前に状態を読む>ファイルをダウンロードし、実行前に状態を読む</h2><p>実装済みの章は<code>main.wbas</code>のダウンロードで始まり、同じファイルのコードを表示します。書き込み可能なフォルダーに保存し、『はじめに』の開発用ツールチェーンを用意してから、<code>wb check main.wbas --json</code>と<code>wb run main.wbas</code>を実行します。これらの例は、SDKのないマシン向けの配布物が完成した証拠にはなりません。</p><p>計画段階の章は本文の前に状態を示し、まだ存在しないソースの代わりに計画をダウンロードできます。未執筆、検証待ち、実際に不足しているAPIを区別します。便利な組み込みコマンドがないからといって課題が不可能とは限りません。言語の基本機能で同じ手順を書けるなら、章にその旨を記します。</p><h2 id=教材の検証方法>教材の検証方法</h2><p>2026年10月1日の拡充では、8章（指定した年と月から作るカレンダー）、13章（ライフゲームの1世代）、73章（数独の検査器）に詳しい説明と下書きコードを加えました。各<code>draft.wbas.txt</code>は読んでさらに検証するためのもので、実行が確認されたプログラムではありません。3章とも計画段階の52章に含まれ、検証済みの例は29のままです。数独の解法、乱数による問題生成、対話式TUIは未完成です。</p><p>ライブラリ要求は<code>wbasic-language</code>リポジトリの<code>docs/proposals/small-projects-library-feature-requests.md</code>に別途記録します。安定した<code>SWP-FR-*</code>のIDは教材の必要性と提案を結びます。IDがあるだけで、そのAPIが存在したり実装が承認されたりしたことにはなりません。</p><p>コードのある各章には期待する結果、入力の境界、試すべき変更を記します。ソースの検査と実行は別の手順です。コンパイラと結果は<a href=/wbasic-documents/ja/books/small-wbasic-projects/verification/>検証記録</a>に示します。対応プラットフォームの主張はその証拠に従います。1台での成功を、すべての環境での成功とは見なしません。</p><p>課題番号と出典リンクは着想の元を示します。WBasicのコードと説明は新たに書きました。ダウンロードには原著の文章、画像、Pythonソース集は含まれません。</p></div><div class=chapter-list><a href=/wbasic-documents/ja/books/small-wbasic-projects/project-roadmap/ class=chapter-row><span class=chapter-number aria-hidden=true>—</span>
+<span><strong>小さなWBasicプロジェクトのロードマップ</strong>
+<small>81の課題と、教材を完成させる前に検証すべき境界</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/01-bagels/ class=chapter-row><span class=chapter-number aria-hidden=true>01</span>
+<span><strong>位置の手がかりから3桁の暗号を当てる</strong>
+<small>プロジェクト計画：位置の手がかりから3桁の暗号を当てる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/02-birthday-paradox/ class=chapter-row><span class=chapter-number aria-hidden=true>02</span>
+<span><strong>グループ内で誕生日が重なる確率をシミュレートする</strong>
+<small>プロジェクト計画：グループ内で誕生日が重なる確率をシミュレートする</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/03-bitmap-message/ class=chapter-row><span class=chapter-number aria-hidden=true>03</span>
+<span><strong>ビットマップメッセージ</strong>
+<small>空白と塗りつぶしのセルからなる図を読み取り、メッセージの文字で形を埋める</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/04-blackjack/ class=chapter-row><span class=chapter-number aria-hidden=true>04</span>
+<span><strong>ディーラーとブラックジャックで遊ぶ</strong>
+<small>プロジェクト計画：ディーラーとブラックジャックで遊ぶ</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/05-bouncing-dvd-logo/ class=chapter-row><span class=chapter-number aria-hidden=true>05</span>
+<span><strong>ロゴを跳ね返らせて角への到達回数を数える</strong>
+<small>プロジェクト計画：ロゴを跳ね返らせて角への到達回数を数える</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/06-caesar-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>06</span>
+<span><strong>シーザー暗号</strong>
+<small>A–Zの範囲で文字をずらして暗号化し、補数となる鍵で復号する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/07-caesar-hacker/ class=chapter-row><span class=chapter-number aria-hidden=true>07</span>
+<span><strong>シーザー暗号の鍵をすべて試す</strong>
+<small>26個の鍵すべてで復号し、意味のある文を読み手が見つける</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/08-calendar-maker/ class=chapter-row><span class=chapter-number aria-hidden=true>08</span>
+<span><strong>1か月分のカレンダーを印刷する</strong>
+<small>指定した年と月から曜日を計算し、カレンダーを配置する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/09-carrot-in-a-box/ class=chapter-row><span class=chapter-number aria-hidden=true>09</span>
+<span><strong>箱の中のニンジンで遊ぶ</strong>
+<small>プロジェクト計画：箱の中のニンジンで遊ぶ</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/10-cho-han/ class=chapter-row><span class=chapter-number aria-hidden=true>10</span>
+<span><strong>2個のサイコロの合計が奇数か偶数かに賭ける</strong>
+<small>プロジェクト計画：2個のサイコロの合計が奇数か偶数かに賭ける</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/11-clickbait-headline-generator/ class=chapter-row><span class=chapter-number aria-hidden=true>11</span>
+<span><strong>テンプレートから見出しを生成する</strong>
+<small>プロジェクト計画：テンプレートから見出しを生成する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/12-collatz/ class=chapter-row><span class=chapter-number aria-hidden=true>12</span>
+<span><strong>コラッツ数列</strong>
+<small>13から始めて、ループと剰余による条件分岐を練習する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/13-conway-s-game-of-life/ class=chapter-row><span class=chapter-number aria-hidden=true>13</span>
+<span><strong>コンウェイのライフゲームを進める</strong>
+<small>次世代を作る前に、古い格子全体を読み取る</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/14-countdown/ class=chapter-row><span class=chapter-number aria-hidden=true>14</span>
+<span><strong>時間を刻むカウントダウンを表示する</strong>
+<small>プロジェクト計画：時間を刻むカウントダウンを表示する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/15-deep-cave/ class=chapter-row><span class=chapter-number aria-hidden=true>15</span>
+<span><strong>形が変わる深い洞窟の眺めを生成する</strong>
+<small>プロジェクト計画：形が変わる深い洞窟の眺めを生成する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/16-diamonds/ class=chapter-row><span class=chapter-number aria-hidden=true>16</span>
+<span><strong>空白と星印で作るひし形</strong>
+<small>形を上下に分け、各行の幅を計算する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/17-dice-math/ class=chapter-row><span class=chapter-number aria-hidden=true>17</span>
+<span><strong>サイコロで足し算を練習する</strong>
+<small>プロジェクト計画：サイコロで足し算を練習する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/18-dice-roller/ class=chapter-row><span class=chapter-number aria-hidden=true>18</span>
+<span><strong>サイコロ表記を解析して出目を合計する</strong>
+<small>プロジェクト計画：サイコロ表記を解析して出目を合計する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/19-digital-clock/ class=chapter-row><span class=chapter-number aria-hidden=true>19</span>
+<span><strong>現在時刻をデジタル時計で表示する</strong>
+<small>プロジェクト計画：現在時刻をデジタル時計で表示する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/20-digital-stream/ class=chapter-row><span class=chapter-number aria-hidden=true>20</span>
+<span><strong>文字の流れをアニメーション表示する</strong>
+<small>プロジェクト計画：文字の流れをアニメーション表示する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/21-dna-visualization/ class=chapter-row><span class=chapter-number aria-hidden=true>21</span>
+<span><strong>文字でDNAのらせんを描く</strong>
+<small>プロジェクト計画：文字でDNAのらせんを描く</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/22-ducklings/ class=chapter-row><span class=chapter-number aria-hidden=true>22</span>
+<span><strong>アヒルの子を画面上で動かす</strong>
+<small>プロジェクト計画：アヒルの子を画面上で動かす</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/23-etching-drawer/ class=chapter-row><span class=chapter-number aria-hidden=true>23</span>
+<span><strong>方向キーで格子に絵を描く</strong>
+<small>プロジェクト計画：方向キーで格子に絵を描く</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/24-factors/ class=chapter-row><span class=chapter-number aria-hidden=true>24</span>
+<span><strong>36の約数を見つける</strong>
+<small>剰余を使い、ある数が別の数を余りなく割り切るか調べる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/25-fast-draw/ class=chapter-row><span class=chapter-number aria-hidden=true>25</span>
+<span><strong>合図の後に素早くキーを押す</strong>
+<small>プロジェクト計画：合図の後に素早くキーを押す</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/26-fibonacci/ class=chapter-row><span class=chapter-number aria-hidden=true>26</span>
+<span><strong>前の2つの値からフィボナッチ数を作る</strong>
+<small>2つの状態変数を順番に更新し、最初の10項を生成する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/27-fish-tank/ class=chapter-row><span class=chapter-number aria-hidden=true>27</span>
+<span><strong>文字の水槽で魚を泳がせる</strong>
+<small>プロジェクト計画：文字の水槽で魚を泳がせる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/28-flooder/ class=chapter-row><span class=chapter-number aria-hidden=true>28</span>
+<span><strong>つながった格子領域の色を変える</strong>
+<small>プロジェクト計画：つながった格子領域の色を変える</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/29-forest-fire-sim/ class=chapter-row><span class=chapter-number aria-hidden=true>29</span>
+<span><strong>格子上で広がる森林火災をシミュレートする</strong>
+<small>プロジェクト計画：格子上で広がる森林火災をシミュレートする</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/30-four-in-a-row/ class=chapter-row><span class=chapter-number aria-hidden=true>30</span>
+<span><strong>四目並べ：駒を落として列を数える</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/31-guess-the-number/ class=chapter-row><span class=chapter-number aria-hidden=true>31</span>
+<span><strong>高い・低いの手がかりで数字を当てる</strong>
+<small>プロジェクト計画：高い・低いの手がかりで数字を当てる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/32-gullible/ class=chapter-row><span class=chapter-number aria-hidden=true>32</span>
+<span><strong>何度も尋ねる質問</strong>
+<small>台本付きの会話で「はい」「いいえ」と認識できない答えを扱う</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/33-hacking-minigame/ class=chapter-row><span class=chapter-number aria-hidden=true>33</span>
+<span><strong>位置が一致する文字からパスワードを見つける</strong>
+<small>プロジェクト計画：位置が一致する文字からパスワードを見つける</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/34-hangman-guillotine/ class=chapter-row><span class=chapter-number aria-hidden=true>34</span>
+<span><strong>絵が完成する前に文字を当てる</strong>
+<small>プロジェクト計画：絵が完成する前に文字を当てる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/35-hex-grid/ class=chapter-row><span class=chapter-number aria-hidden=true>35</span>
+<span><strong>小片を繰り返して作る六角形の格子</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/36-hourglass/ class=chapter-row><span class=chapter-number aria-hidden=true>36</span>
+<span><strong>時間を刻む砂時計</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/37-hungry-robots/ class=chapter-row><span class=chapter-number aria-hidden=true>37</span>
+<span><strong>追いかけてくるロボットから逃げる</strong>
+<small>プロジェクト計画：追いかけてくるロボットから逃げる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/38-j-accuse/ class=chapter-row><span class=chapter-number aria-hidden=true>38</span>
+<span><strong>手がかりから容疑者を特定する</strong>
+<small>プロジェクト計画：手がかりから容疑者を特定する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/39-langton-s-ant/ class=chapter-row><span class=chapter-number aria-hidden=true>39</span>
+<span><strong>アリを回転させて格子の色を反転する</strong>
+<small>プロジェクト計画：アリを回転させて格子の色を反転する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/40-leetspeak/ class=chapter-row><span class=chapter-number aria-hidden=true>40</span>
+<span><strong>文字をリート表記に変換する</strong>
+<small>読みやすく、決定的な文字置換表を作る</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/41-lucky-stars/ class=chapter-row><span class=chapter-number aria-hidden=true>41</span>
+<span><strong>選んだ星に賭ける</strong>
+<small>プロジェクト計画：選んだ星に賭ける</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/42-magic-fortune-ball/ class=chapter-row><span class=chapter-number aria-hidden=true>42</span>
+<span><strong>占いの返答で質問に答える</strong>
+<small>プロジェクト計画：占いの返答で質問に答える</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/43-mancala/ class=chapter-row><span class=chapter-number aria-hidden=true>43</span>
+<span><strong>マンカラ：種をまいて取り込む</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/44-maze-runner-2d/ class=chapter-row><span class=chapter-number aria-hidden=true>44</span>
+<span><strong>2次元迷路を進む</strong>
+<small>プロジェクト計画：2次元迷路を進む</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/45-maze-runner-3d/ class=chapter-row><span class=chapter-number aria-hidden=true>45</span>
+<span><strong>文字で一人称視点の迷路を描く</strong>
+<small>プロジェクト計画：文字で一人称視点の迷路を描く</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/46-million-dice-statistics/ class=chapter-row><span class=chapter-number aria-hidden=true>46</span>
+<span><strong>100万回のサイコロの出目を集計する</strong>
+<small>プロジェクト計画：100万回のサイコロの出目を集計する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/47-mondrian-art-generator/ class=chapter-row><span class=chapter-number aria-hidden=true>47</span>
+<span><strong>モンドリアン風の長方形を生成する</strong>
+<small>プロジェクト計画：モンドリアン風の長方形を生成する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/48-monty-hall/ class=chapter-row><span class=chapter-number aria-hidden=true>48</span>
+<span><strong>モンティ・ホール問題で選択維持と変更を比べる</strong>
+<small>プロジェクト計画：モンティ・ホール問題で選択維持と変更を比べる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/49-multiplication/ class=chapter-row><span class=chapter-number aria-hidden=true>49</span>
+<span><strong>入れ子のループで作る掛け算表</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/50-ninety-nine-bottles/ class=chapter-row><span class=chapter-number aria-hidden=true>50</span>
+<span><strong>棚の瓶を数え下げる詩</strong>
+<small>数が0になるところまで、降順のループで繰り返す詩を作る</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/51-ninety-nniine-boottels/ class=chapter-row><span class=chapter-number aria-hidden=true>51</span>
+<span><strong>文字の大文字・小文字を変えながら瓶を数え下げる</strong>
+<small>プロジェクト計画：文字の大文字・小文字を変えながら瓶を数え下げる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/52-numeral-systems/ class=chapter-row><span class=chapter-number aria-hidden=true>52</span>
+<span><strong>同じ数を異なる基数で表す</strong>
+<small>割り算と余りを使って十進数を二進数と十六進数に変換する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/53-periodic-table-of-the-elements/ class=chapter-row><span class=chapter-number aria-hidden=true>53</span>
+<span><strong>周期表から元素を検索する</strong>
+<small>プロジェクト計画：周期表から元素を検索する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/54-pig-latin/ class=chapter-row><span class=chapter-number aria-hidden=true>54</span>
+<span><strong>短い単語のピッグ・ラテン</strong>
+<small>単語を分け、先頭の文字に応じて変換し、文を組み直す</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/55-powerball-lottery/ class=chapter-row><span class=chapter-number aria-hidden=true>55</span>
+<span><strong>宝くじの券と抽選をシミュレートする</strong>
+<small>プロジェクト計画：宝くじの券と抽選をシミュレートする</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/56-primes/ class=chapter-row><span class=chapter-number aria-hidden=true>56</span>
+<span><strong>範囲を限って素数を探す</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/57-progress-bar/ class=chapter-row><span class=chapter-number aria-hidden=true>57</span>
+<span><strong>作業の進み具合をバーで示す</strong>
+<small>プロジェクト計画：作業の進み具合をバーで示す</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/58-rainbow/ class=chapter-row><span class=chapter-number aria-hidden=true>58</span>
+<span><strong>文字の虹を動かす</strong>
+<small>プロジェクト計画：文字の虹を動かす</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/59-rock-paper-scissors/ class=chapter-row><span class=chapter-number aria-hidden=true>59</span>
+<span><strong>コンピューターとじゃんけんをする</strong>
+<small>プロジェクト計画：コンピューターとじゃんけんをする</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/60-rock-paper-scissors-always-win/ class=chapter-row><span class=chapter-number aria-hidden=true>60</span>
+<span><strong>必ずプレイヤーが勝つじゃんけん</strong>
+<small>プレイヤーに負ける手を選び、3通りをすべて試す</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/61-rot13/ class=chapter-row><span class=chapter-number aria-hidden=true>61</span>
+<span><strong>もう一度変換すると戻るROT13</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/62-rotating-cube/ class=chapter-row><span class=chapter-number aria-hidden=true>62</span>
+<span><strong>文字で回転する立方体を描く</strong>
+<small>プロジェクト計画：文字で回転する立方体を描く</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/63-royal-game-of-ur/ class=chapter-row><span class=chapter-number aria-hidden=true>63</span>
+<span><strong>ウル王朝のゲームを遊ぶ</strong>
+<small>プロジェクト計画：ウル王朝のゲームを遊ぶ</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/64-seven-segment-display-module/ class=chapter-row><span class=chapter-number aria-hidden=true>64</span>
+<span><strong>ビットで表す7セグメントの数字</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/65-shining-carpet/ class=chapter-row><span class=chapter-number aria-hidden=true>65</span>
+<span><strong>6行を繰り返すじゅうたん模様</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/66-simple-substitution-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>66</span>
+<span><strong>単純換字式暗号</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/67-sine-message/ class=chapter-row><span class=chapter-number aria-hidden=true>67</span>
+<span><strong>文字列を正弦波に沿って動かす</strong>
+<small>プロジェクト計画：文字列を正弦波に沿って動かす</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/68-sliding-tile-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>68</span>
+<span><strong>数字のタイルを空白へ滑らせる</strong>
+<small>プロジェクト計画：数字のタイルを空白へ滑らせる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/69-snail-race/ class=chapter-row><span class=chapter-number aria-hidden=true>69</span>
+<span><strong>ゆっくり進むカタツムリを競走させる</strong>
+<small>プロジェクト計画：ゆっくり進むカタツムリを競走させる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/70-soroban-japanese-abacus/ class=chapter-row><span class=chapter-number aria-hidden=true>70</span>
+<span><strong>そろばんを表示して珠を動かす</strong>
+<small>プロジェクト計画：そろばんを表示して珠を動かす</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/71-sound-mimic/ class=chapter-row><span class=chapter-number aria-hidden=true>71</span>
+<span><strong>音の並びを聞いて繰り返す</strong>
+<small>プロジェクト計画：音の並びを聞いて繰り返す</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/72-spongecase/ class=chapter-row><span class=chapter-number aria-hidden=true>72</span>
+<span><strong>大文字と小文字を交互にする</strong>
+<small>英字だけの大小を変え、句読点は保つ</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/73-sudoku-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>73</span>
+<span><strong>数独の盤面を検査し、解くための計画</strong>
+<small>まず矛盾検査を作り、その後で解法と問題生成を計画する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/74-text-to-speech-talker/ class=chapter-row><span class=chapter-number aria-hidden=true>74</span>
+<span><strong>入力された文章を声に出して読む</strong>
+<small>プロジェクト計画：入力された文章を声に出して読む</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/75-three-card-monte/ class=chapter-row><span class=chapter-number aria-hidden=true>75</span>
+<span><strong>入れ替わるカードの当たりを追う</strong>
+<small>プロジェクト計画：入れ替わるカードの当たりを追う</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/76-tic-tac-toe/ class=chapter-row><span class=chapter-number aria-hidden=true>76</span>
+<span><strong>三目並べの規則と勝敗判定</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/77-tower-of-hanoi-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>77</span>
+<span><strong>ハノイの塔と再帰</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/78-trick-questions/ class=chapter-row><span class=chapter-number aria-hidden=true>78</span>
+<span><strong>ひっかけ問題と解答の確認</strong>
+<small>問題・正答・決められた回答を同じ添字で対応させる</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/79-twenty-forty-eight/ class=chapter-row><span class=chapter-number aria-hidden=true>79</span>
+<span><strong>2048のタイルを滑らせて結合する</strong>
+<small>プロジェクト計画：2048のタイルを滑らせて結合する</small>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/80-vigenere-cipher/ class=chapter-row><span class=chapter-number aria-hidden=true>80</span>
+<span><strong>キーワードでずらすヴィジュネル暗号</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/81-water-bucket-puzzle/ class=chapter-row><span class=chapter-number aria-hidden=true>81</span>
+<span><strong>水桶と段階ごとの状態変化</strong>
+</span></a><a href=/wbasic-documents/ja/books/small-wbasic-projects/verification/ class=chapter-row><span class=chapter-number aria-hidden=true>—</span>
+<span><strong>検証結果と版ごとの範囲</strong></span></a></div></article></main><aside class=page-navigation aria-label=このページの内容><h2>このページの内容</h2><nav id=TableOfContents><ul><li><a href=#はじめにから小さな課題へ>『はじめに』から小さな課題へ</a></li><li><a href=#読み進める道筋を選ぶ>読み進める道筋を選ぶ</a></li><li><a href=#ファイルをダウンロードし実行前に状態を読む>ファイルをダウンロードし、実行前に状態を読む</a></li><li><a href=#教材の検証方法>教材の検証方法</a></li></ul></nav></aside></div><footer class=site-footer data-document-version=docs-v2026.10.06.1><p>ドキュメントのバージョン <a href=https://github.com/jedt3d/wbasic-documents/tree/docs-v2026.10.06.1>docs-v2026.10.06.1</a></p><p>Copyright © 2026 Worajedt Sitthidumrong. 無断転載を禁じます。</p><p>WBasic とその言語仕様、コンパイラ、ドキュメントは独自の権利で保護されており、オープンソースソフトウェアではありません。第三者の資料には、それぞれのライセンスが適用されます。</p></footer><div class=sidebar-scrim data-nav-close></div><dialog class=search-dialog data-search-dialog aria-labelledby=search-title><div class=search-panel><form method=dialog class=search-heading><div><strong id=search-title>検索</strong>
+<small>見出しと本文を検索</small></div><button class="search-close text-button" value=close>閉じる</button></form><label class=search-field><input type=search data-search-input autocomplete=off placeholder="WBasic リファレンスを検索">
+<kbd>Esc</kbd></label><div class=search-results data-search-results aria-live=polite></div><template data-search-empty><p class=search-empty>一致するページが見つかりません。</p></template></div></dialog><script src=/wbasic-documents/js/site.min.fad30443d06fc2b1ad9d181743075c77e80977c343f3681699a19aa49683ef80.js integrity="sha256-+tMEQ9BvwrGtnRgXQwdcd+gJd8ND82gWmaGapJaD74A=" defer></script></body></html>

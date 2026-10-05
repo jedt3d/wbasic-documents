@@ -1,5 +1,7 @@
 [chapters]
 other = "หนังสือและบท"
+[screenshotPlaceholder]
+other = "ตำแหน่งภาพประกอบ"
 [onThisPage]
 other = "หัวข้อในหน้านี้"
 [search]

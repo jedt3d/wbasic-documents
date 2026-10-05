@@ -1,12 +1,12 @@
 ---
-title: "5 · Model ที่รันได้จริง"
-description: "อ่าน Structure และ mapping ของ Billing Time ที่ใช้กับ SQLite"
+title: "5 · Model ที่บันทึกลง SQLite"
+description: "อ่าน Structure, ค่า Null และ mapping ของ Billing Time ฉบับฐานข้อมูล"
 weight: 5
 ---
 
-จากโครงการเล็กในบทก่อน เราจะอ่านตัวอย่าง [Billing Time WORM ฉบับเต็ม](https://github.com/jedt3d/wbasic-language/tree/v0.1.0/examples/billing-time-worm) ซึ่งตรวจและรันกับ compiler 0.1.0 แล้ว ตัวอย่างใช้หก model: `Customer`, `Project`, `ServiceType`, `TimeEntry`, `Invoice` และ `InvoiceLine` โดยเก็บ `DraftInvoice` เป็นผลลัพธ์ของงานวางบิล
+สี่บทแรกใช้โปรแกรมเล็กที่ผู้อ่านสร้างเอง ตั้งแต่บทนี้เราเปลี่ยนมาอ่าน [Billing Time ฉบับ SQLite ที่ดาวน์โหลดได้](https://jedt3d.github.io/wbasic-documents/downloads/billing-time-source.zip) ซึ่งเป็นแอปอีกชุดหนึ่ง มี module `Billing` และ schema ของตัวเอง Snapshot นี้ไม่ใช่ตัวอย่างที่รวมอยู่ใน Git tag ของ compiler
 
-ใน [Models.wbas](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/modules/Billing.wmod/src/Models.wbas) แต่ละ model เป็น `Structure` ธรรมดา เช่น:
+ใน [Models.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/modules/Billing.wmod/src/Models.wbas) มี `Structure` หกตัว: `Customer`, `Project`, `ServiceType`, `TimeEntry`, `Invoice` และ `InvoiceLine` ส่วน `DraftInvoice` รวบรวมผลการวางบิล ตัวอย่างหนึ่งคือ:
 
 ```basic
 Public Structure TimeEntry
@@ -22,7 +22,7 @@ Public Structure TimeEntry
 EndStructure
 ```
 
-`InvoiceId` เป็น nullable เพราะรายการเวลาที่ยังไม่วางบิลไม่มี invoice ส่วน `RateCentsPerHour` เก็บราคา ณ วันที่บันทึกงาน แถวฐานข้อมูลมี `Version` สำหรับตรวจการแก้ไขชนกัน การ map ระบุใน procedure แยกจากค่า:
+`InvoiceId` เป็น `Integer?`: รายการที่ยังไม่วางบิลเก็บ `Null` ได้ `RateCentsPerHour` เก็บอัตราตอนบันทึกงาน ดังนั้นการเปลี่ยนราคาบริการภายหลังไม่เปลี่ยนรายการเดิม `Version` ของแถวใช้ตรวจการแก้ไขชนกัน ส่วน mapping อยู่ใน [Domain.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/modules/Billing.wmod/src/Domain.wbas):
 
 ```basic
 Procedure TimeMap() As Worm.Mapping Of TimeEntry
@@ -30,6 +30,6 @@ Procedure TimeMap() As Worm.Mapping Of TimeEntry
 EndProcedure
 ```
 
-เลข `1` ตรงนี้เป็นรุ่นนิยาม mapping ไม่ใช่ค่า `Version` ของแถว Compiler 0.1.0 ปฏิเสธนิยามต่างกันที่ใช้ `modelId` กับรุ่นเดียวกันในโปรแกรมเดียวด้วย WB301; ยังไม่ตรวจว่า schema ที่ค้างอยู่ในฐานข้อมูลตรงกับ mapping โดยอัตโนมัติ ดังนั้นการออกแบบ migration ยังเป็นหน้าที่แอป
+เลข `1` เป็นรุ่นของนิยาม mapping ไม่ใช่ `Version` ของแถว Compiler 0.1.0 รายงาน WB301 เมื่อนิยาม `modelId` และรุ่นเดียวกันในโปรแกรมเดียวขัดกัน แต่ไม่ได้ตรวจ schema ที่มีอยู่ในฐานข้อมูลให้ตรงกับ mapping โดยอัตโนมัติ แอปจึงต้องจัดการ migration เอง
 
 อ่านต่อ: [Schema และ migration]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}})

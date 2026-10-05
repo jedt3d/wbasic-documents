@@ -25,7 +25,7 @@ function walk(dir) {
 }
 let checked = 0;
 const checkedPages = new Set();
-for (const language of ['th', 'en']) {
+for (const language of ['th', 'en', 'ja']) {
   for (const file of walk(path.join(output, language)).filter(file => file.endsWith('.html'))) {
     const html = fs.readFileSync(file, 'utf8');
     // Hugo's redirect aliases do not contain a document body.
@@ -34,13 +34,13 @@ for (const language of ['th', 'en']) {
     assert.ok(footer?.includes(release.version), `${file}: visible release version`);
     assert.ok(footer.includes(`https://github.com/jedt3d/wbasic-documents/tree/${release.version}`));
     assert.ok(footer.includes('Copyright © 2026 Worajedt Sitthidumrong.'));
-    assert.ok(footer.includes(language === 'en' ? 'not open-source software' : 'ไม่ใช่ซอฟต์แวร์โอเพนซอร์ส'));
-    assert.ok(footer.includes(language === 'en' ? 'Third-party materials' : 'บุคคลที่สาม'));
+    assert.ok(footer.includes({ en: 'not open-source software', th: 'ไม่ใช่ซอฟต์แวร์โอเพนซอร์ส', ja: 'オープンソースソフトウェアではありません' }[language]));
+    assert.ok(footer.includes({ en: 'Third-party materials', th: 'บุคคลที่สาม', ja: '第三者の資料' }[language]));
     checked++;
     checkedPages.add(file);
   }
 }
-for (const language of ['th', 'en']) {
+for (const language of ['th', 'en', 'ja']) {
   const contentRoot = path.join(root, 'src/content', language);
   for (const file of walk(contentRoot).filter(file => file.endsWith('.md'))) {
     const relative = path.relative(contentRoot, file).replaceAll('\\', '/');
@@ -48,4 +48,4 @@ for (const language of ['th', 'en']) {
     assert.ok(checkedPages.has(path.join(output, language, route, 'index.html')), `${relative}: content page footer verified`);
   }
 }
-console.log(`PASS: ${release.version}; ${checked} bilingual version/copyright footers${process.argv.includes('--tag') ? '; exact commit tag' : ''}.`);
+console.log(`PASS: ${release.version}; ${checked} TH/EN/JA version/copyright footers${process.argv.includes('--tag') ? '; exact commit tag' : ''}.`);

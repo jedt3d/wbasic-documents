@@ -27,7 +27,7 @@ for (const asset of release.assets) {
   assert.ok(asset.bytes > 0);
   assert.ok(asset.name.startsWith(`wbasic-${release.compilerVersion}-`) && asset.name.endsWith('.zip'));
 }
-for (const language of ['th', 'en']) {
+for (const language of ['th', 'en', 'ja']) {
   const content = path.join(root, 'src/content', language);
   for (const relative of ['books/getting-started/02-create-billing-time-project.md', 'books/language-reference/12-modules-packages-visibility.md', 'books/w-basic-extension/03-workspace-and-manifest.md', 'books/w-basic-extension/07-modules-and-dependency-paths.md']) {
     const text = fs.readFileSync(path.join(content, relative), 'utf8');
@@ -41,4 +41,4 @@ for (const language of ['th', 'en']) {
 }
 const generated = JSON.parse(fs.readFileSync(path.join(root, 'html/compiler-release.json'), 'utf8'));
 assert.deepEqual(generated, release, 'generated compiler release manifest is stale');
-console.log(`PASS: compiler/runtime ${release.compilerVersion}, Extension ${release.extensionVersion}; bilingual current pins and release identity.`);
+console.log(`PASS: compiler/runtime ${release.compilerVersion}, Extension ${release.extensionVersion}; TH/EN/JA current pins and release identity.`);

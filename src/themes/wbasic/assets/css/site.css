@@ -60,6 +60,11 @@ body.wb {
   overflow-wrap: break-word;
 }
 button, input, select { font: inherit; }
+html[lang="ja-JP"] body.wb {
+  --wb-font-sans: "IBM Plex Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --wb-font-thai-reading: "IBM Plex Sans Thai Looped", "IBM Plex Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  line-break: strict;
+}
 button, select { color: inherit; }
 a { color: inherit; text-decoration-color: var(--wb-link-line); text-decoration-thickness: 2px; text-underline-offset: .2em; }
 a:hover { text-decoration-thickness: 3px; }

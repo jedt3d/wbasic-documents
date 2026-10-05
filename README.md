@@ -17,21 +17,30 @@ editorial round. It covers the verified language, standard-library and public
 API surface in the verified compiler/runtime **0.1.0** private experimental release
 at sealed source `3901cf17`, including selected WORM SQLite contracts. CLI,
 portable ZIP and the compiler selected in VS Code share this version; optional
-Extension **0.2.1** and protocol **0.0.2** retain their own versions. The bilingual
+Extension **0.2.1** and protocol **0.0.2** retain their own versions. The TH/EN/JA
 Getting Started, reference and Extension Guide follow this release cohort.
 Historical evidence and Small Projects fixtures keep their original revisions.
 `src/static/compiler-release.json` binds release source and ZIP hashes;
-`verify-compiler-release.mjs` checks current bilingual pins and the site version
+`verify-compiler-release.mjs` checks current three-language pins and the site version
 metadata before publishing. Native package tests are developer-host evidence,
 separate from fresh no-SDK/production acceptance.
-Thai and English editions retain the same scope. Corresponding pages use the same path and file name in `src/content/th`
-and `src/content/en`. Planned and Deferred capabilities retain their status in
-both languages.
+Thai, English and Japanese editions retain the same scope. Corresponding pages
+use the same path and filename in `src/content/th`, `src/content/en` and
+`src/content/ja`. Planned and Deferred capabilities retain their status in all
+three languages. Japanese uses the system's Japanese font fallback without
+changing the Thai paragraph font or the shared IBM Plex/code families.
+
+The updated Billing Time SQLite source is downloadable from
+`src/static/downloads/billing-time-source.zip`. Getting Started keeps its simple
+reader-created CLI exercise separate from this full application. The source
+snapshot passed debug/release native execution and SQLite checks against the
+published 0.1.0 compiler on Windows and macOS ARM64; see the
+[update record](evidence/billing-refresh-2026-10-06.md).
 
 The [English editorial review](evidence/english-editorial-review.md) records the
 120 translated/replaced pages and 52 English project plans. Both build scripts
-check complete Thai/English page and search parity, shared example hashes,
-localized downloads, and same-chapter language switching.
+check complete Thai/English/Japanese page and search parity, shared example
+hashes, localized downloads, and same-chapter language switching.
 
 `src/themes/wbasic/` is the default theme. Its palette, typography, spacing,
 component rules, local IBM Plex fonts, and syntax colors are derived from the

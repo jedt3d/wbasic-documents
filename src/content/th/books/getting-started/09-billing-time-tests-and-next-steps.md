@@ -1,17 +1,17 @@
 ---
-title: "9 · ทดสอบและไปต่อ"
-description: "รันตัวอย่างจริงและแยกหลักฐานจากขอบเขตที่ยังไม่พิสูจน์"
+title: "9 · รัน ตรวจ และไปต่อ"
+description: "ทดลองแอป SQLite และแยกหลักฐานท้องถิ่นจาก release ที่เผยแพร่"
 weight: 9
 ---
 
-จาก root ของ source repository ใช้ `wb` 0.1.0 ที่เข้าคู่กับ static runtime:
+ดาวน์โหลด [source snapshot ของ Billing Time](https://jedt3d.github.io/wbasic-documents/downloads/billing-time-source.zip) แล้วแตกไฟล์ จากโฟลเดอร์ `billing-time` ใช้ `wb` และ static runtime ที่เข้าคู่กัน Manifest ระบุ toolchain 0.1.0:
 
 ```console
-wb check examples/billing-time-worm/App.wproj --json
-wb run examples/billing-time-worm/App.wproj -- billing-time-demo.sqlite
+wb check billing-time.wproj --json
+wb run billing-time.wproj -- billing-time-demo.sqlite
 ```
 
-การรันครั้งแรกกับ path ใหม่ให้ผลหกบรรทัด (invoice ID อาจต่างเมื่อใช้ไฟล์เดิม):
+จะละ argument เพื่อใช้ `billing-time-demo.sqlite` ใน working directory ปัจจุบันก็ได้ ส่ง path ที่ไม่ว่างได้หนึ่งค่า; ส่งมากกว่าหนึ่งค่าหรือส่ง path ว่างจะได้ error ก่อนเปิดฐานข้อมูล การรันครั้งแรกกับไฟล์ใหม่แสดงหกบรรทัด:
 
 ```text
 schema: ready
@@ -22,8 +22,10 @@ invoice total: 18000 cents
 billed entries: 2
 ```
 
-[README ตัวอย่าง](https://github.com/jedt3d/wbasic-language/blob/v0.1.0/examples/billing-time-worm/README.md) ให้คำสั่งและขอบเขตครบ [fixture อิสระ](https://github.com/jedt3d/wbasic-language/tree/v0.1.0/fixtures/projects/worm-billing-tests) เรียก public `Billing` procedures เพื่อตรวจ migration drift, generated values, rate snapshot, rollback, conflict, duplicate link, empty draft และ competing writer กับ SQLite จริง หลักฐาน M3/M5 ผ่าน native debug/release บน Windows ARM64 และ macOS ARM64; ไม่ใช่ข้ออ้างว่าผู้ใช้ทุกเครื่องหรือ production ผ่านแล้ว
+การรันซ้ำกับไฟล์เดิมเพิ่ม customer, project, time entry และ invoice อีกชุด; invoice ID จึงขึ้นกับข้อมูลเดิม เช่น ครั้งถัดไปอาจเป็น `#2` ไม่ใช่การแก้ invoice เดิม [QuickStart](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/docs/QuickStart.md) และ [README](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/README.md) ให้คำสั่งและขอบเขตเพิ่มเติม ส่วน `scripts/verify.py` ใน snapshot มีการตรวจ SQLite และการรันซ้ำ
 
-ถ้าต้องการ executable แยก `wb build` รับ project manifest เท่านั้นและใช้ `--profile debug|release` ได้; `wb run` เหมาะกับวงจรทดลอง รุ่น 0.1.0 มี private experimental portable ZIP สำหรับ ARM64 ที่รวม compiler, runtime และ linker ตรงชุด Node ไม่จำเป็นต่อ core CLI; ใช้กับ protocol tooling เท่านั้น การ build จาก source บน developer host ยังใช้ toolchain/SDK ส่วนการยอมรับบนเครื่องสะอาดแบบ no-SDK ยังเป็น gate คนละเรื่อง
+Snapshot นี้ผ่านการตรวจบน Windows ARM64 และ macOS ARM64 ด้วย CLI release 0.1.0 ที่ปิดผนึกจาก source `3901cf17`: ทั้ง debug/release, ผล 18,000 cents, การรันซ้ำได้ invoice `#2`, การใช้ path ค่าเริ่มต้น/ระบุเอง และ argument ผิดที่หยุดก่อนเปิดฐานข้อมูล โค้ดต้นทางท้องถิ่นยังรายงานผลกับ compiler source `dfdcbdc` แยกต่างหาก หลักฐานเหล่านี้ไม่ใช่การรับรอง production หรือเครื่องทุกชนิด
 
-อ่าน source แล้วเปลี่ยน rate หรือลองฐานข้อมูลใหม่ได้ แต่อย่าเพิ่มนโยบายวันที่ ภาษี หรือการปัดเศษให้โปรแกรมในใจโดยไม่มีโค้ดและการทดสอบรองรับ
+`wb build` สร้าง executable แยกได้ การ build จาก source บน developer host ยังต้องมี native toolchain/SDK ส่วน fresh-host no-SDK เป็น gate แยก ลองฐานข้อมูลใหม่หรือเปลี่ยนอัตราค่าบริการได้ โดยตรวจผลกับ source และฐานข้อมูลจริงก่อนสรุปนโยบายวันที่ ภาษี สกุลเงิน หรือการปัดเศษ
+
+ไฟล์ดาวน์โหลดมีเฉพาะ source ไม่มี executable สำเร็จรูป README และ QuickStart เดิมกล่าวถึงไฟล์ที่ผู้เขียนส่งไว้ในเครื่องของตนด้วย ให้ build สำเนาของคุณตามคำสั่งในหนังสือนี้ ไม่ต้องคาดว่า EXE ในเครื่องเดิมจะอยู่ใน ZIP

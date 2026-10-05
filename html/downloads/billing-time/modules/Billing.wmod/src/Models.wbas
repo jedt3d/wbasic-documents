@@ -1,0 +1,69 @@
+Module Billing
+
+Public Structure Customer
+  Id As Integer
+  Version As Integer
+  Name As String
+  Email As String
+EndStructure
+
+Public Structure Project
+  Id As Integer
+  Version As Integer
+  CustomerId As Integer
+  Name As String
+EndStructure
+
+Public Structure ServiceType
+  Id As Integer
+  Version As Integer
+  Name As String
+  RateCentsPerHour As Integer
+EndStructure
+
+Public Structure TimeEntry
+  Id As Integer
+  Version As Integer
+  ProjectId As Integer
+  ServiceTypeId As Integer
+  WorkDate As String
+  Minutes As Integer
+  Note As String
+  RateCentsPerHour As Integer
+  InvoiceId As Integer?
+EndStructure
+
+Public Structure Invoice
+  Id As Integer
+  Version As Integer
+  CustomerId As Integer
+  ProjectId As Integer
+  IssuedOn As String
+  Status As String
+EndStructure
+
+Public Structure InvoiceLine
+  Id As Integer
+  Version As Integer
+  InvoiceId As Integer
+  TimeEntryId As Integer
+  Description As String
+  Minutes As Integer
+  RateCentsPerHour As Integer
+  AmountCents As Integer
+EndStructure
+
+Public Structure DraftInvoice
+  Invoice As Invoice
+  Lines As Array Of InvoiceLine
+  TotalCents As Integer
+EndStructure
+
+Structure MigrationRow
+  Name As String
+  Sql As String
+EndStructure
+
+Structure ProjectOwner
+  CustomerId As Integer
+EndStructure

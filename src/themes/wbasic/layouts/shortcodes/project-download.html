@@ -1,4 +1,5 @@
 {{ $slug := .Get 0 }}
 {{ $file := .Get 1 | default "main.wbas" }}
 {{ if and (eq .Page.Language.Lang "en") (eq $file "PLAN.md") }}{{ $file = "PLAN.en.md" }}{{ end }}
+{{ if and (eq .Page.Language.Lang "ja") (eq $file "PLAN.md") }}{{ $file = "PLAN.ja.md" }}{{ end }}
 <p class="project-download"><a href="{{ printf "downloads/small-wbasic-projects/%s/%s" $slug $file | relURL }}" download>{{ i18n "download" }} {{ $file }}</a></p>

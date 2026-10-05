@@ -1,0 +1,6 @@
+[module]
+name = "Billing"
+toolchain = "0.1.0"
+
+[dependencies]
+Worm = { bundled = true }

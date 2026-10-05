@@ -1,0 +1,58 @@
+[chapters]
+other = "本と章"
+[onThisPage]
+other = "このページの内容"
+[search]
+other = "検索"
+[searchPlaceholder]
+other = "WBasic リファレンスを検索"
+[searchHint]
+other = "見出しと本文を検索"
+[noResults]
+other = "一致するページが見つかりません。"
+[theme]
+other = "カラーテーマを切り替える"
+[themeShort]
+other = "テーマ"
+[menu]
+other = "本の目次を開く"
+[menuShort]
+other = "目次"
+[reference]
+other = "言語仕様"
+[library]
+other = "ライブラリ"
+[api]
+other = "API"
+[readBook]
+other = "本を開く"
+[draftNotice]
+other = "検証済みの WBasic v0.3 の動作を扱うリファレンス"
+[skipToContent]
+other = "本文へ移動"
+[primaryNavigation]
+other = "メインナビゲーション"
+[language]
+other = "言語"
+[close]
+other = "閉じる"
+[chapterNavigation]
+other = "前後の章"
+[previousChapter]
+other = "前の章"
+[nextChapter]
+other = "次の章"
+[breadcrumb]
+other = "パンくずリスト"
+[download]
+other = "ダウンロード"
+[projectEdition]
+other = "日本語版 · サンプルとプロジェクト計画"
+[documentVersion]
+other = "ドキュメントのバージョン"
+[rightsReserved]
+other = "無断転載を禁じます。"
+[proprietaryNotice]
+other = "WBasic とその言語仕様、コンパイラ、ドキュメントは独自の権利で保護されており、オープンソースソフトウェアではありません。第三者の資料には、それぞれのライセンスが適用されます。"
+[screenshotPlaceholder]
+other = "スクリーンショットの配置場所"

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
-const languages = ['th', 'en'];
+const languages = ['th', 'en', 'ja'];
 const expectedPages = [
   '_index.md',
   '00-current-preview-workflow.md',

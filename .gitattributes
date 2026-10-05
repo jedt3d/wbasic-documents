@@ -9,3 +9,12 @@ src/static/downloads/small-wbasic-projects/64-seven-segment-display-module/expec
 html/th/books/small-wbasic-projects/03-bitmap-message/index.html whitespace=-blank-at-eol
 html/th/books/small-wbasic-projects/64-seven-segment-display-module/index.html whitespace=-blank-at-eol
 html/downloads/small-wbasic-projects/64-seven-segment-display-module/expected-output.txt whitespace=-blank-at-eol
+
+# Preserve the same fixed-width output in the Japanese translation.
+src/content/ja/books/small-wbasic-projects/03-bitmap-message.md whitespace=-blank-at-eol
+html/ja/books/small-wbasic-projects/03-bitmap-message/index.html whitespace=-blank-at-eol
+src/content/ja/books/small-wbasic-projects/64-seven-segment-display-module.md whitespace=-blank-at-eol
+html/ja/books/small-wbasic-projects/64-seven-segment-display-module/index.html whitespace=-blank-at-eol
+
+# Keep the downloadable snapshot identical to its verified LF ZIP on every host.
+src/static/downloads/billing-time/** text eol=lf
