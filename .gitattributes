@@ -18,3 +18,4 @@ html/ja/books/small-wbasic-projects/64-seven-segment-display-module/index.html w
 
 # Keep the downloadable snapshot identical to its verified LF ZIP on every host.
 src/static/downloads/billing-time/** text eol=lf
+html/downloads/billing-time/** text eol=lf
