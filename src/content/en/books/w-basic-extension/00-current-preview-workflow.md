@@ -1,10 +1,12 @@
 ---
 title: "0 · Choose the matched 0.1.0 package"
-description: "Install the private experimental ARM64 prerelease and its matched 0.2.1 VS Code extension"
+description: "Distinguish the published ARM64 package from the locally verified 0.2.3 VS Code extension"
 weight: 0
 ---
 
-**Private experimental v0.1.0 prerelease.** The [private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) contains compiler/runtime `0.1.0`, optional VS Code extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46`. All eight release assets were downloaded and rehashed before publication. Access requires permission to the private repository; this is not a Marketplace or production release.
+**Private experimental v0.1.0 prerelease.** The [private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) contains compiler/runtime `0.1.0`, bundled VS Code extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46`. All eight release assets were downloaded and rehashed before publication. Access requires permission to the private repository. This guide uses a separately supplied extension `0.2.3`. Its live Windows palette proof used development compiler source `dfdcbdc`; the published `0.1.0` compiler is sealed source `3901cf17`. Equal version numbers alone do not establish equivalent test evidence. The extension has no public release or Marketplace listing.
+
+With the sealed published compiler/runtime pair, the 0.2.3 extension passed 127 editor unit checks with no skips and 11 isolated VS Code host checks on Windows ARM64. The real user's Check/Run/Build palette and retained-output proof remains tied to the development source `dfdcbdc`.
 
 ## Select and verify the ZIP
 
@@ -14,7 +16,7 @@ The ZIP's `Install-And-Test.ps1` on Windows or `Install-And-Test.sh` on macOS ch
 
 ## Connect VS Code
 
-In Extensions, choose **Install from VSIX…** and select the VSIX recorded by `wb-package.json`. Reload the window, then confirm `WBasic` extension version `0.2.1` in Extensions. In a trusted workspace, set `wbasic.compilerPath` to the absolute path of the extracted top-level `wb.exe` or `wb`; set `wbasic.probePath` only if you use the separate native probe command. Run **WBasic: Show Toolchain Status** and confirm the compiler reports `0.1.0` and the expected ARM64 target. The extension also searches its managed development toolchain, a repository debug build, and `PATH`; an explicit compiler path avoids selecting an older installation.
+In Extensions, choose **Install from VSIX…** and select the separately supplied 0.2.3 VSIX. The `wb-package.json` path still identifies bundled 0.2.1, with its older behavior. Reload the window and confirm the installed version in Extensions. In a trusted workspace, set `wbasic.compilerPath` to an absolute `wb.exe` or `wb` path visible to this VS Code process; set `wbasic.probePath` only if you use the separate native probe command. Run **WBasic: Show Toolchain Status** and confirm compiler `0.1.0` and the expected target. The extension also searches its managed development toolchain, a repository debug build, and `PATH`.
 
 The package's offline specification is under `docs/`. Workspace Trust is required for compiler, build, run, and test commands. Coloring, Outline, and local documentation remain available in Restricted Mode.
 

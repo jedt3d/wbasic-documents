@@ -4,7 +4,7 @@ description: "คู่มือจับมือใช้ WBasic บน VS Cod
 weight: -4
 ---
 
-**เลือกเวอร์ชันที่เข้าคู่กัน** บทที่ 1–12 อธิบาย private experimental prerelease ของ compiler/runtime `0.1.0` คู่กับ extension `wbasic-dev.wbasic@0.2.1` และ protocol package `0.0.2` ZIP สำหรับ Windows/macOS ARM64 และ VSIX ในแพ็กเผยแพร่แล้ว และมีการดาวน์โหลดตรวจ hash ซ้ำกับ sealed source เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private `0.0.2` เดิมมี extension `0.1.0` ซึ่งใช้ project editor workflow ในบทที่ 1–12 ไม่ได้
+**เลือกเวอร์ชันที่เข้าคู่กัน** บทที่ 1–12 ใช้ extension `wbasic-dev.wbasic@0.2.3` ที่ตรวจกับ development compiler/runtime ในเครื่อง ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` VSIX รุ่น 0.2.3 ต้องได้รับแยกต่างหาก: ZIP ARM64 ที่เผยแพร่บรรจุ VSIX รุ่น 0.2.1 ไว้ตามเดิม ยังไม่มี 0.2.3 release หรือ Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}})
 
 คู่มือ development ปัจจุบัน สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
 workspace ว่าง สร้าง project แรก เขียน source ด้วย autocomplete และ diagnostics
@@ -14,8 +14,9 @@ workspace ว่าง สร้าง project แรก เขียน source 
 **ภารกิจฝึกมือ** และ **จุดตรวจ** เพื่อให้รู้ว่าทำสำเร็จจริง ไม่ใช่เพียงกดตามรูปแล้ว
 หวังว่า compiler จะเห็นใจ
 
-Extension รุ่นที่หนังสืออ้างอิงคือ development payload ที่ตรวจแล้ว `wbasic-dev.wbasic@0.2.1`
-ทดสอบกับ VS Code 1.139.1 บน Windows 11 ARM64 และ 1.140.0 บน macOS ARM64
+Extension รุ่นที่หนังสืออ้างอิงคือ development payload `wbasic-dev.wbasic@0.2.3`
+ซึ่งตรวจ workflow ของ Command Palette กับ VS Code 1.140.0 บน Windows 11 ARM64
+ผล Mac ARM64 และ TUI แบบรับ input ของรุ่น 0.2.3 ยังไม่ได้รันทดสอบซ้ำ
 เมื่อใช้ compiler, runtime assets และ linker ที่เข้าคู่กันในแพ็ก การ Run และ Development Build ไม่ต้องใช้ SDK ของ host แต่การ build จาก source ยังต้องใช้ native SDK ส่วน fresh no-SDK host acceptance และ production distribution ยังเปิดอยู่
 
 เมื่อใช้ prerelease ที่เข้าคู่กัน ให้เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})

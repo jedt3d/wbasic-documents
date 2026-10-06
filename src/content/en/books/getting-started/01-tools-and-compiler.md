@@ -9,7 +9,7 @@ it becomes an invoice. It is compact enough to read in one sitting while still
 giving the compiler a real job.
 
 This chapter targets release **compiler/runtime 0.1.0**, also selected by
-Extension 0.2.1. Match manifests and runtime to this compiler.
+locally verified Extension 0.2.3; the published ZIP still bundles 0.2.1. Match manifests and runtime to this compiler.
 Read [toolchain versions]({{< relref "/implementation-status.md" >}}) before
 switching workflows.
 

@@ -4,7 +4,7 @@ description: "ตั้งค่าเฉพาะที่จำเป็น �
 weight: 11
 ---
 
-> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 WBasic Extension มี setting จำนวนน้อยโดยตั้งใจ เพื่อให้ project behavior อยู่ใน manifest
 และ compiler metadata มากกว่าซ่อนอยู่ในเครื่องผู้ใช้
@@ -21,7 +21,7 @@ WBasic Extension มี setting จำนวนน้อยโดยตั้ง
 `verbose` อาจบันทึก source text ลง local Output channel เปิดเฉพาะตอนวิเคราะห์ปัญหา
 และปิดเมื่อเสร็จ
 
-คู่มือรุ่น 0.2.1 นี้ใช้ `wbasic.defaultProfile` ส่วน extension เดิม 0.1.0 ใช้ `wbasic.buildProfile` จึงต้องตั้งค่าให้ตรงกับ extension ที่โหลดจริง หลังเปลี่ยน VSIX ให้ Reload Window แล้วตรวจ Show Toolchain Status ว่าเป็น compiler `0.1.0`
+คู่มือรุ่น 0.2.3 นี้ใช้ `wbasic.defaultProfile` เช่นเดียวกับ 0.2.1 และ 0.2.2 ส่วน extension เดิม 0.1.0 ใช้ `wbasic.buildProfile` จึงต้องตั้งค่าให้ตรงกับ extension ที่โหลดจริง หลังเปลี่ยน VSIX ให้ Reload Window แล้วตรวจ Show Toolchain Status ว่าเป็น compiler `0.1.0`
 
 ## ลำดับตรวจเมื่อ extension ไม่ทำงาน
 
@@ -43,7 +43,23 @@ TextMate grammar ทำงานได้แม้ compiler/LSP ยังไม�
 ตรวจชนิด receiver และ capability ของ compiler ปัจจุบัน Arbitrary expression chain,
 intrinsic String/Array member metadata และ local-variable navigation ยังไม่ครบ
 
-### Run ได้แต่ Build หาย
+### ค้นหา Check, Run หรือ Build ไม่พบ
+
+รุ่น 0.2.3 แสดง **Check Project**, **Run Project** และ Build Project (Development)
+ทั้งสามคำสั่งใน Command Palette เสมอ หากเพิ่งติดตั้ง ให้ใช้ **Developer: Reload Window**
+แล้วตรวจรุ่นใน Extensions คำสั่งที่เห็นยังอาจปฏิเสธการทำงานเมื่อ workspace ไม่ trusted
+หรือ compiler ไม่ประกาศ capability ที่ต้องใช้
+
+### เห็นคำสั่ง แต่ compiler ใช้ไม่ได้
+
+ตรวจ **Show Toolchain Status** และ path จากหน้าต่าง VS Code จริง บน Windows
+เครื่องที่ตรวจพบว่า live VS Code process มองไม่เห็น executable ที่จัดไว้ใน
+`%LOCALAPPDATA%/WBasic` แม้ process ภายนอกมองเห็น ย้ายชุด compiler/runtime/linker
+ที่เข้าคู่กันไปยังตำแหน่งที่หน้าต่างนี้เข้าถึงได้ แล้วตั้ง `wbasic.compilerPath`
+และ `wbasic.probePath` ตามความจำเป็น ผลนี้จำกัดเฉพาะเครื่องที่ตรวจ
+ยังไม่พิสูจน์กฎทั่วไปของ Store/MSIX
+
+### Build ถูกปฏิเสธ
 
 Compiler ต้องประกาศ development build capability และ profile ที่รองรับ Extension จะ
 fail closed ไม่สร้างคำสั่งเลียนแบบขึ้นเอง

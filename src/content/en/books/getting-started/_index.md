@@ -10,7 +10,7 @@ the tools, project structure, language, compiler, and command line. Chapters 5â€
 native fixtures. The first four chapters remain a small project you create yourself.
 
 Commands and manifests here use **compiler/runtime 0.1.0**, shared by CLI,
-portable ZIP and the compiler selected by Extension 0.2.1. Project and module
+portable ZIP and the compiler selected by locally verified Extension 0.2.3. The published ZIP still bundles Extension 0.2.1. Project and module
 `toolchain` pins must match this version; New Project pins the selected compiler
 automatically. See [version boundaries]({{< relref "/implementation-status.md" >}}).
 

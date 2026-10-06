@@ -4,7 +4,7 @@ description: "แยก syntax, type และ infrastructure error พร้อ
 weight: 5
 ---
 
-> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 Diagnostics ที่ดีไม่ควรเพียงบอกว่า “ผิด” แต่ควรบอกไฟล์ ตำแหน่ง stage และรหัสที่ช่วยให้
 แก้สาเหตุแทนการสุ่มเติม semicolon ซึ่งใน WBasic ก็ไม่ได้ช่วยอะไรอยู่ดี
@@ -57,7 +57,7 @@ compiler รุ่นที่เชื่อมอยู่ไม่ได้�
 |---|---|
 | ขีดแดงใน source | Problems และ diagnostic code |
 | Manifest หรือ Import หาไม่พบ | Save แล้ว Check Project |
-| คำสั่งหายจาก Command Palette | Workspace Trust และ compiler capabilities |
+| Check/Run/Build หายจาก Command Palette | ติดตั้ง 0.2.3 แล้ว Reload Window; handler ยังตรวจ trust และ compiler capabilities |
 | Compiler เริ่มไม่ได้ | Show Toolchain Status |
 | Language help หยุดอัปเดต | Show Language Server Output |
 

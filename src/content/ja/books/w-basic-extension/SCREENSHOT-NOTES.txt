@@ -15,6 +15,6 @@ src/static/images/w-basic-extension/ に保存し、本文を書き換えずに�
 09-test-explorer.png           成功・失敗・データ行を示す Testing 画面。
 10-examples.png                WBasic: Open Example の選択画面。
 
-検証済みのローカル 0.2.1 VSIX を使う独立した VS Code プロファイルで撮影します。
+検証済みのローカル 0.2.3 VSIX を使う独立した VS Code プロファイルで撮影します。
 個人のパス、ユーザー名、無関係な拡張機能、最近のプロジェクト、トークン、
 端末の履歴、秘密情報を含めないでください。

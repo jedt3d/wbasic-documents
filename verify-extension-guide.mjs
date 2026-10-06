@@ -34,6 +34,8 @@ const expectedScreenshots = [
 ];
 const failures = [];
 const wanted = [...expectedPages].sort();
+const currentExtension = JSON.parse(await readFile(path.join(root, 'src/static/extension-update.json'), 'utf8'));
+const compilerRelease = JSON.parse(await readFile(path.join(root, 'src/static/compiler-release.json'), 'utf8'));
 
 for (const language of languages) {
   const sourceRoot = path.join(root, 'src', 'content', language, 'books', 'w-basic-extension');
@@ -47,7 +49,11 @@ for (const language of languages) {
   const sourceText = (await Promise.all(expectedPages.map(async (page) => {
     const file = path.join(sourceRoot, page);
     try {
-      return await readFile(file, 'utf8');
+      const text = await readFile(file, 'utf8');
+      for (const version of [currentExtension.extensionVersion, compilerRelease.extensionVersion]) {
+        if (!text.includes(version)) failures.push(`${language}/${page}: missing local/bundled extension identity ${version}`);
+      }
+      return text;
     } catch (error) {
       failures.push(`${language}: missing source page ${page}: ${error.message}`);
       return '';

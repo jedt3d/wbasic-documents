@@ -53,7 +53,7 @@ wb run App.wproj -- first "ภาษาไทย"
 ```
 
 `wb run` compile/link native executable ไม่ใช่ interpreter รุ่นที่เผยแพร่ล่าสุดคือ
-**compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.1 เลือกใช้
+**compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.3 ที่ตรวจในเครื่องแล้วเลือกใช้ โดย ZIP ที่เผยแพร่ยังบรรจุ 0.2.1
 project และ module ต้อง pin `toolchain` ให้ตรงกัน ZIP ทั้งสองแพลตฟอร์มผ่าน
 การทดสอบหลังแตกไฟล์บนเครื่องนักพัฒนาแล้ว ส่วน fresh-host no-SDK acceptance
 ยังเป็น gate แยกที่ไม่ผ่าน

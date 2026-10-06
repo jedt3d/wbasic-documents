@@ -49,7 +49,7 @@ wb run App.wproj -- first "ภาษาไทย"
 
 `wb run` compiles and links a native executable; it is not an interpreter. The
 latest published compiler/runtime is **0.1.0**, matching the compiler selected
-by Extension 0.2.1. Project and module `toolchain` pins must match. Both ARM64
+by locally verified Extension 0.2.3; the published ZIP still bundles Extension 0.2.1. Project and module `toolchain` pins must match. Both ARM64
 portable ZIPs passed extracted developer-host checks; fresh-host no-SDK
 acceptance remains open.
 

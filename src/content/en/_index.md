@@ -10,7 +10,7 @@ This reference separates language rules from the standard library and module API
 ## Current coverage
 
 This reference follows the **compiler/runtime 0.1.0 private experimental release**
-with **Extension 0.2.1**. CLI, portable ZIP and the compiler selected in VS Code
+with **locally verified Extension 0.2.3**. The published ZIP still bundles 0.2.1. CLI, portable ZIP and the compiler selected in VS Code
 use the same compiler version, separate from the draft v0.3 language design. Read
 [compiler and tooling versions]({{< relref "/implementation-status.md" >}})
 before installation or updating older project manifests.

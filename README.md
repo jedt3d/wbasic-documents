@@ -17,13 +17,17 @@ editorial round. It covers the verified language, standard-library and public
 API surface in the verified compiler/runtime **0.1.0** private experimental release
 at sealed source `3901cf17`, including selected WORM SQLite contracts. CLI,
 portable ZIP and the compiler selected in VS Code share this version; optional
-Extension **0.2.1** and protocol **0.0.2** retain their own versions. The TH/EN/JA
-Getting Started, reference and Extension Guide follow this release cohort.
+bundled Extension **0.2.1** and protocol **0.0.2** retain their own versions.
+The TH/EN/JA Extension Guide also records the current locally installed
+**0.2.3** correction: visible project commands and retained Build/Run task output.
+This local update is not a new compiler release or Marketplace publication.
 Historical evidence and Small Projects fixtures keep their original revisions.
 `src/static/compiler-release.json` binds release source and ZIP hashes;
 `verify-compiler-release.mjs` checks current three-language pins and the site version
 metadata before publishing. Native package tests are developer-host evidence,
 separate from fresh no-SDK/production acceptance.
+`src/static/extension-update.json` separately pins the local VSIX and Windows
+verification scope; see [the editor update record](evidence/extension-023-2026-10-06.md).
 Thai, English and Japanese editions retain the same scope. Corresponding pages
 use the same path and filename in `src/content/th`, `src/content/en` and
 `src/content/ja`. Planned and Deferred capabilities retain their status in all

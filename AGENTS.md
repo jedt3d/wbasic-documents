@@ -61,15 +61,16 @@
 
 - Current public reference follows the verified private experimental compiler/runtime
   **0.1.0** release, sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46`.
-  Extension **0.2.1** and protocol **0.0.2** retain independent versions. CLI,
+  Its bundled Extension **0.2.1** and protocol **0.0.2** retain independent versions. CLI,
   portable ZIP and the compiler selected by VS Code share the current compiler
   version. Old releases are immutable historical downloads.
-- The v0.3 catalog is 72 Passed / 23 Planned / 0 Deferred; this is not full v0.3
+- The published v0.1.0 checkpoint records 72 Passed / 23 Planned / 0 Deferred; this is not full v0.3
   acceptance and excludes separate experimental WORM milestones. R6 D1–D5
   passed within the recorded scope; inbox OSC52 limitations remain distinct.
 - Both native ARM64 release ZIPs passed package/extraction/run/build checks on
   developer hosts. Fresh no-SDK, production entitlement, notice/redistribution,
-  signing/notarization, Linux/native x86_64 remain unaccepted.
+  signing/notarization remain unaccepted. Linux/native x86_64 are outside that
+  published package evidence; preserve later development evidence separately.
 - Extension 0.2.1's prior verified integration records 11 real VS Code host,
   120 editor and 71 protocol checks per ARM64 host. Preserve simple-receiver
   completion limits and four manual example actions; do not relabel old tests.
@@ -81,6 +82,14 @@
   website tags stay separate from compiler release tags. Never claim an internal
   development compiler is the current external release.
 - A documentation change does not promote product acceptance by itself.
+
+- The current locally installed editor correction is Extension **0.2.3**, recorded
+  in `src/static/extension-update.json`. Keep its LocalVerified identity separate
+  from the immutable compiler release and bundled 0.2.1 VSIX. This correction's
+  original live Windows results use development compiler source `dfdcbdc`;
+  current Windows editor/isolated-host checks also pass with published `3901cf17`.
+  macOS/Linux editor reruns and interactive TUI task input remain Not run. Update current guides in
+  TH/EN/JA together; `verify-compiler-release.mjs` checks both identities.
 
 ## Git workflow
 

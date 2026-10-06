@@ -4,7 +4,7 @@ description: "สรุปวงจรเขียน–ตรวจ–ทดส
 weight: 12
 ---
 
-> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 เมื่อคุ้นกับเครื่องมือแล้ว workflow ประจำวันควรสั้นและคาดเดาได้
 
@@ -16,7 +16,7 @@ weight: 12
 4. ใช้ definition/references เข้าใจผลกระทบก่อน rename
 5. Save แล้ว Check Project เมื่อแตะ manifest, module หรือ Import
 6. รัน case ที่เกี่ยวข้องใน Test Explorer
-7. Run Project ใน integrated terminal
+7. Run Project แล้วอ่านผลใน task terminal ที่ยังเปิดอยู่หลังจบ
 8. Build Development Debug ระหว่างพัฒนา
 9. รันทั้ง suite และ Build Development Release ก่อนส่ง review
 10. บันทึก compiler/extension revision ในหลักฐานที่ต้องทำซ้ำภายหลัง
@@ -32,7 +32,7 @@ weight: 12
 | เปลี่ยนชื่อข้ามไฟล์ | Rename Symbol |
 | ตรวจ unsaved source เดี่ยว | Check Active Source |
 | ตรวจ project/module จริง | Check Project |
-| รันโปรแกรม interactive | Run Project |
+| รัน project | Run Project (TUI แบบรับ input ยังไม่ได้ทดสอบซ้ำใน 0.2.3) |
 | ตรวจพฤติกรรมเล็ก | Test Explorer |
 | ดู compiler ที่กำลังใช้ | Show Toolchain Status |
 

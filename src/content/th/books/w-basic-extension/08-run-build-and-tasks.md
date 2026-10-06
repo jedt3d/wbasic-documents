@@ -4,7 +4,7 @@ description: "รัน source/project สร้าง Debug/Release development
 weight: 8
 ---
 
-> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
 
 Extension แยกคำสั่งตามความตั้งใจ เพื่อไม่ให้การกด Run โดยบังเอิญกลายเป็น build สำหรับ
 แจกจ่าย หรือการ Check ไปเปิด network/database ของโปรแกรม
@@ -15,14 +15,17 @@ Extension แยกคำสั่งตามความตั้งใจ เ
 รัน source เดี่ยวโดยใช้ directory ของไฟล์เป็น working directory เหมาะกับตัวอย่างเล็กที่
 ไม่ต้องใช้ project imports
 
-TUI ต้องรับ input จาก terminal จริง Extension จึงเปิด integrated terminal แทนการส่ง
-โปรแกรมเข้า Output panel
+TUI ต้องรับ input จาก terminal จริง คำสั่ง source เดี่ยวนี้จึงเปิด integrated terminal
+การเปลี่ยน project task ในรุ่น 0.2.3 ยังไม่ได้ทดสอบ input ของ TUI ซ้ำ
 
 ## Run Project
 
 ใช้ **WBasic: Run Project** สำหรับ `App.wproj` ที่มี module และ dependencies คำสั่งใช้
 profile จาก `wbasic.defaultProfile` และส่ง manifest path เป็น argument ตรง ๆ path ที่มี
-ช่องว่าง ภาษาไทย หรือ emoji จึงไม่ถูกประกอบเป็น shell string
+ช่องว่าง ภาษาไทย หรือ emoji จึงไม่ถูกประกอบเป็น shell string รุ่น 0.2.3 ที่ตรวจในเครื่อง
+เปิด VS Code `ProcessExecution` task เฉพาะ project ที่เลือก แสดง output ค้างไว้หลังจบ
+และล้าง terminal เดิมเมื่อใช้ซ้ำ Run อาจเปลี่ยนข้อมูล project เช่น BillingTime
+จะเพิ่มรายการตัวอย่างทุกครั้งที่รัน
 
 ## Development Build
 
@@ -32,7 +35,10 @@ profile จาก `wbasic.defaultProfile` และส่ง manifest path เ�
 - **Build Project — Debug (Development)** เลือก Debug โดยตรง
 - **Build Project — Release (Development)** เลือก Release โดยตรง
 
-Compiler สร้าง native executable และ `.wb-build.json` record เมื่อใช้ compiler,
+Compiler สร้าง native executable และ `.wb-build.json` record รุ่น 0.2.3 ใช้
+process task แบบเดียวกับ Run สำหรับ Build โดยส่ง argument ตรง เลือก profile,
+กำหนด scope ตาม project และใช้ `$wbasic` problem matcher Output ยังอ่านได้หลังจบ
+handler ยังตรวจ Workspace Trust และ capability จริงก่อนทำงาน เมื่อใช้ compiler,
 runtime assets และ linker ที่มากับ ZIP ที่เผยแพร่ Run/Build ทั้ง debug และ release
 ผ่านโดยไม่ใช้ SDK ของ host ส่วนการ build compiler จาก source ยังต้องใช้ native tools
 ผลลัพธ์ยังเป็น Development Build โดยไม่มี production entitlement หรือ fresh no-SDK host acceptance

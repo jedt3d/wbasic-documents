@@ -1,3 +1,10 @@
+## 2026-10-06 — Current local Extension 0.2.3 guide, three editions
+
+- Updated Thai, English and Japanese editor guides for visible project palette commands, persistent Build/Run task terminals and measured compiler discovery troubleshooting.
+- Preserved the published compiler/runtime 0.1.0 source, assets and bundled Extension 0.2.1. The separate local-update manifest records Extension 0.2.3 without a publication or Marketplace claim.
+- Rechecked all 98 installed payload files against the verified VSIX; 127 editor tests passed with no skips against both development and published compiler sources. A fresh isolated Windows VS Code host passed 11 checks with the sealed published compiler. Prior actual Windows palette/native Billing verification retains its original source. macOS/Linux correction-host tests and interactive TUI task input remain Not run.
+- Publication version: docs-v2026.10.06.3. Source, translation, generated-site, release-identity and live deployment checks are recorded in [the update evidence](evidence/extension-023-2026-10-06.md).
+
 ## 2026-10-02 — Documentation aligned to compiler release v0.1.0
 
 - Current installation routes, Getting Started project pins, reference and Extension Guide now share compiler/runtime 0.1.0; optional Extension 0.2.1 and protocol 0.0.2 remain independently versioned.

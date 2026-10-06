@@ -12,7 +12,7 @@ description: "รวมกฎภาษา ไลบรารีมาตรฐ�
 ## ขอบเขตรุ่นปัจจุบัน
 
 คู่มือปัจจุบันใช้ **compiler/runtime 0.1.0 private experimental release** คู่กับ
-**Extension 0.2.1** ทั้ง CLI, portable ZIP และ compiler ที่เลือกใน VS Code
+**Extension 0.2.3 ที่ตรวจในเครื่องแล้ว** โดย ZIP ที่เผยแพร่ยังบรรจุ 0.2.1 ทั้ง CLI, portable ZIP และ compiler ที่เลือกใน VS Code
 ใช้รุ่นเดียวกัน เลขนี้แยกจากแบบออกแบบภาษา draft v0.3 อ่าน
 [รุ่น compiler และเครื่องมือ]({{< relref "/implementation-status.md" >}})
 ก่อนติดตั้งหรือปรับ manifest ของโครงการเก่า

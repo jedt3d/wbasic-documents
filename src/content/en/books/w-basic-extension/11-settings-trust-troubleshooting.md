@@ -4,7 +4,7 @@ description: "Configure only what is needed, read logs, and diagnose layers with
 weight: 11
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The WBasic Extension deliberately has few settings. Project behavior belongs in
 the manifest and compiler metadata rather than hidden machine configuration.
@@ -21,7 +21,7 @@ the manifest and compiler metadata rather than hidden machine configuration.
 `verbose` may record source text in the local Output channel. Enable it only
 while diagnosing a problem and turn it off afterward.
 
-This 0.2.1 guide uses `wbasic.defaultProfile`. The published 0.1.0 extension uses `wbasic.buildProfile`; keep settings aligned with the extension version you actually loaded. After changing the installed VSIX, reload the VS Code window and confirm Show Toolchain Status reports compiler `0.1.0`.
+This 0.2.3 guide uses `wbasic.defaultProfile`, as do 0.2.1 and 0.2.2. The older extension 0.1.0 uses `wbasic.buildProfile`; keep settings aligned with the version actually loaded. After changing the VSIX, reload the VS Code window and confirm Show Toolchain Status reports compiler `0.1.0`.
 
 ## Diagnostic order when the extension is not working
 
@@ -45,7 +45,25 @@ Check the receiver type and current compiler capabilities. Arbitrary expression
 chains, intrinsic String and Array member metadata, and local-variable navigation
 are not complete yet.
 
-### Run exists, but Build is missing
+### Check, Run, or Build is missing from the palette
+
+In 0.2.3, **Check Project**, **Run Project**, and all three Development Build
+commands remain visible in the Command Palette. After installing, use
+**Developer: Reload Window** and check the version in Extensions. Visible
+commands still refuse execution without Workspace Trust or the required live
+compiler capability.
+
+### The command is visible, but the compiler is unavailable
+
+Check **Show Toolchain Status** and whether this VS Code process can see the
+configured executable. On one measured Windows host, the live process could
+not see a compiler staged under `%LOCALAPPDATA%/WBasic`, although an external
+process could. Moving the matched compiler/runtime/linker to a location visible
+to that window and updating `wbasic.compilerPath` and, if needed,
+`wbasic.probePath` restored discovery. This does not establish a universal
+Store/MSIX filesystem rule.
+
+### Build is refused
 
 The compiler must advertise development-build capability and supported profiles.
 The extension fails closed rather than creating an imitation build command.

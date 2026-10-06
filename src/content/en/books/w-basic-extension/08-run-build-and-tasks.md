@@ -4,7 +4,7 @@ description: "Run source or projects, create Debug and Release development artif
 weight: 8
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The extension separates commands by intent. Pressing Run should not quietly
 become a distributable build, and Check should not open the program's network
@@ -16,15 +16,18 @@ With a saved `.wbas` file open, run **WBasic: Run Active Source in Terminal**.
 This executes one source file with its directory as the working directory. It is
 best for small examples that do not need project imports.
 
-A TUI needs real terminal input, so the extension uses an integrated terminal
-instead of sending the program through the Output panel.
+A TUI needs real terminal input, so this separate command uses an integrated
+terminal. The 0.2.3 project-task change did not rerun interactive TUI input.
 
 ## Run Project
 
 Use **WBasic: Run Project** for an `App.wproj` with modules and dependencies. The
 command uses the profile from `wbasic.defaultProfile` and passes the manifest
 path as a literal argument. Spaces, Thai characters, and emoji in a path are
-never assembled into a shell string.
+never assembled into a shell string. In locally verified 0.2.3, Run launches a
+dedicated VS Code `ProcessExecution` task scoped to the selected project. Its
+output stays open after completion, and a later run clears and reuses that task
+terminal. Run can change project data; the BillingTime example appends records.
 
 ## Development Build
 
@@ -34,7 +37,11 @@ Three commands are available:
 - **Build Project — Debug (Development)** selects Debug directly.
 - **Build Project — Release (Development)** selects Release directly.
 
-The compiler creates a native executable and a `.wb-build.json` record. With the
+The compiler creates a native executable and a `.wb-build.json` record. The
+0.2.3 Build commands use the same dedicated process-task output, literal
+arguments, selected profile, project scope, and `$wbasic` problem matcher as
+Run. Their task terminal stays visible after the process exits. Workspace Trust
+and live compiler capability checks still apply before execution. With the
 published ZIP's bundled compiler, runtime assets, and linker, debug and release
 Run/Build passed without using a host SDK. Building the compiler from source
 still needs native development tools. This remains a Development Build, without

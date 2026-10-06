@@ -4,7 +4,9 @@ description: "Open or copy verified examples and begin TUI or Jobs work from det
 weight: 10
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+
+The 0.2.3 correction was verified through Windows ARM64 project commands. Interactive TUI input and the macOS/Linux editor workflow were not rerun for this extension version.
 
 The extension includes the structurally verified example catalog whose hashes
 match the repository. It currently contains 31 examples in 10 categories, with 61 teaching files,

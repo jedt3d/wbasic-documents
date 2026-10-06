@@ -4,7 +4,7 @@ description: "Separate syntax, type, and infrastructure errors, then apply keywo
 weight: 5
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 A useful diagnostic says more than “wrong.” It identifies the file, location,
 stage, and code so you can fix the cause instead of adding semicolons at random.
@@ -60,7 +60,7 @@ safe edit, or the connected compiler may not advertise the `quickFix` capability
 |---|---|
 | Red underline in source | Problems and the diagnostic code |
 | Manifest or Import cannot be found | Save, then Check Project |
-| Command missing from Command Palette | Workspace Trust and compiler capabilities |
+| Check/Run/Build missing from Command Palette | Install 0.2.3 and reload the window; visible commands still require trust and compiler capabilities |
 | Compiler does not start | Show Toolchain Status |
 | Language help stops updating | Show Language Server Output |
 

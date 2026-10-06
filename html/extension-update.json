@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "extensionId": "wbasic-dev.wbasic",
+  "extensionVersion": "0.2.3",
+  "status": "LocalVerified",
+  "publishedRelease": false,
+  "marketplaceRelease": false,
+  "sourceRevision": "2dc20c5a74e1b83959e9082a8f2d63fd18cc5b93",
+  "evidenceRevision": "d958ca385dd434cf4f17a1056d781f43191ea4e5",
+  "vsix": {
+    "name": "wbasic-0.2.3.vsix",
+    "bytes": 341643,
+    "sha256": "55f3ecdfd504498d0c125e9b283f553755f0b971002c17c3d99b049aba4cf00f"
+  },
+  "compilerVersion": "0.1.0",
+  "testedCompilerSourceRevision": "dfdcbdc45dc32a3b426dd5839a74c088eebee7e4",
+  "testedPublishedCompilerSourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
+  "bundledPublishedExtensionVersion": "0.2.1",
+  "verification": {
+    "date": "2026-10-06",
+    "target": "aarch64-pc-windows-msvc",
+    "vscodeVersion": "1.140.0",
+    "editorTestsPassed": 127,
+    "editorTestsSkipped": 0,
+    "publishedCompilerEditorTestsPassed": 127,
+    "publishedCompilerEditorTestsSkipped": 0,
+    "publishedCompilerIsolatedHostChecksPassed": 11,
+    "priorIsolatedHostChecksPassed": 11,
+    "priorLivePaletteCheckBuildRun": "Passed",
+    "priorNativeBillingCents": 18000,
+    "installedPayloadFiles": 98,
+    "macOSLinuxCorrectionHostTests": "Not run",
+    "interactiveTuiTaskInput": "Not run"
+  }
+}

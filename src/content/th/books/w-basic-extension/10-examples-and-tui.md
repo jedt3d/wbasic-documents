@@ -4,7 +4,9 @@ description: "เปิดหรือ copy ตัวอย่างที่ต
 weight: 10
 ---
 
-> **ขอบเขตเวอร์ชัน — private v0.1.0 prerelease** ขั้นตอนนี้ใช้ private experimental compiler/runtime `0.1.0` ที่เผยแพร่แล้ว คู่กับ extension `wbasic-dev.wbasic@0.2.1` ในแพ็ก และ protocol package `0.0.2` จาก sealed source `3901cf17` เริ่มที่ [คู่มือแพ็กที่เข้าคู่กัน]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+
+การแก้รุ่น 0.2.3 ตรวจผ่านคำสั่ง project บน Windows ARM64 ส่วน TUI แบบรับ input และ editor บน macOS/Linux ยังไม่ได้ทดสอบซ้ำสำหรับ extension รุ่นนี้
 
 Extension บรรจุ example catalog ที่ผ่านการตรวจโครงสร้างและ hash เดียวกับ repository
 ปัจจุบันมี 31 examples ใน 10 หมวด รวม teaching files 61 ไฟล์ ครอบคลุม language core, modules, tests, streams,

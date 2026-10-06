@@ -10,7 +10,7 @@ weight: 1
 
 ## สิ่งที่ใช้
 
-บทนี้ใช้ release **compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.1 เลือกใช้
+บทนี้ใช้ release **compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.3 ที่ตรวจในเครื่องแล้วเลือกใช้ โดย ZIP ที่เผยแพร่ยังบรรจุ 0.2.1
 ใช้ manifest และ runtime ให้ตรงกับ compiler ที่เลือก อ่าน [รุ่นของเครื่องมือ]({{< relref "/implementation-status.md" >}})
 ก่อนใช้ขั้นตอนข้ามชุด
 

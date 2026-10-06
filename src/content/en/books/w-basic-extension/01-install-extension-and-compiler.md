@@ -4,7 +4,7 @@ description: "Install the development VSIX, connect wb, and confirm that the ext
 weight: 1
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 The first chapter has one goal: introduce VS Code to `wb` before creating a
 project. If you skip this step, some completion may still look perfectly polite,
@@ -13,7 +13,7 @@ but compile commands will stand silent like a professor who never received the c
 ## What you need
 
 - VS Code 1.137 or later
-- The bundled 0.2.1 VSIX at `editors/vscode/wbasic-0.2.1.vsix`
+- A separately supplied 0.2.3 VSIX; the published ZIP still bundles 0.2.1 at `editors/vscode/wbasic-0.2.1.vsix`
 - `wb`, runtime assets, and linker from the same v0.1.0 ZIP
 - MSVC ARM64 or Apple Clang only if you are building the toolchain from source
 
@@ -26,12 +26,10 @@ SDK; fresh no-SDK host acceptance remains open.
 1. Open the **Extensions** view in VS Code.
 2. Open the `…` menu at the top of the view.
 3. Select **Install from VSIX…**.
-4. Select the VSIX at `vscodeVsix.path` in the extracted package's `wb-package.json`; verify its recorded SHA-256.
+4. Select the separately supplied 0.2.3 VSIX. The extracted package's `wb-package.json` points to 0.2.1; if using that older VSIX, verify its recorded SHA-256.
 5. Reload the window when VS Code asks.
 
-The 0.2.1 payload is installed in the normal Windows VS Code profile. Its managed
-compiler, runtime assets, and linker now match the published Windows ZIP. If your
-window was already open, use **Developer: Reload Window** before checking the commands.
+Use **Developer: Reload Window** after installation so the current window loads the new version. Extension 0.2.3 was checked in VS Code 1.140.0 on Windows ARM64. The published ZIP keeps its original 0.2.1 extension and matched compiler/runtime/linker.
 
 After installation, open the Command Palette and search for `WBasic:`. The
 extension is active when you see commands such as **WBasic: New Project**,
@@ -49,7 +47,7 @@ If discovery fails, open Settings, search for `WBasic: Compiler Path`, and enter
 the absolute path to `wb.exe` on Windows or `wb` on macOS. Do not append a shell
 command or arguments: this setting accepts one executable path.
 
-Confirm extension `0.2.1` in the Extensions view. Open the Command Palette and select **WBasic: Show Toolchain Status**. For this guide, verify it reports compiler `0.1.0`. A ready result shows the path, compiler version, development round, and native target for this machine.
+Confirm extension `0.2.3` in the Extensions view. Open the Command Palette and select **WBasic: Show Toolchain Status**. For this guide, verify it reports compiler `0.1.0`. A ready result shows the path, compiler version, development round, and native target for this machine.
 
 {{< guide-screenshot name="01-toolchain-status.png" alt="VS Code after WBasic: Show Toolchain Status, showing compiler path, version, development round, and native target without personal information" caption="Screenshot to capture: Toolchain Status after the VSIX and compiler are connected" >}}
 
@@ -59,8 +57,10 @@ Syntax highlighting, Outline, and the bundled specification remain available in
 Restricted Mode. Check, run, build, and test work only in a trusted workspace,
 because these commands invoke the native compiler and may run project programs.
 
-Trust only folders whose origin you know. If compile commands are missing while
-the toolchain is ready, check Workspace Trust before changing one setting after another.
+Trust only folders whose origin you know. In 0.2.3, Check Project, Run Project,
+and the three Development Build commands remain visible in the palette. If one
+refuses to run, check Workspace Trust and live compiler capabilities before
+changing settings.
 
 ## Checkpoint
 

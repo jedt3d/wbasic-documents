@@ -1,10 +1,12 @@
 ---
 title: "0 · เลือกแพ็ก 0.1.0 ที่เข้าคู่กัน"
-description: "ติดตั้ง private experimental ARM64 prerelease กับ VS Code extension 0.2.1 ที่ตรงกัน"
+description: "แยกแพ็ก ARM64 ที่เผยแพร่กับ VS Code extension 0.2.3 ที่ตรวจในเครื่อง"
 weight: 0
 ---
 
-**Private experimental v0.1.0 prerelease** [หน้า private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) มี compiler/runtime `0.1.0`, VS Code extension ทางเลือก `wbasic-dev.wbasic@0.2.1` และ protocol package `0.0.2` จาก sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46` Asset ทั้งแปดถูกดาวน์โหลดและตรวจ hash ซ้ำก่อนเผยแพร่ ต้องมีสิทธิ์เข้า private repository จึงเปิดลิงก์ได้ นี่ไม่ใช่ Marketplace หรือ production release
+**Private experimental v0.1.0 prerelease** [หน้า private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) มี compiler/runtime `0.1.0`, VS Code extension `wbasic-dev.wbasic@0.2.1` ใน ZIP และ protocol package `0.0.2` จาก sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46` Asset ทั้งแปดถูกดาวน์โหลดและตรวจ hash ซ้ำก่อนเผยแพร่ ต้องมีสิทธิ์เข้า private repository จึงเปิดลิงก์ได้ คู่มือนี้ใช้ extension `0.2.3` ที่ได้รับแยกต่างหาก ผล Command Palette บน Windows จริงใช้ development compiler source `dfdcbdc` ส่วน compiler `0.1.0` ที่เผยแพร่เป็น sealed source `3901cf17` เลขรุ่นเท่ากันไม่ได้ทำให้หลักฐานทดสอบเป็นชุดเดียวกัน ยังไม่มี 0.2.3 release หรือ Marketplace
+
+เมื่อนำ extension 0.2.3 มาตรวจกับ compiler/runtime ที่เผยแพร่จาก sealed source ชุดทดสอบ editor 127 รายการผ่านโดยไม่มีรายการข้าม และ VS Code host แบบแยก 11 รายการผ่านบน Windows ARM64 ส่วนผล Check/Run/Build ผ่าน Command Palette ของหน้าต่างผู้ใช้จริงและ output ที่ค้างให้อ่าน ยังอ้าง development source `dfdcbdc`
 
 ## เลือกและตรวจ ZIP
 
@@ -14,7 +16,7 @@ weight: 0
 
 ## เชื่อม VS Code
 
-ใน Extensions เลือก **Install from VSIX…** แล้วเลือก VSIX ที่ `wb-package.json` ระบุ Reload Window จากนั้นตรวจว่า Extensions แสดง `WBasic` รุ่น `0.2.1` ใน trusted workspace ตั้ง `wbasic.compilerPath` เป็น absolute path ของ `wb.exe` หรือ `wb` ใน top-level folder ของแพ็ก ตั้ง `wbasic.probePath` เฉพาะเมื่อใช้ native probe แยกต่างหาก เรียก **WBasic: Show Toolchain Status** แล้วตรวจว่า compiler เป็น `0.1.0` และ target เป็น ARM64 ที่ตรงกับเครื่อง Extension ยังค้นหา managed development toolchain, debug build ใน repository และ `PATH` ด้วย การระบุ compiler path ชัดเจนช่วยไม่ให้เลือกตัวเก่า
+ใน Extensions เลือก **Install from VSIX…** แล้วเลือก VSIX 0.2.3 ที่ได้รับในเครื่อง หากมีเพียง VSIX ที่ `wb-package.json` ระบุ จะได้รุ่น 0.2.1 พร้อมพฤติกรรมเดิม Reload Window แล้วตรวจเลขรุ่นใน Extensions ใน trusted workspace ตั้ง `wbasic.compilerPath` เป็น absolute path ของ `wb.exe` หรือ `wb` ที่หน้าต่าง VS Code เข้าถึงได้ ตั้ง `wbasic.probePath` เฉพาะเมื่อใช้ native probe แยกต่างหาก เรียก **WBasic: Show Toolchain Status** แล้วตรวจว่า compiler เป็น `0.1.0` และ target ตรงกับเครื่อง Extension ยังค้นหา managed development toolchain, debug build ใน repository และ `PATH` ด้วย
 
 สเปกแบบ offline อยู่ใน `docs/` ของแพ็ก ต้อง trust workspace เพื่อเรียก compiler, build, run และ test ส่วน coloring, Outline และเอกสารในเครื่องใช้ได้ใน Restricted Mode
 

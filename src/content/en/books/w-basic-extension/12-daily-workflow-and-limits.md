@@ -4,7 +4,7 @@ description: "Summarize the edit-check-test-build loop and separate ready featur
 weight: 12
 ---
 
-> **Version scope — private v0.1.0 prerelease.** These steps use the published private experimental compiler/runtime `0.1.0`, bundled extension `wbasic-dev.wbasic@0.2.1`, and protocol package `0.0.2` from sealed source `3901cf17`. Start with [the matched-package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
 
 Once the tools are familiar, the daily workflow should be short and predictable.
 
@@ -16,7 +16,7 @@ Once the tools are familiar, the daily workflow should be short and predictable.
 4. Use definition and references to understand impact before rename.
 5. Save and Check Project after changing a manifest, module, or Import.
 6. Run the relevant case in Test Explorer.
-7. Run Project in the integrated terminal.
+7. Run Project and inspect the task terminal, which remains open after completion.
 8. Build Development Debug while developing.
 9. Run the full suite and Build Development Release before review.
 10. Record compiler and extension revisions in reproducible evidence.
@@ -32,7 +32,7 @@ Once the tools are familiar, the daily workflow should be short and predictable.
 | Rename across files | Rename Symbol |
 | Check one unsaved source | Check Active Source |
 | Check the real project and modules | Check Project |
-| Run an interactive program | Run Project |
+| Run a project | Run Project (interactive TUI input was not rerun at 0.2.3) |
 | Check a small behavior | Test Explorer |
 | See the active compiler | Show Toolchain Status |
 

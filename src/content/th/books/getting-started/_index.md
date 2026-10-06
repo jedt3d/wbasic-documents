@@ -12,7 +12,7 @@ weight: -10
 ส่วนสี่บทแรกยังเป็นโครงการเล็กที่ผู้อ่านสร้างเอง
 
 คำสั่งและ manifest ในเล่มใช้ **compiler/runtime 0.1.0** ซึ่งเข้าคู่กันทั้ง
-CLI, portable ZIP และ compiler ที่ Extension 0.2.1 เลือกใช้ ค่า `toolchain`
+CLI, portable ZIP และ compiler ที่ Extension 0.2.3 ซึ่งตรวจในเครื่องแล้วเลือกใช้ (ZIP ที่เผยแพร่ยังบรรจุ Extension 0.2.1) ค่า `toolchain`
 ใน project และ module ต้องตรงรุ่นนี้ New Project pin รุ่นที่เลือกให้อัตโนมัติ
 ดู [ขอบเขตเวอร์ชัน]({{< relref "/implementation-status.md" >}})
 
