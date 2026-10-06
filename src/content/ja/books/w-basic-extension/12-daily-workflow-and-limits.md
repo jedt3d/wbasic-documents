@@ -84,7 +84,11 @@ daily editor の例は Windows/macOS ARM64 で `wb check` に通り、二件の�
 
 ## compiler 0.2.0 と Extension 0.4.0 開発候補
 
-上記の Extension 0.3.0 と protocol 0.1.0 が公開済みの版です。ソースの 0.4.0 は未公開の DX01–DX10 候補です。protocol は Windows/macOS ARM64 で各 98/98、editor は Windows で 154 件成功と Mac-alias の skip 1 件、Mac で 155/155 件成功し、修正後の Windows isolated host は 16/16 件成功しました。インストールした Windows では Guide、Actions、Refactor、rename preview、cold symbols、file／linked template と Undo、Surround With と Check／Undo、named Run／Run Again、テスト移動、意図的に失敗する scaffold、native failed-case rerun、Doctor、Release Build、project に属さない Template を開いた状態の F12、解決済み semantic function token が通りました。修正後の Windows VSIX では Insert Template の statement command も通りました。Vim Insert mode に入ってから呼ぶと `Let value As Integer = 0` が入り、Tab は次の placeholder に進み、Ctrl+Z は infrastructure 通知なしで空の文書に戻しました。Mac/Linux の実ウィンドウ操作は主張しません。候補版には対応する compiler/runtime 0.2.0 と protocol 0.2.0 を使います。Extension の版番号は言語やパッケージの版番号とは別です。
+上記の Extension 0.3.0 と protocol 0.1.0 が公開済みの版です。ソースの 0.4.0 は未公開の DX01–DX10 候補です。protocol は Windows/macOS ARM64 で各 98/98、editor は Windows で 154 件成功と Mac-alias の skip 1 件、Mac で 155/155 件成功し、修正後の Windows isolated host は 16/16 件成功しました。
+
+インストールした Windows 候補版では、移動と code の確認として Shortcut Guide、Actions at Caret、Refactor This、rename preview、cold Workspace Symbols、project に属さない Template を開いた状態の F12、解決済み semantic function token が通りました。編集では file／linked template と Undo、Surround With と Check／Undo が通りました。Run／Test の作業では named Run、Run Again、テスト移動、意図的に失敗する scaffold、native failed-case rerun が通り、同じウィンドウで Toolchain Doctor と Release Build も通りました。
+
+修正後の Windows VSIX では Insert Template の statement command も通りました。Vim Insert mode に入ってから呼ぶと `Let value As Integer = 0` が入り、Tab は次の placeholder に進み、Ctrl+Z は infrastructure 通知なしで空の文書に戻しました。Mac/Linux の実ウィンドウ操作は主張しません。候補版には対応する compiler/runtime 0.2.0 と protocol 0.2.0 を使います。Extension の版番号は言語やパッケージの版番号とは別です。
 
 `wbasic.shortcutProfile = intellij` を選ぶと、WBasic editor 限定で Shift+F6 Rename、Windows の Ctrl+B Definition、Alt+Enter Actions at Caret、Ctrl+Alt+Shift+T Refactor This、Shift+F10 Run Again が有効になります。既定の `standard` はこれらのキーを追加しません。**Shortcut Guide** に一覧がありますが、OS や Vim のキーと競合する場合があります。**Insert Template** には連動する入力欄があり、**Insert File Template** は空の WBasic editor に挿入します。**Surround With** は選択範囲を明示的な If または Try/Finally で囲みます。テンプレートは意味の同一性を証明しないため、条件と後始末を補って Check Project で確認してください。
 
