@@ -81,3 +81,7 @@ inline action จำกัด source file ไม่เกิน 1 MiB และ�
 
 อ่านต่อ: [เรียนจาก Examples และ TUI templates]({{< relref "/books/w-basic-extension/10-examples-and-tui.md" >}})
 
+
+## นำทางและสร้าง test ใน 0.4.0 candidate
+
+**WBasic: Go to Test or Source** ใช้ compiler project inventory และ native test discovery เสนอไฟล์ผู้สมัครทั้งสองทิศทาง โดยไม่อ้างความสัมพันธ์ coverage. **WBasic: New Test Scaffold** ต้องมี directory `tests` อยู่แล้ว สร้างไฟล์ใหม่โดยไม่ทับของเดิม ตรวจ native discovery และใส่ `Test.Check(False, "TODO: specify expected behavior")` ซึ่งต้องล้มเหลวไว้ก่อน ผู้เขียนต้องเติม expected value จริงและรันตาม identity ที่ compiler ค้นพบ; อย่านับ skeleton เป็น coverage ที่ผ่าน. การรันซ้ำผลล้มเหลวต้องรักษา case identity และแยก assertion, timeout, crash และ cancellation. ดู [ขอบเขต candidate]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); Test navigation, scaffold ที่ล้มเหลวตามตั้งใจ และ native failed-case rerun ผ่านในหน้าต่าง Windows ที่ติดตั้ง candidate.

@@ -81,3 +81,15 @@ daily editor の例は Windows/macOS ARM64 で `wb check` に通り、二件の�
 `local-module-project` をコピーし、プロジェクト名を変え、タイ語名の手続きを加え、ファイル間の Rename を使い、テストケースを追加して Test Explorer を実行し、Build Development Release を行います。外部ターミナルなしで全手順が通れば、拡張機能の主な作業手順を体験できたことになります。
 
 続いて [言語リファレンス]({{< relref "/books/language-reference/_index.md" >}})、[標準ライブラリ]({{< relref "/books/standard-library/_index.md" >}})、[API リファレンス]({{< relref "/books/api-reference/_index.md" >}}) を参照してください。
+
+## compiler 0.2.0 と Extension 0.4.0 開発候補
+
+上記の Extension 0.3.0 と protocol 0.1.0 が公開済みの版です。ソースの 0.4.0 は未公開の DX01–DX10 候補です。protocol は Windows/macOS ARM64 で各 98/98、editor は Windows で 154 件成功と Mac-alias の skip 1 件、Mac で 155/155 件成功し、修正後の Windows isolated host は 16/16 件成功しました。インストールした Windows では Guide、Actions、Refactor、rename preview、cold symbols、file／linked template と Undo、Surround With と Check／Undo、named Run／Run Again、テスト移動、意図的に失敗する scaffold、native failed-case rerun、Doctor、Release Build、project に属さない Template を開いた状態の F12、解決済み semantic function token が通りました。修正後の Windows VSIX では Insert Template の statement command も通りました。Vim Insert mode に入ってから呼ぶと `Let value As Integer = 0` が入り、Tab は次の placeholder に進み、Ctrl+Z は infrastructure 通知なしで空の文書に戻しました。Mac/Linux の実ウィンドウ操作は主張しません。候補版には対応する compiler/runtime 0.2.0 と protocol 0.2.0 を使います。Extension の版番号は言語やパッケージの版番号とは別です。
+
+`wbasic.shortcutProfile = intellij` を選ぶと、WBasic editor 限定で Shift+F6 Rename、Windows の Ctrl+B Definition、Alt+Enter Actions at Caret、Ctrl+Alt+Shift+T Refactor This、Shift+F10 Run Again が有効になります。既定の `standard` はこれらのキーを追加しません。**Shortcut Guide** に一覧がありますが、OS や Vim のキーと競合する場合があります。**Insert Template** には連動する入力欄があり、**Insert File Template** は空の WBasic editor に挿入します。**Surround With** は選択範囲を明示的な If または Try/Finally で囲みます。テンプレートは意味の同一性を証明しないため、条件と後始末を補って Check Project で確認してください。
+
+Named Run configuration は manifest・profile・引数を記憶し、**Run Again** は通常の副作用も繰り返します。テスト移動は候補を探し、テストの雛形には意図的に失敗する TODO assertion が入るため、coverage は保証しません。Cold Workspace Symbols は受理された compiler report を使い、workspace root 8、manifest 16、directory 512、entry 8192、深さ 16、結果 256 の上限を守ります。freshness を再確認し、ほかの project を表示できる場合も拒否された project を明示します。完全な index ではありません。Semantic color は compiler が解決した identity のみに適用され、不完全なコードでは lexical color も有用です。**WBasic: Toolchain Doctor** は compiler capability と、未発見または設定不正時の対処を示し、一回の capability query の時間を表示します。この時間は editor 全体の latency、runtime の対応、fresh no-SDK 配布の証明ではありません。compiler project inventory にない未保存 Template は project overlay に入れず、standalone diagnostic を使います。project 所属 source は引き続き project analysis を使い、protocol 修正後は Template を開いたままでも F12 が宣言に移動しました。artifact pin と詳細な結果は言語 repository の DX 報告に記録します。
+
+### 候補版ウィンドウでの Vim
+
+確認した Windows VS Code ウィンドウでは、Vim Normal mode が Ctrl+T、Visual Line mode が Ctrl+B を受け取りました。競合時は Command Palette から Workspace Symbol／Definition を選びます。Insert Template を呼ぶ前に Vim Insert mode に入ると Tab で placeholder を進められます。確認したウィンドウでは Visual mode が Tab を受け取りました。paste 後は二か所の名前を確認してください。確認した例では既定値が選択されていましたが、paste は後ろに追加され、二か所とも更新されました。この Vim の観察は確認した key mapping に限られ、すべての Vim 設定を保証しません。

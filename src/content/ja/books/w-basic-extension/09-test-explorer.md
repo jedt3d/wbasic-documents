@@ -62,3 +62,7 @@ Test Explorer は、コンパイラのケース ID、グループのパス、型
 `Given/When/Then` スニペットを使い、成功ケース、アサーション失敗、型付きデータ行を作ります。Test Explorer で、それぞれのラベルと状態を確認してください。
 
 次は [サンプルと TUI テンプレートから学ぶ]({{< relref "/books/w-basic-extension/10-examples-and-tui.md" >}}) へ進みます。
+
+## 0.4.0 候補版のテスト移動と雛形
+
+**WBasic: Go to Test or Source** は compiler の project inventory と native test discovery から双方向の候補ファイルを提示します。coverage の関係は主張しません。**WBasic: New Test Scaffold** は既存の `tests` directory を必要とし、既存ファイルを上書きせずに新規作成して native discovery を確認します。`Test.Check(False, "TODO: specify expected behavior")` は意図的に失敗する assertion です。実際の期待値を記入し、compiler が発見した完全な identity で実行してください。雛形を成功した coverage として数えません。再実行時も case identity を守り、assertion failure、timeout、crash、cancellation を区別します。[候補版の範囲]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を参照してください。テスト移動、意図的に失敗する scaffold、native failed-case rerun は、インストールした Windows ウィンドウで通りました。

@@ -83,3 +83,11 @@ The task is complete when hover shows its signature and Check Project passes.
 
 Continue to [Read diagnostics and apply quick fixes]({{< relref "/books/w-basic-extension/05-diagnostics-and-quick-fixes.md" >}}).
 
+
+## Templates in the 0.4.0 candidate
+
+The candidate adds **WBasic: Insert Template** with linked placeholders and **WBasic: Insert File Template**, which inserts into an empty WBasic editor. Templates start the code; check names, arguments and resources, then run compiler Check after filling them in. See the [candidate scope]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); File and linked templates with Undo passed in the installed Windows candidate. The Insert Template statement command also passed in the repaired VSIX: entering Vim Insert mode before invoking it inserted `Let value As Integer = 0`, Tab advanced to the next placeholder, and Ctrl+Z restored the empty document without an infrastructure notification.
+
+### Vim and candidate placeholders
+
+With Vim, enter Insert mode before invoking Insert Template so Tab can advance linked placeholders; Visual mode intercepted Tab in the tested window. Inspect both linked names after pasting. In the tested Windows window, the default was already selected, yet paste appended to it and updated both occurrences. Edit the resulting names as needed; this is an observed Vim/VS Code paste interaction that the extension does not override.

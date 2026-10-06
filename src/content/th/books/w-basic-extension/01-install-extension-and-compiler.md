@@ -75,3 +75,7 @@ Run Project และ Build Project (Development) ทั้งสามคำส
 
 อ่านต่อ: [สร้าง project แรก]({{< relref "/books/w-basic-extension/02-create-first-project.md" >}})
 
+
+## รุ่น 0.4.0 ที่กำลังพัฒนา
+
+Extension 0.4.0 ยังเป็น development candidate และยังไม่ใช่ไฟล์ VSIX ใน release ปัจจุบัน ขั้นตอนติดตั้งด้านบนยังอ้าง Extension 0.3.0 ที่เผยแพร่พร้อม compiler/runtime 0.2.0 เท่านั้น อ่าน [ขอบเขต candidate และงานที่ยังรอตรวจ]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}) ก่อนลอง build จากซอร์ส.

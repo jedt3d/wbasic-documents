@@ -80,3 +80,11 @@ private, internal ของ module อื่น หรือไม่ได้ i
 
 อ่านต่อ: [อ่าน diagnostics และใช้ quick fix]({{< relref "/books/w-basic-extension/05-diagnostics-and-quick-fixes.md" >}})
 
+
+## แม่แบบใน 0.4.0 candidate
+
+Candidate เพิ่ม **WBasic: Insert Template** พร้อมช่องกรอกที่เชื่อมกัน และ **WBasic: Insert File Template** ที่ใส่แม่แบบใน editor ภาษา WBasic ที่ว่างเท่านั้น แม่แบบเป็นจุดเริ่มเขียน code; ตรวจชื่อ, argument, resource และใช้ compiler Check หลังเติมค่า ดู [ขอบเขต candidate]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); File/linked template กับ Undo ผ่านในหน้าต่าง Windows ที่ติดตั้ง candidate. คำสั่ง Insert Template แบบ statement ก็ผ่านใน repaired VSIX: เข้า Vim Insert mode ก่อนเรียกคำสั่ง ได้ `Let value As Integer = 0`, Tab เลื่อนไปยัง placeholder ถัดไป และ Ctrl+Z คืนเอกสารว่างโดยไม่มี infrastructure popup.
+
+### Vim กับ placeholder ของ candidate
+
+เมื่อใช้ Vim ให้เข้า Insert mode ก่อนเรียก Insert Template เพื่อให้ Tab เลื่อน linked placeholder; Visual mode รับ Tab ไปในหน้าต่างที่ตรวจ. ตรวจชื่อทั้งสองตำแหน่งหลัง paste. ในหน้าต่าง Windows ที่ตรวจ ค่าเริ่มต้นถูกเลือกอยู่แล้ว แต่ paste ยังต่อท้ายค่าเดิมและอัปเดตทั้งสองตำแหน่ง; แก้ชื่อผลลัพธ์ตามต้องการ. การ paste นี้เป็นพฤติกรรม Vim/VS Code ที่สังเกตได้; Extension ไม่บังคับเปลี่ยนมัน.

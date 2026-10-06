@@ -85,3 +85,7 @@ Create a passing case, an assertion-failure case, and typed data rows from the
 
 Continue to [Learn from Examples and TUI templates]({{< relref "/books/w-basic-extension/10-examples-and-tui.md" >}}).
 
+
+## Test navigation and scaffolding in the 0.4.0 candidate
+
+**WBasic: Go to Test or Source** uses compiler project inventory and native test discovery to offer candidate files in either direction; it claims no coverage relationship. **WBasic: New Test Scaffold** requires an existing `tests` directory, creates a new file without overwriting, confirms native discovery and inserts `Test.Check(False, "TODO: specify expected behavior")` as an intentionally failing assertion. Supply the real expected value and run the exact compiler-discovered identity; do not count the skeleton as passing coverage. Reruns must preserve case identity and distinguish assertion failure, timeout, crash and cancellation. See the [candidate scope]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); Test navigation, the intentionally failing scaffold and native failed-case rerun passed in the installed Windows window.

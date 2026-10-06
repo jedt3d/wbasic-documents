@@ -75,3 +75,11 @@ For modules and visibility, read
 
 Continue to [Manage modules and dependency paths]({{< relref "/books/w-basic-extension/07-modules-and-dependency-paths.md" >}}).
 
+
+## Action chooser in the 0.4.0 candidate
+
+**WBasic: Actions at Caret** and **WBasic: Refactor This** collect actions applicable at the cursor under current capabilities; unsupported structural changes are not presented as proved refactorings. **WBasic: Surround With** wraps a selection in an explicit If or Try/Finally shape. Review the condition and cleanup, then Check Project. See the [candidate scope]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); Actions at Caret, Refactor This, rename preview and Surround With with Check/Undo passed in the installed Windows candidate.
+
+### When Vim claims a key
+
+In the tested Windows window, Vim Visual Line mode claimed **Ctrl+B** before Definition. Use **Go to Definition** in the Command Palette or **F12**. **Alt+Enter** invokes **WBasic: Actions at Caret** when its binding is available. After the protocol repair, F12 reached Amount in an owned project source while an unowned Template was open.

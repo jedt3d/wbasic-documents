@@ -1,3 +1,10 @@
+## 2026-10-07 — Current-compiler DX candidate guide, three editions
+
+- Updated seven matching Thai/English/Japanese guide chapters and generated HTML for local Extension0.4.0/protocol0.2.0, retaining published Extension0.3.0/protocol0.1.0 and compiler/runtime0.2.0 identities.
+- Documented optional IntelliJ shortcuts, caret actions, templates/selection wrappers, named Run/Run Again, test navigation/scaffold and native failed-case recovery, bounded cold symbols, semantic colors, Doctor and measured limits. Observed Vim key/paste behavior has explicit editing-mode and palette alternatives.
+- Recorded compiler-inventory ownership: a standalone neighbor stays out of project overlays; real project diagnostics/navigation remain compiler-backed. Windows/macOS protocol98 checks pass per host; editor154 plus one Mac-only skip on Windows,155 on Mac. Repaired Windows isolated host16 and actual Windows UI workflows pass within their recorded candidate scope; Mac/Linux UI and Linux adapter checks are not claimed.
+- Source, pinned Hugo0.167.0 build, generated-site, English/Japanese code parity, release identities and Billing snapshot checks pass. This is an unpublished branch preview: no new website version/tag, asset release or Marketplace publication; historical download metadata remains unchanged.
+
 ## 2026-10-06 — Current local Extension 0.2.3 guide, three editions
 
 - Updated Thai, English and Japanese editor guides for visible project palette commands, persistent Build/Run task terminals and measured compiler discovery troubleshooting.

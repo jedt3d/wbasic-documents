@@ -58,3 +58,11 @@ EndProcedure
 `Farewell(name As String) As String` を追加し、補完を使って `Main` から呼び出します。Hover にシグネチャが表示され、Check Project が通れば完了です。
 
 次は [診断を読み、クイックフィックスを使う]({{< relref "/books/w-basic-extension/05-diagnostics-and-quick-fixes.md" >}}) へ進みます。
+
+## 0.4.0 候補版のテンプレート
+
+候補版には、連動する入力欄を持つ **WBasic: Insert Template** と、空の WBasic editor にテンプレートを挿入する **WBasic: Insert File Template** が加わります。名前、引数、リソースを補ってから compiler Check を実行してください。[候補版の範囲]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を参照してください。File template と linked template の Undo は、インストールした Windows 候補版で通りました。修正後の VSIX では Insert Template の statement command も通りました。Vim Insert mode に入ってから呼ぶと `Let value As Integer = 0` が入り、Tab は次の placeholder に進み、Ctrl+Z は infrastructure 通知なしで空の文書に戻しました。
+
+### Vim と候補版の placeholder
+
+Vim を使う場合は Insert Template を呼ぶ前に Insert mode に入り、Tab で linked placeholder を進めてください。確認したウィンドウでは Visual mode が Tab を受け取りました。paste 後は二か所の名前を確認してください。確認した Windows ウィンドウでは既定値がすでに選択されていましたが、paste はその後ろに追加され、二か所とも更新されました。結果の名前を必要に応じて編集してください。この paste 動作は観察された Vim／VS Code の相互作用であり、Extension は強制変更しません。

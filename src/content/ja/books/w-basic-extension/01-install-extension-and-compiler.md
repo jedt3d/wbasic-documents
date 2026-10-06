@@ -59,3 +59,7 @@ Extensions で `0.3.0` を確認します。コマンドパレットから **WBa
 - [ ] 練習用ワークスペースが信頼済みである。
 
 次は [最初のプロジェクトを作る]({{< relref "/books/w-basic-extension/02-create-first-project.md" >}}) へ進みます。
+
+## 開発候補 0.4.0
+
+Extension 0.4.0 は開発候補であり、現行リリースの VSIX ではありません。上のインストール手順は、compiler/runtime 0.2.0 に対応する公開済み Extension 0.3.0 のままです。ソースからビルドする前に[候補版の範囲と未完了の確認]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を読んでください。

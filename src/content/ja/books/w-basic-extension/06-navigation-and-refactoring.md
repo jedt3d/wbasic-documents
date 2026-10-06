@@ -50,3 +50,11 @@ Call Hierarchy は、コンパイラが呼び出し元・先と呼び出し位�
 5. 保存して Check Project を実行します。
 
 次は [モジュールと依存パスを管理する]({{< relref "/books/w-basic-extension/07-modules-and-dependency-paths.md" >}}) へ進みます。
+
+## 0.4.0 候補版の操作メニュー
+
+**WBasic: Actions at Caret** と **WBasic: Refactor This** は、カーソル位置と現在の capability に応じて使える操作をまとめます。未対応の構造変更を、証明済みのリファクタリングとして提示しません。**WBasic: Surround With** は選択範囲を明示的な If または Try/Finally で囲みます。条件と後始末を確認して Check Project を実行してください。[候補版の範囲]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を参照してください。Actions at Caret、Refactor This、rename preview、Surround With と Check／Undo は、インストールした Windows 候補版で通りました。
+
+### Vim がキーを受け取る場合
+
+確認した Windows ウィンドウでは、Vim Visual Line mode が **Ctrl+B** を Definition より先に受け取りました。Command Palette の **Go to Definition** または **F12** を使ってください。binding が利用可能な場合、**Alt+Enter** は **WBasic: Actions at Caret** を開きます。protocol 修正後、project に属さない Template を開いたままでも、F12 は project source から Amount の宣言に移動しました。

@@ -94,3 +94,7 @@ development workflow; most beginners should use Build Project.
 
 Continue to [Test with Test Explorer]({{< relref "/books/w-basic-extension/09-test-explorer.md" >}}).
 
+
+## Named Run in the 0.4.0 candidate
+
+Set `wbasic.runConfigurations` in workspace settings. Each entry has a unique `name`, workspace-relative `manifest`, `profile` (`debug` or `release`), and string-array `arguments`. **WBasic: Select Run Configuration** starts the chosen Run task. **WBasic: Run Again** remembers only the name and resolves the current setting again. There is no environment or working-directory expansion in these entries; do not store secrets in `arguments`. Inspect the invocation before running: repeating an application can repeat file or database writes; BillingTime creates another invoice. Select Run Configuration and Shift+F10 Run Again passed in the installed Windows window; the candidate remains unpublished. The 0.3.0 Run Project instructions above remain the published workflow. See the [candidate scope]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}).

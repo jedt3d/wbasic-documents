@@ -106,3 +106,11 @@ compatibility or incompatibility for every system.
 
 Continue to [The daily workflow and its limits]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}).
 
+
+## Shortcuts in the 0.4.0 candidate
+
+`wbasic.shortcutProfile` defaults to `standard`; `intellij` opts into bindings scoped to the WBasic editor. Open **WBasic: Shortcut Guide** and check OS, VS Code and Vim conflicts before enabling it. **WBasic: Toolchain Doctor** reads the compiler capability report and gives recovery hints for missing or invalid configuration. Its displayed time is one query, not an editor benchmark or a runtime-pair/no-SDK check. Shortcut Guide and Toolchain Doctor passed in the installed Windows window; the candidate remains unpublished; the published Extension 0.3.0 installation remains as documented above. See the [candidate scope]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}).
+
+### Vim and candidate editor keys
+
+In the tested Windows window, Vim Normal mode claimed **Ctrl+T** for Workspace Symbol, and Visual Line mode claimed **Ctrl+B** for Definition. Use **Go to Symbol in Workspace** or **Go to Definition** from the Command Palette when a key is claimed. Enter Vim Insert mode before invoking Insert Template so Tab can advance placeholders; Visual mode intercepted Tab in the tested window. Inspect both names after pasting. In the observed case, the default was already selected, yet paste appended to it and updated both occurrences. Key handling depends on the user's mappings.

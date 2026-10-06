@@ -67,3 +67,7 @@ Debug が既定のビルドタスク、Test が既定のテストタスクです
 5. 型エラーを一つ加え、タスクのリンクが正しいソースを開くことを確認します。
 
 次は [Test Explorer でテストする]({{< relref "/books/w-basic-extension/09-test-explorer.md" >}}) へ進みます。
+
+## 0.4.0 候補版の Named Run
+
+Workspace settings の `wbasic.runConfigurations` に、固有の `name`、workspace 相対の `manifest`、`debug` または `release` の `profile`、文字列配列の `arguments` を設定します。**WBasic: Select Run Configuration** は選んだ Run task を開始します。**WBasic: Run Again** は名前だけを記憶し、現在の設定を再度解決します。この設定では environment や working directory を展開しません。`arguments` に secret を保存しないでください。実行前に invocation を確認してください。再実行するとファイルやデータベースへの書き込みも繰り返され、BillingTime では次の請求書が作成されます。Select Run Configuration と Shift+F10 Run Again は、インストールした Windows ウィンドウで通りました。候補版は未公開です。上の 0.3.0 Run Project 手順が公開済みのワークフローです。[候補版の範囲]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を参照してください。

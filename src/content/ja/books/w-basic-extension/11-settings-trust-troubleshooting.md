@@ -76,3 +76,11 @@ TOML を推測で書く代わりに Add Local Module Dependency を使います�
 - ネイティブや TUI の境界に関わる場合だけ、OS、端末、フォント
 
 次は [日常の作業手順と限界]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}) へ進みます。
+
+## 0.4.0 候補版のショートカット
+
+`wbasic.shortcutProfile` の既定値は `standard` です。`intellij` を選ぶと WBasic editor に限定したキー操作が有効になります。**WBasic: Shortcut Guide** を開き、OS、VS Code、Vim との競合を確認してください。**WBasic: Toolchain Doctor** は compiler capability report を読み、compiler が見つからない場合や設定不正時の対処を示します。表示時間は一回の query であり、editor の benchmark や runtime 対応・no-SDK の確認ではありません。Shortcut Guide と Toolchain Doctor はインストールした Windows ウィンドウで通りました。候補版は未公開で、公開済み Extension 0.3.0 のインストール手順は上記のままです。[候補版の範囲]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})を参照してください。
+
+### Vim と候補版の editor キー
+
+確認した Windows ウィンドウでは、Vim Normal mode が Workspace Symbol の **Ctrl+T**、Visual Line mode が Definition の **Ctrl+B** を受け取りました。キーが競合するときは Command Palette から **Go to Symbol in Workspace** または **Go to Definition** を使ってください。Insert Template を呼ぶ前に Vim Insert mode に入ると Tab で placeholder を進められます。確認したウィンドウでは Visual mode が Tab を受け取りました。paste 後は二か所の名前を確認してください。確認した例では既定値が選択されていたのに、paste は後ろに追加され、二か所とも更新されました。動作は利用者の key mapping によって変わります。

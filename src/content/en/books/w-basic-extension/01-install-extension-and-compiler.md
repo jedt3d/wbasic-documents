@@ -73,3 +73,7 @@ changing settings.
 
 Continue to [Create the first project]({{< relref "/books/w-basic-extension/02-create-first-project.md" >}}).
 
+
+## 0.4.0 development candidate
+
+Extension 0.4.0 is still a development candidate, not the VSIX in the current release. The installation steps above continue to use published Extension 0.3.0 with compiler/runtime 0.2.0. Read the [candidate scope and open checks]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}) before building from source.

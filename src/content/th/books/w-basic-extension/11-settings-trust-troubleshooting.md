@@ -98,3 +98,11 @@ contract ของ framework อย่าสรุปจาก terminal หน�
 
 อ่านต่อ: [Workflow ประจำวันและขอบเขต]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}})
 
+
+## ปุ่มลัดใน 0.4.0 candidate
+
+`wbasic.shortcutProfile` ใช้ `standard` เป็นค่าเริ่มต้น; `intellij` เป็นตัวเลือกเฉพาะ editor ภาษา WBasic. เปิด **WBasic: Shortcut Guide** และตรวจปุ่มที่อาจชนกับ OS, VS Code หรือ Vim ก่อนเปิดใช้. **WBasic: Toolchain Doctor** อ่าน capability report และให้แนวทางแก้เมื่อ compiler หายหรือ config ผิด; เวลาที่แสดงเป็น query หนึ่งครั้ง ไม่ใช่ benchmark editor หรือการตรวจ runtime pair/no-SDK. Shortcut Guide และ Toolchain Doctor ผ่านในหน้าต่าง Windows; candidate ยังไม่เผยแพร่ และไม่เปลี่ยนการติดตั้ง Extension 0.3.0 ที่เผยแพร่. ดู [ขอบเขต candidate]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}).
+
+### Vim และปุ่มของ editor candidate
+
+Vim Normal mode รับ **Ctrl+T** ของ Workspace Symbol และ Visual Line mode รับ **Ctrl+B** ของ Definition ในหน้าต่าง Windows ที่ตรวจ. ใช้ **Go to Symbol in Workspace** หรือ **Go to Definition** จาก Command Palette เมื่อปุ่มชนกัน. เข้า Vim Insert mode ก่อนเรียก Insert Template เพื่อให้ Tab เลื่อน placeholder; Visual mode รับ Tab ไปในหน้าต่างที่ตรวจ. ตรวจชื่อทั้งสองตำแหน่งหลัง paste. กรณีที่ตรวจ ค่าเริ่มต้นถูกเลือกอยู่แล้ว แต่ paste ยังต่อท้ายและอัปเดตทั้งสองตำแหน่ง. การรับปุ่มขึ้นกับ key mapping ของผู้ใช้.

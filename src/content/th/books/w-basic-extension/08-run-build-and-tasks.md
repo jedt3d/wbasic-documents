@@ -89,3 +89,7 @@ Extension จะถาม output path แบบ absolute นี่เป็น c
 
 อ่านต่อ: [ทดสอบผ่าน Test Explorer]({{< relref "/books/w-basic-extension/09-test-explorer.md" >}})
 
+
+## Named Run ใน 0.4.0 candidate
+
+ตั้ง `wbasic.runConfigurations` ใน workspace settings โดยแต่ละรายการมี `name`, `manifest` แบบ relative ต่อ workspace, `profile` debug/release และ `arguments` แบบ string array. **WBasic: Select Run Configuration** เปิด Run task ของรายการที่เลือก; **WBasic: Run Again** จำเพียงชื่อแล้วอ่านค่า config ปัจจุบันใหม่. ไม่มีการขยาย environment หรือเปลี่ยน working directory จาก config และไม่ควรเก็บ secret ใน `arguments`. ตรวจ invocation ก่อนรัน: การทำซ้ำอาจเขียนไฟล์หรือฐานข้อมูลซ้ำตามพฤติกรรมของโปรแกรม เช่น BillingTime เพิ่ม invoice ใหม่. Select Run Configuration และ Shift+F10 Run Again ผ่านในหน้าต่าง Windows; candidate ยังไม่เผยแพร่; คำสั่ง Run Project ของ 0.3.0 ด้านบนยังเป็นเส้นทาง release ที่เผยแพร่. ดู [ขอบเขต candidate]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}).

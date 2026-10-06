@@ -71,3 +71,11 @@ indirect ไม่มี target ที่จะเดาให้ โหมด G
 
 อ่านต่อ: [จัดการ module และ dependency path]({{< relref "/books/w-basic-extension/07-modules-and-dependency-paths.md" >}})
 
+
+## คำสั่งเลือกการกระทำใน 0.4.0 candidate
+
+**WBasic: Actions at Caret** และ **WBasic: Refactor This** รวบรวมการกระทำที่ใช้ได้ตามตำแหน่งและ capability; การเปลี่ยนโครงสร้างที่ compiler ยังไม่รองรับไม่ปรากฏเป็น refactor ที่พิสูจน์แล้ว. **WBasic: Surround With** ห่อ selection ด้วย If หรือ Try/Finally ตามที่ผู้ใช้เลือก ต้องอ่านเงื่อนไขและ cleanup แล้ว Check Project. ดู [ขอบเขต candidate]({{< relref "/books/w-basic-extension/12-daily-workflow-and-limits.md" >}}); Actions at Caret, Refactor This, Rename preview และ Surround With พร้อม Check/Undo ผ่านในหน้าต่าง Windows ที่ติดตั้ง candidate.
+
+### เมื่อ Vim รับปุ่มลัด
+
+ในหน้าต่าง Windows ที่ตรวจ Vim Visual Line mode รับ **Ctrl+B** ก่อนคำสั่ง Definition; ใช้ **Go to Definition** ใน Command Palette หรือ **F12**. **Alt+Enter** เรียก **WBasic: Actions at Caret** เมื่อ binding ไม่ชน. หลังแก้ protocol, F12 ไปยัง Amount ใน project ได้แม้เปิด Template ที่ไม่เป็นสมาชิก project อยู่.
