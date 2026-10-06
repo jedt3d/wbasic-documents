@@ -4,12 +4,14 @@ description: "Open or copy verified examples and begin TUI or Jobs work from det
 weight: 10
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
-The 0.2.3 correction was verified through Windows ARM64 project commands. Interactive TUI input and the macOS/Linux editor workflow were not rerun for this extension version.
+The 0.3.0 editor/protocol tests passed on Windows and Mac ARM64. E01–E10 actions
+were exercised in a real Windows VS Code window, not in a Mac or Linux UI. This
+does not establish interactive TUI input at every terminal endpoint.
 
 The extension includes the structurally verified example catalog whose hashes
-match the repository. It currently contains 31 examples in 10 categories, with 61 teaching files,
+match the repository. It currently contains 32 examples in 10 categories, with 66 teaching files,
 covering the language core, modules, tests, streams, JSON, Jobs, TUI, and a
 complete SQLite showcase.
 
@@ -34,6 +36,14 @@ runtime error, or failed assertion is not broken; it teaches that boundary delib
 5. `memory-streams` and `json-values` — typed API help
 6. `tui-counter` — deterministic model, update, and view
 7. `sqlite-customer-showcase` — a larger project composed from several modules
+
+The `editor-daily-workflow` example at source tag `v0.2.0` covers aliases,
+Structure fields, Enum members, Thai locals, rename across the app/module/tests,
+Quick Fix, formatting, and direct-call hierarchy without a database. `wb check`
+accepts it, `wb test` passes 2/2, and `wb run` prints `24`. The separate
+BillingTime example proves native debug/release runs against real SQLite: a
+fresh invoice has two lines totaling 18000 cents; a second run creates the next
+invoice.
 
 `worm-m2-sqlite` and `worm-m3-billing` can be copied as complete projects, including modules and SQLite schema where needed. Their automated actions Check and Build. To run a database example, pass an explicit SQLite path as a program argument after `--`; the generic Run Project command does not ask for that path. `worm-m4-ui-reference` opens a repository reference only. It is excluded from Copy Example because its Billing module must first be staged at the local dependency path.
 

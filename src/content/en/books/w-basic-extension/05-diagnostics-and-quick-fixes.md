@@ -4,7 +4,7 @@ description: "Separate syntax, type, and infrastructure errors, then apply keywo
 weight: 5
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 A useful diagnostic says more than “wrong.” It identifies the file, location,
 stage, and code so you can fix the cause instead of adding semicolons at random.
@@ -51,6 +51,12 @@ extension may offer a Quick Fix for that exact span. It checks the candidate
 source with the compiler before applying it. The extension neither replaces
 matching words across the file nor edits comments or strings.
 
+Put the cursor on the diagnostic, press **Ctrl+.**, and inspect the proposed
+repair. Only a WB200/WB201 span matching a recognized keyword gets this edit.
+If another project overlay changes while the candidate is checked, the stale
+result is discarded. In a CRLF file, a diagnostic at column zero must still
+edit the exact current line, never the preceding one.
+
 An absent quick fix does not mean the extension is broken. The error may have no
 safe edit, or the connected compiler may not advertise the `quickFix` capability.
 
@@ -60,7 +66,7 @@ safe edit, or the connected compiler may not advertise the `quickFix` capability
 |---|---|
 | Red underline in source | Problems and the diagnostic code |
 | Manifest or Import cannot be found | Save, then Check Project |
-| Check/Run/Build missing from Command Palette | Install 0.2.3 and reload the window; visible commands still require trust and compiler capabilities |
+| Check/Run/Build missing from Command Palette | Install 0.3.0 and reload the window; visible commands still require trust and compiler capabilities |
 | Compiler does not start | Show Toolchain Status |
 | Language help stops updating | Show Language Server Output |
 

@@ -4,7 +4,7 @@ description: "SQLite を開き、アプリが明示する移行を適用しま�
 weight: 6
 ---
 
-[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) は `toolchain = "0.1.0"`、同梱の `Worm`、ローカルの `Billing` モジュールを指定します。[Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) が受け取るデータベースのパスは最大1つです。引数がなければ、現在の作業ディレクトリの `billing-time-demo.sqlite` を使います。空のパス、または2つ以上の引数を渡すと、SQLite を開く前にエラーを返します。
+[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) は `toolchain = "0.2.0"`、同梱の `Worm`、ローカルの `Billing` モジュールを指定します。[Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) が受け取るデータベースのパスは最大1つです。引数がなければ、現在の作業ディレクトリの `billing-time-demo.sqlite` を使います。空のパス、または2つ以上の引数を渡すと、SQLite を開く前にエラーを返します。
 
 データベースを開いた後、`Main` は移行を明示的に呼びます。
 

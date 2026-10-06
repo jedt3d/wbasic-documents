@@ -4,11 +4,11 @@ description: "検証済みサンプルを開く・コピーし、決定的なテ
 weight: 10
 ---
 
-> **バージョンの範囲 — ローカル検証済み拡張機能 0.2.3。** 0.2.3 VSIX は、対応する開発用コンパイラ／ランタイムと組み合わせてローカルで検証しました。公開済みの実験的な非公開コンパイラ／ランタイムは `0.1.0`、プロトコルパッケージは `0.0.2` です。公開済み ARM64 ZIP に同梱された拡張機能 `0.2.1` は変更されておらず、拡張機能 `0.2.3` に公開リリースや Marketplace 掲載はありません。[パッケージのガイド]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) から始めてください。古い非公開コンパイラ `0.0.2` は拡張機能 `0.1.0` を同梱し、これらのプロジェクト編集機能を持ちません。
+> **対象バージョン — 対応する private experimental 0.2.0 一式。** このガイドは Windows/macOS ARM64 の compiler/runtime `0.2.0`、protocol `0.1.0`、VS Code extension `0.3.0` を対象とします。旧 `0.1.0`/extension `0.2.1` とローカル修正版 `0.2.3` は別の履歴です。extension の更新だけで E01–E10 は利用可能になりません。最初に **WBasic: Show Toolchain Status** でバージョンと capability を確認してください。
 
-0.2.3 の修正は Windows ARM64 のプロジェクトコマンドで検証しました。この版では、対話型 TUI 入力と macOS／Linux のエディター操作は再検証していません。
+0.3.0 のエディター／プロトコルテストは Windows と Mac ARM64 で通りました。E01–E10 の操作は実際の Windows VS Code ウィンドウで確認しましたが、Mac／Linux の UI やすべての端末接続先での対話型 TUI 入力を証明するものではありません。
 
-拡張機能には、構造を検証し、ハッシュがリポジトリと一致するサンプルカタログを同梱しています。現在は 10 カテゴリ、31 サンプル、61 教材ファイルで、言語の基本、モジュール、テスト、ストリーム、JSON、Jobs、TUI、完全な SQLite 展示用プロジェクトを扱います。
+拡張機能には、構造を検証し、ハッシュがリポジトリと一致するサンプルカタログを同梱しています。現在は 10 カテゴリ、32 サンプル、66 教材ファイルで、言語の基本、モジュール、テスト、ストリーム、JSON、Jobs、TUI、完全な SQLite 展示用プロジェクトを扱います。
 
 ## Open と Copy の目的は異なる
 
@@ -27,6 +27,8 @@ weight: 10
 5. `memory-streams` と `json-values` — 型付き API のヘルプ
 6. `tui-counter` — 決定的なモデル、更新、表示
 7. `sqlite-customer-showcase` — 複数モジュールを組み合わせた大きめのプロジェクト
+
+ソースタグ `v0.2.0` の `editor-daily-workflow` は、データベースなしで別名、Structure フィールド、Enum メンバー、タイ語のローカル変数、アプリ／モジュール／テストをまたぐ名前変更、Quick Fix、整形、直接呼び出し階層を練習できます。`wb check` に通り、`wb test` は 2/2 件成功し、`wb run` は `24` を表示します。別の BillingTime 例は実際の SQLite に対する native debug/release 実行を示します。新しい請求書は二行で合計 18000 cents、再実行すると次の請求書が作られます。
 
 `worm-m2-sqlite` と `worm-m3-billing` は、必要なモジュールや SQLite スキーマを含む完全なプロジェクトとしてコピーできます。自動操作は Check と Build です。データベースの例を実行するには、`--` の後に明示的な SQLite パスをプログラム引数として渡します。汎用の Run Project はそのパスを尋ねません。`worm-m4-ui-reference` はリポジトリ内の参照資料を開くだけです。Billing モジュールをローカル依存パスへ準備する必要があるため、Copy Example の対象外です。
 

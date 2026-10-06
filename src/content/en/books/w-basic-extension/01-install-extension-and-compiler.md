@@ -1,10 +1,10 @@
 ---
 title: "1 · Prepare VS Code, the extension, and the compiler"
-description: "Install the development VSIX, connect wb, and confirm that the extension sees the correct toolchain"
+description: "Install VSIX 0.3.0, connect wb 0.2.0, and confirm the selected toolchain"
 weight: 1
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 The first chapter has one goal: introduce VS Code to `wb` before creating a
 project. If you skip this step, some completion may still look perfectly polite,
@@ -13,23 +13,23 @@ but compile commands will stand silent like a professor who never received the c
 ## What you need
 
 - VS Code 1.137 or later
-- A separately supplied 0.2.3 VSIX; the published ZIP still bundles 0.2.1 at `editors/vscode/wbasic-0.2.1.vsix`
-- `wb`, runtime assets, and linker from the same v0.1.0 ZIP
+- The 0.3.0 VSIX recorded in the 0.2.0 package's `wb-package.json`
+- `wb`, runtime assets, linker, and probe from the same 0.2.0 ZIP
 - MSVC ARM64 or Apple Clang only if you are building the toolchain from source
 
-This private prerelease is development tooling, not a Marketplace or production
-release. The portable ZIP's bundled toolchain runs and builds without using a host
-SDK; fresh no-SDK host acceptance remains open.
+This private experimental release is development tooling, not a Marketplace or
+production release. Native Run/Build passed on developer hosts; fresh no-SDK
+host acceptance remains open.
 
 ## Install the VSIX
 
 1. Open the **Extensions** view in VS Code.
 2. Open the `…` menu at the top of the view.
 3. Select **Install from VSIX…**.
-4. Select the separately supplied 0.2.3 VSIX. The extracted package's `wb-package.json` points to 0.2.1; if using that older VSIX, verify its recorded SHA-256.
+4. Select the 0.3.0 VSIX at `vscodeVsix.path` in `wb-package.json` and verify its SHA-256 against the release record.
 5. Reload the window when VS Code asks.
 
-Use **Developer: Reload Window** after installation so the current window loads the new version. Extension 0.2.3 was checked in VS Code 1.140.0 on Windows ARM64. The published ZIP keeps its original 0.2.1 extension and matched compiler/runtime/linker.
+Use **Developer: Reload Window** after installation. Extension 0.3.0 passed real VS Code 1.140.0 actions on Windows ARM64 and isolated host checks. Mac ARM64 editor/protocol tests are separate evidence, not proof that every UI action was repeated in a real Mac window.
 
 After installation, open the Command Palette and search for `WBasic:`. The
 extension is active when you see commands such as **WBasic: New Project**,
@@ -47,7 +47,9 @@ If discovery fails, open Settings, search for `WBasic: Compiler Path`, and enter
 the absolute path to `wb.exe` on Windows or `wb` on macOS. Do not append a shell
 command or arguments: this setting accepts one executable path.
 
-Confirm extension `0.2.3` in the Extensions view. Open the Command Palette and select **WBasic: Show Toolchain Status**. For this guide, verify it reports compiler `0.1.0`. A ready result shows the path, compiler version, development round, and native target for this machine.
+Confirm extension `0.3.0` in the Extensions view. Open the Command Palette and select **WBasic: Show Toolchain Status**. For this guide, verify it reports compiler `0.2.0`. A ready result shows the path, compiler version, development round, and native target for this machine.
+
+**WBasic: About and Credits** shows the installed extension version without invoking the compiler and opens local extension notices in Restricted Mode. Compiler/runtime notices belong to the separate matched compiler package.
 
 {{< guide-screenshot name="01-toolchain-status.png" alt="VS Code after WBasic: Show Toolchain Status, showing compiler path, version, development round, and native target without personal information" caption="Screenshot to capture: Toolchain Status after the VSIX and compiler are connected" >}}
 
@@ -57,7 +59,7 @@ Syntax highlighting, Outline, and the bundled specification remain available in
 Restricted Mode. Check, run, build, and test work only in a trusted workspace,
 because these commands invoke the native compiler and may run project programs.
 
-Trust only folders whose origin you know. In 0.2.3, Check Project, Run Project,
+Trust only folders whose origin you know. In 0.3.0, Check Project, Run Project,
 and the three Development Build commands remain visible in the palette. If one
 refuses to run, check Workspace Trust and live compiler capabilities before
 changing settings.

@@ -53,7 +53,7 @@ wb run App.wproj -- first "ภาษาไทย"
 ```
 
 `wb run` compile/link native executable ไม่ใช่ interpreter รุ่นที่เผยแพร่ล่าสุดคือ
-**compiler/runtime 0.1.0** รุ่นเดียวกับ compiler ที่ Extension 0.2.3 ที่ตรวจในเครื่องแล้วเลือกใช้ โดย ZIP ที่เผยแพร่ยังบรรจุ 0.2.1
+**compiler/runtime 0.2.0** รุ่นเดียวกับ compiler ที่ Extension **0.3.0** และ protocol **0.1.0** เลือกใช้
 project และ module ต้อง pin `toolchain` ให้ตรงกัน ZIP ทั้งสองแพลตฟอร์มผ่าน
 การทดสอบหลังแตกไฟล์บนเครื่องนักพัฒนาแล้ว ส่วน fresh-host no-SDK acceptance
 ยังเป็น gate แยกที่ไม่ผ่าน
@@ -89,12 +89,18 @@ typed data rows, reports แบบกลุ่ม, structural collection/JSON ma
 `wb --capabilities` รายงานความสามารถที่ binary นี้โฆษณา คำสั่งเหล่านี้ใช้ compiler
 ชุดเดียวกับ check ไม่สร้าง parser เงาอีกชุด
 
-ใน compiler 0.1.0 มี `wb editor-project --json` และ
+ใน compiler 0.2.0 มี `wb editor-project --json` และ
 `wb editor-manifest --json` รับ versioned JSON request ทาง stdin เพื่อวิเคราะห์
 project/manifest โดยไม่ execute โปรแกรม ใช้กับ source overlays ที่ยังไม่บันทึก
 LSP/Extension ใช้รายงานนี้กับ diagnostics, completion และ navigation ข้ามไฟล์
 เมื่อ compiler รายงาน `editorProject: true` รุ่นเก่าจะได้เฉพาะบริการที่ capability
 รองรับ ดู [ขอบเขตเวอร์ชัน]({{< relref "/implementation-status.md" >}})
+
+รายงาน compiler ปัจจุบันเพิ่ม identity ของ local, parameter, type และ member สำหรับ
+Definition/References/Rename; LSP ตรวจ edits กับ compiler ก่อนเสนอ. เมื่อ compiler
+โฆษณา `editorProjectTests` จะรวม test files ที่ค้นพบแยกกันใน references และ incoming
+Call Hierarchy. Highlight อยู่ในเอกสารปัจจุบัน; Call Hierarchy แสดงเฉพาะ direct calls
+ที่ resolve ได้. Formatter ใน Extension จัด indentation เท่านั้น ไม่ใช่คำสั่ง `wb fmt`
 
 สำหรับ terminal ใช้:
 

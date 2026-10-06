@@ -1,10 +1,10 @@
 ---
 title: "WBasic Extension Guide"
-description: "คู่มือจับมือใช้ WBasic บน VS Code ตั้งแต่สร้าง project จนถึง run, build, test และจัดการ module"
+description: "คู่มือใช้ WBasic 0.2.0 กับ VS Code extension 0.3.0 ตั้งแต่ project ถึง editor, run, build และ test"
 weight: -4
 ---
 
-**เลือกเวอร์ชันที่เข้าคู่กัน** บทที่ 1–12 ใช้ extension `wbasic-dev.wbasic@0.2.3` ที่ตรวจกับ development compiler/runtime ในเครื่อง ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` VSIX รุ่น 0.2.3 ต้องได้รับแยกต่างหาก: ZIP ARM64 ที่เผยแพร่บรรจุ VSIX รุ่น 0.2.1 ไว้ตามเดิม ยังไม่มี 0.2.3 release หรือ Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}})
+**เลือกเวอร์ชันที่เข้าคู่กัน** บทที่ 1–12 ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ extension `wbasic-dev.wbasic@0.3.0` ของชุด private experimental ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` ยังเป็นประวัติ release แยกต่างหาก ไม่ใช่เครื่องมือสำหรับทำ E01–E10 ตามเล่มนี้ เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}})
 
 คู่มือ development ปัจจุบัน สอนใช้ **WBasic Extension for VS Code** แบบลงมือทำจริง ตั้งแต่เปิด
 workspace ว่าง สร้าง project แรก เขียน source ด้วย autocomplete และ diagnostics
@@ -14,10 +14,13 @@ workspace ว่าง สร้าง project แรก เขียน source 
 **ภารกิจฝึกมือ** และ **จุดตรวจ** เพื่อให้รู้ว่าทำสำเร็จจริง ไม่ใช่เพียงกดตามรูปแล้ว
 หวังว่า compiler จะเห็นใจ
 
-Extension รุ่นที่หนังสืออ้างอิงคือ development payload `wbasic-dev.wbasic@0.2.3`
-ซึ่งตรวจ workflow ของ Command Palette กับ VS Code 1.140.0 บน Windows 11 ARM64
-ผล Mac ARM64 และ TUI แบบรับ input ของรุ่น 0.2.3 ยังไม่ได้รันทดสอบซ้ำ
-เมื่อใช้ compiler, runtime assets และ linker ที่เข้าคู่กันในแพ็ก การ Run และ Development Build ไม่ต้องใช้ SDK ของ host แต่การ build จาก source ยังต้องใช้ native SDK ส่วน fresh no-SDK host acceptance และ production distribution ยังเปิดอยู่
+Extension 0.3.0 ผ่าน E01–E10 happy paths ใน VS Code 1.140.0 บน Windows 11 ARM64,
+และการยกเลิก native test run ผ่าน Testing/Command Palette ซึ่งแสดงผลของ case ที่จบแล้ว
+กับ case ที่ถูกขัดจังหวะแยกกัน ส่วน inline Run Test ผ่าน happy path แบบหนึ่ง case
+Editor/protocol suites ผ่านบน Windows/macOS ARM64 ที่ source revision เดียวกัน
+ผลนี้ไม่ใช่การตรวจ UI ทุก action บน Mac หรือ Linux เมื่อใช้ compiler, runtime assets
+และ linker ที่เข้าคู่กัน การ Run และ Development Build ผ่านบน developer hosts;
+fresh no-SDK host acceptance กับ production distribution ยังเปิดอยู่
 
 เมื่อใช้ prerelease ที่เข้าคู่กัน ให้เริ่มที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}})
 

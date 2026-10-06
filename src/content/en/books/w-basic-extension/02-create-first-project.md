@@ -4,7 +4,7 @@ description: "Use New Project to create the manifest, source, and test skeleton 
 weight: 2
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 We will create `MyFirstWBasic` with the extension so its layout matches what the
 compiler and Test Explorer expect.
@@ -36,7 +36,7 @@ MyFirstWBasic/
     `-- test-catalog.json
 ```
 
-The generated `App.wproj` writes the version reported by the selected compiler into `toolchain`. With the matched compiler for this guide, it is `0.1.0`; check that value before continuing. A different selected compiler produces its own reported version.
+The generated `App.wproj` writes the version reported by the selected compiler into `toolchain`. With the matched compiler for this guide, it is `0.2.0`; check that value before continuing. A different selected compiler produces its own reported version.
 
 ## Meet the four files
 

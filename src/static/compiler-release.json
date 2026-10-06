@@ -1,28 +1,34 @@
 {
   "schemaVersion": 1,
   "status": "Published",
-  "compilerVersion": "0.1.0",
-  "runtimeVersion": "0.1.0",
-  "extensionVersion": "0.2.1",
-  "protocolVersion": "0.0.2",
-  "tag": "v0.1.0",
+  "compilerVersion": "0.2.0",
+  "runtimeVersion": "0.2.0",
+  "extensionVersion": "0.3.0",
+  "protocolVersion": "0.1.0",
+  "tag": "v0.2.0",
   "channel": "private-experimental",
-  "sourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
-  "releaseUrl": "https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0",
+  "sourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0",
+  "releaseUrl": "https://github.com/jedt3d/wbasic-language/releases/tag/v0.2.0",
   "productionRelease": false,
   "noSdkDistribution": false,
   "assets": [
     {
-      "target": "aarch64-pc-windows-msvc",
-      "name": "wbasic-0.1.0-windows-arm64.zip",
-      "bytes": 43661814,
-      "sha256": "85c135ce9ad6ccf2edadd3c892ea677110f1ca0f15d012ec348a924213d93a74"
+      "target": "aarch64-apple-darwin",
+      "name": "wbasic-0.2.0-macos-arm64.zip",
+      "bytes": 53502386,
+      "sha256": "60c3ddc8444be8f1c6e043b395b7fdc23bf583cdcdf82f72c972a81b2be7e556"
     },
     {
-      "target": "aarch64-apple-darwin",
-      "name": "wbasic-0.1.0-macos-arm64.zip",
-      "bytes": 52963215,
-      "sha256": "50abba3266fd1209666865e1351a68a899aabed95f5a486522d996bc1a93bad6"
+      "target": "aarch64-pc-windows-msvc",
+      "name": "wbasic-0.2.0-windows-arm64.zip",
+      "bytes": 44126806,
+      "sha256": "23ebc4f9d960f2807531c675e97ecd19dc2d3446c2605d9ca520f42fa7079e6b"
     }
-  ]
+  ],
+  "extensionAsset": {
+    "name": "wbasic-0.3.0.vsix",
+    "bytes": 356492,
+    "sha256": "a39571f5285c1f0db4b6e88a259522ed0406dc0f0402035d666205eb0e1b7b0c",
+    "sourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0"
+  }
 }

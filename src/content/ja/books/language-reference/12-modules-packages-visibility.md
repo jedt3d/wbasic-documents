@@ -15,7 +15,7 @@ modules/Acme.wmod/module.toml
 modules/Acme.wmod/src/Math/Total.wbas
 ```
 
-このマニフェストはコンパイラ／ランタイム0.1.0を対象とします。プロジェクトとモジュールの`toolchain`
+このマニフェストはコンパイラ／ランタイム0.2.0を対象とします。プロジェクトとモジュールの`toolchain`
 指定は、CLIとエディターが選ぶコンパイラに一致しなければなりません。
 
 ```toml
@@ -23,7 +23,7 @@ modules/Acme.wmod/src/Math/Total.wbas
 name = "Example"
 module = "App"
 entry = "src/Main.wbas"
-toolchain = "0.1.0"
+toolchain = "0.2.0"
 
 [dependencies]
 Acme = { path = "modules/Acme.wmod" }

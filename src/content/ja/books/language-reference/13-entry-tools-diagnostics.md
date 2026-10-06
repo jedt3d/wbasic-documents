@@ -48,8 +48,8 @@ wb run App.wproj -- first "ภาษาไทย"
 ```
 
 `wb run`はネイティブ実行ファイルをコンパイルしてリンクします。インタープリターではありません。
-公開済みの最新コンパイラ／ランタイムは**0.1.0**で、ローカル検証済みの Extension 0.2.3 が選ぶ
-コンパイラと同じ版です。公開済み ZIP には引き続き Extension 0.2.1 が同梱されています。プロジェクトとモジュールの`toolchain`指定も一致する必要があります。両ARM64の
+公開済みの最新コンパイラ／ランタイムは**0.2.0**で、Extension **0.3.0** と protocol **0.1.0** が選ぶ
+コンパイラと同じ版です。プロジェクトとモジュールの`toolchain`指定も一致する必要があります。両ARM64の
 ポータブルZIPは展開した開発ホストでの検査に合格しましたが、SDKのない新規ホストでの
 受け入れは未完了です。
 
@@ -76,13 +76,15 @@ wb test App.wproj --filter Customer --json
 
 `wb symbols FILE --json`と`wb references FILE --json`は、コンパイラが検査したメタデータをエディターとプロトコルへ公開します。`wb project-info MANIFEST --json`はプロジェクトのメタデータを読み、`wb --capabilities`はこのバイナリが提供すると宣言する機能を報告します。これらのコマンドは別の構文解析器を作らず、checkと同じコンパイラを使います。
 
-コンパイラ0.1.0には`wb editor-project --json`と
+コンパイラ0.2.0には`wb editor-project --json`と
 `wb editor-manifest --json`もあります。標準入力からバージョン付きJSON要求を受け、
 保存されていないソースの上書き内容も含め、アプリケーションを実行せずにプロジェクトや
 マニフェストのスナップショットを解析します。LSP/Extensionは`editorProject: true`が
 宣言された場合、これらの報告を診断、補完、ファイル間の移動に使います。
 旧版のコンパイラでは、その能力表示で対応するサービスだけが使えます。詳しくは
 [バージョンの境界]({{< relref "/implementation-status.md" >}})を参照してください。
+
+現在のコンパイラは、ローカル変数、パラメーター、型、メンバーの識別子を報告し、Definition、References、Rename に使います。LSP は編集案をコンパイラで検証します。`editorProjectTests` がある場合、別々に発見されたテストファイルもプロジェクトの参照と incoming Call Hierarchy に含めます。ハイライトは現在の文書に限り、Call Hierarchy は解決済みの直接呼び出しだけを表示します。Extension の formatter が変更するのはインデントだけで、CLI の `wb fmt` ではありません。
 
 端末では次を使います。
 

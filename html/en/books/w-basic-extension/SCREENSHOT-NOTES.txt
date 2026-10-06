@@ -15,6 +15,6 @@ stable names so prose does not need to change:
 09-test-explorer.png           Passed/failed/data-row cases in Testing view.
 10-examples.png                WBasic: Open Example picker.
 
-Capture from an isolated VS Code profile with the verified local 0.2.3 VSIX. Do not show personal
+Capture from an isolated VS Code profile with the matched private experimental 0.3.0 VSIX. Do not show personal
 paths, usernames, unrelated extensions, recent projects, tokens, terminal history, or secrets.
 

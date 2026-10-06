@@ -4,7 +4,7 @@ description: "Configure only what is needed, read logs, and diagnose layers with
 weight: 11
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 The WBasic Extension deliberately has few settings. Project behavior belongs in
 the manifest and compiler metadata rather than hidden machine configuration.
@@ -21,7 +21,7 @@ the manifest and compiler metadata rather than hidden machine configuration.
 `verbose` may record source text in the local Output channel. Enable it only
 while diagnosing a problem and turn it off afterward.
 
-This 0.2.3 guide uses `wbasic.defaultProfile`, as do 0.2.1 and 0.2.2. The older extension 0.1.0 uses `wbasic.buildProfile`; keep settings aligned with the version actually loaded. After changing the VSIX, reload the VS Code window and confirm Show Toolchain Status reports compiler `0.1.0`.
+This 0.3.0 guide uses `wbasic.defaultProfile`. The older extension 0.1.0 used `wbasic.buildProfile`. After changing the VSIX, reload VS Code and confirm Show Toolchain Status reports compiler `0.2.0` from the package matched to the build runtime.
 
 ## Diagnostic order when the extension is not working
 
@@ -42,12 +42,13 @@ toolchain and the language-server output channel.
 ### Completion is incomplete
 
 Check the receiver type and current compiler capabilities. Arbitrary expression
-chains, intrinsic String and Array member metadata, and local-variable navigation
-are not complete yet.
+chains and intrinsic String and Array member metadata remain incomplete. The
+0.2.0 compiler has a semantic graph for resolved locals, parameters, types, and
+members, but does not guess at tokens without graph coverage.
 
 ### Check, Run, or Build is missing from the palette
 
-In 0.2.3, **Check Project**, **Run Project**, and all three Development Build
+In 0.3.0, **Check Project**, **Run Project**, and all three Development Build
 commands remain visible in the Command Palette. After installing, use
 **Developer: Reload Window** and check the version in Extensions. Visible
 commands still refuse execution without Workspace Trust or the required live
@@ -67,6 +68,20 @@ Store/MSIX filesystem rule.
 
 The compiler must advertise development-build capability and supported profiles.
 The extension fails closed rather than creating an imitation build command.
+
+If the compiler says an existing build output uses a different runtime, preserve
+that output as a backup and rebuild with the compiler/runtime/linker from the
+same 0.2.0 package. Do not overwrite it with old DLLs or archives to bypass
+the matched-pair check.
+
+### References, Rename, or Call Hierarchy is unavailable
+
+Check `editorProject`, `editorSemanticGraph`, and `editorProjectTests` for the
+operation at hand. Save test files so the compiler can discover cases. App/test
+references must cover each relevant test context; stale contexts or a saved
+test file with no discoverable case cause an explicit unavailable result rather
+than partial edits. Project overlays allow 32 documents, 1 MiB per file, and
+4 MiB total. Inline Run Test allows 100 cases and a 1 MiB source file.
 
 ### The module path is correct, but Check fails
 

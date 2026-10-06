@@ -30,6 +30,6 @@ Procedure TimeMap() As Worm.Mapping Of TimeEntry
 EndProcedure
 ```
 
-เลข `1` เป็นรุ่นของนิยาม mapping ไม่ใช่ `Version` ของแถว Compiler 0.1.0 รายงาน WB301 เมื่อนิยาม `modelId` และรุ่นเดียวกันในโปรแกรมเดียวขัดกัน แต่ไม่ได้ตรวจ schema ที่มีอยู่ในฐานข้อมูลให้ตรงกับ mapping โดยอัตโนมัติ แอปจึงต้องจัดการ migration เอง
+เลข `1` เป็นรุ่นของนิยาม mapping ไม่ใช่ `Version` ของแถว Compiler 0.2.0 รายงาน WB301 เมื่อนิยาม `modelId` และรุ่นเดียวกันในโปรแกรมเดียวขัดกัน แต่ไม่ได้ตรวจ schema ที่มีอยู่ในฐานข้อมูลให้ตรงกับ mapping โดยอัตโนมัติ แอปจึงต้องจัดการ migration เอง
 
 อ่านต่อ: [Schema และ migration]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}})

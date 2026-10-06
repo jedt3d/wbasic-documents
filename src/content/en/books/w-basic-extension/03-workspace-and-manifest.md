@@ -4,7 +4,7 @@ description: "Understand App.wproj, Outline, and the Projects view before writin
 weight: 3
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 Open `App.wproj`. Its basic shape looks like this:
 
@@ -13,7 +13,7 @@ Open `App.wproj`. Its basic shape looks like this:
 name = "MyFirstWBasic"
 module = "MyFirstWBasic"
 entry = "src/Main.wbas"
-toolchain = "0.1.0"
+toolchain = "0.2.0"
 
 [dependencies]
 ```

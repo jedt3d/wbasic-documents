@@ -1,27 +1,25 @@
 ---
-title: "0 · เลือกแพ็ก 0.1.0 ที่เข้าคู่กัน"
-description: "แยกแพ็ก ARM64 ที่เผยแพร่กับ VS Code extension 0.2.3 ที่ตรวจในเครื่อง"
+title: "0 · เลือกชุดเครื่องมือ 0.2.0 ที่เข้าคู่กัน"
+description: "ตรวจแพ็ก ARM64, VSIX 0.3.0 และ compiler ที่ VS Code เลือก ก่อนเริ่ม workflow ประจำวัน"
 weight: 0
 ---
 
-**Private experimental v0.1.0 prerelease** [หน้า private release](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) มี compiler/runtime `0.1.0`, VS Code extension `wbasic-dev.wbasic@0.2.1` ใน ZIP และ protocol package `0.0.2` จาก sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46` Asset ทั้งแปดถูกดาวน์โหลดและตรวจ hash ซ้ำก่อนเผยแพร่ ต้องมีสิทธิ์เข้า private repository จึงเปิดลิงก์ได้ คู่มือนี้ใช้ extension `0.2.3` ที่ได้รับแยกต่างหาก ผล Command Palette บน Windows จริงใช้ development compiler source `dfdcbdc` ส่วน compiler `0.1.0` ที่เผยแพร่เป็น sealed source `3901cf17` เลขรุ่นเท่ากันไม่ได้ทำให้หลักฐานทดสอบเป็นชุดเดียวกัน ยังไม่มี 0.2.3 release หรือ Marketplace
+คู่มือนี้อธิบายชุด **private experimental** ที่เข้าคู่กัน: compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `wbasic-dev.wbasic@0.3.0` สำหรับ Windows/macOS ARM64 ดาวน์โหลดจาก [private release ของ WBasic](https://github.com/jedt3d/wbasic-language/releases/tag/v0.2.0) ซึ่งต้องมีสิทธิ์เข้าถึง repository ก่อน รุ่นเก่า `0.1.0` พร้อม extension `0.2.1` ยังเป็นประวัติ release ที่แยกกัน; extension `0.2.3` เคยตรวจในเครื่อง แต่ไม่ใช่ VSIX ที่มากับแพ็กใหม่นี้ อย่ารวม binary, runtime, manifest pin หรือผลทดสอบจากต่างรุ่นเป็นชุดเดียวกัน
 
-เมื่อนำ extension 0.2.3 มาตรวจกับ compiler/runtime ที่เผยแพร่จาก sealed source ชุดทดสอบ editor 127 รายการผ่านโดยไม่มีรายการข้าม และ VS Code host แบบแยก 11 รายการผ่านบน Windows ARM64 ส่วนผล Check/Run/Build ผ่าน Command Palette ของหน้าต่างผู้ใช้จริงและ output ที่ค้างให้อ่าน ยังอ้าง development source `dfdcbdc`
+## เลือกและตรวจแพ็ก
 
-## เลือกและตรวจ ZIP
+เลือก ZIP Windows ARM64 หรือ macOS ARM64 ที่ระบุ compiler `0.2.0` ให้ตรงกับเครื่อง ตรวจ SHA-256 กับไฟล์ `.sha256` และ release record ก่อนแตกไฟล์ จากนั้นอ่าน `wb-package.json` ในแพ็ก: `sourceRevision`, target, compiler version, inventory และ `vscodeVsix.path`/`sha256` ต้องตรงกับ asset ที่ดาวน์โหลด เก็บ `wb`, runtime assets, linker และ native probe จากแพ็กเดียวกันไว้ด้วยกัน ไม่ใช้ runtime ค้างจาก 0.1.0 โฟลเดอร์ build ที่เคยสร้างด้วย runtime อีกชุดอาจถูก compiler ปฏิเสธ; เก็บผลเก่าไว้แยกก่อนสร้างใหม่
 
-ดาวน์โหลด `wbasic-0.1.0-windows-arm64.zip` หรือ `wbasic-0.1.0-macos-arm64.zip` จาก private release ให้ตรงกับเครื่อง ตรวจ SHA-256 ของ ZIP เทียบกับไฟล์ `.sha256` และ release record ก่อนแตกไฟล์ Windows ZIP มี hash `85c135ce9ad6ccf2edadd3c892ea677110f1ca0f15d012ec348a924213d93a74` ส่วน macOS ZIP มี hash `50abba3266fd1209666865e1351a68a899aabed95f5a486522d996bc1a93bad6` ดู `wb-package.json` ใน top-level folder เพื่อยืนยัน compiler version, source revision, target, inventory และ `vscodeVsix.path`/`sha256` VSIX ที่ระบุคือ `editors/vscode/wbasic-0.2.1.vsix` มี SHA-256 `d2aa385b5ec035b278aadfcfea500093e23e98797d91b307902cf14413f6158f` ตรวจทั้ง path และ hash เก็บ compiler, runtime assets ที่เข้าคู่กัน, linker และ probe จาก ZIP เดียวกันไว้ด้วยกัน Runtime ในแพ็กใช้ platform libraries ไม่ใช่ไฟล์ static runtime แยก
-
-`Install-And-Test.ps1` บน Windows หรือ `Install-And-Test.sh` บน macOS ตรวจ native examples และเขียน report คำสั่งหลัก `wb check`, `wb run`, `wb test` และ `wb build` ไม่ต้องใช้ VS Code แพ็กที่แตกแล้วผ่าน Run/Build ทั้ง debug และ release โดยใช้ compiler, runtime assets และ linker ในแพ็กโดยไม่ใช้ SDK ของ host ส่วนการ build จาก source ยังต้องมี native development tools แพ็ก private experimental นี้ยังแยกจาก production distribution ส่วน fresh no-SDK acceptance, redistribution notices, signing/notarization และ production entitlement ยังเปิดอยู่
+แพ็กนี้เป็นเครื่องมือพัฒนาแบบ private experimental ผล native Windows/macOS ARM64 ตรวจบน developer hosts แล้ว ทั้ง source-backed fixture และ BillingTime debug/release ส่วน production entitlement, fresh no-SDK host acceptance, signing/notarization และแพลตฟอร์มอื่นยังไม่ผ่านเกณฑ์แจกจ่าย production
 
 ## เชื่อม VS Code
 
-ใน Extensions เลือก **Install from VSIX…** แล้วเลือก VSIX 0.2.3 ที่ได้รับในเครื่อง หากมีเพียง VSIX ที่ `wb-package.json` ระบุ จะได้รุ่น 0.2.1 พร้อมพฤติกรรมเดิม Reload Window แล้วตรวจเลขรุ่นใน Extensions ใน trusted workspace ตั้ง `wbasic.compilerPath` เป็น absolute path ของ `wb.exe` หรือ `wb` ที่หน้าต่าง VS Code เข้าถึงได้ ตั้ง `wbasic.probePath` เฉพาะเมื่อใช้ native probe แยกต่างหาก เรียก **WBasic: Show Toolchain Status** แล้วตรวจว่า compiler เป็น `0.1.0` และ target ตรงกับเครื่อง Extension ยังค้นหา managed development toolchain, debug build ใน repository และ `PATH` ด้วย
+ใน Extensions เลือก **Install from VSIX…** แล้วเลือก VSIX `0.3.0` ที่ `wb-package.json` ระบุ ตรวจ hash ตาม record และใช้ **Developer: Reload Window** เปิด project ใน trusted workspace แล้วเรียก **WBasic: Show Toolchain Status** ให้เห็น compiler `0.2.0` และ native target ของเครื่อง หากค้นหา compiler ไม่พบ ตั้ง `wbasic.compilerPath` เป็น absolute path ของ `wb.exe` หรือ `wb` จากแพ็กที่เลือก; `wbasic.probePath` ใช้เมื่อแยกตำแหน่ง probe เท่านั้น ช่องเหล่านี้รับ path ไม่รับคำสั่ง shell
 
-สเปกแบบ offline อยู่ใน `docs/` ของแพ็ก ต้อง trust workspace เพื่อเรียก compiler, build, run และ test ส่วน coloring, Outline และเอกสารในเครื่องใช้ได้ใน Restricted Mode
+คำสั่ง Check, Run, Build และ Test ต้องใช้ Workspace Trust กับ capability ที่ compiler ประกาศ Coloring, Outline, About and Credits และสเปกใน extension ยังเปิดได้ใน Restricted Mode ความสามารถ editor แบบ project ต้องมี `editorProject`, `editorSemanticGraph` และเมื่อเกี่ยวกับ test source ต้องมี `editorProjectTests`; compiler เก่าจะไม่ได้ graph ใหม่นี้จากการติดตั้ง VSIX อย่างเดียว
 
-## เริ่ม project
+## เริ่ม project และตรวจผล
 
-ใช้ **WBasic: New Project** ในโฟลเดอร์ว่าง `App.wproj` จะ pin เวอร์ชันที่ compiler ตัวที่เลือกประกาศ จึงต้องตรวจว่า `toolchain = "0.1.0"` ก่อน Check Project ถ้ามี module ไฟล์ `module.toml` ต้องใช้ toolchain รุ่นเดียวกัน อย่านำ manifest หรือ compiler/runtime binary ของ v0.0.2 มาปนกับแพ็กนี้โดยไม่ปรับและตรวจอย่างชัดเจน ใช้ **WBasic: Check Project** ตรวจ import และ direct dependency ที่บันทึกแล้ว ส่วน **Check Active Source** ตรวจ unsaved standalone file และใช้แทน project check ไม่ได้
+ใช้ **WBasic: New Project** ในโฟลเดอร์ว่าง Manifest ที่สร้างจะ pin รุ่นที่ compiler ตัวที่เลือกประกาศ: สำหรับคู่นี้ `toolchain = "0.2.0"` ทั้งใน `App.wproj` และ `module.toml` ที่เกี่ยวข้อง ใช้ **WBasic: Check Project** กับ project ที่บันทึกแล้ว; live diagnostics จะอ่าน unsaved project overlays ที่อยู่ในขอบเขต ส่วน **Check Active Source** ตรวจ source เดี่ยวและไม่แทน project check ที่มี Import
 
-อ่านต่อที่ [เตรียม VS Code, extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}}) แล้วทำบทที่ 2–12 สำหรับ Projects, diagnostics, completion, navigation, Test Explorer, examples และ Development Build แพ็ก private v0.0.2 เดิมมี extension 0.1.0 ซึ่งไม่มี editor workflow เหล่านี้ หากใช้เวอร์ชันนั้นให้ดู release notes และเอกสารที่มากับแพ็กของมัน
+ตัวอย่าง [daily editor workflow ที่ tag v0.2.0](https://github.com/jedt3d/wbasic-language/tree/v0.2.0/examples/editor-daily-workflow) อยู่ใน source ที่ pin ตาม release และมากับแพ็ก เป็น project ข้าม module ที่ตรวจแล้ว `wb check` ยอมรับ, `wb test` ผ่าน 2/2 และ `wb run` พิมพ์ `24` เริ่มจากบท [ติดตั้ง extension และ compiler]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}}) แล้วตามบท 2–12 เพื่อใช้การเขียน, navigation, formatting, inline test และ direct-call hierarchy ใน VS Code จริง

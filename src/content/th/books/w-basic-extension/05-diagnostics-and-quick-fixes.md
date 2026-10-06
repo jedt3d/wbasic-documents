@@ -4,7 +4,7 @@ description: "แยก syntax, type และ infrastructure error พร้อ
 weight: 5
 ---
 
-> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — ชุด private experimental 0.2.0** คู่มือนี้ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `0.3.0` ที่เข้าคู่กันบน Windows/macOS ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` และการแก้ในเครื่อง `0.2.3` เป็นหลักฐานประวัติ ไม่ได้รับความสามารถ E01–E10 เพียงเพราะติดตั้ง extension ใหม่ ตรวจรุ่นและ capability ด้วย **WBasic: Show Toolchain Status** ก่อนเริ่ม
 
 Diagnostics ที่ดีไม่ควรเพียงบอกว่า “ผิด” แต่ควรบอกไฟล์ ตำแหน่ง stage และรหัสที่ช่วยให้
 แก้สาเหตุแทนการสุ่มเติม semicolon ซึ่งใน WBasic ก็ไม่ได้ช่วยอะไรอยู่ดี
@@ -48,6 +48,11 @@ Project service วิเคราะห์ไฟล์ที่เปิดแ�
 Quick Fix เพื่อแก้เฉพาะ span นั้น Candidate จะถูกตรวจด้วย compiler อีกครั้งก่อนใช้
 Extension ไม่ค้นหาแล้วแทนคำเหมือนกันทั้งไฟล์ และไม่แตะ comment หรือ string
 
+วาง cursor ที่ diagnostic แล้วใช้ **Ctrl+.** และอ่าน preview ก่อนยอมรับ เฉพาะช่วง
+WB200/WB201 ที่ตรงกับ keyword ที่รู้จักเท่านั้นที่มีการแก้เช่นนี้ เมื่อ project overlay
+อื่นเปลี่ยนระหว่างตรวจ candidate ระบบทิ้งผลที่ล้าสมัย ไม่ส่ง edit จาก snapshot เก่า
+บนไฟล์ CRLF ช่วงที่ต้นบรรทัดยังต้องตรงตำแหน่งจริง ไม่เลื่อนไปแตะบรรทัดก่อนหน้า
+
 ถ้าไม่มี quick fix ไม่ได้แปลว่า extension เสีย อาจเป็น error ที่ไม่มี safe edit หรือ
 compiler รุ่นที่เชื่อมอยู่ไม่ได้เปิด capability `quickFix`
 
@@ -57,7 +62,7 @@ compiler รุ่นที่เชื่อมอยู่ไม่ได้�
 |---|---|
 | ขีดแดงใน source | Problems และ diagnostic code |
 | Manifest หรือ Import หาไม่พบ | Save แล้ว Check Project |
-| Check/Run/Build หายจาก Command Palette | ติดตั้ง 0.2.3 แล้ว Reload Window; handler ยังตรวจ trust และ compiler capabilities |
+| Check/Run/Build หายจาก Command Palette | ติดตั้ง 0.3.0 แล้ว Reload Window; handler ยังตรวจ trust และ compiler capabilities |
 | Compiler เริ่มไม่ได้ | Show Toolchain Status |
 | Language help หยุดอัปเดต | Show Language Server Output |
 

@@ -20,7 +20,7 @@ billing-time/
 name = "BillingTime"
 module = "BillingTime"
 entry = "src/Main.wbas"
-toolchain = "0.1.0"
+toolchain = "0.2.0"
 
 [dependencies]
 ```

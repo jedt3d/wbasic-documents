@@ -4,7 +4,7 @@ description: "ค้นพบ รัน เลือก และยกเลิ
 weight: 9
 ---
 
-> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — ชุด private experimental 0.2.0** คู่มือนี้ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `0.3.0` ที่เข้าคู่กันบน Windows/macOS ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` และการแก้ในเครื่อง `0.2.3` เป็นหลักฐานประวัติ ไม่ได้รับความสามารถ E01–E10 เพียงเพราะติดตั้ง extension ใหม่ ตรวจรุ่นและ capability ด้วย **WBasic: Show Toolchain Status** ก่อนเริ่ม
 
 เปิดมุมมอง **Testing** ใน Activity Bar เมื่อ project มี test catalog Extension จะเรียก
 `wb test MANIFEST --list --json` แล้วสร้าง tree จาก identity ที่ compiler ส่งกลับ
@@ -60,6 +60,17 @@ Expected-failure example ใน catalog ถือว่าผ่านบทเ�
 กด Run ที่ root เพื่อรันทั้งหมด หรือที่ case/data row เพื่อรันเฉพาะรายการ กด Stop เพื่อ
 ยกเลิก Extension จะ terminate compiler process tree และปิด run อย่างชัดเจน หาก discovery
 พบศูนย์ test จะรายงาน error ไม่แกล้งทำเป็น suite สีเขียว
+
+สำหรับ test procedure ที่ compiler ค้นพบ มี **Run Test** อยู่เหนือ declaration ใน editor
+กดแล้ว extension ส่ง full test identity ให้ native runner เพื่อรัน case เดียว ไม่เลือก case
+อื่นที่ชื่อคล้ายกัน ต้อง save source ของ project ที่เปลี่ยนก่อน; dirty/stale source จะปฏิเสธ
+inline action จำกัด source file ไม่เกิน 1 MiB และรายการที่แสดงไม่เกิน 100 case
+หากต้องการรันทั้งชุดให้ใช้ Test Explorer หรือ `wb test App.wproj --json`
+
+การกด Stop ระหว่าง native run จะเก็บผลของ case ที่จบแล้ว แยก case ที่ยังไม่เริ่มหรือถูก
+ขัดจังหวะออกอย่างชัดเจน ไม่รายงานว่าทั้ง suite ผ่าน การใช้งานจริงในหน้าต่าง VS Code
+บน Windows ตรวจการยกเลิกแล้ว โดยผล timeout ที่จบก่อนหน้าคงอยู่ และ case ถัดไปถูก
+ระบุว่า skipped พร้อมข้อความ cancellation
 
 {{< guide-screenshot name="09-test-explorer.png" alt="VS Code Testing view แสดง WBasic test group, passing case, assertion failure และ typed data rows พร้อมสถานะแยกกัน" caption="ภาพที่ควรถ่าย: Test Explorer หลัง discovery และ run หลายผลลัพธ์" >}}
 

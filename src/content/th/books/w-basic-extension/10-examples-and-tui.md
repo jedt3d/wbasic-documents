@@ -4,12 +4,14 @@ description: "เปิดหรือ copy ตัวอย่างที่ต
 weight: 10
 ---
 
-> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — ชุด private experimental 0.2.0** คู่มือนี้ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `0.3.0` ที่เข้าคู่กันบน Windows/macOS ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` และการแก้ในเครื่อง `0.2.3` เป็นหลักฐานประวัติ ไม่ได้รับความสามารถ E01–E10 เพียงเพราะติดตั้ง extension ใหม่ ตรวจรุ่นและ capability ด้วย **WBasic: Show Toolchain Status** ก่อนเริ่ม
 
-การแก้รุ่น 0.2.3 ตรวจผ่านคำสั่ง project บน Windows ARM64 ส่วน TUI แบบรับ input และ editor บน macOS/Linux ยังไม่ได้ทดสอบซ้ำสำหรับ extension รุ่นนี้
+ชุด 0.3.0 ผ่าน editor/protocol checks บน Windows และ Mac ARM64; การใช้ E01–E10
+ผ่านหน้าต่าง VS Code จริงบน Windows เท่านั้น ผลนี้ไม่ครอบคลุม interactive TUI input
+ทุก terminal หรือการใช้ editor ผ่าน UI บน Linux
 
 Extension บรรจุ example catalog ที่ผ่านการตรวจโครงสร้างและ hash เดียวกับ repository
-ปัจจุบันมี 31 examples ใน 10 หมวด รวม teaching files 61 ไฟล์ ครอบคลุม language core, modules, tests, streams,
+ปัจจุบัน catalog มี 32 examples ใน 10 หมวด รวม teaching files 66 ไฟล์ ครอบคลุม language core, modules, tests, streams,
 JSON, Jobs, TUI และ complete SQLite showcase
 
 ## Open กับ Copy ต่างกันอย่างไร
@@ -33,6 +35,12 @@ repository specimen
 5. `memory-streams` และ `json-values` — typed API help
 6. `tui-counter` — deterministic model/update/view
 7. `sqlite-customer-showcase` — project ขนาดใหญ่ที่ประกอบหลาย module
+
+ตัวอย่าง `editor-daily-workflow` ใน source tag `v0.2.0` ใช้ฝึก alias, structure field,
+Enum member, local ภาษาไทย, rename ข้าม app/module/test, Quick Fix, formatting และ
+direct-call hierarchy โดยไม่ต้องใช้ฐานข้อมูล `wb check` ยอมรับ, `wb test` ผ่าน 2/2,
+`wb run` แสดง `24` ตัวอย่าง BillingTime แยกต่างหากพิสูจน์ native debug/release กับ
+SQLite จริง: fresh invoice มี 2 lines รวม 18000 cents; การรันซ้ำสร้าง invoice ลำดับถัดไป
 
 `worm-m2-sqlite` กับ `worm-m3-billing` copy เป็น project ครบชุดได้ รวม module และ SQLite schema เมื่อจำเป็น Automated action ของสองตัวนี้คือ Check และ Build ถ้าจะรันตัวอย่างฐานข้อมูล ต้องส่ง path ของ SQLite เป็น program argument หลัง `--` อย่างชัดเจน คำสั่ง Run Project ทั่วไปไม่ถาม path นี้ `worm-m4-ui-reference` เปิดได้เฉพาะ reference ใน repository และไม่อยู่ใน Copy Example เพราะต้อง stage Billing module ไปยัง local dependency path ก่อน
 

@@ -30,6 +30,6 @@ Procedure TimeMap() As Worm.Mapping Of TimeEntry
 EndProcedure
 ```
 
-ここでの `1` はマッピング定義の版番号で、行の `Version` とは別です。コンパイラ 0.1.0 は、一つのプログラム内で同じ `modelId` と版番号の定義が矛盾すると WB301 を報告します。ただし、既存のデータベースのスキーマとマッピングを自動で照合しません。移行はアプリが管理します。
+ここでの `1` はマッピング定義の版番号で、行の `Version` とは別です。コンパイラ 0.2.0 は、一つのプログラム内で同じ `modelId` と版番号の定義が矛盾すると WB301 を報告します。ただし、既存のデータベースのスキーマとマッピングを自動で照合しません。移行はアプリが管理します。
 
 次へ: [スキーマと移行]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}})。

@@ -18,8 +18,8 @@ assert.equal(website.runtimeVersion, release.runtimeVersion);
 const extension = JSON.parse(fs.readFileSync(path.join(root, 'src/static/extension-update.json'), 'utf8'));
 assert.equal(extension.schemaVersion, 1);
 assert.equal(extension.extensionId, 'wbasic-dev.wbasic');
-assert.equal(extension.status, 'LocalVerified');
-assert.equal(extension.publishedRelease, false);
+assert.ok(['LocalVerified', 'Published'].includes(extension.status));
+assert.equal(extension.publishedRelease, extension.status === 'Published');
 assert.equal(extension.marketplaceRelease, false);
 assert.equal(website.extensionVersion, extension.extensionVersion);
 assert.equal(website.extensionStatus, extension.status);
@@ -37,7 +37,23 @@ assert.equal(extension.verification.editorTestsSkipped, 0);
 assert.equal(extension.verification.publishedCompilerEditorTestsSkipped, 0);
 assert.ok(extension.verification.publishedCompilerEditorTestsPassed > 0);
 assert.ok(extension.verification.publishedCompilerIsolatedHostChecksPassed > 0);
-assert.equal(extension.verification.macOSLinuxCorrectionHostTests, 'Not run');
+if (extension.status === 'Published') {
+  assert.equal(extension.extensionVersion, release.extensionVersion);
+  assert.equal(extension.sourceRevision, release.sourceRevision);
+  assert.equal(extension.releaseUrl, release.releaseUrl);
+  assert.equal(extension.vsix.name, release.extensionAsset.name);
+  assert.equal(extension.vsix.bytes, release.extensionAsset.bytes);
+  assert.equal(extension.vsix.sha256, release.extensionAsset.sha256);
+  assert.equal(extension.vsix.downloadUrl, `${release.releaseUrl.replace('/tag/', '/download/')}/${extension.vsix.name}`);
+  assert.deepEqual(extension.verification.liveEditorActions,
+    Array.from({ length: 10 }, (_, i) => `E${String(i + 1).padStart(2, '0')}`));
+  assert.equal(extension.verification.windowsPaletteCheckBuildRun, 'Passed');
+  assert.equal(extension.verification.windowsInlineTest, 'Passed');
+  assert.equal(extension.verification.windowsCancellation, 'Passed');
+  assert.equal(extension.verification.macOSRealWindowActions, 'Not run');
+} else {
+  assert.equal(extension.verification.macOSLinuxCorrectionHostTests, 'Not run');
+}
 assert.equal(extension.verification.interactiveTuiTaskInput, 'Not run');
 assert.equal(website.compilerSourceRevision, release.sourceRevision);
 assert.match(release.sourceRevision, /^[a-f0-9]{40}$/);
@@ -67,4 +83,4 @@ const generated = JSON.parse(fs.readFileSync(path.join(root, 'html/compiler-rele
 assert.deepEqual(generated, release, 'generated compiler release manifest is stale');
 assert.deepEqual(JSON.parse(fs.readFileSync(path.join(root, 'html/extension-update.json'), 'utf8')), extension,
   'generated local extension update manifest is stale');
-console.log(`PASS: published compiler/runtime ${release.compilerVersion} + bundled Extension ${release.extensionVersion}; local Extension ${extension.extensionVersion}; TH/EN/JA pins and distinct identities.`);
+console.log(`PASS: published compiler/runtime ${release.compilerVersion} + bundled Extension ${release.extensionVersion}; ${extension.status} Extension ${extension.extensionVersion}; TH/EN/JA pins and exact identities.`);

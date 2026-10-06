@@ -4,7 +4,7 @@ description: "ฝึก completion, hover, signature help และ Outline ด�
 weight: 4
 ---
 
-> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — ชุด private experimental 0.2.0** คู่มือนี้ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `0.3.0` ที่เข้าคู่กันบน Windows/macOS ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` และการแก้ในเครื่อง `0.2.3` เป็นหลักฐานประวัติ ไม่ได้รับความสามารถ E01–E10 เพียงเพราะติดตั้ง extension ใหม่ ตรวจรุ่นและ capability ด้วย **WBasic: Show Toolchain Status** ก่อนเริ่ม
 
 เปิด `src/Main.wbas` แล้วแทนเนื้อหาด้วย:
 
@@ -31,6 +31,12 @@ procedure ที่ประกาศในไฟล์ Completion ของ ext
 หาก cursor อยู่ใน nested call ระบบจะเลือก call context จาก compiler แทนการนับวงเล็บ
 ด้วย regular expression
 
+ใน project ที่ Import module ผ่าน alias ให้ลองพิมพ์ชื่อ alias ตามด้วยจุด แล้วเรียก
+**Ctrl+Space** Completion เสนอ procedure/API ที่มองเห็นตาม compiler หากมี binding
+ชนิด Structure ให้พิมพ์ชื่อนั้นตามด้วยจุดเพื่อดู field และ attached method ที่รองรับ
+Parameter hints เลือก argument ภายใน nested call แม้ string จะมี comma
+ผลลัพธ์ที่เป็นเพียงข้อความใน comment หรือ string ไม่ใช่ symbol ที่นำทางได้
+
 {{< guide-screenshot name="04-source-intelligence.png" alt="Editor เปิด Main.wbas เห็น completion ของ procedure และ signature help ของ Greeting พร้อม Outline ที่ด้านข้าง" caption="ภาพที่ควรถ่าย: Completion, Signature Help และ Outline ใน source เดียวกัน" >}}
 
 ## ฝึก hover และ Outline
@@ -38,6 +44,10 @@ procedure ที่ประกาศในไฟล์ Completion ของ ext
 เลื่อน pointer เหนือ `Greeting` เพื่อดู signature และชนิดข้อมูล จากนั้นเปิด Outline
 คุณควรเห็น module และ procedure สองตัว การคลิกชื่อใน Outline พาไปยัง declaration
 โดยไม่ต้องเลื่อนหาเอง
+
+Hover ของ procedure, local/parameter, nominal type และ field/member ที่ compiler รองรับ
+อ้าง declaration, type หรือ signature ตาม source จริง ข้อความ comment ที่ผู้เขียนวางเหนือ
+declaration ยังไม่ถูกดึงเป็น documentation; tooltip จึงไม่ควรอ้างคำอธิบายที่ compiler ไม่ส่งมา
 
 Identifier ภาษาไทยและภาษาอื่นใช้ได้ตามกฎ Unicode NFC ตัวอย่างเช่น:
 
@@ -56,8 +66,9 @@ EndProcedure
 ให้พิมพ์จุดหลังชื่อ binding เพื่อดู field และ method ที่ compiler อนุญาตให้เห็น
 ส่วน public API ต้องมี capability metadata จาก compiler ที่ตรงกัน Method ที่เป็น
 private, internal ของ module อื่น หรือไม่ได้ import จะไม่อยู่ในรายการ Completion
-ยังไม่รับประกัน expression chain ทุกแบบ, การจับคู่ type ผ่าน import alias ครบทุกกรณี,
-member ของ intrinsic String/Array ทุกตัว หรือ local-variable navigation
+ยังไม่รับประกัน expression chain ทุกแบบหรือ member ของ intrinsic String/Array ทุกตัว
+การนำทาง local/parameter/type/member ทำงานเฉพาะตำแหน่งที่ compiler ให้ identity และช่วง
+อ้างอิงอย่างครบถ้วน หากไม่มีข้อมูลที่ตรวจได้ คำสั่งจะไม่เดาชื่อจากข้อความรอบ cursor
 
 รายละเอียดไวยากรณ์อ่านต่อได้ที่
 [โปรแกรม WBasic หนึ่งโปรแกรม]({{< relref "/books/language-reference/01-a-wbasic-program.md" >}})

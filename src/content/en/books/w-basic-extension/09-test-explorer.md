@@ -4,7 +4,7 @@ description: "Discover, run, select, and cancel native WBasic tests while preser
 weight: 9
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 Open **Testing** in the Activity Bar. When the project has a test catalog, the
 extension calls `wb test MANIFEST --list --json` and builds the tree from case
@@ -62,6 +62,19 @@ a failed test; it is not painted green for encouragement.
 Run the root to execute everything, or run one case or data row. Stop cancels
 the run, terminates the compiler process tree, and closes the run explicitly.
 Discovery of zero tests is an error, never an empty green suite.
+
+For a test procedure discovered by the compiler, **Run Test** appears above its
+declaration in the editor. It sends the full test identity to the native runner
+for exactly one case, not another case with a similar name. Save changed project
+sources first; dirty or stale source is rejected. Inline actions are limited to
+100 displayed cases and a 1 MiB source file. Use Test Explorer or
+`wb test App.wproj --json` for the full suite.
+
+Canceling a native test run keeps results for completed cases and clearly marks
+work that did not start or was interrupted; it never reports a passing suite by
+default. The real Windows VS Code cancellation check retained three completed
+timeouts and marked the interrupted next case skipped with a cancellation
+message. The one-case inline Run Test happy path was checked separately.
 
 {{< guide-screenshot name="09-test-explorer.png" alt="VS Code Testing view with a WBasic test group, passing case, assertion failure, and typed data rows shown as distinct statuses" caption="Screenshot to capture: Test Explorer after discovering and running several result kinds" >}}
 

@@ -4,7 +4,7 @@ description: "ソースとプロジェクトを実行し、Debug・Release の�
 weight: 8
 ---
 
-> **バージョンの範囲 — ローカル検証済み拡張機能 0.2.3。** 0.2.3 VSIX は、対応する開発用コンパイラ／ランタイムと組み合わせてローカルで検証しました。公開済みの実験的な非公開コンパイラ／ランタイムは `0.1.0`、プロトコルパッケージは `0.0.2` です。公開済み ARM64 ZIP に同梱された拡張機能 `0.2.1` は変更されておらず、拡張機能 `0.2.3` に公開リリースや Marketplace 掲載はありません。[パッケージのガイド]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) から始めてください。古い非公開コンパイラ `0.0.2` は拡張機能 `0.1.0` を同梱し、これらのプロジェクト編集機能を持ちません。
+> **対象バージョン — 対応する private experimental 0.2.0 一式。** このガイドは Windows/macOS ARM64 の compiler/runtime `0.2.0`、protocol `0.1.0`、VS Code extension `0.3.0` を対象とします。旧 `0.1.0`/extension `0.2.1` とローカル修正版 `0.2.3` は別の履歴です。extension の更新だけで E01–E10 は利用可能になりません。最初に **WBasic: Show Toolchain Status** でバージョンと capability を確認してください。
 
 拡張機能は目的ごとにコマンドを分けます。Run が黙って配布用ビルドに変わったり、Check がプログラムのネットワークやデータベース接続を開いたりしてはいけません。
 
@@ -12,11 +12,11 @@ weight: 8
 
 保存済み `.wbas` を開いて **WBasic: Run Active Source in Terminal** を実行します。ソースのディレクトリを作業ディレクトリとして、一つのファイルを実行します。プロジェクトのインポートが不要な小さな例に向いています。
 
-TUI には本物の端末入力が必要なため、この独立したコマンドは統合ターミナルを使います。0.2.3 のプロジェクトタスク変更後、対話型 TUI 入力は再検証していません。
+TUI には本物の端末入力が必要なため、この独立したコマンドは統合ターミナルを使います。この Check/Build/Run の結果は、すべての端末接続先で対話型 TUI 入力が通る証拠ではありません。
 
 ## Run Project：プロジェクトの実行
 
-モジュールと依存のある `App.wproj` では **WBasic: Run Project** を使います。`wbasic.defaultProfile` のプロファイルを使い、マニフェストのパスをリテラル引数として渡します。パス中の空白、タイ文字、絵文字をシェル文字列へ組み立てることはありません。ローカル検証済みの 0.2.3 では、選択したプロジェクトを対象とする専用の VS Code `ProcessExecution` タスクで Run を起動します。終了後も出力が残り、次回の実行ではタスクターミナルを消去して再利用します。Run はプロジェクトのデータを変更する場合があり、BillingTime の例はレコードを追加します。
+モジュールと依存のある `App.wproj` では **WBasic: Run Project** を使います。`wbasic.defaultProfile` のプロファイルを使い、マニフェストのパスをリテラル引数として渡します。パス中の空白、タイ文字、絵文字をシェル文字列へ組み立てることはありません。検証済みの 0.3.0 では、選択したプロジェクトを対象とする専用の VS Code `ProcessExecution` タスクで Run を起動します。終了後も出力が残り、次回の実行ではタスクターミナルを消去して再利用します。Run はプロジェクトのデータを変更する場合があり、BillingTime の例はレコードを追加します。
 
 ## Development Build：開発用ビルド
 
@@ -26,7 +26,19 @@ TUI には本物の端末入力が必要なため、この独立したコマン�
 - **Build Project — Debug (Development)** は Debug を直接選びます。
 - **Build Project — Release (Development)** は Release を直接選びます。
 
-コンパイラはネイティブ実行ファイルと `.wb-build.json` 記録を作ります。0.2.3 の Build コマンドも Run と同様に、専用のプロセスタスク出力、リテラル引数、選択したプロファイル、プロジェクトのスコープ、`$wbasic` 問題マッチャーを使います。プロセス終了後もタスクターミナルは表示されたままです。実行前には Workspace Trust と現在のコンパイラ機能を確認します。公開済み ZIP のコンパイラ、ランタイム素材、リンカーでは、ホスト SDK を使わずに debug/release の Run/Build が通っています。コンパイラをソースからビルドするにはネイティブ開発ツールが必要です。これは引き続き Development Build であり、本番利用の権限や、SDK のない新規ホストでの受け入れを含みません。
+コンパイラはネイティブ実行ファイルと `.wb-build.json` 記録を作ります。0.3.0 の Build コマンドも Run と同様に、専用のプロセスタスク出力、リテラル引数、選択したプロファイル、プロジェクトのスコープ、`$wbasic` 問題マッチャーを使います。プロセス終了後もタスクターミナルは表示されたままです。実行前には Workspace Trust と現在のコンパイラ機能を確認します。公開済み ZIP のコンパイラ、ランタイム素材、リンカーでは、ホスト SDK を使わずに debug/release の Run/Build が通っています。コンパイラをソースからビルドするにはネイティブ開発ツールが必要です。これは引き続き Development Build であり、本番利用の権限や、SDK のない新規ホストでの受け入れを含みません。
+
+VS Code を使わない場合、同じプロジェクトを次のコマンドで確認できます。
+
+```console
+wb check App.wproj --json
+wb test App.wproj --json
+wb run App.wproj --profile debug
+wb build App.wproj --profile debug
+wb build App.wproj --profile release
+```
+
+プロジェクトのディレクトリから実行するか、マニフェストの完全なパスを指定してください。データベースのパスなど、プログラム引数は `--` の後に渡します。拡張機能の `wbasic.defaultProfile` はマニフェストを変更せず、release プロファイルの Development Build を本番成果物に変えるものでもありません。
 
 ## VS Code Tasks：タスクの利用
 

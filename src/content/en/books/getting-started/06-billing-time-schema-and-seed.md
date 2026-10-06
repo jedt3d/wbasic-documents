@@ -4,7 +4,7 @@ description: "Open SQLite and apply an explicit application migration"
 weight: 6
 ---
 
-[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) declares `toolchain = "0.1.0"`, bundled `Worm`, and the local `Billing` module. [Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) accepts at most one database path. With no argument it uses `billing-time-demo.sqlite` in the current working directory. An empty path or more than one argument returns an error before opening SQLite.
+[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) declares `toolchain = "0.2.0"`, bundled `Worm`, and the local `Billing` module. [Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) accepts at most one database path. With no argument it uses `billing-time-demo.sqlite` in the current working directory. An empty path or more than one argument returns an error before opening SQLite.
 
 After opening the database, `Main` calls migration explicitly:
 

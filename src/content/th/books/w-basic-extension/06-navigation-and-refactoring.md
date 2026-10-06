@@ -1,10 +1,10 @@
 ---
 title: "6 · Navigation และ refactoring"
-description: "ใช้ definition, references, workspace symbols และ compiler-validated rename ข้ามไฟล์"
+description: "ใช้ definition, references, highlights, rename และ direct-call hierarchy จาก compiler"
 weight: 6
 ---
 
-> **ขอบเขตเวอร์ชัน — extension 0.2.3 ที่ตรวจในเครื่องแล้ว** VSIX รุ่น 0.2.3 ตรวจในเครื่องกับ development compiler/runtime ที่เข้าคู่กัน ส่วน private experimental compiler/runtime ที่เผยแพร่เป็นรุ่น `0.1.0` กับ protocol package `0.0.2` ZIP ARM64 ที่เผยแพร่บรรจุ extension `0.2.1` ไว้ตามเดิม ไม่มีการเผยแพร่ extension `0.2.3` หรือขึ้น Marketplace เริ่มที่ [คู่มือแพ็ก]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}) แพ็ก private compiler `0.0.2` เดิมมี extension `0.1.0` และไม่มี project editor workflow เหล่านี้
+> **ขอบเขตเวอร์ชัน — ชุด private experimental 0.2.0** คู่มือนี้ใช้ compiler/runtime `0.2.0`, protocol `0.1.0` และ VS Code extension `0.3.0` ที่เข้าคู่กันบน Windows/macOS ARM64 รุ่นเก่า `0.1.0`/extension `0.2.1` และการแก้ในเครื่อง `0.2.3` เป็นหลักฐานประวัติ ไม่ได้รับความสามารถ E01–E10 เพียงเพราะติดตั้ง extension ใหม่ ตรวจรุ่นและ capability ด้วย **WBasic: Show Toolchain Status** ก่อนเริ่ม
 
 เมื่อ project โตขึ้น การเลื่อนหา declaration ด้วยสายตาเริ่มแพ้เครื่องมืออย่างสุภาพ
 Extension ใช้ identity และ span จาก compiler สำหรับ navigation ข้ามไฟล์
@@ -12,12 +12,19 @@ Extension ใช้ identity และ span จาก compiler สำหรั�
 ## คำสั่งหลัก
 
 - **Go to Definition** ไปยัง declaration ของ procedure หรือ symbol
-- **Find All References** แสดงตำแหน่งใช้งานใน project
+- **Find All References** แสดงตำแหน่งใช้งานใน app, module และ test ที่ค้นพบ
+- **Peek Definition** เปิด declaration โดยไม่ออกจากตำแหน่งที่เรียก
+- **Usage highlights** ขีดเฉพาะตำแหน่งที่มี identity เดียวกันในไฟล์ปัจจุบัน
 - **Go to Symbol in Workspace** ค้นหา public/project symbol
 - **Rename Symbol** สร้างการแก้ไขหลายไฟล์แล้วให้ compiler ตรวจ snapshot ทั้งชุด
+- **Show Call Hierarchy** แสดง caller/callee ของ direct call ที่ compiler resolve ได้
 
 ลองคลิกขวา `Greeting` ใน `Main` แล้วเลือก Go to Definition จากนั้น Find All References
 ผลลัพธ์ไม่ควรรวมชื่อใน comment หรือ string
+
+ใช้ **F12** ไปยัง declaration, **Alt+F12** ดู Peek และ **Shift+F12** ดู references
+ถ้าชื่อ local ภาษาไทยเหมือนกันในสอง procedure ไฮไลต์กับ references จะติดเฉพาะ
+binding ที่ compiler เลือก ไม่รวมตัวที่สะกดเหมือนกันแต่คนละ scope
 
 ## Rename ที่ไม่เสี่ยงเดาสุ่ม
 
@@ -31,9 +38,22 @@ Rename ทำงานเมื่อ compiler capability `rename` เป็น 
 รองรับ ปัจจุบัน project overlay จำกัด 32 เอกสารเปิด, ไฟล์ละ 1 MiB และรวม 4 MiB
 เมื่อเกินขอบเขต ระบบจะ fail closed แทนการเดา
 
+ใน compiler `0.2.0` graph ครอบคลุม procedure, local, parameter, constant, nominal type
+และ field/enum member ที่ resolve ได้ รวมถึง label ของ named argument ที่ผูกกับ parameter
+จริง Rename parameter จึงแก้ declaration, การใช้ใน body และ label ของ call ใน app/test
+โดยไม่แตะ parameter ชื่อเดียวกันใน method อื่น References และ incoming hierarchy
+ตรวจ test files ที่ค้นพบเป็น context แยกกัน เพื่อไม่ให้ rename จาก app ทิ้ง call ใน test
+ไว้ข้างหลัง หาก test file ที่บันทึกแล้วไม่มี case ที่ค้นพบหรือ snapshot เปลี่ยนระหว่างตรวจ
+คำสั่งจะคืนว่าใช้ไม่ได้ แทนการส่ง edit ที่ไม่ครบ Rename ชื่อ procedure ที่เป็น test entry
+ยังไม่รองรับ เพราะอาจเปลี่ยน identity ใน catalog
+
+Call Hierarchy แสดงเฉพาะ direct call ที่ compiler ระบุ caller/callee และตำแหน่งชื่อ call
+ได้แน่นอน รวม recursion และ call จาก test ที่ค้นพบ การเรียกผ่าน procedure value แบบ
+indirect ไม่มี target ที่จะเดาให้ โหมด Go to Implementation ไม่อยู่ในชุดความสามารถนี้
+
 ## สิ่งที่ยังไม่ควรคาดหวัง
 
-- Local-variable indexing ครบทุก scope ยังไม่มี
+- Identifier ที่ compiler ไม่สร้าง semantic identity หรือ reference ครบถ้วนจะไม่ถูกแก้ด้วยการค้นข้อความ
 - Rename ข้าม project ที่ไม่เป็น dependency กันไม่ได้
 - String-based reflection ไม่ถือเป็น reference
 - Textual Include และ global include path ไม่มีในภาษา

@@ -1,23 +1,26 @@
 {
   "date": "2026-10-06",
+  "status": "Passed",
+  "compilerVersion": "0.2.0",
+  "compilerSourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0",
   "files": [
     {
       "path": "README.md",
-      "sha256": "31babff51796c149f0122f2259f521cf95c083ba561593c7859c1272c0fa5d2c",
-      "bytes": 3801,
-      "originalSourceSha256": "31babff51796c149f0122f2259f521cf95c083ba561593c7859c1272c0fa5d2c"
+      "sha256": "2d2bf95ebdf5842da995b6cdee762d32b13645831ead7d3e796c801acd1ba1cd",
+      "bytes": 4524,
+      "originalSourceSha256": "2ad44cb701c62ff2750279f50e069c719bb810764b5c94499ab0aee43d2bc941"
     },
     {
       "path": "docs/QuickStart.md",
-      "sha256": "166f0aebde187917139a19f1913e555b104f599fd0f465cc6b57f4de1231cd6a",
-      "bytes": 4256,
-      "originalSourceSha256": "166f0aebde187917139a19f1913e555b104f599fd0f465cc6b57f4de1231cd6a"
+      "sha256": "6843dd74a9a8192fa72e3a849d026a4a1424207f063ad26e70f7e41936bf9d27",
+      "bytes": 5743,
+      "originalSourceSha256": "2f2054c7baa7d3b27978dcb2713c25c035a08898ee66198ff785533d71fe3176"
     },
     {
       "path": "billing-time.wproj",
-      "sha256": "5fefb7214e80155acf5b0dd1608eec5b6ed0d59f4a39d7b3b24238b9794afec7",
+      "sha256": "1b1d6ca8e76f4e5e2662ff7fe3541bf6ca0a4a5f437ba34c68c6ae376000c1c7",
       "bytes": 199,
-      "originalSourceSha256": "7161b0d11b07611c39638963300d19d1534dbd1c4b259b8eedc65c58713110ee"
+      "originalSourceSha256": "1b1d6ca8e76f4e5e2662ff7fe3541bf6ca0a4a5f437ba34c68c6ae376000c1c7"
     },
     {
       "path": "schema.sql",
@@ -35,13 +38,13 @@
       "path": "src/Main.wbas",
       "sha256": "dbb04bdd39686be2f75dd013d296cb14f3b133cf156273443453ac66d7552ace",
       "bytes": 2022,
-      "originalSourceSha256": "57c38f587807380cda5b92ae180612ecea04bf900cede1a2066980ad8eb3bea9"
+      "originalSourceSha256": "dbb04bdd39686be2f75dd013d296cb14f3b133cf156273443453ac66d7552ace"
     },
     {
       "path": "modules/Billing.wmod/module.toml",
-      "sha256": "efbf1787c9248f79a08f4ca8a279ab2857605a6ffd8ffa62fd9cf1c45faaa82c",
+      "sha256": "b92b10279a87195d0246bf4e563f7422a923d164a8ce4b9f2bc3e9ced0aad5aa",
       "bytes": 88,
-      "originalSourceSha256": "efbf1787c9248f79a08f4ca8a279ab2857605a6ffd8ffa62fd9cf1c45faaa82c"
+      "originalSourceSha256": "b92b10279a87195d0246bf4e563f7422a923d164a8ce4b9f2bc3e9ced0aad5aa"
     },
     {
       "path": "modules/Billing.wmod/src/Models.wbas",
@@ -59,25 +62,23 @@
       "path": ".vscode/tasks.json",
       "sha256": "bf3197c86a253244939ce6b2c2243ab4154f068b7d7272ef18c264d4c81c5d59",
       "bytes": 736,
-      "originalSourceSha256": "96b411d123984f6f6e8c995e32517806f60f873218872b6181a71fb7a6f64334"
+      "originalSourceSha256": "bf3197c86a253244939ce6b2c2243ab4154f068b7d7272ef18c264d4c81c5d59"
     }
   ],
-  "zipSha256": "5a5afef82d75f98cd5ee6fa28876fa8beedb0c0bb1e984720e8061945c1ab18c",
+  "zipSha256": "fa57b1d7fd27982ec096f8e253f9ebcbb5fb8b32dcd9aec84b017ae056d59255",
   "textNormalization": "UTF-8 source bytes with CRLF normalized to LF; original source untouched",
-  "status": "Passed",
-  "compilerVersion": "0.1.0",
-  "compilerSourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
-  "scope": "Billing Time snapshot only; no compiler changes or production/no-SDK acceptance",
+  "scope": "Ten BillingTime source/config files; current native Windows/macOS debug/release checks; no production/no-SDK acceptance",
+  "historicalEvidence": "evidence/billing-time-snapshot-v010-2026-10-06.json",
   "native": {
     "windows": {
       "result": {
         "status": "Passed",
-        "compiler": "wb 0.1.0 (aarch64-pc-windows-msvc) R8B",
+        "compiler": "wb 0.2.0 (aarch64-pc-windows-msvc) R8B",
         "profiles": [
           {
             "profile": "debug",
             "target": "aarch64-pc-windows-msvc",
-            "imageSha256": "0a707f7be63b48cf9381cc72320ee9c6a86f150b381eb82e051927b3546e5e4b",
+            "imageSha256": "f2ec4cbc2de46f3be464d2db9c54c28cae531c1231c104b535a420007290864a",
             "freshInvoiceCents": 18000,
             "repeatInvoice": 2,
             "invalidArgumentsBeforeDatabase": true
@@ -85,7 +86,7 @@
           {
             "profile": "release",
             "target": "aarch64-pc-windows-msvc",
-            "imageSha256": "4da4a3285f7e9265aebff200c906e5537fef5b7590a20a45bd05c938b660d9ac",
+            "imageSha256": "917d2039f360196653fa7cbe75a513f060ddc26c585a61f737176759f1772da7",
             "freshInvoiceCents": 18000,
             "repeatInvoice": 2,
             "invalidArgumentsBeforeDatabase": true
@@ -94,17 +95,20 @@
         "genericRunWithoutArguments": "Passed",
         "explicitDatabaseArgument": "Passed"
       },
-      "logSha256": "0505f270df3cacd33ee993342cea56fe52065e85f604fb70a170ce16c9f57f2d"
+      "logSha256": "78808e67a2ce21d04e569efc48ffdd7d52379e7e8bd6b1dc61a8b451f44b2cca",
+      "compilerSourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0",
+      "compilerProfile": "release",
+      "runtimePair": "Matched extracted native release package"
     },
     "macos": {
       "result": {
         "status": "Passed",
-        "compiler": "wb 0.1.0 (aarch64-apple-darwin) R8B",
+        "compiler": "wb 0.2.0 (aarch64-apple-darwin) R8B",
         "profiles": [
           {
             "profile": "debug",
             "target": "aarch64-apple-darwin",
-            "imageSha256": "eac6bbf0ced3a25f712b9383eb12b776a7442d8b329e367eee99da3a703adf78",
+            "imageSha256": "1e722fc4f051deac7101cfd96d99f05f3452c711ae4ec4a9be46f6aa16fa7f5b",
             "freshInvoiceCents": 18000,
             "repeatInvoice": 2,
             "invalidArgumentsBeforeDatabase": true
@@ -112,7 +116,7 @@
           {
             "profile": "release",
             "target": "aarch64-apple-darwin",
-            "imageSha256": "ff79020c3b367e1b5bf274d6ee6d34a46500b0f26d0a3bf184fa7efdd011c21d",
+            "imageSha256": "9f227202faa1d174b52285694b7cd1835fe771cccd08b8a341eba9a4a375b236",
             "freshInvoiceCents": 18000,
             "repeatInvoice": 2,
             "invalidArgumentsBeforeDatabase": true
@@ -121,8 +125,11 @@
         "genericRunWithoutArguments": "Passed",
         "explicitDatabaseArgument": "Passed"
       },
-      "logSha256": "ffe983310599fef8d09845bd668e001365b1a17f03183012f835289bf76e90f0"
+      "logSha256": "42d90b0a191e2045a7742c6fe39c8871d0efbb2c1a8a60740ddd4374f630f440",
+      "compilerSourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0",
+      "compilerProfile": "release",
+      "runtimePair": "Matched extracted native release package"
     }
   },
-  "vscodeTaskScope": "Included original portable task declarations to satisfy the updated README link; this addition does not claim a new VS Code host execution."
+  "vscodeTaskScope": "Current VS Code 1.140.0 ARM64 uses Extension0.3.0; Check, release Build and Run tested through actual Command Palette. Final A395 installation/status and release-pair UI smoke in progress."
 }

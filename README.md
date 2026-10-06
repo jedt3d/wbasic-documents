@@ -14,20 +14,19 @@ and publication. The earlier draft books remain read-only historical material in
 
 The site uses Hugo `0.167.0`. Thai is the authoritative edition for the first
 editorial round. It covers the verified language, standard-library and public
-API surface in the verified compiler/runtime **0.1.0** private experimental release
-at sealed source `3901cf17`, including selected WORM SQLite contracts. CLI,
-portable ZIP and the compiler selected in VS Code share this version; optional
-bundled Extension **0.2.1** and protocol **0.0.2** retain their own versions.
-The TH/EN/JA Extension Guide also records the current locally installed
-**0.2.3** correction: visible project commands and retained Build/Run task output.
-This local update is not a new compiler release or Marketplace publication.
-Historical evidence and Small Projects fixtures keep their original revisions.
-`src/static/compiler-release.json` binds release source and ZIP hashes;
-`verify-compiler-release.mjs` checks current three-language pins and the site version
-metadata before publishing. Native package tests are developer-host evidence,
-separate from fresh no-SDK/production acceptance.
-`src/static/extension-update.json` separately pins the local VSIX and Windows
-verification scope; see [the editor update record](evidence/extension-023-2026-10-06.md).
+API surface in the verified compiler/runtime **0.2.0** private experimental release
+at sealed source `8d740da`, including selected WORM SQLite contracts. CLI,
+portable ZIP and VS Code use this matched compiler/runtime pair; Extension
+**0.3.0** and protocol **0.1.0** retain independent versions. The current
+TH/EN/JA guides cover ten compiler-resolved daily editor workflows and actual
+Windows VS Code acceptance. A direct VSIX and the identical bundled copy are
+published with the private release; Marketplace publication is outside scope.
+Historical evidence, archived manuscripts and Small Projects fixtures keep
+their original revisions. `src/static/compiler-release.json` binds the release
+source/ZIP/VSIX hashes, and `src/static/extension-update.json` binds current
+installation/verification scope. Required validators check shared pins and
+source identities before publication. Native package tests are developer-host
+evidence, separate from fresh no-SDK/production acceptance.
 Thai, English and Japanese editions retain the same scope. Corresponding pages
 use the same path and filename in `src/content/th`, `src/content/en` and
 `src/content/ja`. Planned and Deferred capabilities retain their status in all
@@ -38,8 +37,9 @@ The updated Billing Time SQLite source is downloadable from
 `src/static/downloads/billing-time-source.zip`. Getting Started keeps its simple
 reader-created CLI exercise separate from this full application. The source
 snapshot passed debug/release native execution and SQLite checks against the
-published 0.1.0 compiler on Windows and macOS ARM64; see the
-[update record](evidence/billing-refresh-2026-10-06.md).
+sealed 0.2.0 compiler on Windows and macOS ARM64; see the
+[current snapshot evidence](evidence/billing-time-snapshot-2026-10-06.json). The prior
+0.1.0 snapshot remains historical evidence.
 
 The [English editorial review](evidence/english-editorial-review.md) records the
 120 translated/replaced pages and 52 English project plans. Both build scripts

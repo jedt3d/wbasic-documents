@@ -30,6 +30,6 @@ Procedure TimeMap() As Worm.Mapping Of TimeEntry
 EndProcedure
 ```
 
-Here `1` is the mapping definition version, separate from a row's `Version`. Compiler 0.1.0 reports WB301 when one program defines the same `modelId` and mapping version inconsistently. It does not automatically compare an existing database schema with the mapping. The app must manage migration.
+Here `1` is the mapping definition version, separate from a row's `Version`. Compiler 0.2.0 reports WB301 when one program defines the same `modelId` and mapping version inconsistently. It does not automatically compare an existing database schema with the mapping. The app must manage migration.
 
 Next: [Schema and migration]({{< relref "/books/getting-started/06-billing-time-schema-and-seed.md" >}}).

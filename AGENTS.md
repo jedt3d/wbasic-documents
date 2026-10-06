@@ -59,37 +59,24 @@
 
 ## Current evidence boundary
 
-- Current public reference follows the verified private experimental compiler/runtime
-  **0.1.0** release, sealed source `3901cf17ce971dd0c7f591b424d73b086610fc46`.
-  Its bundled Extension **0.2.1** and protocol **0.0.2** retain independent versions. CLI,
-  portable ZIP and the compiler selected by VS Code share the current compiler
-  version. Old releases are immutable historical downloads.
-- The published v0.1.0 checkpoint records 72 Passed / 23 Planned / 0 Deferred; this is not full v0.3
-  acceptance and excludes separate experimental WORM milestones. R6 D1–D5
-  passed within the recorded scope; inbox OSC52 limitations remain distinct.
-- Both native ARM64 release ZIPs passed package/extraction/run/build checks on
-  developer hosts. Fresh no-SDK, production entitlement, notice/redistribution,
-  signing/notarization remain unaccepted. Linux/native x86_64 are outside that
-  published package evidence; preserve later development evidence separately.
-- Extension 0.2.1's prior verified integration records 11 real VS Code host,
-  120 editor and 71 protocol checks per ARM64 host. Preserve simple-receiver
-  completion limits and four manual example actions; do not relabel old tests.
-- Every current compiler release update must synchronize
-  `src/static/compiler-release.json`, compiler/runtime/source metadata in
-  `src/static/version.json`, installation instructions and current project/module
-  example pins. Run `verify-compiler-release.mjs` through both build scripts and
-  the publishing script. Publish only after compiler asset audit/publication;
-  website tags stay separate from compiler release tags. Never claim an internal
-  development compiler is the current external release.
-- A documentation change does not promote product acceptance by itself.
-
-- The current locally installed editor correction is Extension **0.2.3**, recorded
-  in `src/static/extension-update.json`. Keep its LocalVerified identity separate
-  from the immutable compiler release and bundled 0.2.1 VSIX. This correction's
-  original live Windows results use development compiler source `dfdcbdc`;
-  current Windows editor/isolated-host checks also pass with published `3901cf17`.
-  macOS/Linux editor reruns and interactive TUI task input remain Not run. Update current guides in
-  TH/EN/JA together; `verify-compiler-release.mjs` checks both identities.
+- Before changing installation guidance, manifest pins or publication metadata,
+  read `src/static/compiler-release.json`, `src/static/extension-update.json` and
+  `src/static/version.json`. These are the current delivery identities; the
+  compiler, Extension, protocol and website have separate versions.
+- The current daily-editor release evidence is
+  [editor-daily-release-2026-10-06](evidence/editor-daily-release-2026-10-06.md).
+  It binds the private v0.2.0 ARM64 packages and direct VSIX to the sealed product
+  source. Keep earlier v0.1.0 and local Extension0.2.3 evidence historical.
+- Native package tests are developer-host evidence. Fresh no-SDK, production
+  entitlement, remaining redistribution/notices and signing/notarization stay
+  unaccepted. Consult the release record before making a platform or real-window
+  claim; Windows editor actions do not establish macOS/Linux UI acceptance.
+- Synchronize current release metadata, installation guidance and project/module
+  pins in Thai/English/Japanese. `verify-compiler-release.mjs` must pass in both
+  build and publishing workflows. Publish the website after asset publication;
+  preserve immutable compiler and website tags as separate identities.
+- Historical catalog and example results keep their original source pins.
+  Documentation changes do not promote language or production acceptance.
 
 ## Git workflow
 

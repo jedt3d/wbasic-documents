@@ -1,12 +1,12 @@
 {
-  "version": "docs-v2026.10.06.3",
+  "version": "docs-v2026.10.06.4",
   "copyrightYear": 2026,
   "copyrightOwner": "Worajedt Sitthidumrong",
-  "compilerVersion": "0.1.0",
-  "runtimeVersion": "0.1.0",
-  "extensionVersion": "0.2.3",
-  "extensionStatus": "LocalVerified",
-  "compilerSourceRevision": "3901cf17ce971dd0c7f591b424d73b086610fc46",
+  "compilerVersion": "0.2.0",
+  "runtimeVersion": "0.2.0",
+  "extensionVersion": "0.3.0",
+  "extensionStatus": "Published",
+  "compilerSourceRevision": "8d740dabe72bdf27f978f979d64725dc26c84be0",
   "languages": [
     "th",
     "en",

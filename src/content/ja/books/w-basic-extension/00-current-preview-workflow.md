@@ -1,27 +1,25 @@
 ---
-title: "0 · 対応する 0.1.0 パッケージを選ぶ"
-description: "公開済み ARM64 パッケージと、ローカル検証済み VS Code 拡張機能 0.2.3 を区別する"
+title: "0 · 対応する 0.2.0 ツールチェーンを選ぶ"
+description: "ARM64 パッケージ、VSIX 0.3.0、VS Code が選んだコンパイラを確認する"
 weight: 0
 ---
 
-**実験的な非公開 v0.1.0 プレリリースです。** [非公開リリース](https://github.com/jedt3d/wbasic-language/releases/tag/v0.1.0) には、固定済みのソース `3901cf17ce971dd0c7f591b424d73b086610fc46` から作成したコンパイラ／ランタイム `0.1.0`、同梱 VS Code 拡張機能 `wbasic-dev.wbasic@0.2.1`、プロトコルパッケージ `0.0.2` が含まれます。公開前に、リリース素材八点をダウンロードしてハッシュを再確認しました。アクセスには非公開リポジトリの権限が必要です。このガイドは別途提供された拡張機能 `0.2.3` を使います。実際の Windows コマンドパレットでの検証には開発用コンパイラソース `dfdcbdc` を使い、公開済み `0.1.0` コンパイラは固定済みソース `3901cf17` から作成されています。バージョン番号が同じだけでは検証証拠が同等とはいえません。拡張機能 0.2.3 の公開リリースや Marketplace 掲載はありません。
+このガイドは、Windows/macOS ARM64 向けの **private experimental** な一式、compiler/runtime `0.2.0`、protocol `0.1.0`、VS Code extension `wbasic-dev.wbasic@0.3.0` を対象とします。[WBasic の非公開リリース](https://github.com/jedt3d/wbasic-language/releases/tag/v0.2.0)から入手します。リポジトリへのアクセス権が必要です。旧 `0.1.0` と extension `0.2.1` は別のリリース履歴です。extension `0.2.3` はローカルで検証した修正版であり、新しいパッケージの VSIX ではありません。異なる版のバイナリ、ランタイム、マニフェストの固定値、試験結果を混ぜないでください。
 
-固定済みの公開コンパイラ／ランタイムと組み合わせた 0.2.3 拡張機能は、Windows ARM64 でエディター単体テスト 127 件（スキップなし）と独立した VS Code ホストテスト 11 件に通りました。実際の利用者の Check／Run／Build コマンドパレット操作と、完了後も残る出力の検証は、開発用ソース `dfdcbdc` に紐づきます。
+## パッケージを選び、検証する
 
-## ZIP を選んで検証する
+ホストに合う compiler `0.2.0` の Windows ARM64 または macOS ARM64 ZIP を選びます。展開前に SHA-256 を `.sha256` とリリース記録に照合します。パッケージ内の `wb-package.json` で `sourceRevision`、ターゲット、コンパイラの版、ファイル一覧、`vscodeVsix.path`/`sha256` を確認してください。`wb`、ランタイム素材、リンカー、ネイティブプローブは同じパッケージの組み合わせを保ちます。別のランタイムで作った build フォルダーは拒否される場合があります。古い出力を別に保管してから作り直してください。
 
-ホストに合わせて、非公開リリースから `wbasic-0.1.0-windows-arm64.zip` または `wbasic-0.1.0-macos-arm64.zip` をダウンロードします。展開前に ZIP の SHA-256 を `.sha256` ファイルとリリース記録に照合してください。検証済みの Windows ZIP のハッシュは `85c135ce9ad6ccf2edadd3c892ea677110f1ca0f15d012ec348a924213d93a74`、macOS ZIP は `50abba3266fd1209666865e1351a68a899aabed95f5a486522d996bc1a93bad6` です。パッケージ最上位の `wb-package.json` で、コンパイラのバージョン、ソースのリビジョン、ターゲット、ファイル一覧、`vscodeVsix.path` と `sha256` を確認します。記録された VSIX は `editors/vscode/wbasic-0.2.1.vsix`、SHA-256 は `d2aa385b5ec035b278aadfcfea500093e23e98797d91b307902cf14413f6158f` です。パスとハッシュの両方を確認してください。コンパイラ、対応するランタイム素材、リンカー、プローブは、同じ ZIP の組み合わせを保ちます。同梱ランタイムは、単独の静的ランタイムファイルではなく、プラットフォーム用のライブラリを使います。
-
-Windows の `Install-And-Test.ps1`、macOS の `Install-And-Test.sh` は、ネイティブのサンプルを確認してレポートを生成します。基本の `wb check`、`wb run`、`wb test`、`wb build` に VS Code は不要です。展開済みパッケージは、同梱のコンパイラ、ランタイム素材、リンカーで、ホスト SDK を使わず debug/release の実行とビルドに成功しています。ソースからのビルドにはネイティブ開発ツールが必要です。この実験的パッケージは、本番配布とは別です。SDK のない新規ホストでの受け入れ、再配布通知、署名・公証、本番利用の権限は未完了です。
+これは実験的な非公開の開発ツールです。ソースに対応するエディター例と BillingTime の debug/release 実行を含め、Windows/macOS ARM64 のネイティブ確認は開発用ホストで通りました。本番利用の権限、SDK のない新規ホストでの受け入れ、署名・公証、他のプラットフォームは本番配布の受け入れ範囲外です。
 
 ## VS Code に接続する
 
-拡張機能画面で **Install from VSIX…** を選び、別途提供された 0.2.3 VSIX を指定します。`wb-package.json` のパスは、従来の動作をする同梱 0.2.1 を示したままです。ウィンドウを再読み込みし、Extensions でインストール済みの版を確認します。信頼済みワークスペースでは、`wbasic.compilerPath` に、この VS Code プロセスから見える `wb.exe` または `wb` の絶対パスを設定します。`wbasic.probePath` は、独立したネイティブプローブのコマンドを使う場合にだけ設定します。**WBasic: Show Toolchain Status** を実行し、コンパイラが `0.1.0` と期待するターゲットを報告することを確認してください。拡張機能は、管理下の開発ツールチェーン、リポジトリの debug ビルド、`PATH` も検索します。
+Extensions で **Install from VSIX…** を選び、`wb-package.json` に記録された `0.3.0` VSIX のハッシュを確認してインストールし、**Developer: Reload Window** を実行します。信頼済みワークスペースでプロジェクトを開き、**WBasic: Show Toolchain Status** で compiler `0.2.0` とホストのネイティブターゲットを確認します。自動検出できない場合は、選んだパッケージの `wb.exe` または `wb` の絶対パスを `wbasic.compilerPath` に設定します。`wbasic.probePath` はプローブを別の場所に置いた場合だけ使います。これらの設定は実行ファイルのパスを受け取り、シェルコマンドは受け取りません。
 
-オフラインで読める仕様書は、パッケージの `docs/` にあります。コンパイラ、ビルド、実行、テストには Workspace Trust が必要です。色分け、Outline、ローカルのドキュメントは Restricted Mode でも使えます。
+Check、Run、Build、Test には Workspace Trust とコンパイラが公開する capability が必要です。色分け、Outline、About and Credits、同梱仕様書は Restricted Mode でも使えます。プロジェクト編集機能には `editorProject` と `editorSemanticGraph` が必要で、テストソースを扱う場合は `editorProjectTests` も必要です。新しい VSIX を入れるだけでは、古いコンパイラにこれらの機能は加わりません。
 
-## プロジェクトを始める
+## プロジェクトを始め、結果を確認する
 
-空のフォルダーで **WBasic: New Project** を使います。生成される `App.wproj` は、選択したコンパイラの報告するバージョンを固定するので、Check Project の前に `toolchain = "0.1.0"` を確認してください。モジュールの `module.toml` も同じツールチェーンのバージョンを使います。明示的にレビューした更新を行わずに、v0.0.2 のマニフェストやコンパイラ／ランタイムを混在させないようにします。**WBasic: Check Project** は保存済みのインポートと直接依存を検証します。**Check Active Source** は未保存の単独ファイルを確認する機能で、プロジェクト確認の代わりにはなりません。
+空のフォルダーで **WBasic: New Project** を使います。生成されるマニフェストは選択したコンパイラの版を固定します。この一式では `App.wproj` と関連する `module.toml` の `toolchain = "0.2.0"` を確認してください。保存済みのプロジェクトには **WBasic: Check Project** を使います。ライブ診断は上限内の未保存プロジェクトオーバーレイを解析できますが、**Check Active Source** は単独ソースの確認であり、Import を含むプロジェクトの確認には代わりません。
 
-次は [VS Code、拡張機能、コンパイラを準備する]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}}) へ進み、2〜12 章で Projects、診断、補完、ナビゲーション、Test Explorer、サンプル、Development Build を学びます。古い非公開 v0.0.2 パッケージには拡張機能 0.1.0 が含まれ、これらの編集機能はありません。その版を使う場合は、そのリリースの記録とパッケージのドキュメントを参照してください。
+[v0.2.0 タグの daily editor workflow](https://github.com/jedt3d/wbasic-language/tree/v0.2.0/examples/editor-daily-workflow) はリリースソースに固定され、パッケージにも含まれます。モジュールをまたぐこのプロジェクトは `wb check` に通り、`wb test` の二件が成功し、`wb run` は `24` を表示します。[拡張機能とコンパイラをインストールする]({{< relref "/books/w-basic-extension/01-install-extension-and-compiler.md" >}}) に進み、2〜12 章で VS Code の編集、移動、整形、インラインテスト、直接呼び出しの階層を学びます。

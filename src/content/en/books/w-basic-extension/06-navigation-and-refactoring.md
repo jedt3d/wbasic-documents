@@ -1,10 +1,10 @@
 ---
 title: "6 · Navigation and refactoring"
-description: "Use definitions, references, workspace symbols, and compiler-validated rename across files"
+description: "Use definitions, references, highlights, rename, and direct-call hierarchy from the compiler"
 weight: 6
 ---
 
-> **Version scope — locally verified extension 0.2.3.** The 0.2.3 VSIX was verified locally with a matched development compiler/runtime; the published private experimental compiler/runtime is `0.1.0` with protocol package `0.0.2`. The published ARM64 ZIPs immutably bundle extension `0.2.1`; extension `0.2.3` has no public release or Marketplace listing. Start with [the package guide]({{< relref "/books/w-basic-extension/00-current-preview-workflow.md" >}}). The older private compiler `0.0.2` bundles extension `0.1.0` and lacks these project editor workflows.
+> **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 As a project grows, finding declarations by eye politely loses to tooling. The
 extension uses compiler identities and spans for cross-file navigation.
@@ -12,12 +12,19 @@ extension uses compiler identities and spans for cross-file navigation.
 ## Core commands
 
 - **Go to Definition** opens a procedure or symbol declaration.
-- **Find All References** lists its uses in the project.
+- **Find All References** lists uses in the app, modules, and discovered tests.
+- **Peek Definition** shows a declaration without leaving the call site.
+- **Usage highlights** mark same-identity uses in the current document.
 - **Go to Symbol in Workspace** searches public and project symbols.
 - **Rename Symbol** prepares multi-file edits and asks the compiler to validate the complete snapshot.
+- **Show Call Hierarchy** shows compiler-resolved direct callers and callees.
 
 Right-click `Greeting` in `Main`, select Go to Definition, and then Find All
 References. The results should not include the same text inside comments or strings.
+
+Use **F12** for the declaration, **Alt+F12** for Peek, and **Shift+F12** for
+references. If two procedures each have a Thai local with the same spelling,
+highlights and references follow only the binding chosen by the compiler.
 
 ## Rename without guessing
 
@@ -32,9 +39,25 @@ Rename requires compiler capability `rename` and an overlay inside the supported
 bounds. The current project overlay allows 32 open documents, 1 MiB per file,
 and 4 MiB total. Beyond those limits, the operation fails closed instead of guessing.
 
+The 0.2.0 compiler graph covers resolved procedures, locals, parameters,
+constants, nominal types, and fields/enum members. It also links named-argument
+labels to their actual parameter. Renaming a parameter therefore edits its
+declaration, body uses, and call labels in the app and tests, without touching
+a same-named parameter on another method. References and incoming calls inspect
+discovered test files as separate contexts so a rename started in the app does
+not leave test calls stale. If a saved test file has no discoverable case or a
+snapshot changes during validation, the action returns unavailable instead of
+partial edits. Renaming a test-entry procedure is not supported because it can
+change catalog identity.
+
+Call Hierarchy reports only direct calls with compiler-resolved callers, callees,
+and call-site name spans, including recursion and calls from discovered tests.
+An indirect call through a procedure value has no invented target. Go to
+Implementation is outside this update.
+
 ## What not to expect yet
 
-- Complete local-variable indexing in every scope is not available.
+- Tokens without complete compiler semantic identities and references are not edited by text search.
 - Rename does not cross unrelated projects that are not dependencies.
 - String-based reflection is not considered a reference.
 - The language has no textual Include or global include path.

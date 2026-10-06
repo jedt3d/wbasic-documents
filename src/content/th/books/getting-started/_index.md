@@ -11,9 +11,10 @@ weight: -10
 บทที่ 5–9 อ่านตัวอย่าง SQLite/WORM ที่รันได้แล้ว พร้อมหลักฐาน native แยกต่างหาก
 ส่วนสี่บทแรกยังเป็นโครงการเล็กที่ผู้อ่านสร้างเอง
 
-คำสั่งและ manifest ในเล่มใช้ **compiler/runtime 0.1.0** ซึ่งเข้าคู่กันทั้ง
-CLI, portable ZIP และ compiler ที่ Extension 0.2.3 ซึ่งตรวจในเครื่องแล้วเลือกใช้ (ZIP ที่เผยแพร่ยังบรรจุ Extension 0.2.1) ค่า `toolchain`
-ใน project และ module ต้องตรงรุ่นนี้ New Project pin รุ่นที่เลือกให้อัตโนมัติ
+คำสั่งและ manifest ปัจจุบันในเล่มใช้ **compiler/runtime 0.2.0** ซึ่งเข้าคู่กันทั้ง
+CLI และ portable ZIP; VS Code Extension **0.3.0** ใช้ protocol **0.1.0** และเลือก compiler รุ่นนี้
+ค่า `toolchain` ใน project และ module ต้องตรงกับ compiler ที่เลือก New Project pin รุ่นให้อัตโนมัติ
+Release 0.1.0 และ Extension 0.2.1/0.2.3 เป็นหลักฐานย้อนหลัง ไม่ใช่ชุดที่ใช้กับ manifest 0.2.0
 ดู [ขอบเขตเวอร์ชัน]({{< relref "/implementation-status.md" >}})
 
 เริ่มที่ [รู้จักเครื่องมือและ compiler]({{< relref "/books/getting-started/01-tools-and-compiler.md" >}})

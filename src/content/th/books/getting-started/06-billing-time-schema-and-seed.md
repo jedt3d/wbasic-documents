@@ -4,7 +4,7 @@ description: "เปิด SQLite และใช้ migration ที่แอ�
 weight: 6
 ---
 
-[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) ระบุ `toolchain = "0.1.0"`, `Worm = { bundled = true }` และ module `Billing` แบบ local path โปรแกรม [Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) รับ path ฐานข้อมูลได้ไม่เกินหนึ่งค่า ถ้าไม่ส่งจะใช้ `billing-time-demo.sqlite` ใน working directory ปัจจุบัน; path ว่างหรือ argument เกินหนึ่งค่าคืน error ก่อนเปิด SQLite
+[billing-time.wproj](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/billing-time.wproj) ระบุ `toolchain = "0.2.0"`, `Worm = { bundled = true }` และ module `Billing` แบบ local path โปรแกรม [Main.wbas](https://jedt3d.github.io/wbasic-documents/downloads/billing-time/src/Main.wbas) รับ path ฐานข้อมูลได้ไม่เกินหนึ่งค่า ถ้าไม่ส่งจะใช้ `billing-time-demo.sqlite` ใน working directory ปัจจุบัน; path ว่างหรือ argument เกินหนึ่งค่าคืน error ก่อนเปิด SQLite
 
 หลังเปิดฐานข้อมูล `Main` เรียก migration เอง:
 
