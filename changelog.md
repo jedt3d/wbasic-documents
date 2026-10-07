@@ -1,3 +1,9 @@
+## 2026-10-07 — Publish the Extension walkthrough guide
+
+- User authorized committing and publishing the reviewed documentation. Website version: `docs-v2026.10.07.1`, integrating `57518b5`, `4f00592` and `11acf0a` above published base `efec508`.
+- Publishes the three-language Extension highlights and 24 How can I walkthroughs, with matching generated pages and version/copyright footers. Extension 0.4.0 remains an explicitly labelled development candidate; this website publication does not publish new compiler or Extension binaries.
+- Source, edition parity, command coverage and pinned Hugo build checks are required before the atomic main/tag push. The Pages workflow checks the exact tag and records the deployed commit separately in `deployment.json`.
+
 ## 2026-10-07 — Extension highlights and How can I walkthroughs
 
 - Made the Extension 0.4.0 development experience the guide's opening focus, with a task-based route into 24 walkthroughs covering all 34 contributed commands and the related language-intelligence providers.
