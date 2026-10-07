@@ -15,6 +15,10 @@ This is the second book to read after Getting Started. Once you know what a sour
 
 Thai is the source edition. This English edition follows the completed Thai content and editorial review, as requested in a subsequent translation round.
 
+## Work through projects in VS Code
+
+Keep [How can I…?]({{< relref "/books/w-basic-extension/13-how-can-i.md" >}}) beside you: choose a walkthrough for opening examples, checking source, running a single file, or returning to a test. Extension 0.4.0 highlights include templates, Run Again, source/test navigation and Toolchain Doctor, but it is still an unpublished development candidate; the published VSIX remains 0.3.0. Each recipe names the required version before you start. Using newer tools does not change a project's Planned status or its existing verification evidence.
+
 ## Choose a reading route
 
 Begin with the [multiplication table]({{< relref "49-multiplication.md" >}}) to practice nested loops, then [diamonds]({{< relref "16-diamonds.md" >}}) to build lines of text. Continue with [factors]({{< relref "24-factors.md" >}}) and [prime numbers]({{< relref "56-primes.md" >}}) to separate rules into procedures.

@@ -15,6 +15,10 @@ layout: small-projects
 
 タイ語版が原版です。この日本語版は完成したタイ語版と編集レビューを踏まえ、英語版を参照して制作しました。
 
+## VS Code で実践する
+
+[How can I…?]({{< relref "/books/w-basic-extension/13-how-can-i.md" >}})を手元のガイドとして使ってください。example を開き、source を確認し、単一ファイルを実行して、test の修正に戻るまでを一歩ずつ選べます。Extension 0.4.0 の見どころは templates、Run Again、source/test 間の移動、Toolchain Doctor です。ただし、これは未公開の development candidate で、公開済み VSIX は引き続き 0.3.0 です。各項目で必要な版を先に確認してください。新しいツールを使っても、この本の Planned という状態や従来の検証結果は変わりません。
+
 ## 読み進める道筋を選ぶ
 
 入れ子のループを練習するなら[掛け算表]({{< relref "49-multiplication.md" >}})から始め、次に[ひし形]({{< relref "16-diamonds.md" >}})で文字の行を組み立てます。[約数]({{< relref "24-factors.md" >}})と[素数]({{< relref "56-primes.md" >}})に進むと、規則を手続きに分ける練習になります。

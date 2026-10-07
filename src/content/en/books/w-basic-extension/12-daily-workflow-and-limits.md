@@ -4,6 +4,8 @@ description: "Summarize the edit-check-test-build loop and separate ready featur
 weight: 12
 ---
 
+Ready to try one task? Open [How can I…?]({{< relref "/books/w-basic-extension/13-how-can-i.md" >}}) and choose your question. Each recipe provides steps, a checkpoint, recovery guidance, and its required version.
+
 > **Version scope — matched private experimental 0.2.0.** This guide uses compiler/runtime `0.2.0`, protocol `0.1.0`, and VS Code extension `0.3.0` on Windows/macOS ARM64. Older `0.1.0`/extension `0.2.1` and the local `0.2.3` correction are separate historical evidence; installing a newer extension alone does not add E01–E10. Check the version and capabilities with **WBasic: Show Toolchain Status** first.
 
 Once the tools are familiar, the daily workflow should be short and predictable.

@@ -19,6 +19,7 @@ const expectedPages = [
   '10-examples-and-tui.md',
   '11-settings-trust-troubleshooting.md',
   '12-daily-workflow-and-limits.md',
+  '13-how-can-i.md',
 ];
 const expectedScreenshots = [
   '01-toolchain-status.png',
@@ -33,6 +34,10 @@ const expectedScreenshots = [
   '10-examples.png',
 ];
 const failures = [];
+const coverage = JSON.parse(await readFile(path.join(root, 'evidence/extension-040-command-coverage.json'), 'utf8'));
+if (coverage.commands.length !== 34 || new Set(coverage.commands.map(item => item.id)).size !== 34) {
+  failures.push('Expected 34 distinct pinned Extension commands in the walkthrough coverage record');
+}
 const wanted = [...expectedPages].sort();
 const currentExtension = JSON.parse(await readFile(path.join(root, 'src/static/extension-update.json'), 'utf8'));
 const compilerRelease = JSON.parse(await readFile(path.join(root, 'src/static/compiler-release.json'), 'utf8'));
@@ -41,6 +46,16 @@ for (const language of languages) {
   const sourceRoot = path.join(root, 'src', 'content', language, 'books', 'w-basic-extension');
   const outputRoot = path.join(root, 'html', language, 'books', 'w-basic-extension');
   const sourceEntries = await readdir(sourceRoot);
+  const howTo = await readFile(path.join(sourceRoot, '13-how-can-i.md'), 'utf8');
+  const recipes = new Map([...howTo.matchAll(/^### [^\n]*\{#(how-\d+)\}\r?\n([\s\S]*?)(?=^### |$(?![\s\S]))/gm)]
+    .map(match => [match[1], match[2]]));
+  if (recipes.size !== coverage.recipeCount) failures.push(`${language}: expected ${coverage.recipeCount} How can I recipes`);
+  for (const entry of coverage.commands) {
+    if (!recipes.get(entry.recipe)?.includes(entry.title)) failures.push(`${language}/${entry.recipe}: missing command walkthrough ${entry.title}`);
+  }
+  for (const entry of coverage.providers) {
+    if (!recipes.has(entry.recipe)) failures.push(`${language}: missing provider walkthrough ${entry.name}`);
+  }
   const markdown = sourceEntries.filter((entry) => entry.endsWith('.md')).sort();
   if (JSON.stringify(markdown) !== JSON.stringify(wanted)) {
     failures.push(`${language}: expected ${wanted.length} guide Markdown pages; found ${markdown.length}: ${markdown.join(', ')}`);
@@ -85,6 +100,13 @@ for (const language of languages) {
     }
   }))).join('\n');
 
+  const howToHtml = await readFile(path.join(outputRoot, '13-how-can-i', 'index.html'), 'utf8');
+  for (const recipe of recipes.keys()) {
+    if (!new RegExp(`id=(?:["']${recipe}["']|${recipe}(?:[\\s>]))`).test(howToHtml)) {
+      failures.push(`${language}: missing rendered walkthrough anchor ${recipe}`);
+    }
+  }
+
   for (const screenshot of expectedScreenshots) {
     if (!generatedText.includes(screenshot)) {
       failures.push(`${language}: generated guide does not expose image or placeholder ${screenshot}`);
@@ -101,4 +123,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`PASS: ${expectedPages.length} paired guide pages and ${expectedScreenshots.length} replaceable screenshot slots per language are present in source and generated HTML.`);
+console.log(`PASS: ${expectedPages.length} guide pages, ${coverage.recipeCount} walkthroughs covering ${coverage.commands.length} commands, and ${expectedScreenshots.length} replaceable screenshot slots per language are present in source and generated HTML.`);

@@ -1,3 +1,10 @@
+## 2026-10-07 — Extension highlights and How can I walkthroughs
+
+- Made the Extension 0.4.0 development experience the guide's opening focus, with a task-based route into 24 walkthroughs covering all 34 contributed commands and the related language-intelligence providers.
+- Added numbered actions, observable checkpoints, recovery advice and version boundaries in Thai, English and Japanese. Named Run settings, failed-test recovery, template Undo, Vim conflicts, bounded symbols and Toolchain Doctor are tied to the inspected source rather than inferred from feature names.
+- Pinned the command inventory to product `5907381`; the guide validator checks command-to-recipe coverage and rendered anchors in all three editions. Thai technical review precedes translation; final review and build results are recorded in [editorial evidence](evidence/extension-040-how-can-i-editorial.md).
+- This branch extends documentation base `4f00592`. It does not publish a new website or Extension release: published Extension 0.3.0/protocol 0.1.0/compiler-runtime 0.2.0 metadata stays unchanged, alongside explicitly labelled Extension 0.4.0/protocol 0.2.0 candidate lessons.
+
 ## 2026-10-07 — Current-compiler DX candidate guide, three editions
 
 - Updated seven matching Thai/English/Japanese guide chapters and generated HTML for local Extension0.4.0/protocol0.2.0, retaining published Extension0.3.0/protocol0.1.0 and compiler/runtime0.2.0 identities.

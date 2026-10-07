@@ -4,6 +4,8 @@ description: "編集・確認・テスト・ビルドの循環を整理し、利
 weight: 12
 ---
 
+一つずつ試すには、[How can I…?]({{< relref "/books/w-basic-extension/13-how-can-i.md" >}}) を開き、知りたい項目を選んでください。各項目に手順、確認点、期待どおりに動かないときの対処法、必要なバージョンを示しています。
+
 > **対象バージョン — 対応する private experimental 0.2.0 一式。** このガイドは Windows/macOS ARM64 の compiler/runtime `0.2.0`、protocol `0.1.0`、VS Code extension `0.3.0` を対象とします。旧 `0.1.0`/extension `0.2.1` とローカル修正版 `0.2.3` は別の履歴です。extension の更新だけで E01–E10 は利用可能になりません。最初に **WBasic: Show Toolchain Status** でバージョンと capability を確認してください。
 
 ツールに慣れた後の日常作業は、短く、予測できる手順になるはずです。

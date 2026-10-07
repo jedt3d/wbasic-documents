@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "59073810ad7c713837861345c3dcdef0db91813d",
+  "extensionVersion": "0.4.0",
+  "source": "editors/vscode/package.json",
+  "guide": "books/w-basic-extension/13-how-can-i.md",
+  "recipeCount": 24,
+  "commands": [
+    {
+      "id": "wbasic.showAbout",
+      "title": "WBasic: About and Credits",
+      "recipe": "how-22"
+    },
+    {
+      "id": "wbasic.newProject",
+      "title": "WBasic: New Project",
+      "recipe": "how-01"
+    },
+    {
+      "id": "wbasic.openExample",
+      "title": "WBasic: Open Example",
+      "recipe": "how-04"
+    },
+    {
+      "id": "wbasic.copyExample",
+      "title": "WBasic: Copy Example",
+      "recipe": "how-04"
+    },
+    {
+      "id": "wbasic.selectActiveProject",
+      "title": "WBasic: Select Active Project",
+      "recipe": "how-02"
+    },
+    {
+      "id": "wbasic.addModuleDependency",
+      "title": "WBasic: Add Local Module Dependency",
+      "recipe": "how-03"
+    },
+    {
+      "id": "wbasic.removeModuleDependency",
+      "title": "WBasic: Remove Local Module Dependency",
+      "recipe": "how-03"
+    },
+    {
+      "id": "wbasic.refreshProjects",
+      "title": "WBasic: Refresh Projects",
+      "recipe": "how-02"
+    },
+    {
+      "id": "wbasic.showToolchainStatus",
+      "title": "WBasic: Show Toolchain Status",
+      "recipe": "how-01"
+    },
+    {
+      "id": "wbasic.showLanguageServerOutput",
+      "title": "WBasic: Show Language Server Output",
+      "recipe": "how-23"
+    },
+    {
+      "id": "wbasic.checkActiveDocument",
+      "title": "WBasic: Check Active Source",
+      "recipe": "how-14"
+    },
+    {
+      "id": "wbasic.checkProject",
+      "title": "WBasic: Check Project",
+      "recipe": "how-14"
+    },
+    {
+      "id": "wbasic.runProject",
+      "title": "WBasic: Run Project",
+      "recipe": "how-15"
+    },
+    {
+      "id": "wbasic.buildProject",
+      "title": "WBasic: Build Project (Development)",
+      "recipe": "how-15"
+    },
+    {
+      "id": "wbasic.buildProjectDebug",
+      "title": "WBasic: Build Project — Debug (Development)",
+      "recipe": "how-15"
+    },
+    {
+      "id": "wbasic.buildProjectRelease",
+      "title": "WBasic: Build Project — Release (Development)",
+      "recipe": "how-15"
+    },
+    {
+      "id": "wbasic.testProject",
+      "title": "WBasic: Test Project",
+      "recipe": "how-21"
+    },
+    {
+      "id": "wbasic.runActiveSource",
+      "title": "WBasic: Run Active Source in Terminal",
+      "recipe": "how-16"
+    },
+    {
+      "id": "wbasic.newR6Template",
+      "title": "WBasic: New TUI/Jobs Example",
+      "recipe": "how-16"
+    },
+    {
+      "id": "wbasic.emitProjectObject",
+      "title": "WBasic: Emit Project Object",
+      "recipe": "how-18"
+    },
+    {
+      "id": "wbasic.showProjectInfo",
+      "title": "WBasic: Show Project Modules and Dependencies",
+      "recipe": "how-02"
+    },
+    {
+      "id": "wbasic.openDraftSpec",
+      "title": "WBasic: Open v0.3 Specification",
+      "recipe": "how-24"
+    },
+    {
+      "id": "wbasic.inspectProbe",
+      "title": "WBasic: Inspect Native Probe",
+      "recipe": "how-24"
+    },
+    {
+      "id": "wbasic.showActions",
+      "title": "WBasic: Actions at Caret",
+      "recipe": "how-09"
+    },
+    {
+      "id": "wbasic.refactorThis",
+      "title": "WBasic: Refactor This",
+      "recipe": "how-10"
+    },
+    {
+      "id": "wbasic.showShortcutGuide",
+      "title": "WBasic: Shortcut Guide",
+      "recipe": "how-08"
+    },
+    {
+      "id": "wbasic.insertTemplate",
+      "title": "WBasic: Insert Template",
+      "recipe": "how-05"
+    },
+    {
+      "id": "wbasic.insertFileTemplate",
+      "title": "WBasic: Insert File Template",
+      "recipe": "how-06"
+    },
+    {
+      "id": "wbasic.surroundWith",
+      "title": "WBasic: Surround With",
+      "recipe": "how-07"
+    },
+    {
+      "id": "wbasic.selectRunConfiguration",
+      "title": "WBasic: Select Run Configuration",
+      "recipe": "how-17"
+    },
+    {
+      "id": "wbasic.runAgain",
+      "title": "WBasic: Run Again",
+      "recipe": "how-17"
+    },
+    {
+      "id": "wbasic.navigateToTest",
+      "title": "WBasic: Go to Test or Source",
+      "recipe": "how-19"
+    },
+    {
+      "id": "wbasic.scaffoldTest",
+      "title": "WBasic: New Test Scaffold",
+      "recipe": "how-20"
+    },
+    {
+      "id": "wbasic.toolchainDoctor",
+      "title": "WBasic: Toolchain Doctor",
+      "recipe": "how-23"
+    }
+  ],
+  "providers": [
+    {
+      "name": "Cold Workspace Symbols",
+      "recipe": "how-12"
+    },
+    {
+      "name": "Semantic colors",
+      "recipe": "how-13"
+    },
+    {
+      "name": "Definition, references, hover, completion, signature help, call hierarchy",
+      "recipe": "how-11"
+    }
+  ]
+}
